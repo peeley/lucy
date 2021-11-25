@@ -33,7 +33,13 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-...and you should be ready to start coding.
+Then, run the server:
+
+```bash
+php artisan serve --port=8080
+```
+
+...and you should be able to visit the website at `http://localhost:8080` and start coding.
 
 ## Contributors
 
