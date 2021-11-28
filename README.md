@@ -47,3 +47,4 @@ php artisan serve --port=8080
 - Mehar Mangat
 - Elizabeth Schuon
 - Noah Snelson
+- Elvis Vong
