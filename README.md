@@ -8,7 +8,7 @@ Several languages and software packages need to be installed to run Project Lucy
 
 - [PHP 8](https://www.php.net/downloads)
 - [Composer](https://getcomposer.org/)
-- [sqlite3](https://sqlite.org/index.html)
+- [Sqlite 3](https://sqlite.org/index.html)
 - [NodeJS](https://nodejs.org/en/)
 
 ## Development
@@ -36,7 +36,7 @@ php artisan key:generate
 Then, run the server:
 
 ```bash
-php artisan serve --port=8080
+php artisan serve --port = 8080
 ```
 
 ...and you should be able to visit the website at `http://localhost:8080` and start coding.
