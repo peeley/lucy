@@ -22,6 +22,7 @@ class CreateAccountController extends Controller
             'name' => 'string|required',
             'username' => 'email|required|unique:users,email',
             'password' => 'string|required',
+            'verified_password' => 'string|required|same:password',
         ]);
 
         // create user based on email and (hashed) password
