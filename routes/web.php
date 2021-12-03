@@ -20,6 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'loginUser']);
 
 Route::get('/create-account', [CreateAccountController::class, 'index']);

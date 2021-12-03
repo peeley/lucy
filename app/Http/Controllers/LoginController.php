@@ -7,11 +7,20 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    //
+    public function index()
+    {
+        // if user is already logged in, just go to home page
+        if (Auth::check()) {
+            return redirect('/home');
+        }
+
+        return view('login');
+    }
+
     public function loginUser(Request $request)
     {
         $creds = $request->validate([
-            'username' => 'email|required',
+            'email' => 'email|required',
             'password' => 'string|required',
         ]);
 
@@ -21,7 +30,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'username' => 'The given credentials are incorrect.',
+            'email' => 'The given credentials are incorrect.',
         ]);
     }
 }
