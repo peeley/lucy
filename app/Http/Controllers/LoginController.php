@@ -33,4 +33,15 @@ class LoginController extends Controller
             'email' => 'The given credentials are incorrect.',
         ]);
     }
+
+    public function logoutUser(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
+    }
 }

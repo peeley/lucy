@@ -20,10 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login');
 Route::post('/login', [LoginController::class, 'loginUser']);
+Route::get('/logout', [LoginController::class, 'logoutUser']);
 
 Route::get('/create-account', [CreateAccountController::class, 'index']);
 Route::post('/create-account', [CreateAccountController::class, 'createAccount']);
 
-Route::get('/home', [HomeController::class, 'index'])->middleware(['auth']);
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home')
+    ->middleware(['auth']);

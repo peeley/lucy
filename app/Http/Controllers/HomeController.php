@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response('You are logged in.');
+        $user = $request->user();
+
+        return view('home', ['name' => $user->name]);
     }
 }
