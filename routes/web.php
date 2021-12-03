@@ -20,7 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage']);
+Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage'])
+    ->name('settings')
+    ->middleware(['auth']);
+    
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [LoginController::class, 'loginUser']);

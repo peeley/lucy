@@ -17,8 +17,8 @@ class CreateUserSettingsTable extends Migration
         Schema::create('user_settings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean('guided_use_toggle'); //lets us know whether the user wants guided use on or off
-            $table->integer('audio_level'); //the volume level of the text-to-speech voice; not sure if we should use int or float
+            $table->boolean('guided_use_toggle')->default('false'); //lets us know whether the user wants guided use on or off
+            $table->integer('audio_level')->default('5'); //the volume level of the text-to-speech voice; not sure if we should use int or float
             $table->foreignID('user_id')->constrained(); //users settings cannot exist without a user
         });
     }

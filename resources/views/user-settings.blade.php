@@ -6,7 +6,8 @@
 
 <body>
 <h1> Settings </h1>
-
+<p>Audio Level: {{$audio_level}}</p>
+<p>Guided Use On: {{$guided_use_toggle}}</p>
 </body>
 
 </html>
