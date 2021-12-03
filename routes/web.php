@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CreateAccountController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 /*
@@ -18,3 +21,14 @@ Route::get('/', function () {
 });
 
 Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage']);
+Route::get('/login', [LoginController::class, 'index'])
+    ->name('login');
+Route::post('/login', [LoginController::class, 'loginUser']);
+Route::get('/logout', [LoginController::class, 'logoutUser']);
+
+Route::get('/create-account', [CreateAccountController::class, 'index']);
+Route::post('/create-account', [CreateAccountController::class, 'createAccount']);
+
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home')
+    ->middleware(['auth']);
