@@ -13,7 +13,7 @@ class CreateUserSettingsTable extends Migration
      */
     public function up()
     {
-        //more columns need to be added, but this should be sufficient for the demo
+        //to do: more columns need to be added, but this should be sufficient for the demo
         Schema::create('user_settings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();

@@ -32,6 +32,10 @@ class CreateAccountController extends Controller
             'password' => Hash::make($creds['password']),
         ]);
 
+        //create default user settings
+        //to do: make more user settings after demo
+        $user->settings()->create(['guided_use_toggle' => false, 'audio_level' => 5]);
+
         // log the new user in, and go to the home page
         Auth::login($user);
 
