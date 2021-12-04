@@ -9,6 +9,8 @@
         <p style="font-size:3vw">Project Lucy</p>
     </h1>
     <p>An Adaptive Alternative Communication Open Source Solution</p>
+    <br>
+    <br>
     <h1>
         <button style="width: 200px; height: 80px; background-color:lightgoldenrodyellow;">
         <font size="+1"><a href="http://localhost:8080/login">Log in</a></font>
