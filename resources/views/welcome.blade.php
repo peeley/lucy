@@ -2,7 +2,7 @@
 <html>
 
 
-<body style="background-color:lightslategray">
+<body style="background-color:lightsteelblue">
 <center>
     <h1 style = "padding-top: 30px">
         <p style="font-size:2vw">Welcome to</p>
