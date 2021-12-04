@@ -8,7 +8,7 @@
         <p style="font-size:2vw">Welcome to</p>
         <p style="font-size:3vw">Project Lucy</p>
     </h1>
-    <p>An Adaptive Alternative Communication Open Source Solution</p>
+    <p>An Augmentative and Alternative Communication Open Source Solution</p>
     <br>
     <br>
     <h1>
