@@ -11,7 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
+// compile app.js as a ReactJS project
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+   .react();
