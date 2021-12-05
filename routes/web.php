@@ -4,7 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserSettingsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage'])
+    ->name('settings')
+    ->middleware(['auth']);
+Route::post('user-settings', [UserSettingsController::class, 'updateSettings'])->middleware(['auth']);
+    
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [LoginController::class, 'loginUser']);

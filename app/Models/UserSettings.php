@@ -12,7 +12,7 @@ class UserSettings extends Model
 
     /**
      * The attributes that are mass assignable.
-     *
+     * to do: make more user settings after demo
      * @var array
      */
     protected $fillable = [
