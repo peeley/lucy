@@ -6,8 +6,30 @@
 
 <body>
 <h1> Settings </h1>
-<p>Audio Level: {{$audio_level}}</p>
-<p>Guided Use On: {{$guided_use_toggle}}</p>
+
+<!-- buttons to display and change audio levels/guided use toggles -->
+<!-- to do: CSS styling-->
+<button onclick="openGuidedUseForm()">Settings</button>
+
+<button onclick="openAudioForm()">Audio</button>
+
+<!-- forms which allow the user to see and adjust their settings -->
+<form id = "GuidedUseForm" action="/user-settings" method="POST">
+    @csrf
+    @if ($guided_use_toggle == 1)
+        <h2>Guided Use: On</h2>
+    @else 
+        <h2>Guided Use: Off</h2>
+    @endif
+    <input type="text">
+</form>
 </body>
+
+<!-- script to display the pop up form when the guided use or audio settings button is clicked; will need 2?-->
+<script>
+
+
+</script>
+
 
 </html>
