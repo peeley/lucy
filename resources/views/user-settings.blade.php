@@ -30,7 +30,7 @@
     <input type="radio" name="guided_use" value="0" <?php if ($guided_use_toggle == 0) {echo 'checked="checked"';}?> >
     <label>Guided Use: Off</label><br>
     <input type="submit" value="Update Guided Use Settings"><br>
-    <button onclick="closenGuidedUseForm()">Close Guided Use Settings </button>
+    <button onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
 </form>
 </div>
 
