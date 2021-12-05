@@ -37,7 +37,6 @@
 <div class="form-popup" id="AudioForm"> 
 <form action="/user-settings" method="POST">
     @csrf
-    <!-- to do: error handling-->
     <h2>Audio Settings</h2>
     <label for="audio_level">Audio Level: </label>
     <input type="number" name="audio_level" min="0" max="100" value={{$audio_level}}><br>

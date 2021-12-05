@@ -19,7 +19,6 @@ use App\Http\Controllers\UserSettingsController;
 Route::get('/', function () {
     return view('welcome');
 });
-//to do: define post route
 Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage'])
     ->name('settings')
     ->middleware(['auth']);
