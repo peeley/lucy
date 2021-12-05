@@ -24,7 +24,7 @@
 <form action="/user-settings" method="POST">
     @csrf
     <h2>Guided Use</h2>
-    <input type="radio" name="guided_use" value="1" <?php if ($guided_use_toggle == 1){echo 'checked="checked"';}?> >
+    <input type="radio" name="guided_use" value="1" {{ $guided_use_toggle ?  "checked" : ""}}>
     <label>Guided Use: On</label>
     <br>
     <input type="radio" name="guided_use" value="0" <?php if ($guided_use_toggle == 0) {echo 'checked="checked"';}?> >
