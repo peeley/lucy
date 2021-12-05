@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage'])
     ->name('settings')
     ->middleware(['auth']);
+Route::post('user-settings', [UserSettingsController::class, 'updateSettings'])->middleware(['auth']);
     
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');

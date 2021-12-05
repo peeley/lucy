@@ -29,7 +29,8 @@
     <br>
     <input type="radio" name="guided_use" value="0" <?php if ($guided_use_toggle == 0) {echo 'checked="checked"';}?> >
     <label>Guided Use: Off</label><br>
-    <input type="submit" value="Update Settings">
+    <input type="submit" value="Update Guided Use Settings"><br>
+    <button onclick="closenGuidedUseForm()">Close Guided Use Settings </button>
 </form>
 </div>
 
@@ -40,7 +41,8 @@
     <h2>Audio Settings</h2>
     <label for="audio_level">Audio Level: </label>
     <input type="number" name="audio_level" min="0" max="100" value={{$audio_level}}><br>
-    <input type="submit" value="Update Settings">
+    <input type="submit" value="Update Audio Settings"><br>
+    <button onclick="closeAudioForm()">Close Audio Setings</button>
 </form>
 </div>
 
@@ -54,6 +56,16 @@ function openGuidedUseForm()
 function openAudioForm()
 {
     document.getElementById("AudioForm").style.display = "block";
+}
+
+function closeGuidedUseForm()
+{
+    document.getElementById("GuidedUseForm").style.display = "none";
+}
+
+function closeAudioForm()
+{
+    document.getElementById("AudioForm").style.display = "none";
 }
 </script>
 
