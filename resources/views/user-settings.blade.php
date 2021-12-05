@@ -30,7 +30,7 @@
     <input type="radio" name="guided_use" value="0" {{ (! $guided_use_toggle) ?  "checked" : ""}} >
     <label>Guided Use: Off</label><br>
     <input type="submit" value="Update Guided Use Settings"><br>
-    <button onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
+    <button type="button" onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
 </form>
 </div>
 
