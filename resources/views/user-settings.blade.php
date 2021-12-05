@@ -41,7 +41,7 @@
     <label for="audio_level">Audio Level: </label>
     <input type="number" name="audio_level" min="0" max="100" value={{$audio_level}}><br>
     <input type="submit" value="Update Audio Settings"><br>
-    <button onclick="closeAudioForm()">Close Audio Setings</button>
+    <button type="button" onclick="closeAudioForm()">Close Audio Setings</button>
 </form>
 </div>
 
