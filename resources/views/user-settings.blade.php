@@ -6,19 +6,18 @@
 <!-- to do: CSS styling -->
 <!-- this will probably need to be moved somewhere else -->
 <style>
-    .form-popup
-    {
-        display: none;
-    }
+
 </style>
+<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-<h1> Settings </h1>
+<h1 class="general-heading"> Settings </h1>
 
 <!-- buttons to display and change audio levels/guided use toggles -->
-<button onclick="openGuidedUseForm()">Settings</button>
-<button onclick="openAudioForm()">Audio</button>
-
+<center>
+<button class="settings-button" onclick="openGuidedUseForm()">Settings</button>
+<button class="settings-button" onclick="openAudioForm()">Audio</button>
+</center>
 <!-- forms which allow the user to see and adjust their settings -->
 <div class="form-popup" id = "GuidedUseForm"> 
 <form action="/user-settings" method="POST">
@@ -29,8 +28,8 @@
     <br>
     <input type="radio" name="guided_use" value="0" {{ (! $guided_use_toggle) ?  "checked" : ""}} >
     <label>Guided Use: Off</label><br>
-    <input type="submit" value="Update Guided Use Settings"><br>
-    <button type="button" onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
+    <input class="update-settings-button" type="submit" value="Update Guided Use Settings"><br>
+    <button class="close-settings-button" type="button" onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
 </form>
 </div>
 
@@ -40,8 +39,8 @@
     <h2>Audio Settings</h2>
     <label for="audio_level">Audio Level: </label>
     <input type="number" name="audio_level" min="0" max="100" value={{$audio_level}}><br>
-    <input type="submit" value="Update Audio Settings"><br>
-    <button type="button" onclick="closeAudioForm()">Close Audio Setings</button>
+    <input class="update-settings-button" type="submit" value="Update Audio Settings"><br>
+    <button class="close-settings-button" type="button" onclick="closeAudioForm()">Close Audio Setings</button>
 </form>
 </div>
 
