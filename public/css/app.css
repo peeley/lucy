@@ -94,6 +94,10 @@ body
     text-align: center;
     background-color: lightsteelblue;
 }
+.welcome-body a {
+    text-decoration: none;
+    padding: 20px
+}
 .welcome-title {
     padding-top: 30px;
     color: black;

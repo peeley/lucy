@@ -14,16 +14,16 @@
     </div>
     <br>
     <br>
-    <h1>
-        <button class = "welcome-button">
-        <font size="+1"><a href="http://localhost:8080/login">Log in</a></font>
-        </button>
-        <button class="welcome-button">
-        <font size="+1"><a href="http://localhost:8080/create-account">Create Account</a></font>
-        </button>
-        <button class="welcome-button">
-        <font size="+1"><a href="http://localhost:8080">Guest</a></font>
-        </button>
-    </h1>
-    
+    <div>
+        <a href="http://localhost:8080/login">
+            <button class = "welcome-button">Log in</button>
+        </a>
+        <a href="http://localhost:8080/create-account">
+            <button class = "welcome-button">Create Account</button>
+        </a>
+        <a href="http://localhost:8080">
+            <button class = "welcome-button">Guest Login</button>
+        </a> 
+    </div>
+</body>
 </html>
