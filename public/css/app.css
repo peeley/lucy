@@ -89,3 +89,21 @@ body
     width: 200px; 
     height: 50px;
 }
+
+.welcome-body {
+    text-align: center;
+    background-color: lightsteelblue;
+}
+.welcome-title {
+    padding-top: 30px;
+    color: black;
+    font-weight: bold;
+}
+.welcome-header {
+    font-size: 3vw;
+}
+.welcome-button {
+    width: 200px;
+    height: 80px;
+    background-color:lightgoldenrodyellow;
+}
