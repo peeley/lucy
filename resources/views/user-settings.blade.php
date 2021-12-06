@@ -3,8 +3,6 @@
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- to do: CSS styling -->
-<!-- this will probably need to be moved somewhere else -->
 <style>
 
 </style>
@@ -44,7 +42,6 @@
 </form>
 </div>
 
-<!-- script to display the pop up form when the guided use or audio settings button is clicked; will need 2?-->
 <script>
 function openGuidedUseForm()
 {
