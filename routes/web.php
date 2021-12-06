@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\HomeController;
@@ -35,3 +36,7 @@ Route::post('/create-account', [CreateAccountController::class, 'createAccount']
 Route::get('/home', [HomeController::class, 'index'])
     ->name('home')
     ->middleware(['auth']);
+
+// fetched by React and returns json, do not need views
+Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
+Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
