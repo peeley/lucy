@@ -1,0 +1,41 @@
+.create-account-input-button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10%;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-account-button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 12%;
+    width: 15%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-account-heading
+{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2%;
+}
+
+body
+{
+    background-color: lightsteelblue;
+}
