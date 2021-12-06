@@ -1,0 +1,80 @@
+.create-account-input-button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10%;
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.create-account-button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 12%;
+    width: 15%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.general-heading
+{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2%;
+}
+
+body
+{
+    background-color: lightsteelblue;
+}
+
+.settings-button
+{
+    background-color: ivory;
+    border-radius: 5px;
+    position: relative;
+    top: 25%;
+    font-size: larger;
+    padding: 50px 50px;
+}
+
+.form-popup
+{
+    display: none;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border: solid grey;
+    padding: 1%;
+    width: 20%;
+    background-color: rgb(205, 213, 224);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.update-settings-button
+{
+    background-color: ivory;
+    border-radius: 2px;
+    height: 50px;
+    width: 200px;
+}
+
+.close-settings-button
+{
+    background-color: ivory;
+    border-radius: 2px;
+    height: 50px;
+    width: 200px;
+}
