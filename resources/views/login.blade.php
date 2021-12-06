@@ -1,9 +1,12 @@
 <html>
-
-<body style="background-color:lightslategray">
-  <h1 style="padding: 20px"><button style="width: 200px; height: 100px; background-color:lightgoldenrodyellow;">
-      <font size="+"><a href="http://localhost:8080">Previous Screen</a></font>
-    </button></h1>
+<head>
+  <title>Log in</title>
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <h1 style="padding: 20px">
+    <a href="http://localhost:8080"><button class = "credentials-button">Previous Screen</button></a>
+  </h1>
   <center>
     <form action="/login" method="POST">
       @csrf
@@ -12,9 +15,9 @@
       <div>{{ $message }}</div>
       @enderror
 
-      <h1><input type="text" name="email" placeholder="Email Address" style="background-color:lightgoldenrodyellow; width: 400px; height: 50px;" /></h1>
-      <h1><input type="password" name="password" placeholder="Password" style="background-color:lightgoldenrodyellow; width: 400px; height: 50px;" /></h1>
-      <h1><button type="submit" style="width: 200px; height: 50px;background-color:lightgoldenrodyellow;">
+      <h1><input class="credentials-input" type="text" name="email" placeholder="Email Address" /></h1>
+      <h1><input class="credentials-input" type="password" name="password" placeholder="Password" /></h1>
+      <h1><button class="credentials-button" type="submit">
           <font size="+2">Log in </font>
         </button></h1>
     </form>
