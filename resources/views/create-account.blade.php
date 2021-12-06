@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
-  <h1 class="create-account-heading">Create Your Account</h1>
+  <h1 class="general-heading">Create Your Account</h1>
   <form action="/create-account" method="POST">
     @csrf
 
