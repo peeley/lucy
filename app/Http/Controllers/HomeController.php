@@ -10,6 +10,11 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        return view('home', ['name' => $user->name]);
+        $boards = [(object) ['id' => 1, 'name' => 'Default board']];
+
+        return view('home', [
+            'name' => $user->name,
+            'boards' => $boards
+        ]);
     }
 }
