@@ -16,25 +16,18 @@ class CreateBoardsTable extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
 
-            $table->uuid('board_id')
-                    ->unique();
+            $table->text('name');
 
-            $table->text("word");
-            $table->foreign('word')
-                ->references('word')
-                ->on('words')
+            $table->uuid('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
-            $table->integer('image_path');
-            $table->foreign('image_path')
-                ->references('path')
-                ->on('images')
-                ->onUpdate('CASCADE')
-                ->onDelete('SET DEFAULT');
+            $table->json("words_and_folders"); //Big JSON column of words and folders.
 
-            $table->text('color') // TEXT == STRING in sqlite
-                ->default('#000000');
+            $table->json('image_path'); // Each entry in 'words_and_folders' should have associated path here
 
             $table->timestamps();
         });
