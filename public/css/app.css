@@ -27,19 +27,16 @@
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .general-heading
 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     padding: 2%;
 }
-
 body
 {
     background-color: lightsteelblue;
 }
-
 .settings-button
 {
     background-color: ivory;
@@ -49,7 +46,6 @@ body
     font-size: larger;
     padding: 50px 50px;
 }
-
 .form-popup
 {
     display: none;
@@ -62,7 +58,6 @@ body
     margin-left: auto;
     margin-right: auto;
 }
-
 .update-settings-button
 {
     background-color: ivory;
@@ -70,7 +65,6 @@ body
     height: 50px;
     width: 200px;
 }
-
 .close-settings-button
 {
     background-color: ivory;
@@ -78,7 +72,6 @@ body
     height: 50px;
     width: 200px;
 }
-
 .credentials-input {
     background-color:lightgoldenrodyellow; 
     width: 400px; 
@@ -89,7 +82,6 @@ body
     width: 200px; 
     height: 50px;
 }
-
 .welcome-body {
     text-align: center;
     background-color: lightsteelblue;
@@ -110,4 +102,17 @@ body
     width: 200px;
     height: 80px;
     background-color:lightgoldenrodyellow;
+}
+
+.board-background {
+    background-color: lightsteelblue;
+}
+.default-tile {
+    background-color: mediumturquoise;
+    border-radius: 2px;
+    height: 75px;
+    width: 200px;
+}
+.default-tile-text {
+
 }
