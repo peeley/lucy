@@ -22,7 +22,7 @@
             <button class = "welcome-button">Create Account</button>
         </a>
         <a href="http://localhost:8080">
-            <button class = "welcome-button">Guest Login</button>
+            <button class = "welcome-button">Guest</button>
         </a> 
     </div>
 </body>
