@@ -40,3 +40,5 @@ Route::get('/home', [HomeController::class, 'index'])
 // fetched by React and returns json, do not need views
 Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
+Route::redirect('/guest', '/boards/1'); // default board
+Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);

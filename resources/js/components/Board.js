@@ -11,13 +11,14 @@ export class Board extends React.Component {
     };
   }
 
-  componentDidMount() {
-    axios.get('/boards/1').then( response => {
-      this.setState({
-        currentBoard: response.data,
-        boardStack: [response.data]
+  componentDidMount = () => {
+    axios.get(`/boards/${this.props.board_id}/tiles`)
+      .then( response => {
+        this.setState({
+          currentBoard: response.data,
+          boardStack: [response.data]
+        });
       });
-    });
   }
 
   handleFolderClick = (folderContents) => {
@@ -50,28 +51,48 @@ export class Board extends React.Component {
   handleSpeakButtonClick = () => {
     // TODO set TTS voice according to user settings
     let synth = window.speechSynthesis;
-    let utterance = new SpeechSynthesisUtterance(this.state.sentence.join(' '));
+    let utterance = new SpeechSynthesisUtterance(this.buildSentence());
     synth.speak(utterance);
+
+    // TODO clear sentence only after it's done being read out instead of
+    // default 500 millliseconds
+    setTimeout(() => this.setState({
+      sentence: []
+    }), 500);
+  }
+
+  buildSentence = () => {
+    return this.state.sentence.join(' ');
   }
 
   render() {
     const rows = this.state.currentBoard.map( row =>
-      <p>
+      <tr>
       { row.map( tile =>
-        <span style={{"background-color": `#${tile.color}`}} onClick={tile.type === 'folder' ? () => this.handleFolderClick(tile.contents) : () => this.handleWordClick(tile.text)}>{tile.text + ' '}</span>
+        <td style={{"background-color": `#${tile.color}`}}
+            className="board-tile"
+            onClick={tile.type === 'folder'
+                     ? () => this.handleFolderClick(tile.contents)
+                     : () => this.handleWordClick(tile.text)}>
+          {tile.text + ' '}
+        </td>
       )}
-      </p>
+      </tr>
     );
 
     return (
       <div id="board-container">
-        <button onClick={this.handleGoBackFunction}>Go Back</button>
+        <button onClick={this.handleGoBackFunction}>Last Folder</button>
         <button onClick={this.handleBackspaceButtonClick}>Backspace</button>
+        <button onClick={() => this.setState({sentence: []})}>Clear</button>
         <button onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
-        <h1>{this.state.sentence.join(' ')}</h1>
+        <h1>{this.buildSentence()}</h1>
         <br/>
-        <div>{rows}</div>
+        <table className="board-tiles-container"
+              style={{"width": "90%", "margin": "auto"}}>
+          {rows}
+        </table>
       </div>
     );
   }
