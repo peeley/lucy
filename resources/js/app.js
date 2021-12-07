@@ -4,8 +4,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Board } from './components/Board.js';
 
-// mounts the React component to the <div id="root"> HTML tag
+// mount the React app to the <div id="root"> tag
+let rootElement = document.getElementById('root');
+
 ReactDOM.render(
-  React.createElement(Board, {}),
-  document.getElementById('root')
+  <Board board_id={rootElement.getAttribute('board_id')}/>,
+  rootElement
 );

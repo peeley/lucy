@@ -16,7 +16,7 @@ class BoardController extends Controller
         ]);
     }
 
-    public function getBoard(Request $request, int $board_id)
+    public function getBoardTiles(Request $request, int $board_id)
     {
         // TODO retrieve board from database, replace placeholder
         // should come up with a good way to recursively serialize folders
@@ -40,5 +40,10 @@ class BoardController extends Controller
                 ['type' => 'word', 'text' => 'ball', 'color' => 'fdb589'],
             ]
         ]);
+    }
+
+    public function getBoard(Request $request, int $board_id)
+    {
+        return view('board', ['board_id' => $board_id]);
     }
 }
