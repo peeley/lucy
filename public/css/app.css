@@ -78,3 +78,36 @@ body
     height: 50px;
     width: 200px;
 }
+
+.credentials-input {
+    background-color:lightgoldenrodyellow; 
+    width: 400px; 
+    height: 50px;
+}
+.credentials-button {
+    background-color:lightgoldenrodyellow;
+    width: 200px; 
+    height: 50px;
+}
+
+.welcome-body {
+    text-align: center;
+    background-color: lightsteelblue;
+}
+.welcome-body a {
+    text-decoration: none;
+    padding: 20px
+}
+.welcome-title {
+    padding-top: 30px;
+    color: black;
+    font-weight: bold;
+}
+.welcome-header {
+    font-size: 3vw;
+}
+.welcome-button {
+    width: 200px;
+    height: 80px;
+    background-color:lightgoldenrodyellow;
+}
