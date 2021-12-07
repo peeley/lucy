@@ -104,6 +104,11 @@ body
 .welcome-header {
     font-size: 3vw;
 }
+.welcome-button {
+    width: 200px;
+    height: 80px;
+    background-color:lightgoldenrodyellow;
+}
 .back-button {
     border-radius: 5px;
     width: 200px;
