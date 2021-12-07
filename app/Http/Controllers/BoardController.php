@@ -10,9 +10,9 @@ class BoardController extends Controller
     {
         // TODO retrieve boards belonging to user
         return response()->json([
-            ['name' => 'board1', 'id' => 1],
-            ['name' => 'board2', 'id' => 2],
-            ['name' => 'board3', 'id' => 3],
+            ['name' => 'Board 1', 'id' => 1],
+            ['name' => 'Board 2', 'id' => 2],
+            ['name' => 'Board 3', 'id' => 3],
         ]);
     }
 
@@ -22,22 +22,22 @@ class BoardController extends Controller
         // should come up with a good way to recursively serialize folders
         return response()->json([
             [
-                ['type' => 'word', 'text' => 'hello!', 'color' => 'FF0000'],
-                ['type' => 'word', 'text' => 'goodbye!', 'color' => '00FF00'],
-                ['type' => 'word', 'text' => 'goodbye!', 'color' => '00FF00'],
+                ['type' => 'word', 'text' => 'Hello', 'color' => 'FF0000'],
+                ['type' => 'word', 'text' => 'Goodbye', 'color' => '00FF00'],
+                ['type' => 'word', 'text' => 'Yay!', 'color' => '00FF00'],
             ],
             [
-                ['type' => 'folder', 'text' => 'foods', 'color' => 'ffd700', 'contents' => [
+                ['type' => 'folder', 'text' => 'Foods', 'color' => 'ffd700', 'contents' => [
                     [
-                        ['type' => 'word', 'text' => 'hamborgar', 'color' => 'dd33dd'],
-                        ['type' => 'folder', 'text' => 'orange foods', 'color' => 'e24908', 'contents' => [
+                        ['type' => 'word', 'text' => 'Hamburger', 'color' => 'dd33dd'],
+                        ['type' => 'folder', 'text' => 'Orange Foods', 'color' => 'e24908', 'contents' => [
                             [
-                                ['type' => 'word', 'text' => 'oranges', 'color' => 'e24908'],
+                                ['type' => 'word', 'text' => 'Orange', 'color' => 'e24908'],
                             ],
                         ]],
                     ],
                 ]],
-                ['type' => 'word', 'text' => 'ball', 'color' => 'fdb589'],
+                ['type' => 'word', 'text' => 'Ball', 'color' => 'fdb589'],
             ]
         ]);
     }

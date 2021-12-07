@@ -15,7 +15,7 @@ class UserSettings extends Model
      * to do: make more user settings after demo
      * @var array
      */
-    protected $fillable = [
+        protected $fillable = [
         'guided_use_toggle',
         'audio_level',
         'user_id',
@@ -23,7 +23,7 @@ class UserSettings extends Model
 
     /**
      * Get the user who owns these settings.
-     * 
+     *
      * @var array
      */
 
