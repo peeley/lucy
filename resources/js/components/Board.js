@@ -70,7 +70,7 @@ export class Board extends React.Component {
       <tr>
       { row.map( tile =>
         <td style={{"background-color": `#${tile.color}`}}
-            className="board-tile"
+            className="default-tile"
             onClick={tile.type === 'folder'
                      ? () => this.handleFolderClick(tile.contents)
                      : () => this.handleWordClick(tile.text)}>
@@ -82,10 +82,10 @@ export class Board extends React.Component {
 
     return (
       <div id="board-container">
-        <button onClick={this.handleGoBackFunction}>Last Folder</button>
-        <button onClick={this.handleBackspaceButtonClick}>Backspace</button>
-        <button onClick={() => this.setState({sentence: []})}>Clear</button>
-        <button onClick={this.handleSpeakButtonClick}>Speak!</button>
+        <button className="back-button" onClick={this.handleGoBackFunction}>Last Folder</button>
+        <button className="sentence-backspace" onClick={this.handleBackspaceButtonClick}>Backspace</button>
+        <button className="sentence-bar" onClick={() => this.setState({sentence: []})}>Clear</button>
+        <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
         <h1>{this.buildSentence()}</h1>
         <br/>

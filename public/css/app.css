@@ -12,7 +12,6 @@
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .create-account-button
 {
     display: block;
@@ -27,29 +26,26 @@
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 .general-heading
 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     padding: 2%;
 }
-
 body
 {
     background-color: lightsteelblue;
 }
-
 .settings-button
 {
-    background-color: ivory;
+    background-color: lightgoldenrodyellow;
     border-radius: 5px;
+    border: 2px solid black;
     position: relative;
     top: 25%;
     font-size: larger;
     padding: 50px 50px;
 }
-
 .form-popup
 {
     display: none;
@@ -62,34 +58,36 @@ body
     margin-left: auto;
     margin-right: auto;
 }
-
 .update-settings-button
 {
-    background-color: ivory;
-    border-radius: 2px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+    border: 2px solid black;
     height: 50px;
     width: 200px;
 }
-
 .close-settings-button
 {
-    background-color: ivory;
-    border-radius: 2px;
+    background-color: lightgoldenrodyellow;
+    border-radius: 5px;
+    border: 2px solid black;
     height: 50px;
     width: 200px;
 }
-
 .credentials-input {
-    background-color:lightgoldenrodyellow; 
+    background-color:ivory; 
+    border-radius: 5px;
+    border: 2px solid black;
     width: 400px; 
     height: 50px;
 }
 .credentials-button {
     background-color:lightgoldenrodyellow;
+    border-radius: 5px;
+    border: 2px solid black;
     width: 200px; 
     height: 50px;
 }
-
 .welcome-body {
     text-align: center;
     background-color: lightsteelblue;
@@ -110,4 +108,106 @@ body
     width: 200px;
     height: 80px;
     background-color:lightgoldenrodyellow;
+}
+.back-button {
+    border-radius: 5px;
+    width: 200px;
+    height: 80px;
+    background-color:lightgoldenrodyellow;
+}
+.board-background {
+    background-color: lightsteelblue;
+}
+.default-tile {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: mediumturquoise;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 20%;
+    width: 15%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.empty-tile {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(151, 212, 210);
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 20%;
+    width: 15%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sentence-bar {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: ivory;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 75%;
+    height: 15%;
+}
+.sentence-backspace {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightcoral;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 10%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sentence-speak {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgreen;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 10%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.empty-shortcut {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 15%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.user-home-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 20%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.guest-default-board {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 30%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
