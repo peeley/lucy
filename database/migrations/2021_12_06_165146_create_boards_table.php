@@ -16,10 +16,8 @@ class CreateBoardsTable extends Migration
         Schema::create('boards', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('userse');
+            $table->foreignId('user_id')
+                ->constrained();
 
             $table->text('name');
             $table->integer('width');

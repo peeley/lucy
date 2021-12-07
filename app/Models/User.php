@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserSettings;
+use App\Models\BoardModel;
+use App\Models\WordModel;
 
 class User extends Authenticatable
 {
@@ -52,5 +54,15 @@ class User extends Authenticatable
     public function settings()
     {
         return $this->hasOne(UserSettings::class);
+    }
+
+    public function boards()
+    {
+        return $this->hasMany(BoardModel::class);
+    }
+
+    public function words()
+    {
+        return $this->hasMany(WordModel::class);
     }
 }

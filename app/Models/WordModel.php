@@ -9,5 +9,16 @@ class WordModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'words'
+    protected $table = 'words';
+
+    protected $fillable = [
+        'text',
+        'icon',
+        'color',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWordsTable extends Migration
+class FolderWord extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('folder_word', function (Blueprint $table){
             $table->id();
 
-            $table->foreignId('user_id')
+            $table->foreignId('folder_id')
                 ->constrained();
 
-            $table->text('text');
-            $table->binary('icon')->nullable();
-            $table->text('color')->default('#FFFFFF');
+            $table->foreignId('word_id')
+                ->constrained();
+
+            $table->integer('folder_position');
 
             $table->timestamps();
         });
@@ -34,6 +35,6 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('folder_word');
     }
 }

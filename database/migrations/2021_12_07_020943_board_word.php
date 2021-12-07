@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFolderModelsTable extends Migration
+class BoardWord extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateFolderModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('folder_models', function (Blueprint $table) {
+        Schema::create('board_word', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
+            $table->foreignId('board_id')
+                ->constrained();
 
-            $table->text('name');
-            $table->text('color');
-            $table->binary('icon');
+            $table->foreignId('word_id')
+                ->constrained();
+
+            $table->integer('board_position');
 
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ class CreateFolderModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('folder_models');
+        Schema::dropIfExists('board_word');
     }
 }
