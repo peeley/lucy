@@ -16,10 +16,15 @@ class BoardController extends Controller
         return $boards;
     }
 
-    public function getBoard(Request $request, int $board_id)
+    public function getBoardTiles(Request $request, int $board_id)
     {
         return DB::table(self::BOARD_TABLE)
             ->where('id', '=', $board_id)
             ->get();
+    }
+
+    public function getBoard(Request $request, int $board_id)
+    {
+        return view('board', ['board_id' => $board_id]);
     }
 }
