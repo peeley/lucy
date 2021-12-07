@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoardsTable extends Migration
+class BoardWordMappings extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boards', function (Blueprint $table) {
+        Schema::create('board_word_mappings', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id');
-            $table->foreign('user_id')
+            $table->integer('board_id');
+            $table->foreign('board_id')
                 ->references('id')
-                ->on('userse');
+                ->on('boards');
 
-            $table->text('name');
-            $table->integer('width');
-            $table->integer('height');
+            $table->integer('word_id');
+            $table->text('board_position');
 
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ class CreateBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boards');
+        Schema::dropIfExists('board_word_mappings');
     }
 }

@@ -19,6 +19,7 @@ class BoardController extends Controller
     public function getBoard(Request $request, int $board_id)
     {
         return DB::table(self::BOARD_TABLE)
-            ->where('id', '=', $board_id);
+            ->where('id', '=', $board_id)
+            ->get();
     }
 }
