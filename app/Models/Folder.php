@@ -14,7 +14,7 @@ class Folder extends Model
     public function words()
     {
         return $this->belongsToMany(
-            Word::class,
+            WordModel::class,
             'folder_word',
             'folder_id',
             'word_id'

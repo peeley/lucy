@@ -22,8 +22,8 @@ class CreateFoldersTable extends Migration
                 ->on('users');
 
             $table->text('name');
-            $table->text('color');
-            $table->binary('icon');
+            $table->text('color')->default('FFFFFF');
+            $table->binary('icon')->nullable();
 
             $table->timestamps();
         });

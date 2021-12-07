@@ -65,4 +65,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WordModel::class);
     }
+
+    public function folders()
+    {
+        return $this->hasMany(Folder::class);
+    }
 }
