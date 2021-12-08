@@ -84,10 +84,10 @@ export class Board extends React.Component {
       <div id="board-container">
         <button className="back-button" onClick={this.handleGoBackFunction}>Last Folder</button>
         <button className="sentence-backspace" onClick={this.handleBackspaceButtonClick}>Backspace</button>
-        <button className="sentence-bar" onClick={() => this.setState({sentence: []})}>Clear</button>
+        <button className="back-button" onClick={() => this.setState({sentence: []})}>Clear</button>
         <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
-        <h1>{this.buildSentence()}</h1>
+        <h1 className="sentence-bar">{this.buildSentence()}</h1>
         <br/>
         <table className="board-tiles-container"
               style={{"width": "90%", "margin": "auto"}}>
