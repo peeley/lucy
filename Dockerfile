@@ -28,3 +28,5 @@ RUN composer install
 # install nodejs, dependencies
 RUN npm install
 RUN npm run dev
+
+RUN chown -R www-data:www-data /var/www

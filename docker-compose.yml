@@ -21,8 +21,7 @@ services:
       - 5432:5432
     environment:
       PGPASSWORD: '${DB_PASSWORD:-secret}'
-      POSTGRES_DB: '${DB_DATABASE}'
-      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_USER: '${DB_USERNAME:-lucy}'
       POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
     volumes:
       - db_data:/var/lib/postgresql/data
