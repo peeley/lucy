@@ -1,0 +1,46 @@
+version: "3"
+
+volumes:
+  db_data:
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    depends_on:
+      - database
+    volumes:
+      - ./:/var/www
+    networks:
+      - lucy
+
+  database:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_USER: '${DB_USERNAME:-lucy}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - lucy
+
+  nginx:
+    image: nginx:1.21-alpine
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    depends_on:
+      - app
+    volumes:
+      - ./:/var/www
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - lucy
+
+networks:
+  lucy:
+    driver: bridge
