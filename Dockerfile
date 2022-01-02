@@ -15,18 +15,17 @@ RUN apt update && apt install \
 # install php extensions
 RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd
 
-# copy into web doc root
+# copy php source and configs into web server root
 COPY . /var/www
 
 WORKDIR /var/www
 
-# install composer, composer deps
-COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
-
-RUN composer install
-
-# install nodejs, dependencies
+# install npm dependencies and build JS
 RUN npm install
 RUN npm run dev
+
+# copy composer binary, install PHP deps
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
+RUN composer install
 
 RUN chown -R www-data:www-data /var/www
