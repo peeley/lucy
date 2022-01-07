@@ -1,3 +1,14 @@
+button {
+    border:2px solid black;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 0 green;
+    transition: ease-out 0.15s;
+}
+button:hover {
+    box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
+    color: white;
+    font-size: large;
+}
 .create-account-input-button
 {
     display: block;
@@ -129,6 +140,13 @@ body
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
+
+    box-shadow: inset 0 0 0 0 green;
+    transition: ease-out 0.15s;
+}
+.default-tile:hover {
+    box-shadow: inset 0 0 10px 0 black;
+    color: black;
 }
 .empty-tile {
     margin-left: auto;
