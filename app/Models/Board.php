@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BoardModel extends Model
+class Board extends Model
 {
     use HasFactory;
 
@@ -26,7 +26,7 @@ class BoardModel extends Model
 
     public function words() {
         return $this->belongsToMany(
-            WordModel::class,
+            Word::class,
             self::BOARD_WORD_MAPPINGS_TABLE,
             'board_id',
             'word_id'

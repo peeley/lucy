@@ -8,8 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\UserSettings;
-use App\Models\BoardModel;
-use App\Models\WordModel;
+use App\Models\Board;
 
 class User extends Authenticatable
 {
@@ -58,12 +57,12 @@ class User extends Authenticatable
 
     public function boards()
     {
-        return $this->hasMany(BoardModel::class);
+        return $this->hasMany(Board::class);
     }
 
     public function words()
     {
-        return $this->hasMany(WordModel::class);
+        return $this->hasMany(Word::class);
     }
 
     public function folders()
