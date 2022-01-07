@@ -17,6 +17,22 @@ class Folder extends Model
         'icon'
     ];
 
+    // make these properties visible on arrays made w/ toArray
+    protected $visible = [
+        'name',
+        'color',
+        'icon',
+        'words',
+        'folders',
+        'pivot'
+    ];
+
+    // auto-load all associated `words` and `folders` when calling toArray
+    protected $with = [
+        'words',
+        'folders'
+    ];
+
     public function words()
     {
         return $this->belongsToMany(
@@ -27,7 +43,8 @@ class Folder extends Model
         )->withPivot('board_position');
     }
 
-    // folders can each contain many folders - this might be gnarly
+    // folders can each contain many folders - need to watch out for infinite
+    // recursion
     public function folders()
     {
         return $this->belongsToMany(

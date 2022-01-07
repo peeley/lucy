@@ -95,4 +95,102 @@ class FolderTest extends TestCase
 
         $this->assertEquals($nested_folder->words()->first()->text, 'oranges');
     }
+
+    public function test_folder_can_be_serialized()
+    {
+        $word = $this->user->words()->create([
+            'text' => 'Hello',
+            'color' => '#123456'
+        ]);
+
+        $folder = $this->user->folders()->create(['name' => 'greetings']);
+
+        $folder->words()->attach($word, ['board_position' => 5]);
+
+        // need to fetch folder from DB to auto-load words relationship for toArray
+        $actual_json = Folder::find($folder->id)->toArray();
+
+        $expected_json = [
+            'name' => 'greetings',
+            'color' => '#FFFFFF',
+            'icon' => null,
+            'words' => [
+                [
+                    'text' => 'Hello',
+                    'pivot' => [
+                        'folder_id' => $folder->id,
+                        'word_id' => $word->id,
+                        'board_position' => 5,
+                    ],
+                    'icon' => null,
+                    'color' => '#123456'
+                ]
+            ],
+            'folders' => []
+        ];
+
+        $this->assertEquals($actual_json, $expected_json);
+    }
+
+    public function test_nested_folder_can_be_serialized()
+    {
+        $outer_folder = $this->user->folders()->create(['name' => 'foods']);
+
+        $inner_folder = $this->user->folders()->create(['name' => 'orange foods']);
+
+        $word = $this->user->words()->create(['text' => 'oranges']);
+
+        $inner_folder->words()->attach($word, ['board_position' => 5]);
+
+        $outer_folder->folders()->attach($inner_folder, ['board_position' => 1]);
+
+        $outer_folder->words()->attach($word, ['board_position' => 3]);
+
+        $actual_json = Folder::find($outer_folder->id)->toArray();
+
+        $expected_json = [
+            'name' => 'foods',
+            'color' => '#FFFFFF',
+            'icon' => null,
+            'words' => [
+                [
+                    'text' => 'oranges',
+                    'icon' => null,
+                    'color' => '#FFFFFF',
+                    'pivot' => [
+                        'folder_id' => $outer_folder->id,
+                        'word_id' => $word->id,
+                        'board_position' => 3
+                    ]
+                ]
+            ],
+            'folders' => [
+                [
+                    'name' => 'orange foods',
+                    'color' => '#FFFFFF',
+                    'icon' => null,
+                    'folders' => [],
+                    'words' => [
+                        [
+                            'text' => 'oranges',
+                            'icon' => null,
+                            'color' => '#FFFFFF',
+                            'pivot' => [
+                                'folder_id' => $inner_folder->id,
+                                'word_id' => $word->id,
+                                'board_position' => 5
+                            ]
+                        ]
+                    ],
+                    'pivot' => [
+                        'outer_folder_id' => $outer_folder->id,
+                        'inner_folder_id' => $inner_folder->id,
+                        'board_position' => 1
+                    ]
+                ]
+            ]
+        ];
+
+        $this->assertEquals($actual_json, $expected_json);
+    }
 }

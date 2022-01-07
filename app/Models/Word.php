@@ -17,6 +17,13 @@ class Word extends Model
         'color',
     ];
 
+    protected $visible = [
+        'text',
+        'icon',
+        'color',
+        'pivot'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
