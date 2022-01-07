@@ -13,7 +13,7 @@ class FolderWord extends Migration
      */
     public function up()
     {
-        Schema::create('folder_word', function (Blueprint $table){
+        Schema::create('folder_word', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('folder_id')
@@ -22,7 +22,7 @@ class FolderWord extends Migration
             $table->foreignId('word_id')
                 ->constrained();
 
-            $table->integer('folder_position');
+            $table->integer('board_position');
 
             $table->timestamps();
         });

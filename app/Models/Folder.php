@@ -11,6 +11,12 @@ class Folder extends Model
 
     protected $table = 'folders';
 
+    protected $fillable = [
+        'name',
+        'color',
+        'icon'
+    ];
+
     public function words()
     {
         return $this->belongsToMany(
