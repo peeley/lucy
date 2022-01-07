@@ -14,11 +14,22 @@ class Folder extends Model
     public function words()
     {
         return $this->belongsToMany(
-            WordModel::class,
+            Word::class,
             'folder_word',
             'folder_id',
             'word_id'
-        )->withPivot('board_positions');
+        )->withPivot('board_position');
+    }
+
+    // folders can each contain many folders - this might be gnarly
+    public function folders()
+    {
+        return $this->belongsToMany(
+            Folder::class,
+            'folder_folder',
+            'outer_folder_id',
+            'inner_folder_id'
+        )->withPivot('board_position');
     }
 
     public function user()
