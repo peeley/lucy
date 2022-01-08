@@ -20,11 +20,26 @@ class Board extends Model
         'width'
     ];
 
-    public function items(int $board_id) {
+    protected $visible = [
+        'name',
+        'height',
+        'width',
+        'words',
+        'folders'
+    ];
+
+    protected $with = [
+        'words',
+        'folders'
+    ];
+
+    public function items()
+    {
         ///todo
     }
 
-    public function words() {
+    public function words()
+    {
         return $this->belongsToMany(
             Word::class,
             self::BOARD_WORD_MAPPINGS_TABLE,
@@ -33,7 +48,8 @@ class Board extends Model
         )->withPivot('board_position');
     }
 
-    public function folders() {
+    public function folders()
+    {
         return $this->belongsToMany(
             Folder::class,
             self::BOARD_FOLDER_MAPPINGS_TABLE,
@@ -42,36 +58,31 @@ class Board extends Model
         )->withPivot('board_position');
     }
 
-    public function getHeight(int $board_id) {
-        return $this->getConnection()->table($this->table)
-            ->select('height')
-            ->where('id', $board_id)
-            ->get();
+    public function getHeight()
+    {
+        return $this->height;
     }
-    public function getWidth(int $board_id) {
-        return $this->getConnection()->table($this->table)
-            ->select('width')
-            ->where('id', $board_id)
-            ->get();
+    public function getWidth()
+    {
+        return $this->width;
     }
 
-    public function placeItem($item, $row, $column) {
+    public function placeItem($item, $row, $column)
+    {
         ///todo
     }
 
-    public function swapItems($rowA, $columnA, $rowB, $columnB) {
+    public function swapItems($rowA, $columnA, $rowB, $columnB)
+    {
         ///todo
     }
-    public function getName(int $board_id) {
-        return $this->getConnection()->table($this->table)
-            ->select('name')
-            ->where('id', $board_id)
-            ->get();
+    public function getName()
+    {
+        return $this->name;
     }
-    public function setName(int $board_id, $name) {
-        $this->getConnection()->table($this->table)
-            ->where('id', $board_id)
-            ->update(['name' => $name]);
+    public function setName(string $name)
+    {
+        $this->name = $name;
     }
 
     public function user()

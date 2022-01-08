@@ -17,6 +17,11 @@ class Word extends Model
         'color',
     ];
 
+    // Set default color to white
+    protected $attributes = [
+        'color' => '#FFFFFF'
+    ];
+
     protected $visible = [
         'text',
         'icon',

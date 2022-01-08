@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Folder;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -16,11 +15,17 @@ class FolderTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
         $this->user = User::create([
             'name' => 'User McUser',
             'email' => 'user@email.com',
             'password' => Hash::make('password')
         ]);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
     }
 
     public function test_folder_needs_user()

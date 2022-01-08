@@ -13,16 +13,14 @@ class FolderFolder extends Migration
      */
     public function up()
     {
-        Schema::create('folder_folder', function (Blueprint $table){
+        Schema::create('folder_folder', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('outer_folder_id')
-                ->references('id')
-                ->on('folders');
+                ->constrained('folders');
 
             $table->foreignId('inner_folder_id')
-                ->references('id')
-                ->on('folders');
+                ->constrained('folders');
 
             $table->integer('board_position');
 
