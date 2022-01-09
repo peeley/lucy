@@ -22,7 +22,8 @@ class FolderFolder extends Migration
             $table->foreignId('inner_folder_id')
                 ->constrained('folders');
 
-            $table->integer('board_position');
+            $table->integer('board_x');
+            $table->integer('board_y');
 
             $table->timestamps();
         });

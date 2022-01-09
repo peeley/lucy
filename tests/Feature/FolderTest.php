@@ -16,11 +16,7 @@ class FolderTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::create([
-            'name' => 'User McUser',
-            'email' => 'user@email.com',
-            'password' => Hash::make('password')
-        ]);
+        $this->user = User::factory()->create();
     }
 
     protected function tearDown(): void
@@ -39,7 +35,9 @@ class FolderTest extends TestCase
 
     public function test_user_can_make_folder()
     {
-        $folder = $this->user->folders()->create(['name' => 'folder1']);
+        $folder = Folder::factory()
+            ->for($this->user)
+            ->create(['name' => 'folder1']);
 
         $this->assertInstanceOf(Folder::class, $folder);
     }
@@ -56,7 +54,7 @@ class FolderTest extends TestCase
 
         $this->assertInstanceOf(Folder::class, $folder);
 
-        $board->folders()->attach($folder, ['board_position' => 5]);
+        $board->folders()->attach($folder, ['board_x' => 1, 'board_y' => 1]);
 
         $this->assertEquals($board->folders()->get()->first()->name, 'board1 folder');
 
@@ -73,7 +71,7 @@ class FolderTest extends TestCase
 
         $folder = $this->user->folders()->create(['name' => 'greetings']);
 
-        $folder->words()->attach($word, ['board_position' => 5]);
+        $folder->words()->attach($word, ['board_x' => 5, 'board_y' => 5]);
 
         $this->assertEquals($folder->words()->get()->first()->text, 'Hello');
 
@@ -90,9 +88,9 @@ class FolderTest extends TestCase
 
         $word = $this->user->words()->create(['text' => 'oranges']);
 
-        $inner_folder->words()->attach($word, ['board_position' => 5]);
+        $inner_folder->words()->attach($word, ['board_x' => 1, 'board_y' => 1]);
 
-        $outer_folder->folders()->attach($inner_folder, ['board_position' => 1]);
+        $outer_folder->folders()->attach($inner_folder, ['board_x' => 1, 'board_y' => 2]);
 
         $nested_folder = $outer_folder->folders()->get()->first();
 
@@ -110,7 +108,7 @@ class FolderTest extends TestCase
 
         $folder = $this->user->folders()->create(['name' => 'greetings']);
 
-        $folder->words()->attach($word, ['board_position' => 5]);
+        $folder->words()->attach($word, ['board_x' => 5, 'board_y' => 3]);
 
         // need to fetch folder from DB to auto-load words relationship for toArray
         $actual_json = Folder::find($folder->id)->toArray();
@@ -125,7 +123,8 @@ class FolderTest extends TestCase
                     'pivot' => [
                         'folder_id' => $folder->id,
                         'word_id' => $word->id,
-                        'board_position' => 5,
+                        'board_x' => 5,
+                        'board_y' => 3
                     ],
                     'icon' => null,
                     'color' => '#123456'
@@ -145,11 +144,11 @@ class FolderTest extends TestCase
 
         $word = $this->user->words()->create(['text' => 'oranges']);
 
-        $inner_folder->words()->attach($word, ['board_position' => 5]);
+        $inner_folder->words()->attach($word, ['board_x' => 5, 'board_y' => 5]);
 
-        $outer_folder->folders()->attach($inner_folder, ['board_position' => 1]);
+        $outer_folder->folders()->attach($inner_folder, ['board_x' => 1, 'board_y' => 2]);
 
-        $outer_folder->words()->attach($word, ['board_position' => 3]);
+        $outer_folder->words()->attach($word, ['board_x' => 3, 'board_y' => 2]);
 
         $actual_json = Folder::find($outer_folder->id)->toArray();
 
@@ -165,7 +164,8 @@ class FolderTest extends TestCase
                     'pivot' => [
                         'folder_id' => $outer_folder->id,
                         'word_id' => $word->id,
-                        'board_position' => 3
+                        'board_x' => 3,
+                        'board_y' => 2
                     ]
                 ]
             ],
@@ -183,14 +183,16 @@ class FolderTest extends TestCase
                             'pivot' => [
                                 'folder_id' => $inner_folder->id,
                                 'word_id' => $word->id,
-                                'board_position' => 5
+                                'board_x' => 5,
+                                'board_y' => 5
                             ]
                         ]
                     ],
                     'pivot' => [
                         'outer_folder_id' => $outer_folder->id,
                         'inner_folder_id' => $inner_folder->id,
-                        'board_position' => 1
+                        'board_x' => 1,
+                        'board_y' => 2
                     ]
                 ]
             ]

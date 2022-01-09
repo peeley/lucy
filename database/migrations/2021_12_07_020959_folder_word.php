@@ -22,7 +22,8 @@ class FolderWord extends Migration
             $table->foreignId('word_id')
                 ->constrained();
 
-            $table->integer('board_position');
+            $table->integer('board_x');
+            $table->integer('board_y');
 
             $table->timestamps();
         });

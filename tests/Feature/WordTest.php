@@ -16,11 +16,7 @@ class WordTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::create([
-            'name' => 'User McUser',
-            'email' => 'user@email.com',
-            'password' => Hash::make('password')
-        ]);
+        $this->user = User::factory()->create();
     }
 
     public function test_word_defaults()
@@ -36,16 +32,12 @@ class WordTest extends TestCase
 
     public function test_word_can_be_serialized()
     {
-        $word = $this->user->words()->create([
-            'text' => 'Hi!',
-            'color' => '#ABCDEF',
-            'icon' => 'file/path'
-        ]);
+        $word = Word::factory()->for($this->user)->create();
 
         $expected_array = [
-            'text' => 'Hi!',
-            'color' => '#ABCDEF',
-            'icon' => 'file/path'
+            'text' => $word->text,
+            'color' => $word->color,
+            'icon' => $word->icon
         ];
 
         $this->assertEquals($word->toArray(), $expected_array);

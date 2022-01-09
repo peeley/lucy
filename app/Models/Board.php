@@ -28,6 +28,11 @@ class Board extends Model
         'folders'
     ];
 
+    protected $attributes = [
+        'width' => 7,
+        'height' => 5
+    ];
+
     protected $with = [
         'words',
         'folders'
@@ -45,7 +50,7 @@ class Board extends Model
             self::BOARD_WORD_MAPPINGS_TABLE,
             'board_id',
             'word_id'
-        )->withPivot('board_position');
+        )->withPivot('board_x', 'board_y');
     }
 
     public function folders()
@@ -55,7 +60,7 @@ class Board extends Model
             self::BOARD_FOLDER_MAPPINGS_TABLE,
             'board_id',
             'folder_id'
-        )->withPivot('board_position');
+        )->withPivot('board_x', 'board_y');
     }
 
     public function getHeight()

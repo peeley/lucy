@@ -11,6 +11,7 @@ class Folder extends Model
 
     protected $table = 'folders';
 
+    // allow these properties to be passed to create()
     protected $fillable = [
         'name',
         'color',
@@ -27,6 +28,12 @@ class Folder extends Model
         'pivot'
     ];
 
+    // default attribute values
+    protected $attributes = [
+        'color' => '#FFFFFF',
+        'icon' => null
+    ];
+
     // auto-load all associated `words` and `folders` when calling toArray
     protected $with = [
         'words',
@@ -40,7 +47,7 @@ class Folder extends Model
             'folder_word',
             'folder_id',
             'word_id'
-        )->withPivot('board_position');
+        )->withPivot('board_x', 'board_y');
     }
 
     // folders can each contain many folders - need to watch out for infinite
@@ -52,7 +59,7 @@ class Folder extends Model
             'folder_folder',
             'outer_folder_id',
             'inner_folder_id'
-        )->withPivot('board_position');
+        )->withPivot('board_x', 'board_y');
     }
 
     public function user()
