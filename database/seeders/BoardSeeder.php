@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class BoardSeeder extends Seeder
 {
@@ -15,15 +14,11 @@ class BoardSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'Test User',
-            'email' => 'test@email.com',
-            'password' => Hash::make('testpw')
-        ]);
+        $user = User::find(1);
 
         $board = $user->boards()->create([
             'name' => 'Default board',
-            'width' => 3,
+            'width' => 5,
             'height' => 3
         ]);
 

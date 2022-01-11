@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Models\Board;
+use App\Models\Folder;
 use App\Models\User;
+use App\Models\Word;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -49,9 +51,7 @@ class BoardTest extends TestCase
 
     public function test_board_can_add_word()
     {
-        $word = $this->user->words()->create([
-            'text' => 'Hi!'
-        ]);
+        $word = Word::factory()->for($this->user)->create();
 
         $board = $this->user->boards()->create([
             'name' => 'my board',
@@ -70,9 +70,9 @@ class BoardTest extends TestCase
             'height' => 3,
             'width' => 2,
             'words' => [
-                ['text' => 'Hi!',
-                 'color' => '#FFFFFF',
-                 'icon' => null,
+                ['text' => $word->text,
+                 'color' => $word->color,
+                 'icon' => $word->icon,
                  'pivot' => [
                      'board_x' => 1,
                      'board_y' => 1,
@@ -87,10 +87,7 @@ class BoardTest extends TestCase
 
     public function test_board_can_add_folder()
     {
-        $folder = $this->user->folders()->create([
-            'name' => 'greetings',
-            'color' => '#FF00FF'
-        ]);
+        $folder = Folder::factory()->for($this->user)->create();
 
         $board = $this->user->boards()->create([
             'name' => 'my board 2',
@@ -108,9 +105,9 @@ class BoardTest extends TestCase
             'width' => 2,
             'words' => [],
             'folders' => [
-                ['name' => 'greetings',
-                 'color' => '#FF00FF',
-                 'icon' => null,
+                ['name' => $folder->name,
+                 'color' => $folder->color,
+                 'icon' => $folder->icon,
                  'words' => [],
                  'folders' => [],
                  'pivot' => [
@@ -127,10 +124,9 @@ class BoardTest extends TestCase
 
     public function test_board_can_add_word_and_folder()
     {
-        $folder = $this->user->folders()->create([
-            'name' => 'goodbyes',
-            'color' => '#00FF00'
-        ]);
+        $folder = Folder::factory()->for($this->user)->create();
+
+        $word = Word::factory()->for($this->user)->create();
 
         $board = $this->user->boards()->create([
             'name' => 'my board 3',
@@ -138,11 +134,44 @@ class BoardTest extends TestCase
             'width' => 6
         ]);
 
-        $word = $this->user->words()->create([
-            'text' => 'Goodbye!'
-        ]);
+        $board->words()->attach($word, ['board_x' => 1, 'board_y' => 2]);
+        $board->folders()->attach($folder, ['board_x' => 3, 'board_y' => 4]);
+        $board->load('words', 'folders');
 
-        $board->words()->attach($word, ['board_x' => 1, 'board_y' => 1]);
-        $board->folders()->attach($folder, ['board_x' => 2, 'board_y' => 1]);
+        $expected_array = [
+            'name' => 'my board 3',
+            'height' => 6,
+            'width' => 6,
+            'words'=> [
+                [
+                    'text' => $word->text,
+                    'color' => $word->color,
+                    'icon' => $word->icon,
+                    'pivot' => [
+                        'board_id' => $board->id,
+                        'word_id' => $word->id,
+                        'board_x' => 1,
+                        'board_y' => 2
+                    ]
+                ]
+            ],
+            'folders' => [
+                [
+                    'name' => $folder->name,
+                    'color' => $folder->color,
+                    'icon' => $folder->icon,
+                    'words' => [],
+                    'folders' => [],
+                    'pivot' => [
+                        'board_id' => $board->id,
+                        'folder_id' => $folder->id,
+                        'board_x' => 3,
+                        'board_y' => 4
+                    ]
+                ]
+            ]
+        ];
+
+        $this->assertEquals($expected_array, $board->toArray());
     }
 }
