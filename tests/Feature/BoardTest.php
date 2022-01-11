@@ -7,7 +7,6 @@ use App\Models\Folder;
 use App\Models\User;
 use App\Models\Word;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class BoardTest extends TestCase
@@ -70,15 +69,17 @@ class BoardTest extends TestCase
             'height' => 3,
             'width' => 2,
             'words' => [
-                ['text' => $word->text,
-                 'color' => $word->color,
-                 'icon' => $word->icon,
-                 'pivot' => [
-                     'board_x' => 1,
-                     'board_y' => 1,
-                     'board_id' => $board->id,
-                     'word_id' => $word->id
-                 ]]
+                [
+                    'text' => $word->text,
+                    'color' => $word->color,
+                    'icon' => $word->icon,
+                    'pivot' => [
+                        'board_x' => 1,
+                        'board_y' => 1,
+                        'board_id' => $board->id,
+                        'word_id' => $word->id
+                    ]
+                ]
             ]
         ];
 
@@ -105,17 +106,19 @@ class BoardTest extends TestCase
             'width' => 2,
             'words' => [],
             'folders' => [
-                ['name' => $folder->name,
-                 'color' => $folder->color,
-                 'icon' => $folder->icon,
-                 'words' => [],
-                 'folders' => [],
-                 'pivot' => [
-                     'board_x' => 1,
-                     'board_y' => 2,
-                     'board_id' => $board->id,
-                     'folder_id' => $folder->id
-                 ]]
+                [
+                    'name' => $folder->name,
+                    'color' => $folder->color,
+                    'icon' => $folder->icon,
+                    'words' => [],
+                    'folders' => [],
+                    'pivot' => [
+                        'board_x' => 1,
+                        'board_y' => 2,
+                        'board_id' => $board->id,
+                        'folder_id' => $folder->id
+                    ]
+                ]
             ]
         ];
 
@@ -142,7 +145,7 @@ class BoardTest extends TestCase
             'name' => 'my board 3',
             'height' => 6,
             'width' => 6,
-            'words'=> [
+            'words' => [
                 [
                     'text' => $word->text,
                     'color' => $word->color,

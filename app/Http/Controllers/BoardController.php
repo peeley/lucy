@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
 {
+    // TODO need to add authorization, don't want to let users access each
+    // other's boards
     public function getUserBoards(Request $request, int $user_id)
     {
-        // TODO retrieve boards belonging to user
-        return response()->json([
-            ['name' => 'Board 1', 'id' => 1],
-            ['name' => 'Board 2', 'id' => 2],
-            ['name' => 'Board 3', 'id' => 3],
-        ]);
+        $user = User::find($user_id);
+
+        if (!$user) {
+            return response("User $user_id not found", 404);
+        }
+
+        $boards = $user->boards()->get();
+
+        $board_list = $boards->map(function ($board, $idx) {
+            return ['name' => $board->name, 'id' => $board->id];
+        })->toArray();
+
+        return response()->json($board_list);
     }
 
     public function getBoardTiles(Request $request, int $board_id)
