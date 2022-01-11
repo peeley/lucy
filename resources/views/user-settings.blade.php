@@ -9,11 +9,14 @@
 <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-<h1 class="general-heading"> Settings </h1>
+<h1 style="padding: 20px">
+    <a href="http://localhost:8080"><button class = "back-button">Back</button></a>
+  </h1>
+<h2 class="general-heading"> Settings </h2>
 
 <!-- buttons to display and change audio levels/guided use toggles -->
 <center>
-<button class="settings-button" onclick="openGuidedUseForm()">Settings</button>
+<button class="settings-button" onclick="openGuidedUseForm()">Guided Use</button>
 <button class="settings-button" onclick="openAudioForm()">Audio</button>
 </center>
 <!-- forms which allow the user to see and adjust their settings -->
