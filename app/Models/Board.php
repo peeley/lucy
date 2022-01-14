@@ -51,7 +51,7 @@ class Board extends Model
 
         $content_rows = $contents->groupBy(
             fn ($item) => $item->pivot->board_y
-        );
+        )->sortKeys()->values();
 
         $sorted_rows = $content_rows->map(
             fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
@@ -63,7 +63,7 @@ class Board extends Model
             });
         });
 
-        return $expanded_sorted_contents->values()->toArray();
+        return $expanded_sorted_contents->toArray();
     }
 
     public function words()

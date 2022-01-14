@@ -7,7 +7,8 @@ export class Board extends React.Component {
     this.state = {
       currentBoard: [[]],
       boardStack: [],
-      sentence: []
+      sentence: [],
+      loading: true
     };
   }
 
@@ -15,13 +16,15 @@ export class Board extends React.Component {
     axios.get(`/boards/${this.props.board_id}/tiles`)
       .then( response => {
         this.setState({
-          currentBoard: response.data,
-          boardStack: [response.data]
+          currentBoard: response.data.contents,
+          boardStack: [response.data.contents],
+          loading: false
         });
       });
   }
 
   handleFolderClick = (folderContents) => {
+    console.log('folder contents:', folderContents);
     this.setState( state => ({
       currentBoard: folderContents,
       boardStack: [...state.boardStack, folderContents]
@@ -65,20 +68,28 @@ export class Board extends React.Component {
     return this.state.sentence.join(' ');
   }
 
-  render() {
-    const rows = this.state.currentBoard.map( row =>
+  renderBoardTiles = () => {
+    if (this.state.loading) {
+      return null;
+    }
+
+    return this.state.currentBoard.map( row =>
       <tr>
       { row.map( tile =>
-        <td style={{"background-color": `#${tile.color}`}}
+        <td style={{"background-color": `${tile.color}`}}
             className="default-tile"
-            onClick={tile.type === 'folder'
+            onClick={tile.contents
                      ? () => this.handleFolderClick(tile.contents)
                      : () => this.handleWordClick(tile.text)}>
-          {tile.text + ' '}
+          {(tile.text ?? tile.name) + ' '}
         </td>
       )}
       </tr>
     );
+  }
+
+  render() {
+    const rows = this.renderBoardTiles();
 
     return (
       <div id="board-container">

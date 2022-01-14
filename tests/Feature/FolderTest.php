@@ -56,7 +56,7 @@ class FolderTest extends TestCase
 
         $board->folders()->attach($folder, ['board_x' => 1, 'board_y' => 1]);
 
-        $this->assertEquals($board->folders()->get()->first()->name, 'board1 folder');
+        $this->assertEquals('board1 folder', $board->folders()->get()->first()->name);
 
         $board->folders()->detach($folder);
 
@@ -94,9 +94,9 @@ class FolderTest extends TestCase
 
         $nested_folder = $outer_folder->folders()->get()->first();
 
-        $this->assertEquals($nested_folder->name, 'orange foods');
+        $this->assertEquals('orange foods', $nested_folder->name);
 
-        $this->assertEquals($nested_folder->words()->first()->text, 'oranges');
+        $this->assertEquals('oranges', $nested_folder->words()->first()->text);
     }
 
     public function test_folder_can_be_serialized()
@@ -117,23 +117,16 @@ class FolderTest extends TestCase
             'name' => 'greetings',
             'color' => '#FFFFFF',
             'icon' => null,
-            'words' => [
-                [
+            'contents' => [
+                [[
                     'text' => 'Hello',
-                    'pivot' => [
-                        'folder_id' => $folder->id,
-                        'word_id' => $word->id,
-                        'board_x' => 5,
-                        'board_y' => 3
-                    ],
                     'icon' => null,
                     'color' => '#123456'
-                ]
+                ]]
             ],
-            'folders' => []
         ];
 
-        $this->assertEquals($actual_json, $expected_json);
+        $this->assertEquals($expected_json, $actual_json);
     }
 
     public function test_nested_folder_can_be_serialized()
@@ -156,48 +149,29 @@ class FolderTest extends TestCase
             'name' => 'foods',
             'color' => '#FFFFFF',
             'icon' => null,
-            'words' => [
+            'contents' => [
                 [
-                    'text' => 'oranges',
-                    'icon' => null,
-                    'color' => '#FFFFFF',
-                    'pivot' => [
-                        'folder_id' => $outer_folder->id,
-                        'word_id' => $word->id,
-                        'board_x' => 3,
-                        'board_y' => 2
-                    ]
-                ]
-            ],
-            'folders' => [
-                [
-                    'name' => 'orange foods',
-                    'color' => '#FFFFFF',
-                    'icon' => null,
-                    'folders' => [],
-                    'words' => [
-                        [
-                            'text' => 'oranges',
-                            'icon' => null,
-                            'color' => '#FFFFFF',
-                            'pivot' => [
-                                'folder_id' => $inner_folder->id,
-                                'word_id' => $word->id,
-                                'board_x' => 5,
-                                'board_y' => 5
-                            ]
-                        ]
+                    [
+                        'name' => 'orange foods',
+                        'color' => '#FFFFFF',
+                        'icon' => null,
+                        'contents' => [
+                            [[
+                                'text' => 'oranges',
+                                'icon' => null,
+                                'color' => '#FFFFFF',
+                            ]]
+                        ],
                     ],
-                    'pivot' => [
-                        'outer_folder_id' => $outer_folder->id,
-                        'inner_folder_id' => $inner_folder->id,
-                        'board_x' => 1,
-                        'board_y' => 2
+                    [
+                        'text' => 'oranges',
+                        'icon' => null,
+                        'color' => '#FFFFFF',
                     ]
                 ]
             ]
         ];
 
-        $this->assertEquals($actual_json, $expected_json);
+        $this->assertEquals($expected_json, $actual_json);
     }
 }

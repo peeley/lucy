@@ -79,7 +79,10 @@ class BoardControllerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJson([
-            [
+            'name' => 'my board',
+            'width' => 5,
+            'height' => 3,
+            'contents' => [
                 [$folders[0]->toArray(), $words[4]->toArray()],
                 [$folders[1]->toArray()]
             ]

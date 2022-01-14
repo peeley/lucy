@@ -65,21 +65,14 @@ class BoardTest extends TestCase
 
         $expected_array = [
             'name' => 'my board',
-            'folders' => [],
             'height' => 3,
             'width' => 2,
-            'words' => [
-                [
+            'contents' => [
+                [[
                     'text' => $word->text,
                     'color' => $word->color,
                     'icon' => $word->icon,
-                    'pivot' => [
-                        'board_x' => 1,
-                        'board_y' => 1,
-                        'board_id' => $board->id,
-                        'word_id' => $word->id
-                    ]
-                ]
+                ]]
             ]
         ];
 
@@ -104,22 +97,14 @@ class BoardTest extends TestCase
             'name' => 'my board 2',
             'height' => 3,
             'width' => 2,
-            'words' => [],
-            'folders' => [
+            'contents' => [[
                 [
                     'name' => $folder->name,
                     'color' => $folder->color,
                     'icon' => $folder->icon,
-                    'words' => [],
-                    'folders' => [],
-                    'pivot' => [
-                        'board_x' => 1,
-                        'board_y' => 2,
-                        'board_id' => $board->id,
-                        'folder_id' => $folder->id
-                    ]
+                    'contents' => [],
                 ]
-            ]
+            ]]
         ];
 
         $this->assertEquals($expectected_array, $board->toArray());
@@ -141,37 +126,23 @@ class BoardTest extends TestCase
         $board->folders()->attach($folder, ['board_x' => 3, 'board_y' => 4]);
         $board->load('words', 'folders');
 
+        // TODO refactor to allow for blank tiles
         $expected_array = [
             'name' => 'my board 3',
             'height' => 6,
             'width' => 6,
-            'words' => [
-                [
+            'contents' => [
+                [[
                     'text' => $word->text,
                     'color' => $word->color,
                     'icon' => $word->icon,
-                    'pivot' => [
-                        'board_id' => $board->id,
-                        'word_id' => $word->id,
-                        'board_x' => 1,
-                        'board_y' => 2
-                    ]
-                ]
-            ],
-            'folders' => [
-                [
+                ]],
+                [[
                     'name' => $folder->name,
                     'color' => $folder->color,
                     'icon' => $folder->icon,
-                    'words' => [],
-                    'folders' => [],
-                    'pivot' => [
-                        'board_id' => $board->id,
-                        'folder_id' => $folder->id,
-                        'board_x' => 3,
-                        'board_y' => 4
-                    ]
-                ]
+                    'contents' => [],
+                ]]
             ]
         ];
 
