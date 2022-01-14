@@ -11,50 +11,59 @@ class Board extends Model
 
     protected $table = 'boards';
 
+    // allow these properties to be passed to create()
     protected $fillable = [
         'name',
         'height',
         'width'
     ];
 
+    // show these properties during JSON serialization
     protected $visible = [
         'name',
         'height',
         'width',
-        'words',
-        'folders'
+        'contents' // defined by `getContentsAttribute`
     ];
 
+    // default values for these properties
     protected $attributes = [
         'width' => 7,
         'height' => 5
     ];
 
+    // automatically load these relationships
     protected $with = [
         'words',
         'folders'
     ];
 
-    public function items()
+    // append this custom field to the serialized JSON
+    protected $appends = [
+        'contents'
+    ];
+
+    // when this model gets serialized w/ toArray, a field called `contents`
+    // will be populated with the result of this function
+    public function getContentsAttribute()
     {
-        $folders = $this->folders()->get();
+        $contents = $this->folders()->get()->concat($this->words()->get());
 
-        $words = $this->words()->get();
+        $content_rows = $contents->groupBy(
+            fn ($item) => $item->pivot->board_y
+        );
 
-        return $folders->concat($words);
-    }
-
-    public function getSortedContents()
-    {
-        $items = $this->items();
-
-        $item_rows = $items->groupBy(fn ($item) => $item->pivot->board_y);
-
-        $sorted_item_rows = $item_rows->map(
+        $sorted_rows = $content_rows->map(
             fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
         );
 
-        return $sorted_item_rows->values()->toArray();
+        $expanded_sorted_contents = $sorted_rows->map(function ($row) {
+            return $row->map(function ($item) {
+                return $item->toArray();
+            });
+        });
+
+        return $expanded_sorted_contents->values()->toArray();
     }
 
     public function words()

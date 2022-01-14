@@ -26,7 +26,6 @@ class Word extends Model
         'text',
         'icon',
         'color',
-        'pivot'
     ];
 
     public function user()

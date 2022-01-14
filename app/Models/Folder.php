@@ -23,21 +23,24 @@ class Folder extends Model
         'name',
         'color',
         'icon',
-        'words',
-        'folders',
-        'pivot'
+        'contents'
     ];
 
-    // default attribute values
+    // default values for these properties
     protected $attributes = [
         'color' => '#FFFFFF',
         'icon' => null
     ];
 
-    // auto-load all associated `words` and `folders` when calling toArray
+    // automatically load associated `words` and `folders`
     protected $with = [
         'words',
         'folders'
+    ];
+
+    // append this custom field to the serialized JSON
+    protected $appends = [
+        'contents'
     ];
 
     public function words()
@@ -57,6 +60,29 @@ class Folder extends Model
             'outer_folder_id',
             'inner_folder_id'
         )->withPivot('board_x', 'board_y');
+    }
+
+    // when this model gets serialized w/ toArray, a field called `contents`
+    // will be populated with the result of this function
+    public function getContentsAttribute()
+    {
+        $contents = $this->folders()->get()->concat($this->words()->get());
+
+        $content_rows = $contents->groupBy(
+            fn ($item) => $item->pivot->board_y
+        );
+
+        $sorted_rows = $content_rows->map(
+            fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
+        );
+
+        $expanded_sorted_contents = $sorted_rows->map(function ($row) {
+            return $row->map(function ($item) {
+                return $item->toArray();
+            });
+        });
+
+        return $expanded_sorted_contents->values()->toArray();
     }
 
     public function user()

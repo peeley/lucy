@@ -32,7 +32,7 @@ class BoardController extends Controller
     {
         $board = Board::find($board_id);
 
-        $sorted_board_tiles = $board->getSortedItems();
+        $sorted_board_tiles = $board->toArray();
 
         // TODO retrieve board from database, replace placeholder
         // should come up with a good way to recursively serialize folders

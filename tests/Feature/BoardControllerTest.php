@@ -80,8 +80,8 @@ class BoardControllerTest extends TestCase
 
         $response->assertJson([
             [
-                [$folders[0], $words[4]],
-                [$folders[1]]
+                [$folders[0]->toArray(), $words[4]->toArray()],
+                [$folders[1]->toArray()]
             ]
         ]);
     }
