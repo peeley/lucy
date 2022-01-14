@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1 style="padding: 20px">
-    <a href="http://localhost:8080"><button class = "credentials-button">Previous Screen</button></a>
+    <a href="http://localhost:8080"><button class = "back-button">Back</button></a>
   </h1>
   <center>
     <form action="/login" method="POST">

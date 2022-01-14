@@ -8,8 +8,7 @@
 <body class = "welcome-body">
 
     <div class = "welcome-title">
-        <p class = "welcome-header">Welcome to</p>
-        <p class = "welcome-header">Project Lucy</p>
+        <p class = "welcome-header">Welcome to Project Lucy</p>
         <p>An Augmentative and Alternative Communication Open Source Solution</p>
     </div>
     <br>

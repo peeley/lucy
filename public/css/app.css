@@ -30,7 +30,7 @@ button:hover {
     margin-right: auto;
     height: 12%;
     width: 15%;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 5px;
     background-color: lightgoldenrodyellow;
     text-align: center;
@@ -49,13 +49,16 @@ body
 }
 .settings-button
 {
+    margin-left: auto;
+    margin-right: auto;
     background-color: lightgoldenrodyellow;
-    border-radius: 5px;
     border: 2px solid black;
-    position: relative;
-    top: 25%;
+    border-radius: 5px;
+    height: 100px;
+    width: 150px;
+    text-align: center;
     font-size: larger;
-    padding: 50px 50px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .form-popup
 {
@@ -64,7 +67,7 @@ body
     font-family: Arial, Helvetica, sans-serif;
     border: solid grey;
     padding: 1%;
-    width: 20%;
+    width: 30%;
     background-color: rgb(205, 213, 224);
     margin-left: auto;
     margin-right: auto;
@@ -75,7 +78,10 @@ body
     border-radius: 5px;
     border: 2px solid black;
     height: 50px;
-    width: 200px;
+    width: 70%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .close-settings-button
 {
@@ -83,7 +89,10 @@ body
     border-radius: 5px;
     border: 2px solid black;
     height: 50px;
-    width: 200px;
+    width: 70%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .credentials-input {
     background-color:ivory; 
@@ -91,6 +100,9 @@ body
     border: 2px solid black;
     width: 400px; 
     height: 50px;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .credentials-button {
     background-color:lightgoldenrodyellow;
@@ -98,10 +110,14 @@ body
     border: 2px solid black;
     width: 200px; 
     height: 50px;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-body {
     text-align: center;
     background-color: lightsteelblue;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-body a {
     text-decoration: none;
@@ -111,20 +127,29 @@ body
     padding-top: 30px;
     color: black;
     font-weight: bold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-header {
     font-size: 3vw;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-button {
     width: 200px;
     height: 80px;
     background-color:lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .back-button {
     border-radius: 5px;
-    width: 200px;
+    width: 100px;
     height: 80px;
     background-color:lightgoldenrodyellow;
+    text-align: center;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .board-background {
     background-color: lightsteelblue;
@@ -135,14 +160,23 @@ body
     background-color: mediumturquoise;
     border: 2px solid black;
     border-radius: 5px;
-    height: 20%;
-    width: 15%;
+    height: 100px;
+    width: 150px;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
+}
+.back-folder-button{
+    border-radius: 5px;
+    width: 100px;
+    height: 100px;
+    background-color:cadetblue;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .default-tile:hover {
     box-shadow: inset 0 0 10px 0 black;
@@ -168,6 +202,9 @@ body
     border-radius: 5px;
     width: 75%;
     height: 15%;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .sentence-backspace {
     margin-left: auto;
@@ -175,8 +212,20 @@ body
     background-color: lightcoral;
     border: 2px solid black;
     border-radius: 5px;
-    height: 15%;
-    width: 10%;
+    height: 100px;
+    width: 110px;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sentence-clear {
+    margin-left: auto;
+    margin-right: auto;
+    background-color:darkkhaki;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 100px;
+    width: 110px;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
@@ -187,8 +236,8 @@ body
     background-color: lightgreen;
     border: 2px solid black;
     border-radius: 5px;
-    height: 15%;
-    width: 10%;
+    height: 100px;
+    width: 100px;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
