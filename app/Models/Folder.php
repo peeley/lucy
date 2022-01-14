@@ -44,9 +44,6 @@ class Folder extends Model
     {
         return $this->belongsToMany(
             Word::class,
-            'folder_word',
-            'folder_id',
-            'word_id'
         )->withPivot('board_x', 'board_y');
     }
 

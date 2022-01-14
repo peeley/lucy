@@ -2,8 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Models\Board;
+use App\Models\Folder;
 use App\Models\User;
+use App\Models\Word;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -42,5 +43,46 @@ class BoardControllerTest extends TestCase
         $response = $this->get("/users/999/boards");
 
         $response->assertStatus(404);
+    }
+
+    public function test_user_can_get_board_tiles()
+    {
+        $board = $this->user->boards()->create([
+            'name' => 'my board',
+            'height' => 3,
+            'width' => 5
+        ]);
+
+        $words = Word::factory()
+            ->for($this->user)
+            ->count(5)
+            ->create();
+
+        $folders = Folder::factory()
+            ->for($this->user)
+            ->count(2)
+            ->create();
+
+        $folders[0]->words()->attach($words[0], ['board_x' => 1, 'board_y' => 1]);
+        $folders[0]->words()->attach($words[1], ['board_x' => 2, 'board_y' => 1]);
+
+        $folders[1]->words()->attach($words[2], ['board_x' => 1, 'board_y' => 1]);
+        $folders[1]->words()->attach($words[3], ['board_x' => 2, 'board_y' => 1]);
+
+        $board->folders()->attach($folders[0], ['board_x' => 1, 'board_y' => 1]);
+        $board->folders()->attach($folders[1], ['board_x' => 1, 'board_y' => 2]);
+
+        $board->words()->attach($words[4], ['board_x' => 3, 'board_y' => 1]);
+
+        $response = $this->get("/boards/{$board->id}/tiles");
+
+        $response->assertStatus(200);
+
+        $response->assertJson([
+            [
+                [$folders[0], $words[4]],
+                [$folders[1]]
+            ]
+        ]);
     }
 }

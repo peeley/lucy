@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Board;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -19,37 +20,23 @@ class BoardController extends Controller
 
         $boards = $user->boards()->get();
 
-        $board_list = $boards->map(function ($board, $idx) {
+        $board_list = $boards->map(function ($board) {
             return ['name' => $board->name, 'id' => $board->id];
         })->toArray();
 
         return response()->json($board_list);
     }
 
+    // TODO again, add authorization to view the board
     public function getBoardTiles(Request $request, int $board_id)
     {
+        $board = Board::find($board_id);
+
+        $sorted_board_tiles = $board->getSortedItems();
+
         // TODO retrieve board from database, replace placeholder
         // should come up with a good way to recursively serialize folders
-        return response()->json([
-            [
-                ['type' => 'word', 'text' => 'Hello', 'color' => 'FF0000'],
-                ['type' => 'word', 'text' => 'Goodbye', 'color' => '00FF00'],
-                ['type' => 'word', 'text' => 'Yay!', 'color' => '00FF00'],
-            ],
-            [
-                ['type' => 'folder', 'text' => 'Foods', 'color' => 'ffd700', 'contents' => [
-                    [
-                        ['type' => 'word', 'text' => 'Hamburger', 'color' => 'dd33dd'],
-                        ['type' => 'folder', 'text' => 'Orange Foods', 'color' => 'e24908', 'contents' => [
-                            [
-                                ['type' => 'word', 'text' => 'Orange', 'color' => 'e24908'],
-                            ],
-                        ]],
-                    ],
-                ]],
-                ['type' => 'word', 'text' => 'Ball', 'color' => 'fdb589'],
-            ]
-        ]);
+        return response()->json($sorted_board_tiles);
     }
 
     public function getBoard(Request $request, int $board_id)

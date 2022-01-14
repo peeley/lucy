@@ -9,9 +9,6 @@ class Board extends Model
 {
     use HasFactory;
 
-    public const BOARD_WORD_MAPPINGS_TABLE = 'board_word';
-    public const BOARD_FOLDER_MAPPINGS_TABLE = 'board_folder';
-
     protected $table = 'boards';
 
     protected $fillable = [
@@ -40,16 +37,30 @@ class Board extends Model
 
     public function items()
     {
-        ///todo
+        $folders = $this->folders()->get();
+
+        $words = $this->words()->get();
+
+        return $folders->concat($words);
+    }
+
+    public function getSortedContents()
+    {
+        $items = $this->items();
+
+        $item_rows = $items->groupBy(fn ($item) => $item->pivot->board_y);
+
+        $sorted_item_rows = $item_rows->map(
+            fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
+        );
+
+        return $sorted_item_rows->values()->toArray();
     }
 
     public function words()
     {
         return $this->belongsToMany(
             Word::class,
-            self::BOARD_WORD_MAPPINGS_TABLE,
-            'board_id',
-            'word_id'
         )->withPivot('board_x', 'board_y');
     }
 
@@ -57,19 +68,7 @@ class Board extends Model
     {
         return $this->belongsToMany(
             Folder::class,
-            self::BOARD_FOLDER_MAPPINGS_TABLE,
-            'board_id',
-            'folder_id'
         )->withPivot('board_x', 'board_y');
-    }
-
-    public function getHeight()
-    {
-        return $this->height;
-    }
-    public function getWidth()
-    {
-        return $this->width;
     }
 
     public function placeItem($item, $row, $column)
@@ -80,14 +79,6 @@ class Board extends Model
     public function swapItems($rowA, $columnA, $rowB, $columnB)
     {
         ///todo
-    }
-    public function getName()
-    {
-        return $this->name;
-    }
-    public function setName(string $name)
-    {
-        $this->name = $name;
     }
 
     public function user()

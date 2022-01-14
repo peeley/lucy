@@ -37,19 +37,19 @@ class BoardSeeder extends Seeder
         ]);
 
         $user->folders()->find(1)->words()->attach([
-            5 => ['folder_position' => 1],
-            6 => ['folder_position' => 2]
+            5 => ['board_x' => 1, 'board_y' => 1],
+            6 => ['board_x' => 2, 'board_y' => 1]
         ]);
 
         $board->words()->attach([
-            1 => ['board_position' => 1],
-            2 => ['board_position' => 2],
-            3 => ['board_position' => 3],
-            4 => ['board_position' => 4]
+            1 => ['board_x' => 1, 'board_y' => 1],
+            2 => ['board_x' => 2, 'board_y' => 1],
+            3 => ['board_x' => 3, 'board_y' => 1],
+            4 => ['board_x' => 4, 'board_y' => 1]
         ]);
 
         $board->folders()->attach([
-            1 => ['board_position' => 5]
+            1 => ['board_x' => 1, 'board_y' => 2]
         ]);
     }
 }
