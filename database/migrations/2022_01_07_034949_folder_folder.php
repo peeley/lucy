@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FolderWord extends Migration
+class FolderFolder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class FolderWord extends Migration
      */
     public function up()
     {
-        Schema::create('folder_word', function (Blueprint $table) {
+        Schema::create('folder_folder', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('folder_id')
-                ->constrained();
+            $table->foreignId('outer_folder_id')
+                ->constrained('folders');
 
-            $table->foreignId('word_id')
-                ->constrained();
+            $table->foreignId('inner_folder_id')
+                ->constrained('folders');
 
             $table->integer('board_x');
             $table->integer('board_y');
@@ -36,6 +36,6 @@ class FolderWord extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('folder_word');
+        Schema::dropIfExists('folder_folder');
     }
 }

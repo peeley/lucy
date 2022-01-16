@@ -5,34 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Folder extends Model
+class Board extends Model
 {
     use HasFactory;
 
-    protected $table = 'folders';
+    protected $table = 'boards';
 
     // allow these properties to be passed to create()
     protected $fillable = [
         'name',
-        'color',
-        'icon'
+        'height',
+        'width'
     ];
 
-    // make these properties visible on arrays made w/ toArray
+    // show these properties during JSON serialization
     protected $visible = [
         'name',
-        'color',
-        'icon',
-        'contents'
+        'height',
+        'width',
+        'contents' // defined by `getContentsAttribute`
     ];
 
     // default values for these properties
     protected $attributes = [
-        'color' => '#FFFFFF',
-        'icon' => null
+        'width' => 7,
+        'height' => 5
     ];
 
-    // automatically load associated `words` and `folders`
+    // automatically load these relationships
     protected $with = [
         'words',
         'folders'
@@ -43,25 +43,6 @@ class Folder extends Model
         'contents'
     ];
 
-    public function words()
-    {
-        return $this->belongsToMany(
-            Word::class,
-        )->withPivot('board_x', 'board_y');
-    }
-
-    // folders can each contain many folders - need to watch out for infinite
-    // recursion
-    public function folders()
-    {
-        return $this->belongsToMany(
-            Folder::class,
-            'folder_folder',
-            'outer_folder_id',
-            'inner_folder_id'
-        )->withPivot('board_x', 'board_y');
-    }
-
     // when this model gets serialized w/ toArray, a field called `contents`
     // will be populated with the result of this function
     public function getContentsAttribute()
@@ -70,7 +51,7 @@ class Folder extends Model
 
         $content_rows = $contents->groupBy(
             fn ($item) => $item->pivot->board_y
-        );
+        )->sortKeys()->values();
 
         $sorted_rows = $content_rows->map(
             fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
@@ -82,7 +63,31 @@ class Folder extends Model
             });
         });
 
-        return $expanded_sorted_contents->values()->toArray();
+        return $expanded_sorted_contents->toArray();
+    }
+
+    public function words()
+    {
+        return $this->belongsToMany(
+            Word::class,
+        )->withPivot('board_x', 'board_y');
+    }
+
+    public function folders()
+    {
+        return $this->belongsToMany(
+            Folder::class,
+        )->withPivot('board_x', 'board_y');
+    }
+
+    public function placeItem($item, $row, $column)
+    {
+        ///todo
+    }
+
+    public function swapItems($rowA, $columnA, $rowB, $columnB)
+    {
+        ///todo
     }
 
     public function user()

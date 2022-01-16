@@ -20,8 +20,8 @@ class CreateBoardsTable extends Migration
                 ->constrained();
 
             $table->text('name');
-            $table->integer('width');
-            $table->integer('height');
+            $table->integer('width')->default(7);
+            $table->integer('height')->default(5);
 
             $table->timestamps();
         });

@@ -16,13 +16,11 @@ class CreateFoldersTable extends Migration
         Schema::create('folders', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
+            $table->foreignId('user_id')
+                ->constrained();
 
             $table->text('name');
-            $table->text('color')->default('FFFFFF');
+            $table->text('color')->default('#FFFFFF');
             $table->binary('icon')->nullable();
 
             $table->timestamps();
