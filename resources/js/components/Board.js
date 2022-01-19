@@ -8,7 +8,8 @@ export class Board extends React.Component {
       currentBoard: [[]],
       boardStack: [],
       sentence: [],
-      loading: true
+      loading: true,
+      folderPath: []
     };
   }
 
@@ -23,18 +24,20 @@ export class Board extends React.Component {
       });
   }
 
-  handleFolderClick = (folderContents) => {
+  handleFolderClick = (folderContents, folderName) => {
     console.log('folder contents:', folderContents);
     this.setState( state => ({
       currentBoard: folderContents,
-      boardStack: [...state.boardStack, folderContents]
+      boardStack: [...state.boardStack, folderContents],
+      folderPath: [...state.folderPath, folderName]
     }));
   }
 
   handleGoBackFunction = () => {
     this.setState(state => ({
       boardStack: state.boardStack.slice(0, -1),
-      currentBoard: state.boardStack[state.boardStack.length - 2]
+      currentBoard: state.boardStack[state.boardStack.length - 2],
+      folderPath: state.folderPath.slice(0, -1)
     }));
   }
 
@@ -79,7 +82,7 @@ export class Board extends React.Component {
         <td style={{"background-color": `${tile.color}`}}
             className="default-tile"
             onClick={tile.contents
-                     ? () => this.handleFolderClick(tile.contents)
+                     ? () => this.handleFolderClick(tile.contents, tile.name)
                      : () => this.handleWordClick(tile.text)}>
           {(tile.text ?? tile.name) + ' '}
         </td>
@@ -90,7 +93,7 @@ export class Board extends React.Component {
 
   render() {
     const rows = this.renderBoardTiles();
-
+    //add folder tree indicator here
     return (
       <div id="board-container">
         <button className="back-folder-button" onClick={this.handleGoBackFunction}>Last Folder</button>
