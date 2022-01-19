@@ -278,3 +278,9 @@ body
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.folder-path
+{
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+}

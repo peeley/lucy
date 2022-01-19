@@ -91,9 +91,16 @@ export class Board extends React.Component {
     );
   }
 
+  renderFolderPath = () => {    
+    return this.state.folderPath.map(folder =>
+      <p className="folder-path"> {folder} {'>'}</p>
+      );
+  }
+
   render() {
     const rows = this.renderBoardTiles();
-    //add folder tree indicator here
+    const paths = this.renderFolderPath();
+    //TODO: instead of root, get the folder name assigned by the user.
     return (
       <div id="board-container">
         <button className="back-folder-button" onClick={this.handleGoBackFunction}>Last Folder</button>
@@ -101,6 +108,7 @@ export class Board extends React.Component {
         <button className="sentence-clear" onClick={() => this.setState({sentence: []})}>Clear</button>
         <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
+        <p className="folder-path"> Current Path: root {'>'} </p> {paths}
         <h1 className="sentence-bar">{this.buildSentence()}</h1>
         <br/>
         <table className="board-tiles-container"
