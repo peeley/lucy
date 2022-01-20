@@ -8,7 +8,8 @@ export class Board extends React.Component {
       currentBoard: [[]],
       boardStack: [],
       sentence: [],
-      loading: true
+      loading: true,
+      folderPath: []
     };
   }
 
@@ -18,23 +19,26 @@ export class Board extends React.Component {
         this.setState({
           currentBoard: response.data.contents,
           boardStack: [response.data.contents],
-          loading: false
+          loading: false,
+          folderPath: [response.data.name]
         });
       });
   }
 
-  handleFolderClick = (folderContents) => {
+  handleFolderClick = (folderContents, folderName) => {
     console.log('folder contents:', folderContents);
     this.setState( state => ({
       currentBoard: folderContents,
-      boardStack: [...state.boardStack, folderContents]
+      boardStack: [...state.boardStack, folderContents],
+      folderPath: [...state.folderPath, folderName]
     }));
   }
 
   handleGoBackFunction = () => {
     this.setState(state => ({
       boardStack: state.boardStack.slice(0, -1),
-      currentBoard: state.boardStack[state.boardStack.length - 2]
+      currentBoard: state.boardStack[state.boardStack.length - 2],
+      folderPath: state.folderPath.slice(0, -1)
     }));
   }
 
@@ -79,7 +83,7 @@ export class Board extends React.Component {
         <td style={{"background-color": `${tile.color}`}}
             className="default-tile"
             onClick={tile.contents
-                     ? () => this.handleFolderClick(tile.contents)
+                     ? () => this.handleFolderClick(tile.contents, tile.name)
                      : () => this.handleWordClick(tile.text)}>
           {(tile.text ?? tile.name) + ' '}
         </td>
@@ -88,9 +92,16 @@ export class Board extends React.Component {
     );
   }
 
+  renderFolderPath = () => {    
+    return this.state.folderPath.map(folder =>
+      <td> { folder} {'>'}</td>
+      );
+  }
+
   render() {
     const rows = this.renderBoardTiles();
-
+    const paths = this.renderFolderPath();
+    //TODO: instead of root, get the folder name assigned by the user.
     return (
       <div id="board-container">
         <button className="back-folder-button" onClick={this.handleGoBackFunction}>Last Folder</button>
@@ -98,6 +109,9 @@ export class Board extends React.Component {
         <button className="sentence-clear" onClick={() => this.setState({sentence: []})}>Clear</button>
         <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
+        <table className="folder-path">
+        {paths}
+        </table>
         <h1 className="sentence-bar">{this.buildSentence()}</h1>
         <br/>
         <table className="board-tiles-container"
