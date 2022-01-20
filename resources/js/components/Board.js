@@ -19,7 +19,8 @@ export class Board extends React.Component {
         this.setState({
           currentBoard: response.data.contents,
           boardStack: [response.data.contents],
-          loading: false
+          loading: false,
+          folderPath: [response.data.name]
         });
       });
   }
@@ -93,7 +94,7 @@ export class Board extends React.Component {
 
   renderFolderPath = () => {    
     return this.state.folderPath.map(folder =>
-      <span>{folder} {'>'}</span>
+      <td> { folder} {'>'}</td>
       );
   }
 
@@ -108,7 +109,9 @@ export class Board extends React.Component {
         <button className="sentence-clear" onClick={() => this.setState({sentence: []})}>Clear</button>
         <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
         <br/>
-        <p className="folder-path"> Current Path: root {'>'} </p> {paths}
+        <table className="folder-path">
+        {paths}
+        </table>
         <h1 className="sentence-bar">{this.buildSentence()}</h1>
         <br/>
         <table className="board-tiles-container"
