@@ -93,7 +93,7 @@ export class Board extends React.Component {
 
   renderFolderPath = () => {    
     return this.state.folderPath.map(folder =>
-      <p className="folder-path"> {folder} {'>'}</p>
+      <span>{folder} {'>'}</span>
       );
   }
 
