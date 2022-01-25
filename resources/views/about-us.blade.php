@@ -9,7 +9,10 @@
 
 <body class="about-body">
     <div class="about-header">
-        <h1>CS 426 Senior Project</h1>
+        <h1>
+            Spring 2022 <br>
+            CS 426 Senior Project 
+        </h1>
         <h1>Project Lucy</h1>
         <h3>
             Computer Science and Engineering <br>
@@ -41,10 +44,16 @@
 
         <a href="http://localhost:8080/">
             <button class="welcome-button">Go to Project Lucy</button>
-        </a>
-
+        </a>  
+    </div>
+    <div class="about-resources">
         <h3>Project Related Resources</h3>
-        
+        <ul>
+            <li><a href="https://praacticalaac.org/praactical/open-source-aac/">Praaticalaac Open Source AAC</a></li>
+            <li><a href="https://reactjs.org/tutorial/tutorial.html#setup-for-the-tutorial">ReactJS</a></li>
+            <li><a href="https://laracasts.com/series/laravel-8-from-scratch">Laravel 8</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a></li>
+        </ul>
     </div>
 </body>
 
