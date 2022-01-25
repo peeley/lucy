@@ -20,8 +20,8 @@
         </h3>
         <h4>
             Team 25: <i>Eloisa Burton, Elizabeth Schuon, Elvis Vong, Noah Snelson, Mehar Mangat</i> <br>
-            Teaching Team: <i>David Feil-Seifer (UNR), Devrin Lee (UNR), Vinh Le (UNR), Yifan Zhang (UNR)</i> <br>
-            Advisor: <i>Emily Hand (UNR)</i> 
+            Teaching Team: <i>David Feil-Seifer, Devrin Lee, Vinh Le, Yifan Zhang</i> <br>
+            Advisor: <i>Emily Hand</i> 
         </h4>
     </div>
     <div class="about-main">
@@ -40,11 +40,10 @@
             This will all be integrated with the ability to make custom tiles.
             These tiles could be a single word, a phrase, or a folder that contains other words, phrases, or folders.
             Additionally, the application would feature guided use that instructs users on how to use the application rather than going through tutorials or memorizing functionality
-        </p>
-
-        <a href="http://localhost:8080/">
-            <button class="welcome-button">Go to Project Lucy</button>
-        </a>  
+        </p>        
+        <form>
+            <button class="welcome-button" formaction="http://localhost:8080/">Go to Project Lucy</button>
+        </form>
     </div>
     <div class="about-resources">
         <h3>Project Related Resources</h3>

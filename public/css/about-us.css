@@ -14,8 +14,11 @@
     margin: 0 auto;
     text-align:justify;
 }
-
-.about-main a {
+.about-main p {
+    width:80%;
+    margin: 0 auto;
+}
+.about-main form {
     display: block;
     text-align: center;
 }
