@@ -38,7 +38,6 @@ services:
     depends_on:
       - app
     volumes:
-      - ./:/var/www
       - ./nginx:/etc/nginx/conf.d
     networks:
       - lucy
