@@ -20,6 +20,9 @@ use App\Http\Controllers\UserSettingsController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/about-us', function () {
+    return view('about-us');
+});
 Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPage'])
     ->name('settings')
     ->middleware(['auth']);

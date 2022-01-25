@@ -1,0 +1,29 @@
+.about-body {
+    width: 95%;
+    margin: 0 auto;
+}
+.about-header {
+    padding: 1rem;
+    background-color: rgb(34, 54, 167);
+    border-radius: 10px;
+    text-align: center;
+    color: rgb(228, 218, 218);
+}
+.about-main {
+    width:80%;
+    margin: 0 auto;
+    text-align:justify;
+}
+.about-main p {
+    width:80%;
+    margin: 0 auto;
+}
+.about-main form {
+    display: block;
+    text-align: center;
+}
+.about-resources {
+    width:80%;
+    margin: 0 auto;
+    text-align:justify;
+}

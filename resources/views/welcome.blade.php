@@ -14,15 +14,12 @@
     <br>
     <br>
     <div>
-        <a href="http://localhost:8080/login">
-            <button class = "welcome-button">Log in</button>
-        </a>
-        <a href="http://localhost:8080/create-account">
-            <button class = "welcome-button">Create Account</button>
-        </a>
-        <a href="http://localhost:8080/guest">
-            <button class = "welcome-button">Guest</button>
-        </a> 
+        <form>
+            <button class="welcome-button" formaction="http://localhost:8080/login">Log in</button>
+            <button class="welcome-button" formaction="http://localhost:8080/create-account">Create Account</button>
+            <button class="welcome-button" formaction="http://localhost:8080/guest">Guest</button> 
+            <button class="welcome-button" formaction="http://localhost:8080/about-us">About Us</button>
+        </form>
     </div>
 </body>
 </html>

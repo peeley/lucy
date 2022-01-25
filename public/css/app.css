@@ -141,6 +141,7 @@ body
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
 }
 .back-button {
     border-radius: 5px;
