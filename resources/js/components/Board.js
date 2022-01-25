@@ -26,7 +26,6 @@ export class Board extends React.Component {
   }
 
   handleFolderClick = (folderContents, folderName) => {
-    console.log('folder contents:', folderContents);
     this.setState( state => ({
       currentBoard: folderContents,
       boardStack: [...state.boardStack, folderContents],
@@ -34,7 +33,11 @@ export class Board extends React.Component {
     }));
   }
 
-  handleGoBackFunction = () => {
+  userIsOnBaseBoard = () => {
+    return this.state.boardStack.length <= 1;
+  }
+
+  handleLastFolderButton = () => {
     this.setState(state => ({
       boardStack: state.boardStack.slice(0, -1),
       currentBoard: state.boardStack[state.boardStack.length - 2],
@@ -80,7 +83,7 @@ export class Board extends React.Component {
     return this.state.currentBoard.map( row =>
       <tr>
       { row.map( tile =>
-        <td style={{"background-color": `${tile.color}`}}
+        <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
             onClick={tile.contents
                      ? () => this.handleFolderClick(tile.contents, tile.name)
@@ -104,10 +107,23 @@ export class Board extends React.Component {
     //TODO: instead of root, get the folder name assigned by the user.
     return (
       <div id="board-container">
-        <button className="back-folder-button" onClick={this.handleGoBackFunction}>Last Folder</button>
-        <button className="sentence-backspace" onClick={this.handleBackspaceButtonClick}>Backspace</button>
-        <button className="sentence-clear" onClick={() => this.setState({sentence: []})}>Clear</button>
-        <button className="sentence-speak" onClick={this.handleSpeakButtonClick}>Speak!</button>
+        <button disabled={ this.userIsOnBaseBoard() }
+                className="back-folder-button"
+                onClick={this.handleLastFolderButton}>
+          Last Folder
+        </button>
+        <button className="sentence-backspace"
+                onClick={this.handleBackspaceButtonClick}>
+          Backspace
+        </button>
+        <button className="sentence-clear"
+                onClick={() => this.setState({sentence: []})}>
+          Clear
+        </button>
+        <button className="sentence-speak"
+                onClick={this.handleSpeakButtonClick}>
+          Speak!
+        </button>
         <br/>
         <table className="folder-path">
         {paths}
@@ -115,7 +131,7 @@ export class Board extends React.Component {
         <h1 className="sentence-bar">{this.buildSentence()}</h1>
         <br/>
         <table className="board-tiles-container"
-              style={{"width": "90%", "margin": "auto"}}>
+               style={{"width": "90%", "margin": "auto"}}>
           {rows}
         </table>
       </div>
