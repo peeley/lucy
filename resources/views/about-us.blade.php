@@ -39,7 +39,7 @@
             Things such as changing the color of tiles or adding custom icons to be displayed.
             This will all be integrated with the ability to make custom tiles.
             These tiles could be a single word, a phrase, or a folder that contains other words, phrases, or folders.
-            Additionally, the application would feature guided use that instructs users on how to use the application rather than going through tutorials or memorizing functionality
+            Additionally, the application would feature guided use that instructs users on how to use the application rather than going through tutorials or memorizing functionality.
         </p>        
         <form>
             <button class="welcome-button" formaction="http://localhost:8080/">Go to Project Lucy</button>
