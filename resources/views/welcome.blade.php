@@ -22,7 +22,10 @@
         </a>
         <a href="http://localhost:8080/guest">
             <button class = "welcome-button">Guest</button>
-        </a> 
+        </a>
+        <a href="http://localhost:8080/about-us">
+            <button class = "welcome-button">About Us</button>
+        </a>  
     </div>
 </body>
 </html>
