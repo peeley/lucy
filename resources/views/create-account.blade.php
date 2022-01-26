@@ -5,7 +5,7 @@
   <body>
   <h1 class="general-heading">Create Your Account</h1>
   <h2 style="padding: 20px">
-    <a href="http://localhost:8080"><button class = "back-button">Back</button></a>
+    <a href="/"><button class = "back-button">Back</button></a>
   </h2>
   <form action="/create-account" method="POST">
     @csrf
