@@ -6,6 +6,7 @@ use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
+use App\Http\Controllers\WordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,3 +46,10 @@ Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards'])
 Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
 Route::redirect('/guest', '/boards/1'); // default board
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
+
+Route::get('/words/{id}', [WordController::class, 'getWords']);
+Route::get('/words/user/{id}', [WordController::class, 'getUserWords']);
+Route::get('/create-word', [WordController::class, 'index'])
+    ->middleware(['auth']);
+Route::post('/create-word', [WordController::class, 'createWord'])
+    ->middleware(['auth']);
