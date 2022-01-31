@@ -15,7 +15,6 @@ class Word extends Model
         'text',
         'icon',
         'color',
-        'user_id'
     ];
 
     // Set default color to white

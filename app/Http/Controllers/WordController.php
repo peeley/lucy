@@ -17,16 +17,14 @@ class WordController extends Controller
             return response("User $user_id not found", 404);
         }
 
-        $words = Word::where('user_id', $user_id)->get();
+        $words = $user->words()->get();
         if (count($words) == 0)
         {
-            return response("No words found for user $user_id", 404);
+            return response("No words found for user $user", 404);
         }
 
         //placeholder for now; words will always be viewed on a board, right? we wont have stand alone words?
-        $word_list = $words->map(function ($word) {
-            return['text' => $word->text, 'icon' => $word->icon, 'color' => $word->color];
-        })->toArray();
+        $word_list = $words->toArray();
 
         return response()->json($word_list);
     }
@@ -40,18 +38,12 @@ class WordController extends Controller
         }
 
         //placeholder
-        return response()->json([
-            'text' => $word->text,
-            'icon' => $word->icon,
-            'color' => $word->color
-        ]);
+        return response()->json($word->toArray());
     }
 
     public function createWord(Request $request)
     {
         $user = $request->user();
-        #echo $user;
-        #echo $user['id'];
         $word = Word::create([ 'user_id' => $user['id'], 'text' => $request->word_text, 'color' => $request->word_color]);
         #needs styling; confirms word was created
         return response("Word successfully created.");
