@@ -9,7 +9,7 @@
 <body>
 <!-- TODO: user should be able navigate to this page from the create word shortcut/button, and the back button needs to keep track of where we came from. its set to home for now.-->
 <h1 style="padding: 20px">
-    <a href="http://localhost:8080"><button class = "back-button">Back</button></a>
+    <a href="/"><button class = "back-button">Back</button></a>
   </h1>
 
 <h2 class="general-heading">Create Word</h2>
