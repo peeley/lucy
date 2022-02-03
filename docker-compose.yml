@@ -5,21 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./
-    volumes:
-      - ./:/var/www
-    networks:
-      - lucy
-
-  nginx:
-    image: nginx:1.21-alpine
-    restart: unless-stopped
     ports:
       - 80:80
-    depends_on:
-      - app
-    volumes:
-      - ./:/var/www
-      - ./nginx:/etc/nginx/conf.d
     networks:
       - lucy
 
