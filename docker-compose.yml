@@ -5,6 +5,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./
+    volumes:
+      - ./:/var/www
     networks:
       - lucy
 

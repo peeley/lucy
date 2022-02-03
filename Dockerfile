@@ -28,4 +28,4 @@ RUN npm run dev
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 RUN composer install
 
-RUN chown -R www-data:www-data /var/www
+RUN chmod -R 777 storage/
