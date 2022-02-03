@@ -12,8 +12,6 @@ services:
       - database
     volumes:
       - ./:/var/www
-      - /var/www/node_modules
-      - /var/www/vendor
     networks:
       - lucy
 
@@ -38,6 +36,7 @@ services:
     depends_on:
       - app
     volumes:
+      - ./:/var/www
       - ./nginx:/etc/nginx/conf.d
     networks:
       - lucy
