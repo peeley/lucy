@@ -3,6 +3,10 @@ set -euo pipefail
 
 # copy .env file w/ config settings
 cp .env.example .env
+# in production, edit .env w/ actual credentials
+
+# start docker compose cluster
+docker-compose up -d
 
 # install PHP dependencies
 docker-compose exec app composer install
