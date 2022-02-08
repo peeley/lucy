@@ -60,7 +60,7 @@ class Board extends Model
         $expanded_sorted_contents = $sorted_rows->map(function ($row) {
             return $row->map(function ($item) {
                 return $item->toArray();
-            });
+            })->sortKeys()->values();
         });
 
         return $expanded_sorted_contents->toArray();
