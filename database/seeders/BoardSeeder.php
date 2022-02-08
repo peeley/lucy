@@ -485,12 +485,14 @@ class BoardSeeder extends Seeder
                 19 => ['board_x' => 4, 'board_y' => 1],
                 21 => ['board_x' => 5, 'board_y' => 1],
                 12 => ['board_x' => 6, 'board_y' => 1],
+                
                 13 => ['board_x' => 1, 'board_y' => 2],
-                119 => ['board_x' => 2, 'board_y' => 2],
+                19 => ['board_x' => 2, 'board_y' => 2],
                 5 => ['board_x' => 3, 'board_y' => 2],
                 15 => ['board_x' => 4, 'board_y' => 2],
                 16 => ['board_x' => 5, 'board_y' => 2],
                 17 => ['board_x' => 6, 'board_y' => 2],
+                
                 124 => ['board_x' => 1, 'board_y' => 3]
             ]);
         
