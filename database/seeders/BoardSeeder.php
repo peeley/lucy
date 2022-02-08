@@ -98,6 +98,21 @@ class BoardSeeder extends Seeder
                 35 => ['board_x' => 4, 'board_y' => 1],
                 36 => ['board_x' => 5, 'board_y' => 1]
             ]);
+            $user->folders()->find(5)->folders()->attach([
+                6 => ['board_x' => 1, 'board_y' => 2],
+                7 => ['board_x' => 2, 'board_y' => 2],
+                8 => ['board_x' => 3, 'board_y' => 2],
+                9 => ['board_x' => 4, 'board_y' => 2],
+                10 => ['board_x' => 5, 'board_y' => 2],
+                11 => ['board_x' => 6, 'board_y' => 2],
+                12 => ['board_x' => 1, 'board_y' => 3],
+                13 => ['board_x' => 2, 'board_y' => 3],
+                14 => ['board_x' => 1, 'board_y' => 4],
+                15 => ['board_x' => 2, 'board_y' => 4],
+                16 => ['board_x' => 3, 'board_y' => 4],
+                17 => ['board_x' => 4, 'board_y' => 4],
+                18 => ['board_x' => 5, 'board_y' => 4]
+            ]);
             $user->words()->createMany([
                 ['id' => 37, 'text' => 'We', 'color' => '#ccffe6'],
                 ['id' => 38, 'text' => 'Us', 'color' => '#ccffe6'],
@@ -299,6 +314,12 @@ class BoardSeeder extends Seeder
                 94 => ['board_x' => 1, 'board_y' => 2],
                 95 => ['board_x' => 2, 'board_y' => 2],
                 99 => ['board_x' => 3, 'board_y' => 2]
+            ]);
+            $user->folders()->find(5)->folders()->attach([
+                19 => ['board_x' => 2, 'board_y' => 1],
+                20 => ['board_x' => 3, 'board_y' => 1],
+                21 => ['board_x' => 4, 'board_y' => 1],
+                22 => ['board_x' => 5, 'board_y' => 1]
             ]);
             //Pasta
             $user->words()->createMany([
