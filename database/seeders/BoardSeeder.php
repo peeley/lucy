@@ -473,7 +473,7 @@ class BoardSeeder extends Seeder
                 ['id' => 20, 'text' => 'Ask companion', 'color' => '#ccffcc'],
                 ['id' => 12, 'text' => 'I cannot speak', 'color' => '#ffdf80'],
                 ['id' => 13, 'text' => 'I am using a talker', 'color' => '#ffecb3'],
-                ['id' => 9, 'text' => 'I Need', 'color' => '#b3e6cc']
+                ['id' => 124, 'text' => 'I Need', 'color' => '#b3e6cc']
             ]);
             $user->folders()->createMany([
                 ['id' => 2, 'name' => 'Help', 'color' => '#ffff66']
@@ -490,7 +490,8 @@ class BoardSeeder extends Seeder
                 5 => ['board_x' => 3, 'board_y' => 2],
                 15 => ['board_x' => 4, 'board_y' => 2],
                 16 => ['board_x' => 5, 'board_y' => 2],
-                17 => ['board_x' => 6, 'board_y' => 2]
+                17 => ['board_x' => 6, 'board_y' => 2],
+                124 => ['board_x' => 1, 'board_y' => 3]
             ]);
         
 
