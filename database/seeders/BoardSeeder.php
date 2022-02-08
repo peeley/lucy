@@ -351,7 +351,7 @@ class BoardSeeder extends Seeder
                 ['id' => 112, 'text' => 'Bannana', 'color' => '#b3e6cc'],
                 ['id' => 113, 'text' => 'Grapes', 'color' => '#b3e6cc'],
                 ['id' => 114, 'text' => 'Peach', 'color' => '#b3e6cc'],
-                ['id' => 115, 'text' => 'Plumb', 'color' => '#b3e6cc']
+                ['id' => 115, 'text' => 'Plumb', 'color' => '#b3e6cc'],
                 ['id' => 116, 'text' => 'Strawberries', 'color' => '#b3e6cc'],
                 ['id' => 117, 'text' => 'Blueberries', 'color' => '#b3e6cc'],
                 ['id' => 118, 'text' => 'Raspberries', 'color' => '#b3e6cc']
