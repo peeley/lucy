@@ -416,7 +416,7 @@ class BoardSeeder extends Seeder
             $user->folders()->createMany([
                 ['id' => 23, 'name' => 'Comfort', 'color' => '#b3e6cc']
             ]);
-            $user->folders()->find(24)->words()->attach([
+            $user->folders()->find(23)->words()->attach([
                 15 => ['board_x' => 1, 'board_y' => 1],
                 100 => ['board_x' => 2, 'board_y' => 1],
                 101 => ['board_x' => 3, 'board_y' => 1],
