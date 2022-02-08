@@ -263,7 +263,7 @@ class BoardSeeder extends Seeder
                 48 => ['board_x' => 2, 'board_y' => 1],
                 53 => ['board_x' => 3, 'board_y' => 1],
                 57 => ['board_x' => 4, 'board_y' => 1],
-                44 => ['board_x' => 5, 'board_y' => 1]
+                44 => ['board_x' => 5, 'board_y' => 1],
                 49 => ['board_x' => 6, 'board_y' => 1],
                 62 => ['board_x' => 1, 'board_y' => 2],
                 67 => ['board_x' => 2, 'board_y' => 2],
