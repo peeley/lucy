@@ -1,0 +1,24 @@
+volumes:
+  db_data:
+
+services:
+  app:
+    depends_on:
+      - database
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 8080:80
+
+  database:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_USER: '${DB_USERNAME:-lucy}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - lucy
