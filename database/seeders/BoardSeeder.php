@@ -22,7 +22,7 @@ class BoardSeeder extends Seeder
             'height' => 4
         ]);
         
-        $default_color = '#b3e6cc'
+        $default_color = '#b3e6cc';
         
         $user->words()->createMany([
             ['id' => 1, 'text' => 'Hello', 'color' => '#e6ffe6'],
