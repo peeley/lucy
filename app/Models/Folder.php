@@ -70,7 +70,7 @@ class Folder extends Model
 
         $content_rows = $contents->groupBy(
             fn ($item) => $item->pivot->board_y
-        );
+        )->sortKeys()->values();
 
         $sorted_rows = $content_rows->map(
             fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
@@ -79,10 +79,10 @@ class Folder extends Model
         $expanded_sorted_contents = $sorted_rows->map(function ($row) {
             return $row->map(function ($item) {
                 return $item->toArray();
-            });
+            })->sortKeys()->values();
         });
 
-        return $expanded_sorted_contents->values()->toArray();
+        return $expanded_sorted_contents->toArray();
     }
 
     public function user()
