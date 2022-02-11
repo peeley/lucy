@@ -22,6 +22,8 @@ class BoardSeeder extends Seeder
             'height' => 4
         ]);
         
+        $default_color = '#b3e6cc'
+        
         $user->words()->createMany([
             ['id' => 1, 'text' => 'Hello', 'color' => '#e6ffe6'],
             ['id' => 2, 'text' => 'Goodbye', 'color' => '#ffe6cc'],
@@ -44,13 +46,13 @@ class BoardSeeder extends Seeder
                 ['id' => 75, 'text' => 'Care', 'color' => '#ccccff'],
                 ['id' => 76, 'text' => 'Upset', 'color' => '#ff9f80'],
                 ['id' => 77, 'text' => 'Safe', 'color' => '#e6ffec'],
-                ['id' => 120, 'text' => 'Love', 'color' => '#b3e6cc'],
-                ['id' => 121, 'text' => 'Like', 'color' => '#b3e6cc'],
-                ['id' => 122, 'text' => 'Frustrated', 'color' => '#b3e6cc'],
-                ['id' => 123, 'text' => 'Hate', 'color' => '#b3e6cc']
+                ['id' => 120, 'text' => 'Love', 'color' => $default_color],
+                ['id' => 121, 'text' => 'Like', 'color' => $default_color],
+                ['id' => 122, 'text' => 'Frustrated', 'color' => $default_color],
+                ['id' => 123, 'text' => 'Hate', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => 25, 'name' => 'Conjunction', 'color' => '#c61aff']
+                ['id' => 25, 'name' => 'Emotions', 'color' => '#c61aff']
             ]);
             $user->folders()->find(25)->words()->attach([
                 16 => ['board_x' => 1, 'board_y' => 1],
@@ -314,7 +316,7 @@ class BoardSeeder extends Seeder
                 95 => ['board_x' => 2, 'board_y' => 2],
                 99 => ['board_x' => 3, 'board_y' => 2]
             ]);
-            $user->folders()->find(5)->folders()->attach([
+            $user->folders()->find(1)->folders()->attach([
                 19 => ['board_x' => 2, 'board_y' => 1],
                 20 => ['board_x' => 3, 'board_y' => 1],
                 21 => ['board_x' => 4, 'board_y' => 1],
