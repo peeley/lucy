@@ -42,7 +42,7 @@
             Additionally, the application would feature guided use that instructs users on how to use the application rather than going through tutorials or memorizing functionality.
         </p>        
         <form>
-            <button class="welcome-button" formaction="http://localhost:8080/">Go to Project Lucy</button>
+            <button class="welcome-button" formaction="/">Go to Project Lucy</button>
         </form>
     </div>
     <div class="about-resources">

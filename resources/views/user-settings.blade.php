@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1 style="padding: 20px">
-    <a href="http://localhost:8080"><button class = "back-button">Back</button></a>
+    <a href="/"><button class = "back-button">Back</button></a>
   </h1>
 <h2 class="general-heading"> Settings </h2>
 
