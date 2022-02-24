@@ -71,7 +71,7 @@ class BoardSeeder extends Seeder
         
         //pronouns
             $user->folders()->createMany([
-                ['id' => 5, 'name' => 'Pronouns', 'color' => '#b3e6cc'],
+                ['id' => 5, 'name' => 'Pronouns', 'color' => $default_color],
                 ['id' => 6, 'name' => '1st plural', 'color' => '#ccffe6'],
                 ['id' => 7, 'name' => 'Thing', 'color' => '#cceaae'],
                 ['id' => 8, 'name' => '2nd person', 'color' => '#ffffb3'],
@@ -80,11 +80,11 @@ class BoardSeeder extends Seeder
                 ['id' => 11, 'name' => 'plural/neutral', 'color' => '#9ae59a'],
                 ['id' => 12, 'name' => 'Neutral - X', 'color' => '#ecb3ff'],
                 ['id' => 13, 'name' => 'Neutral - Z', 'color' => '#ffd9b3'],
-                ['id' => 14, 'name' => 'Subject', 'color' => '#b3e6cc'],
-                ['id' => 15, 'name' => 'Object', 'color' => '#b3e6cc'],
-                ['id' => 16, 'name' => 'Possessive Adj', 'color' => '#b3e6cc'],
-                ['id' => 17, 'name' => 'Possessive', 'color' => '#b3e6cc'],
-                ['id' => 18, 'name' => 'Reflexive', 'color' => '#b3e6cc'],
+                ['id' => 14, 'name' => 'Subject', 'color' => $default_color],
+                ['id' => 15, 'name' => 'Object', 'color' => $default_color],
+                ['id' => 16, 'name' => 'Possessive Adj', 'color' => $default_color],
+                ['id' => 17, 'name' => 'Possessive', 'color' => $default_color],
+                ['id' => 18, 'name' => 'Reflexive', 'color' => $default_color],
             ]);
             $user->words()->createMany([
                 ['id' => 32, 'text' => 'I', 'color' => '#ccd9ff'],
@@ -276,7 +276,7 @@ class BoardSeeder extends Seeder
             $user->words()->createMany([
                 ['id' => 25, 'text' => 'And', 'color' => '#bf80ff'],
                 ['id' => 26, 'text' => 'Also', 'color' => '#9999ff'],
-                ['id' => 27, 'text' => 'Except', 'color' => '#b3e6cc'],
+                ['id' => 27, 'text' => 'Except', 'color' => $default_color],
                 ['id' => 28, 'text' => 'But', 'color' => '#9933ff'],
                 ['id' => 29, 'text' => 'Either', 'color' => '#c61aff'],
                 ['id' => 30, 'text' => 'Or', 'color' => '#cc99ff'],
@@ -298,16 +298,16 @@ class BoardSeeder extends Seeder
         //Food
             $user->words()->createMany([
                 ['id' => 5, 'text' => 'Food', 'color' => '#e6ffcc'],
-                ['id' => 94, 'text' => 'Pizza', 'color' => '#b3e6cc'],
+                ['id' => 94, 'text' => 'Pizza', 'color' => $default_color],
                 ['id' => 95, 'text' => 'Hamburger', 'color' => '#ffcc66'],
-                ['id' => 99, 'text' => 'Chicken nuggets', 'color' => '#b3e6cc']
+                ['id' => 99, 'text' => 'Chicken nuggets', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
                 ['id' => 1, 'name' => 'Foods', 'color' => '#e6ffcc'],
                 ['id' => 19, 'name' => 'Pasta', 'color' => '#ffedb3'],
-                ['id' => 20, 'name' => 'Snacks', 'color' => '#b3e6cc'],
-                ['id' => 21, 'name' => 'Drinks', 'color' => '#b3e6cc'],
-                ['id' => 22, 'name' => 'Fruit', 'color' => '#b3e6cc']
+                ['id' => 20, 'name' => 'Snacks', 'color' => $default_color],
+                ['id' => 21, 'name' => 'Drinks', 'color' => $default_color],
+                ['id' => 22, 'name' => 'Fruit', 'color' => $default_color]
             ]);
             $user->folders()->find(1)->words()->attach([
                 5 => ['board_x' => 1, 'board_y' => 1],
@@ -346,16 +346,16 @@ class BoardSeeder extends Seeder
             //Fruit
             $user->words()->createMany([
                 ['id' => 6, 'text' => 'Orange', 'color' => '#e24908'],
-                ['id' => 96, 'text' => 'Fruit', 'color' => '#b3e6cc'],
-                ['id' => 97, 'text' => 'Apple', 'color' => '#b3e6cc'],
-                ['id' => 98, 'text' => 'Pear', 'color' => '#b3e6cc'], 
-                ['id' => 112, 'text' => 'Bannana', 'color' => '#b3e6cc'],
-                ['id' => 113, 'text' => 'Grapes', 'color' => '#b3e6cc'],
-                ['id' => 114, 'text' => 'Peach', 'color' => '#b3e6cc'],
-                ['id' => 115, 'text' => 'Plumb', 'color' => '#b3e6cc'],
-                ['id' => 116, 'text' => 'Strawberries', 'color' => '#b3e6cc'],
-                ['id' => 117, 'text' => 'Blueberries', 'color' => '#b3e6cc'],
-                ['id' => 118, 'text' => 'Raspberries', 'color' => '#b3e6cc']
+                ['id' => 96, 'text' => 'Fruit', 'color' => $default_color],
+                ['id' => 97, 'text' => 'Apple', 'color' => $default_color],
+                ['id' => 98, 'text' => 'Pear', 'color' => $default_color], 
+                ['id' => 112, 'text' => 'Bannana', 'color' => $default_color],
+                ['id' => 113, 'text' => 'Grapes', 'color' => $default_color],
+                ['id' => 114, 'text' => 'Peach', 'color' => $default_color],
+                ['id' => 115, 'text' => 'Plumb', 'color' => $default_color],
+                ['id' => 116, 'text' => 'Strawberries', 'color' => $default_color],
+                ['id' => 117, 'text' => 'Blueberries', 'color' => $default_color],
+                ['id' => 118, 'text' => 'Raspberries', 'color' => $default_color]
             ]);
             $user->folders()->find(22)->words()->attach([
                 96 => ['board_x' => 1, 'board_y' => 1],
@@ -372,9 +372,9 @@ class BoardSeeder extends Seeder
             ]);
             //Snack
             $user->words()->createMany([
-                ['id' => 86, 'text' => 'Snack', 'color' => '#b3e6cc'],
-                ['id' => 87, 'text' => 'Potato Chips', 'color' => '#b3e6cc'],
-                ['id' => 88, 'text' => 'Goldfish', 'color' => '#b3e6cc']
+                ['id' => 86, 'text' => 'Snack', 'color' => $default_color],
+                ['id' => 87, 'text' => 'Potato Chips', 'color' => $default_color],
+                ['id' => 88, 'text' => 'Goldfish', 'color' => $default_color]
             ]);
             $user->folders()->find(20)->words()->attach([
                 86 => ['board_x' => 1, 'board_y' => 1],
@@ -389,11 +389,11 @@ class BoardSeeder extends Seeder
             ]);
             //Drinks
             $user->words()->createMany([
-                ['id' => 89, 'text' => 'Drink', 'color' => '#b3e6cc'],
-                ['id' => 90, 'text' => 'Soda', 'color' => '#b3e6cc'],
-                ['id' => 91, 'text' => 'Juice', 'color' => '#b3e6cc'],
+                ['id' => 89, 'text' => 'Drink', 'color' => $default_color],
+                ['id' => 90, 'text' => 'Soda', 'color' => $default_color],
+                ['id' => 91, 'text' => 'Juice', 'color' => $default_color],
                 ['id' => 92, 'text' => 'Water', 'color' => '#b3e6ff'],
-                ['id' => 93, 'text' => 'Flavored Water', 'color' => '#b3e6cc'],
+                ['id' => 93, 'text' => 'Flavored Water', 'color' => $default_color],
             ]);
             $user->folders()->find(21)->words()->attach([
                 89 => ['board_x' => 1, 'board_y' => 1],
@@ -408,15 +408,15 @@ class BoardSeeder extends Seeder
         //Comfort
             $user->words()->createMany([
                 ['id' => 15, 'text' => 'Comfort', 'color' => '#cceeff'],
-                ['id' => 100, 'text' => 'Blanket', 'color' => '#b3e6cc'],
+                ['id' => 100, 'text' => 'Blanket', 'color' => $default_color],
                 ['id' => 101, 'text' => 'Stuffed animal', 'color' => '#cccccc'],
                 ['id' => 102, 'text' => 'Hug', 'color' => '#eee6ff'],
-                ['id' => 103, 'text' => 'Gentle touch', 'color' => '#b3e6cc'],
-                ['id' => 104, 'text' => 'Pressure', 'color' => '#b3e6cc'],
-                ['id' => 105, 'text' => 'Distance', 'color' => '#b3e6cc']
+                ['id' => 103, 'text' => 'Gentle touch', 'color' => $default_color],
+                ['id' => 104, 'text' => 'Pressure', 'color' => $default_color],
+                ['id' => 105, 'text' => 'Distance', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => 23, 'name' => 'Comfort', 'color' => '#b3e6cc']
+                ['id' => 23, 'name' => 'Comfort', 'color' => $default_color]
             ]);
             $user->folders()->find(23)->words()->attach([
                 15 => ['board_x' => 1, 'board_y' => 1],
@@ -431,15 +431,15 @@ class BoardSeeder extends Seeder
         
         //Quantity
             $user->words()->createMany([
-                ['id' => 106, 'text' => 'More', 'color' => '#b3e6cc'],
-                ['id' => 107, 'text' => 'Less', 'color' => '#b3e6cc'],
-                ['id' => 108, 'text' => 'Lot', 'color' => '#b3e6cc'],
-                ['id' => 109, 'text' => 'Little', 'color' => '#b3e6cc'],
-                ['id' => 110, 'text' => 'None', 'color' => '#b3e6cc'],
-                ['id' => 111, 'text' => 'All', 'color' => '#b3e6cc']
+                ['id' => 106, 'text' => 'More', 'color' => $default_color],
+                ['id' => 107, 'text' => 'Less', 'color' => $default_color],
+                ['id' => 108, 'text' => 'Lot', 'color' => $default_color],
+                ['id' => 109, 'text' => 'Little', 'color' => $default_color],
+                ['id' => 110, 'text' => 'None', 'color' => $default_color],
+                ['id' => 111, 'text' => 'All', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => 24, 'name' => 'Quantity', 'color' => '#b3e6cc']
+                ['id' => 24, 'name' => 'Quantity', 'color' => $default_color]
             ]);
             $user->folders()->find(24)->words()->attach([
                 106 => ['board_x' => 1, 'board_y' => 1],
@@ -475,7 +475,7 @@ class BoardSeeder extends Seeder
                 ['id' => 20, 'text' => 'Ask companion', 'color' => '#ccffcc'],
                 ['id' => 12, 'text' => 'I cannot speak', 'color' => '#ffdf80'],
                 ['id' => 13, 'text' => 'I am using a talker', 'color' => '#ffecb3'],
-                ['id' => 124, 'text' => 'I Need', 'color' => '#b3e6cc']
+                ['id' => 124, 'text' => 'I Need', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
                 ['id' => 2, 'name' => 'Help', 'color' => '#ffff66']
