@@ -43,4 +43,22 @@ class BoardController extends Controller
     {
         return view('board', ['board_id' => $board_id]);
     }
+
+    public function deleteBoard(Request $request, int $board_id)
+    {
+        $board = Board::find($board_id);
+
+        if (!$board) {
+            return response("Board $board_id not found", 404);
+        }
+
+        $board->delete();
+
+        return redirect('/home');
+    }
+
+    public function createBoard(Request $request)
+    {
+        $board = Board::create();
+    }
 }

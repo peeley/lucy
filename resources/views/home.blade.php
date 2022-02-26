@@ -7,6 +7,8 @@
   @foreach ($boards as $board)
     <li>
       <a href="/boards/{{ $board->id }}"> {{ $board->name }} </a>
+      <a href="/boards/{{ $board->id }}/delete"> Delete </a>
+      <a href="/boards/{{ $board->id }}/edit"> Edit </a>
     </li>
   @endforeach
   <ul>
