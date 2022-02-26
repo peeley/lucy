@@ -27,7 +27,7 @@
     pointer-events: none;   
     background-color: rgb(12, 28, 43);
     opacity: 0;
-    transition: .2s ease-out; 
+    transition: .3s ease-out; 
 }
 .transition-2.is-active {
     pointer-events: all;
