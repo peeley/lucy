@@ -3,7 +3,7 @@
 window.onload = () => {
     const transition_el = document.querySelector('.transition');
     const anchors = document.querySelectorAll('a');
-    const animation_time = 200;
+    const animation_time = 200; //in ms
     setTimeout(() => {
         transition_el.classList.remove('is-active');
     }, animation_time);
