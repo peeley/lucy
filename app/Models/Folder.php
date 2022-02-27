@@ -23,7 +23,8 @@ class Folder extends Model
         'name',
         'color',
         'icon',
-        'contents'
+        'contents',
+        'id'
     ];
 
     // default values for these properties

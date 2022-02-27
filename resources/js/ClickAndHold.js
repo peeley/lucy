@@ -41,3 +41,6 @@ export class ClickAndHold
         clearTimeout(this.activeHoldTimeoutID);
     }
 }
+
+const tileButtons = document.getElementById("tileButton")
+

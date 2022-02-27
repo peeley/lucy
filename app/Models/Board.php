@@ -23,6 +23,7 @@ class Board extends Model
         'name',
         'height',
         'width',
+        'id',
         'contents' // defined by `getContentsAttribute`
     ];
 

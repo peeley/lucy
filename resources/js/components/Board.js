@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 
 export class Board extends React.Component {
   constructor(props) {
@@ -9,7 +10,13 @@ export class Board extends React.Component {
       boardStack: [],
       sentence: [],
       loading: true,
-      folderPath: []
+      folderPath: [],
+      isHoldingTile: false,
+      activeHoldTimeoutID: null,
+      configuringTile: false,
+      chosenToEditTile: false,
+      heldTileColumn: null,
+      heldTileRow: null
     };
   }
 
@@ -17,18 +24,18 @@ export class Board extends React.Component {
     axios.get(`/boards/${this.props.board_id}/tiles`)
       .then( response => {
         this.setState({
-          currentBoard: response.data.contents,
-          boardStack: [response.data.contents],
+          currentBoard: response.data,
+          boardStack: [response.data],
           loading: false,
           folderPath: [response.data.name]
         });
       });
   }
 
-  handleFolderClick = (folderContents, folderName) => {
+  handleFolderClick = (folder, folderName) => {
     this.setState( state => ({
-      currentBoard: folderContents,
-      boardStack: [...state.boardStack, folderContents],
+      currentBoard: folder,
+      boardStack: [...state.boardStack, folder],
       folderPath: [...state.folderPath, folderName]
     }));
   }
@@ -80,17 +87,27 @@ export class Board extends React.Component {
       return null;
     }
 
-    return this.state.currentBoard.map( row =>
+    return this.state.currentBoard.contents.map( (row, rowIndex) =>
       <tr>
-      { row.map( tile =>
-        <td style={{ backgroundColor: `${tile.color}`}}
+      { row.map( (tile, columnIndex) => {
+        const tileType = tile.contents ? 'folder' : 'word';
+        
+        return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
             onClick={tile.contents
-                     ? () => this.handleFolderClick(tile.contents, tile.name)
-                     : () => this.handleWordClick(tile.text)}>
+                     ? () => this.handleFolderClick(tile, tile.name)
+                     : () => this.handleWordClick(tile.text)}
+            onMouseDown={() => this._onHoldStart(tileType, parent.id, tile.id, columnIndex, rowIndex)}
+            onTouchStart={() => this._onHoldStart(tileType, parent.id, tile.id, columnIndex, rowIndex)}
+            onMouseUp={this._onHoldEnd}
+            onMouseOut={() => { // FIXME for drag and drop
+            }}
+            onTouchEnd={this._onHoldEnd}
+            onTouchCancel={this._onHoldEnd}
+        >
           {(tile.text ?? tile.name) + ' '}
         </td>
-      )}
+      })}
       </tr>
     );
   }
@@ -101,12 +118,87 @@ export class Board extends React.Component {
       );
   }
 
+  _onHoldStart = (tileType, tileId, tileX, tileY) => {
+      if (this.props.board_id === 1) {
+        //return;
+      }
+
+      this.setState({
+        isHoldingTile: true,
+        activeHoldTimeoutID: setTimeout(() => {
+            if (this.state.isHoldingTile) {
+              this.setState({
+                configuringTile: true,
+                heldTileId: tileId,
+                heldTileType: tileType,
+                heldTileRow: tileY,
+                heldTileColumn: tileX
+              });
+            }
+          }, 1000),
+        });
+      ;
+    }
+
+  _onHoldEnd = () => {
+    if (this.props.board_id === 1) {
+      //return;
+    }
+
+    this.setState({
+      isHoldingTile: false,
+    });
+        
+    clearTimeout(this.state.activeHoldTimeoutID);
+  }
+
+  handleEditTile = () => {
+    this.setState({
+      chosenToEditTile: true
+    });
+  }
+
+  handleDeleteTile = () => {
+    const parentType = this.state.folderPath.length === 1
+      ? 'boards'
+      : 'folders';
+
+    const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+
+    axios.delete(`/${parentType}/${parentId}/tile/delete`,
+      {
+        tileType: this.state.heldTileType,
+        boardX: this.state.heldTileColumn,
+        boardY: this.state.heldTileRow
+      }
+    ).then( response => {
+      this.setState({
+        configuringTile: false
+      });
+    });
+
+    // TODO handle error response from backend
+  }
+
   render() {
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
     //TODO: instead of root, get the folder name assigned by the user.
     return (
       <div id="board-container">
+        <Modal 
+          isOpen={this.state.configuringTile}
+          className="edit-modal"
+        >
+          <h1>Configure {this.state.heldTileType}</h1>
+          { this.state.chosenToEditTile ?
+            <h1>Editing the tile</h1>
+           : <>
+              <button onClick={this.handleEditTile}>Edit {this.state.heldTileType}</button>
+              <button onClick={this.handleDeleteTile}>Delete {this.state.heldTileType}</button>
+            </>
+        }
+        </Modal>
         <button disabled={ this.userIsOnBaseBoard() }
                 className="back-folder-button"
                 onClick={this.handleLastFolderButton}>

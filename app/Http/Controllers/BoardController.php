@@ -34,13 +34,16 @@ class BoardController extends Controller
 
         $sorted_board_tiles = $board->toArray();
 
-        // TODO retrieve board from database, replace placeholder
-        // should come up with a good way to recursively serialize folders
         return response()->json($sorted_board_tiles);
     }
 
     public function getBoard(Request $request, int $board_id)
     {
         return view('board', ['board_id' => $board_id]);
+    }
+
+    public function deleteTileFromBoard(Request $request, int $board_id)
+    {
+        // TODO
     }
 }
