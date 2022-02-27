@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
@@ -57,8 +58,22 @@ class BoardController extends Controller
         return redirect('/home');
     }
 
-    public function createBoard(Request $request)
+    public function createBoard()
     {
-        $board = Board::create();
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        // FIXME we can create copies of boards with `Board::replicate`, but
+        // copying all the associated folders/words is insanely gnarly
+        $user->boards()->create([
+            'name' => 'Blank board',
+            'width' => 5,
+            'height' => 5,
+        ]);
+
+        return redirect('/home');
     }
 }

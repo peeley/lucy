@@ -41,14 +41,15 @@ Route::get('/home', [HomeController::class, 'index'])
     ->name('home')
     ->middleware(['auth']);
 
-// fetched by React and returns json, do not need views
-Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
 Route::delete('/boards/{board_id}/delete', [BoardController::class, 'deleteBoard']);
-Route::put('/boards/{board_id}/delete', [BoardController::class, 'editBoard']);
-Route::post('/boards/{board_id}/delete', [BoardController::class, 'createBoard']);
+Route::put('/boards/{board_id}/edit', [BoardController::class, 'editBoard']);
+Route::post('/boards/create', [BoardController::class, 'createBoard']);
 Route::redirect('/guest', '/boards/1'); // default board
+
+// fetched by React and returns json, do not need views
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
+Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 
 Route::get('/words/{id}', [WordController::class, 'getWords']);
 Route::get('/words/user/{id}', [WordController::class, 'getUserWords']);
