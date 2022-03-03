@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Board;
 use App\Models\Folder;
 use App\Models\User;
 use App\Models\Word;
@@ -36,6 +37,18 @@ class BoardControllerTest extends TestCase
             ['name' => 'board dos', 'id' => 2],
             ['name' => 'board tres', 'id' => 3]
         ]);
+
+        $response = $this->get("/boards/1");
+        $response->assertStatus(200);
+
+        $response = $this->get("/boards/2");
+        $response->assertStatus(200);
+
+        $response = $this->get("/boards/3");
+        $response->assertStatus(200);
+
+        $response = $this->get("/boards/999");
+        $response->assertStatus(200);
     }
 
     public function test_nonexistant_user_boards_returns_404()
@@ -47,11 +60,7 @@ class BoardControllerTest extends TestCase
 
     public function test_user_can_get_board_tiles()
     {
-        $board = $this->user->boards()->create([
-            'name' => 'my board',
-            'height' => 3,
-            'width' => 5
-        ]);
+        $board = Board::factory()->for($this->user)->create();
 
         $words = Word::factory()
             ->for($this->user)
@@ -79,13 +88,51 @@ class BoardControllerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertJson([
-            'name' => 'my board',
-            'width' => 5,
-            'height' => 3,
+            'name' => $board->name,
+            'width' => $board->width,
+            'height' => $board->height,
             'contents' => [
                 [$folders[0]->toArray(), $words[4]->toArray()],
                 [$folders[1]->toArray()]
             ]
         ]);
+    }
+
+    public function test_user_can_delete_board()
+    {
+        $board = Board::factory()->for($this->user)->create();
+
+        $response = $this->actingAs($this->user)->delete("/boards/{$board->id}");
+
+        $response->assertRedirectContains('/home');
+        $response->assertSessionHas('success');
+    }
+
+    public function test_unauthenticated_user_cannot_delete_board()
+    {
+        $board = Board::factory()->for($this->user)->create();
+
+        $response = $this->delete("/boards/{$board->id}");
+
+        $response->assertRedirectContains('/login');
+    }
+
+    public function test_user_can_create_board()
+    {
+        $this->assertEquals($this->user->boards()->count(), 0);
+
+        $response = $this->actingAs($this->user)->post('/boards');
+
+        $response->assertRedirectContains('/home');
+        $response->assertSessionHas('success');
+
+        $this->assertEquals($this->user->boards()->count(), 1);
+    }
+
+    public function test_user_must_be_authenticated_to_create_board()
+    {
+        $response = $this->post('/boards');
+
+        $response->assertRedirectContains('/login');
     }
 }

@@ -48,15 +48,17 @@ class BoardController extends Controller
     // FIXME make sure only owner of board can delete
     public function deleteBoard(Request $request, int $board_id)
     {
-        $board = Board::find($board_id);
+        if (!$user = Auth::user()) {
+            return redirect('/login');
+        }
 
-        if (!$board) {
-            return response("Board $board_id not found", 404);
+        if (!$board = $user->boards->find($board_id)) {
+            return response('Board not found.', 404);
         }
 
         $board->delete();
 
-        return redirect('/home');
+        return redirect('/home')->with('success', "{$board->name} deleted.");
     }
 
     public function createBoard()
@@ -75,7 +77,7 @@ class BoardController extends Controller
             'height' => 5,
         ]);
 
-        return redirect('/home');
+        return redirect('/home')->with('success', "Blank board created.");
     }
 
     public function editBoard(Request $request, int $board_id)
@@ -98,8 +100,8 @@ class BoardController extends Controller
             return response("Cannot edit other user's board", 403);
         }
 
-        $board->fill($validated)->save();
+        $board->fill($validated);
 
-        return redirect('/home');
+        return redirect('/home')->with('success', 'Board updated.');
     }
 }
