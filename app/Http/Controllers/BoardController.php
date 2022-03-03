@@ -94,13 +94,11 @@ class BoardController extends Controller
             'width' => 'integer|required'
         ]);
 
-        $board = Board::find($board_id);
-
-        if ($board->user()->get()->id !== $user->id) {
-            return response("Cannot edit other user's board", 403);
+        if (!$board = $user->boards()->find($board_id)) {
+            return response("Board not found.", 404);
         }
 
-        $board->fill($validated);
+        $board->fill($validated)->save();
 
         return redirect('/home')->with('success', 'Board updated.');
     }

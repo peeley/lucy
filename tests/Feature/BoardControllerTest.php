@@ -135,4 +135,35 @@ class BoardControllerTest extends TestCase
 
         $response->assertRedirectContains('/login');
     }
+
+    public function test_user_can_edit_board()
+    {
+        $board = Board::factory()->for($this->user)->create();
+
+        $response = $this->get("/boards/{$board->id}/tiles");
+
+        $response->assertJson([
+            'name' => $board->name,
+            'height' => $board->height,
+            'width' => $board->width
+        ]);
+
+        $response = $this->actingAs($this->user)
+            ->putJson("/boards/{$board->id}", [
+                'name' => 'New name',
+                'height' => $board->height + 1,
+                'width' => $board->width - 1
+            ]);
+
+        $response->assertRedirectContains('/home');
+        $response->assertSessionHas('success');
+
+        $response = $this->get("/boards/{$board->id}/tiles");
+
+        $response->assertJson([
+            'name' => 'New name',
+            'height' => $board->height + 1,
+            'width' => $board->width - 1
+        ]);
+    }
 }
