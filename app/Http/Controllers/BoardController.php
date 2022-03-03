@@ -45,6 +45,7 @@ class BoardController extends Controller
         return view('board', ['board_id' => $board_id]);
     }
 
+    // FIXME make sure only owner of board can delete
     public function deleteBoard(Request $request, int $board_id)
     {
         $board = Board::find($board_id);
@@ -73,6 +74,31 @@ class BoardController extends Controller
             'width' => 5,
             'height' => 5,
         ]);
+
+        return redirect('/home');
+    }
+
+    public function editBoard(Request $request, int $board_id)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'height' => 'integer|required',
+            'width' => 'integer|required'
+        ]);
+
+        $board = Board::find($board_id);
+
+        if ($board->user()->get()->id !== $user->id) {
+            return response("Cannot edit other user's board", 403);
+        }
+
+        $board->fill($validated)->save();
 
         return redirect('/home');
     }
