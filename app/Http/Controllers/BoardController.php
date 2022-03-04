@@ -70,15 +70,26 @@ class BoardController extends Controller
 
         if($type == 'word'){
             $tile = Word::find($tileId);
-            $tile->update(['text' => $request->text]);
+
+            if($request->text != null){
+                $tile->update(['text' => $request->text]);
+            }
+
+            if($request->color != null){
+                $tile->update(['color' => $request->color]);
+            }
         }
 
         if($type == 'folder'){
             $tile = Folder::find($tileId);
-            echo($tile);
-            $tile->update(['name' => $request->text]);
-            echo($tile);
-            return response('inside folder if, tile edited');
+
+            if($request->text != null){
+                $tile->update(['name' => $request->text]);
+            }
+
+            if($request->color != null){
+                $tile->update(['color' => $request->color]);
+            }
         }
 
         return response('tile edited');

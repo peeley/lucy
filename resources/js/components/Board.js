@@ -237,10 +237,9 @@ export class Board extends React.Component {
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
 
-    console.log(event.target.text.value);
-
     axios.post(`/${parentType}/${parentId}/tile/edit`, {
       text : event.target.text.value,
+      color : event.target.color.value,
       tileId : this.state.heldTileId,
       tileType : this.state.heldTileType
     }).then( response => {
@@ -299,9 +298,19 @@ export class Board extends React.Component {
                       <input 
                         name="text"
                         type="text"
+                        placeholder="Text"
                       />
+                      </label>
+                      {/*TODO: make color selection more user friendly */}
+                      <label>
+                        Edit Color:
+                        <input
+                          name="color"
+                          type="text"
+                          placeholder="Color (Hexadecimal)"
+                        />
+                      </label>
                       <input type="submit" />
-                    </label>
                   </form>
                   </>
               </Modal>

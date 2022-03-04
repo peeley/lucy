@@ -33,12 +33,27 @@ class FolderController extends Controller
 
         if($type == 'word'){
             $tile = Word::find($tileId);
-            $tile->update(['text' => $request->text]);
+
+            if($request->text != null){
+                $tile->update(['text' => $request->text]);
+            }
+
+            if($request->color != null){
+                $tile->update(['color' => $request->color]);
+            }
         }
 
         if($type == 'folder'){
             $tile = Folder::find($tileId);
-            $tile->update(['text' => $request->text]);
+
+            if($request->text != null){
+                $tile->update(['name' => $request->text]);
+            }
+
+            if($request->color != null){
+                $tile->update(['color' => $request->color]);
+            }
+
         }
     }
 }
