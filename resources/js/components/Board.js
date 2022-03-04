@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import Modal from 'react-modal';
 
@@ -18,8 +19,11 @@ export class Board extends React.Component {
       heldTileId: null,
       heldTileColumn: null,
       heldTileRow: null,
-      confirmDeleteModal: false
+      confirmDeleteModal: false,
+      editModal: false
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount = () => {
@@ -183,7 +187,7 @@ export class Board extends React.Component {
       });
     });
 
-    //retrieving board from backend again to forcefully refresh the page
+    //retrieving board from backend again to forcefully refresh the page; would be more userfriendly to edit the boardstack instead
     axios.get(`/boards/${this.props.board_id}/tiles`)
       .then( response => {
         this.setState({
@@ -206,6 +210,57 @@ export class Board extends React.Component {
       confirmDeleteModal: false
     });
   }
+
+  openEditModal = () => {
+    this.setState({
+      editModal: true
+    });
+  }
+
+  closeEditModal = () => {
+    this.setState({
+      editModal: false
+    });
+  }
+
+  closeMainModal = () => {
+    this.setState({
+      configuringTile: false
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    const parentType = this.state.folderPath.length === 1
+      ? 'boards'
+      : 'folders';
+
+    const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+
+    console.log(event.target.text.value);
+
+    axios.post(`/${parentType}/${parentId}/tile/edit`, {
+      text : event.target.text.value,
+      tileId : this.state.heldTileId,
+      tileType : this.state.heldTileType
+    }).then( response => {
+      this.setState({
+        configuringTile: false
+      });
+    });
+
+    //retrieving board from backend again to forcefully refresh the page; would be more userfriendly to edit the boardstack instead
+    axios.get(`/boards/${this.props.board_id}/tiles`)
+      .then( response => {
+        this.setState({
+          currentBoard: response.data,
+          boardStack: [response.data],
+          loading: false,
+          folderPath: [response.data.name]
+        });
+      });
+  }
+
   render() {
     console.log("redering board");
     const rows = this.renderBoardTiles();
@@ -215,26 +270,43 @@ export class Board extends React.Component {
       <div id="board-container">
         <Modal 
           isOpen={this.state.configuringTile}
-          className="edit-modal"
+          className="main-modal"
         >
           <h1>Configure {this.state.heldTileType}</h1>
-          { this.state.chosenToEditTile ?
-            <h1>Editing the tile</h1>
-           : <>
-              <button onClick={this.handleEditTile}>Edit {this.state.heldTileType}</button>
+            <>
+              <button onClick={this.openEditModal}>Edit {this.state.heldTileType}</button>
               <button onClick={this.openConfirmDeleteModal}>Delete {this.state.heldTileType}</button>
+              <button onClick={this.closeMainModal}>Close</button>
               <Modal 
                 isOpen={this.state.confirmDeleteModal}
                 className="confirm-delete-modal"
               >
                 <p>Are you sure you want to delete {this.state.heldTileType}? </p>
-                : <>
+                <>
                 <button onClick={this.handleDeleteTile}> Yes </button>
                 <button onClick={this.closeConfirmDeleteModal}> No </button>
                 </>  
               </Modal>
+
+              <Modal
+                isOpen={this.state.editModal}
+                className="edit-modal">
+                <h2>Editing {this.state.heldTileType}</h2>
+                  <>
+                  <form onSubmit={this.handleSubmit}>
+                    <label>
+                      Edit Text:
+                      <input 
+                        name="text"
+                        type="text"
+                      />
+                      <input type="submit" />
+                    </label>
+                  </form>
+                  </>
+              </Modal>
             </>
-        }
+        
         </Modal>
         <button disabled={ this.userIsOnBaseBoard() }
                 className="back-folder-button"

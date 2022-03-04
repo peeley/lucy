@@ -48,6 +48,7 @@ Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
 Route::redirect('/guest', '/boards/1'); // default board
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
 Route::delete('/boards/{board_id}/tile/delete', [BoardController::class, 'deleteTileFromBoard']);
+Route::post('/boards/{board_id}/tile/edit', [BoardController::class, 'editTileFromBoard']);
 
 Route::get('/words/{id}', [WordController::class, 'getWords']);
 Route::get('/words/user/{id}', [WordController::class, 'getUserWords']);
@@ -57,3 +58,4 @@ Route::post('/create-word', [WordController::class, 'createWord'])
     ->middleware(['auth']);
 
 Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'deleteTileFromFolder']);
+Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);

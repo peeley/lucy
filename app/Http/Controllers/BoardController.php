@@ -62,4 +62,25 @@ class BoardController extends Controller
 
         return response('tile deleted');
     }
+
+    public function editTileFromBoard(Request $request, int $board_id)
+    {
+        $type = $request->tileType;
+        $tileId = $request->tileId;
+
+        if($type == 'word'){
+            $tile = Word::find($tileId);
+            $tile->update(['text' => $request->text]);
+        }
+
+        if($type == 'folder'){
+            $tile = Folder::find($tileId);
+            echo($tile);
+            $tile->update(['name' => $request->text]);
+            echo($tile);
+            return response('inside folder if, tile edited');
+        }
+
+        return response('tile edited');
+    }
 }

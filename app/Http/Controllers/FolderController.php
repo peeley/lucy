@@ -25,4 +25,20 @@ class FolderController extends Controller
 
         return response('tile deleted');
     }
+
+    public function editTileFromFolder(Request $request, int $folder_id)
+    {
+        $type = $request->tileType;
+        $tileId = $request->tileId;
+
+        if($type == 'word'){
+            $tile = Word::find($tileId);
+            $tile->update(['text' => $request->text]);
+        }
+
+        if($type == 'folder'){
+            $tile = Folder::find($tileId);
+            $tile->update(['text' => $request->text]);
+        }
+    }
 }
