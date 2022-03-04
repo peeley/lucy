@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\FolderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

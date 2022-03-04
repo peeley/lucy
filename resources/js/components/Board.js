@@ -15,8 +15,10 @@ export class Board extends React.Component {
       activeHoldTimeoutID: null,
       configuringTile: false,
       chosenToEditTile: false,
+      heldTileId: null,
       heldTileColumn: null,
-      heldTileRow: null
+      heldTileRow: null,
+      confirmDeleteModal: false
     };
   }
 
@@ -97,8 +99,8 @@ export class Board extends React.Component {
             onClick={tile.contents
                      ? () => this.handleFolderClick(tile, tile.name)
                      : () => this.handleWordClick(tile.text)}
-            onMouseDown={() => this._onHoldStart(tileType, parent.id, tile.id, columnIndex, rowIndex)}
-            onTouchStart={() => this._onHoldStart(tileType, parent.id, tile.id, columnIndex, rowIndex)}
+            onMouseDown={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
+            onTouchStart={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
             onMouseUp={this._onHoldEnd}
             onMouseOut={() => { // FIXME for drag and drop
             }}
@@ -122,7 +124,7 @@ export class Board extends React.Component {
       if (this.props.board_id === 1) {
         //return;
       }
-
+      //console.log(tileId);
       this.setState({
         isHoldingTile: true,
         activeHoldTimeoutID: setTimeout(() => {
@@ -167,9 +169,13 @@ export class Board extends React.Component {
 
     axios.delete(`/${parentType}/${parentId}/tile/delete`,
       {
-        tileType: this.state.heldTileType,
-        boardX: this.state.heldTileColumn,
-        boardY: this.state.heldTileRow
+        data:
+        {
+          tileType: this.state.heldTileType,
+          tileId: this.state.heldTileId,
+          boardX: this.state.heldTileColumn,
+          boardY: this.state.heldTileRow
+        }
       }
     ).then( response => {
       this.setState({
@@ -177,10 +183,31 @@ export class Board extends React.Component {
       });
     });
 
-    // TODO handle error response from backend
+    //retrieving board from backend again to forcefully refresh the page
+    axios.get(`/boards/${this.props.board_id}/tiles`)
+      .then( response => {
+        this.setState({
+          currentBoard: response.data,
+          boardStack: [response.data],
+          loading: false,
+          folderPath: [response.data.name]
+        });
+      });
   }
 
+  openConfirmDeleteModal = () => {
+    this.setState({
+      confirmDeleteModal: true
+    });
+  }  
+
+  closeConfirmDeleteModal = () => {
+    this.setState({
+      confirmDeleteModal: false
+    });
+  }
   render() {
+    console.log("redering board");
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
     //TODO: instead of root, get the folder name assigned by the user.
@@ -195,7 +222,17 @@ export class Board extends React.Component {
             <h1>Editing the tile</h1>
            : <>
               <button onClick={this.handleEditTile}>Edit {this.state.heldTileType}</button>
-              <button onClick={this.handleDeleteTile}>Delete {this.state.heldTileType}</button>
+              <button onClick={this.openConfirmDeleteModal}>Delete {this.state.heldTileType}</button>
+              <Modal 
+                isOpen={this.state.confirmDeleteModal}
+                className="confirm-delete-modal"
+              >
+                <p>Are you sure you want to delete {this.state.heldTileType}? </p>
+                : <>
+                <button onClick={this.handleDeleteTile}> Yes </button>
+                <button onClick={this.closeConfirmDeleteModal}> No </button>
+                </>  
+              </Modal>
             </>
         }
         </Modal>

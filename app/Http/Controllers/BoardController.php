@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\Word;
 use App\Models\User;
+use App\Models\Folder;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
@@ -44,6 +46,20 @@ class BoardController extends Controller
 
     public function deleteTileFromBoard(Request $request, int $board_id)
     {
-        // TODO
+        $board = Board::find($board_id);
+        $type = $request->tileType;
+        $tileId = $request->tileId;
+
+        if ($type == 'word'){
+            $tile = Word::find($tileId);
+            $board->words()->detach($tile);
+        }
+
+        if ($type == 'folder'){
+            $tile = Folder::find($tileId);
+            $board->folders()->detach($tile);
+        }
+
+        return response('tile deleted');
     }
 }
