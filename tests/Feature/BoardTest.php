@@ -74,7 +74,8 @@ class BoardTest extends TestCase
                     'icon' => $word->icon,
                     'id' => $word->id
                 ]]
-            ]
+                ],
+            'id' => $board->id,
         ];
 
         $this->assertEquals($expected_array, $board->toArray());
@@ -106,7 +107,8 @@ class BoardTest extends TestCase
                     'contents' => [],
                     'id' => $folder->id,
                 ]
-            ]]
+            ]],
+            'id' => $board->id,
         ];
 
         $this->assertEquals($expectected_array, $board->toArray());
@@ -146,7 +148,8 @@ class BoardTest extends TestCase
                     'icon' => $folder->icon,
                     'contents' => [],
                     'id' => $folder->id,
-                ]]
+                ]],
+            'id' => $board->id,
             ]
         ];
 
