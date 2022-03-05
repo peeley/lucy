@@ -220,7 +220,6 @@ export class Board extends React.Component {
   }
 
   closeEditModal = () => {
-    console.log("close edit modal called")
     this.setState({
       editModal: false,
     });
