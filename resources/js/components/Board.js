@@ -223,7 +223,6 @@ export class Board extends React.Component {
     this.setState({
       editModal: false,
     });
-    console.log(this.state.editModal)
   }
 
   closeMainModal = () => {
