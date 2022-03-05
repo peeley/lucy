@@ -149,8 +149,8 @@ class BoardTest extends TestCase
                     'contents' => [],
                     'id' => $folder->id,
                 ]],
+                ],
             'id' => $board->id,
-            ]
         ];
 
         $this->assertEquals($expected_array, $board->toArray());
