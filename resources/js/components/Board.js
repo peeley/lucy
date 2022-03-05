@@ -264,7 +264,6 @@ export class Board extends React.Component {
   }
 
   render() {
-    console.log("redering board");
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
     //TODO: instead of root, get the folder name assigned by the user.
