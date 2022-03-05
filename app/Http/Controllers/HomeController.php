@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-        $boards = $user->boards()->get();
+        $boards = $user->boards()->get()->sortBy('id');
 
         return view('home', [
             'name' => $user->name,
