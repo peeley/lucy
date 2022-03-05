@@ -121,7 +121,8 @@ class FolderTest extends TestCase
                 [[
                     'text' => 'Hello',
                     'icon' => null,
-                    'color' => '#123456'
+                    'color' => '#123456',
+                    'id' => $word->id,
                 ]]
             ],
         ];
@@ -160,6 +161,7 @@ class FolderTest extends TestCase
                                 'text' => 'oranges',
                                 'icon' => null,
                                 'color' => '#FFFFFF',
+                                'id' => $word->id,
                             ]]
                         ],
                     ],
@@ -167,6 +169,7 @@ class FolderTest extends TestCase
                         'text' => 'oranges',
                         'icon' => null,
                         'color' => '#FFFFFF',
+                        'id' => $word->id,
                     ]
                 ]
             ]

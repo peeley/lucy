@@ -37,7 +37,8 @@ class WordTest extends TestCase
         $expected_array = [
             'text' => $word->text,
             'color' => $word->color,
-            'icon' => $word->icon
+            'icon' => $word->icon,
+            'id' => $word->id,
         ];
 
         $this->assertEquals($word->toArray(), $expected_array);
