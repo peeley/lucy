@@ -24,6 +24,7 @@ export class Board extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentDidMount = () => {
@@ -218,9 +219,11 @@ export class Board extends React.Component {
   }
 
   closeEditModal = () => {
+    console.log("close edit modal called")
     this.setState({
-      editModal: false
+      editModal: false,
     });
+    console.log(this.state.editModal)
   }
 
   closeMainModal = () => {
@@ -269,54 +272,54 @@ export class Board extends React.Component {
       <div id="board-container">
         <Modal 
           isOpen={this.state.configuringTile}
-          className="main-modal"
+          className="main-modal-class"
         >
-          <h1>Configure {this.state.heldTileType}</h1>
+          <h1 className="general-heading">Configure {this.state.heldTileType}</h1>
             <>
-              <button onClick={this.openEditModal}>Edit {this.state.heldTileType}</button>
-              <button onClick={this.openConfirmDeleteModal}>Delete {this.state.heldTileType}</button>
-              <button onClick={this.closeMainModal}>Close</button>
-              <Modal 
-                isOpen={this.state.confirmDeleteModal}
-                className="confirm-delete-modal"
-              >
-                <p>Are you sure you want to delete {this.state.heldTileType}? </p>
-                <>
-                <button onClick={this.handleDeleteTile}> Yes </button>
-                <button onClick={this.closeConfirmDeleteModal}> No </button>
-                </>  
-              </Modal>
-
-              <Modal
-                isOpen={this.state.editModal}
-                className="edit-modal">
-                <h2>Editing {this.state.heldTileType}</h2>
-                  <>
-                  <form onSubmit={this.handleSubmit}>
-                    <label>
-                      Edit Text:
-                      <input 
-                        name="text"
-                        type="text"
-                        placeholder="Text"
-                      />
-                      </label>
-                      {/*TODO: make color selection more user friendly */}
-                      <label>
-                        Edit Color:
-                        <input
-                          name="color"
-                          type="text"
-                          placeholder="Color (Hexadecimal)"
-                        />
-                      </label>
-                      <input type="submit" />
-                  </form>
-                  </>
-              </Modal>
+              <center>
+              <button className="modal-button" onClick={this.openEditModal}>Edit {this.state.heldTileType}</button>
+              <button className="modal-button" onClick={this.openConfirmDeleteModal}>Delete {this.state.heldTileType}</button>
+              <button className="modal-button" onClick={this.closeMainModal}>Close</button>
+              </center>
             </>
-        
         </Modal>
+        <Modal 
+          isOpen={this.state.confirmDeleteModal}
+          className="main-modal-class"
+        >
+          <center>
+          <p className="general-heading">Are you sure you want to delete {this.state.heldTileType}? </p>
+          <button className="modal-button" onClick={this.handleDeleteTile}> Yes </button>
+          <button className="modal-button" onClick={this.closeConfirmDeleteModal}> No </button>
+          </center>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.editModal}
+          className="main-modal-class">
+          <h1 className="general-heading">Editing {this.state.heldTileType}</h1>
+            <>
+            <form onSubmit={this.handleSubmit}>
+              <center>
+                <input 
+                  name="text"
+                  type="text"
+                  placeholder="Text"
+                  className="modal-button"
+                />
+                {/*TODO: make color selection more user friendly */}
+                  <input
+                    name="color"
+                    type="text"
+                    placeholder="Color (Hexadecimal)"
+                    className="modal-button"
+                  />
+                <button type="submit" className="modal-button">Submit</button>
+                <button className="modal-button" onClick={this.closeEditModal}>Close</button>
+                </center>
+            </form>
+            </>
+          </Modal>
         <button disabled={ this.userIsOnBaseBoard() }
                 className="back-folder-button"
                 onClick={this.handleLastFolderButton}>
