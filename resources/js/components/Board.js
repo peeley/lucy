@@ -184,7 +184,8 @@ export class Board extends React.Component {
       }
     ).then( response => {
       this.setState({
-        configuringTile: false
+        configuringTile: false,
+        confirmDeleteModal: false
       });
     });
 
