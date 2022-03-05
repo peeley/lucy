@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
@@ -42,5 +43,63 @@ class BoardController extends Controller
     public function getBoard(Request $request, int $board_id)
     {
         return view('board', ['board_id' => $board_id]);
+    }
+
+    // FIXME make sure only owner of board can delete
+    public function deleteBoard(Request $request, int $board_id)
+    {
+        if (!$user = Auth::user()) {
+            return redirect('/login');
+        }
+
+        if (!$board = $user->boards->find($board_id)) {
+            return response('Board not found.', 404);
+        }
+
+        $board->delete();
+
+        return redirect('/home')->with('success', "{$board->name} deleted.");
+    }
+
+    public function createBoard()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        // FIXME we can create copies of boards with `Board::replicate`, but
+        // copying all the associated folders/words is insanely gnarly
+        $user->boards()->create([
+            'name' => 'Blank board',
+            'width' => 5,
+            'height' => 5,
+        ]);
+
+        return redirect('/home')->with('success', "Blank board created.");
+    }
+
+    public function editBoard(Request $request, int $board_id)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'height' => 'integer|required',
+            'width' => 'integer|required'
+        ]);
+
+        if (!$board = $user->boards()->find($board_id)) {
+            return response("Board not found.", 404);
+        }
+
+        $board->fill($validated)->save();
+
+        return redirect('/home')->with('success', 'Board updated.');
     }
 }
