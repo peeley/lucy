@@ -22,17 +22,13 @@ class TileContainer extends Model
         )->sortKeys()->values();
 
         $sorted_rows = $content_rows->map(
-            fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
+            function ($row) {
+                $sorted_row = $row->sortBy(fn ($item) => $item->pivot->board_x)->values();
+                return $sorted_row->map(fn ($item) => $item->toArray());
+            }
         );
 
-        // FIXME for some reason, tile rows get un-sorted after editing a tile
-        $expanded_sorted_contents = $sorted_rows->map(function ($row) {
-            return $row->map(function ($item) {
-                return $item->toArray();
-            })->sortKeys()->values();
-        });
-
-        return $expanded_sorted_contents->toArray();
+        return $sorted_rows->toArray();
     }
 
     public function createCopyForUser(User $user): TileContainer
