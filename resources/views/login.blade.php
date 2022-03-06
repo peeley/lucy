@@ -2,10 +2,16 @@
 <head>
   <title>Log in</title>
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 <body>
+  <div class="transition transition-2 is-active"></div>
+  
   <h1 style="padding: 20px">
-    <a href="/"><button class = "back-button">Back</button></a>
+  <form>
+    <button class="back-button" formaction="/">Back</button>
+  </form>
+  
   </h1>
   <center>
     <form action="/login" method="POST">
@@ -22,6 +28,7 @@
         </button></h1>
     </form>
   </center>
+  <script src="/js/view-transitions.js"></script>
 </body>
 
 </html>

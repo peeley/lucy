@@ -5,9 +5,11 @@
     <title>About Us</title>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/about-us.css">
+    <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 
 <body class="about-body">
+<div class="transition transition-2 is-active"></div>
     <div class="about-header">
         <h1>
             Spring 2022 <br>
@@ -54,6 +56,7 @@
             <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Media Queries</a></li>
         </ul>
     </div>
+    <script src="/js/view-transitions.js"></script>
 </body>
 
 </html>

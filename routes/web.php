@@ -29,7 +29,7 @@ Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPag
     ->name('settings')
     ->middleware(['auth']);
 Route::post('user-settings', [UserSettingsController::class, 'updateSettings'])->middleware(['auth']);
-    
+
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [LoginController::class, 'loginUser']);
@@ -42,13 +42,17 @@ Route::get('/home', [HomeController::class, 'index'])
     ->name('home')
     ->middleware(['auth']);
 
-// fetched by React and returns json, do not need views
-Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
+Route::delete('/boards/{board_id}', [BoardController::class, 'deleteBoard']);
+Route::put('/boards/{board_id}', [BoardController::class, 'editBoard']);
+Route::post('/boards', [BoardController::class, 'createBoard']);
 Route::redirect('/guest', '/boards/1'); // default board
+
+// fetched by React and returns json, do not need views
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
 Route::delete('/boards/{board_id}/tile/delete', [BoardController::class, 'deleteTileFromBoard']);
 Route::post('/boards/{board_id}/tile/edit', [BoardController::class, 'editTileFromBoard']);
+Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 
 Route::get('/words/{id}', [WordController::class, 'getWords']);
 Route::get('/words/user/{id}', [WordController::class, 'getUserWords']);

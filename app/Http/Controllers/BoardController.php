@@ -7,6 +7,7 @@ use App\Models\Word;
 use App\Models\User;
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
@@ -50,12 +51,12 @@ class BoardController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        if ($type == 'word'){
+        if ($type == 'word') {
             $tile = Word::find($tileId);
             $board->words()->detach($tile);
         }
 
-        if ($type == 'folder'){
+        if ($type == 'folder') {
             $tile = Folder::find($tileId);
             $board->folders()->detach($tile);
         }
@@ -68,30 +69,88 @@ class BoardController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        if($type == 'word'){
+        if ($type == 'word') {
             $tile = Word::find($tileId);
 
-            if($request->text != null){
+            if ($request->text != null) {
                 $tile->update(['text' => $request->text]);
             }
 
-            if($request->color != null){
+            if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
         }
 
-        if($type == 'folder'){
+        if ($type == 'folder') {
             $tile = Folder::find($tileId);
 
-            if($request->text != null){
+            if ($request->text != null) {
                 $tile->update(['name' => $request->text]);
             }
 
-            if($request->color != null){
+            if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
         }
 
         return response('tile edited');
+    }
+
+    // FIXME make sure only owner of board can delete
+    public function deleteBoard(Request $request, int $board_id)
+    {
+        if (!$user = Auth::user()) {
+            return redirect('/login');
+        }
+
+        if (!$board = $user->boards->find($board_id)) {
+            return response('Board not found.', 404);
+        }
+
+        $board->delete();
+
+        return redirect('/home')->with('success', "{$board->name} deleted.");
+    }
+
+    public function createBoard()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        // FIXME we can create copies of boards with `Board::replicate`, but
+        // copying all the associated folders/words is insanely gnarly
+        $user->boards()->create([
+            'name' => 'Blank board',
+            'width' => 5,
+            'height' => 5,
+        ]);
+
+        return redirect('/home')->with('success', "Blank board created.");
+    }
+
+    public function editBoard(Request $request, int $board_id)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect('/login');
+        }
+
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'height' => 'integer|required',
+            'width' => 'integer|required'
+        ]);
+
+        if (!$board = $user->boards()->find($board_id)) {
+            return response("Board not found.", 404);
+        }
+
+        $board->fill($validated)->save();
+
+        return redirect('/home')->with('success', 'Board updated.');
     }
 }
