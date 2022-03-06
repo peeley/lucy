@@ -25,6 +25,7 @@ class TileContainer extends Model
             fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
         );
 
+        // FIXME for some reason, tile rows get un-sorted after editing a tile
         $expanded_sorted_contents = $sorted_rows->map(function ($row) {
             return $row->map(function ($item) {
                 return $item->toArray();
@@ -32,5 +33,38 @@ class TileContainer extends Model
         });
 
         return $expanded_sorted_contents->toArray();
+    }
+
+    public function createCopyForUser(User $user): TileContainer
+    {
+        $replicant = $this->replicate()->save();
+
+        // there's not a `replicateMany` function so we have to replicate and
+        // save each model one-by-one, pretty inefficient :(
+        foreach ($this->words()->get() as $word) {
+            $word_copy = $word->replicate()->save();
+
+            $replicant->words()->attach($word_copy, [
+                'board_x' => $word->pivot->board_x,
+                'board_y' => $word->pivot->board_y,
+            ]);
+        }
+
+        foreach ($this->folders()->get() as $folder) {
+            $folder_copy = $folder->createCopy();
+
+            $replicant->folder()->attach($folder_copy, [
+                'board_x' => $word->pivot->board_x,
+                'board_y' => $word->pivot->board_y,
+            ]);
+        }
+
+        $replicant->save();
+
+        // need to reset eagerly loaded relations on copy
+        $replicant->words = collect([]);
+        $replicant->folders = collect([]);
+
+        return $replicant;
     }
 }
