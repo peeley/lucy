@@ -37,12 +37,14 @@ class TileContainer extends Model
 
     public function createCopyForUser(User $user): TileContainer
     {
-        $replicant = $this->replicate()->save();
+        $replicant = $this->replicate();
+        $replicant->save();
 
         // there's not a `replicateMany` function so we have to replicate and
         // save each model one-by-one, pretty inefficient :(
         foreach ($this->words()->get() as $word) {
-            $word_copy = $word->replicate()->save();
+            $word_copy = $word->replicate();
+            $word_copy->save();
 
             $replicant->words()->attach($word_copy, [
                 'board_x' => $word->pivot->board_x,
@@ -51,9 +53,9 @@ class TileContainer extends Model
         }
 
         foreach ($this->folders()->get() as $folder) {
-            $folder_copy = $folder->createCopy();
+            $folder_copy = $folder->createCopyForUser($user);
 
-            $replicant->folder()->attach($folder_copy, [
+            $replicant->folders()->attach($folder_copy, [
                 'board_x' => $word->pivot->board_x,
                 'board_y' => $word->pivot->board_y,
             ]);
