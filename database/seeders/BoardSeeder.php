@@ -523,11 +523,15 @@ class BoardSeeder extends Seeder
             5 => ['board_x' => 4, 'board_y' => 4]
         ]);
 
-        // !raw sql alert!
-        // postgres tracks the `id` col w/ an auto-incrementing int since we've
-        // manually provided all the ids, we need to update the auto-incrementer
-        // to the last id we provided so it properly generates the next one,
-        // otherwise it auto-generates id 1 and blows up
+        // !! raw sql alert !!
+        // usually, we can leave out the `id` param when creating models since
+        // postgres tracks what value the `id` col should be w/ an
+        // auto-incrementing int.  since we've manually provided all the ids,
+        // that auto-incrementing int never gets updated and stays at 1. we need
+        // to update the auto-incrementer to generate the last id we manually
+        // provided so it properly generates the next one, otherwise it
+        // auto-generates an id of 1 and blows up since we already have a
+        // word/folder w/ id 1.
         DB::update(DB::raw("ALTER SEQUENCE words_id_seq RESTART WITH 125;"));
         DB::update(DB::raw("ALTER SEQUENCE folders_id_seq RESTART WITH 26;"));
     }

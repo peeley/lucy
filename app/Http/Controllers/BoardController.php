@@ -107,6 +107,8 @@ class BoardController extends Controller
             return response('Board not found.', 404);
         }
 
+        $board->words()->detach();
+        $board->folders()->detach();
         $board->delete();
 
         return redirect('/home')->with('success', "{$board->name} deleted.");
@@ -120,13 +122,8 @@ class BoardController extends Controller
             return redirect('/login');
         }
 
-        // FIXME we can create copies of boards with `Board::replicate`, but
-        // copying all the associated folders/words is insanely gnarly
-        $user->boards()->create([
-            'name' => 'Blank board',
-            'width' => 5,
-            'height' => 5,
-        ]);
+        $default_copy = Board::find(1)->createCopyForUser($user);
+        $user->boards()->save($default_copy);
 
         return redirect('/home')->with('success', "Blank board created.");
     }

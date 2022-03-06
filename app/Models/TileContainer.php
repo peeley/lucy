@@ -44,7 +44,7 @@ class TileContainer extends Model
         // save each model one-by-one, pretty inefficient :(
         foreach ($this->words()->get() as $word) {
             $word_copy = $word->replicate();
-            $word_copy->save();
+            $user->words()->save($word_copy);
 
             $replicant->words()->attach($word_copy, [
                 'board_x' => $word->pivot->board_x,
@@ -54,18 +54,13 @@ class TileContainer extends Model
 
         foreach ($this->folders()->get() as $folder) {
             $folder_copy = $folder->createCopyForUser($user);
+            $user->folders()->save($folder);
 
             $replicant->folders()->attach($folder_copy, [
-                'board_x' => $word->pivot->board_x,
-                'board_y' => $word->pivot->board_y,
+                'board_x' => $folder->pivot->board_x,
+                'board_y' => $folder->pivot->board_y,
             ]);
         }
-
-        $replicant->save();
-
-        // need to reset eagerly loaded relations on copy
-        $replicant->words = collect([]);
-        $replicant->folders = collect([]);
 
         return $replicant;
     }
