@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BoardSeeder extends Seeder
 {
@@ -521,5 +522,13 @@ class BoardSeeder extends Seeder
             4 => ['board_x' => 3, 'board_y' => 4],
             5 => ['board_x' => 4, 'board_y' => 4]
         ]);
+
+        // !raw sql alert!
+        // postgres tracks the `id` col w/ an auto-incrementing int since we've
+        // manually provided all the ids, we need to update the auto-incrementer
+        // to the last id we provided so it properly generates the next one,
+        // otherwise it auto-generates id 1 and blows up
+        DB::update(DB::raw("ALTER SEQUENCE words_id_seq RESTART WITH 125;"));
+        DB::update(DB::raw("ALTER SEQUENCE folders_id_seq RESTART WITH 26;"));
     }
 }
