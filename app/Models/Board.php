@@ -22,6 +22,7 @@ class Board extends TileContainer
         'name',
         'height',
         'width',
+        'id',
         'contents' // defined by `getContentsAttribute`
     ];
 

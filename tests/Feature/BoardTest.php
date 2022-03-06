@@ -72,8 +72,10 @@ class BoardTest extends TestCase
                     'text' => $word->text,
                     'color' => $word->color,
                     'icon' => $word->icon,
+                    'id' => $word->id
                 ]]
-            ]
+                ],
+            'id' => $board->id,
         ];
 
         $this->assertEquals($expected_array, $board->toArray());
@@ -103,8 +105,10 @@ class BoardTest extends TestCase
                     'color' => $folder->color,
                     'icon' => $folder->icon,
                     'contents' => [],
+                    'id' => $folder->id,
                 ]
-            ]]
+            ]],
+            'id' => $board->id,
         ];
 
         $this->assertEquals($expectected_array, $board->toArray());
@@ -136,14 +140,17 @@ class BoardTest extends TestCase
                     'text' => $word->text,
                     'color' => $word->color,
                     'icon' => $word->icon,
+                    'id' => $word->id,
                 ]],
                 [[
                     'name' => $folder->name,
                     'color' => $folder->color,
                     'icon' => $folder->icon,
                     'contents' => [],
-                ]]
-            ]
+                    'id' => $folder->id,
+                ]],
+                ],
+            'id' => $board->id,
         ];
 
         $this->assertEquals($expected_array, $board->toArray());

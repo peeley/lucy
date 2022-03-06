@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\FolderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +29,7 @@ Route::get('/user-settings', [UserSettingsController::class, 'getUserSettingsPag
     ->name('settings')
     ->middleware(['auth']);
 Route::post('user-settings', [UserSettingsController::class, 'updateSettings'])->middleware(['auth']);
-    
+
 Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [LoginController::class, 'loginUser']);
@@ -49,6 +50,8 @@ Route::redirect('/guest', '/boards/1'); // default board
 
 // fetched by React and returns json, do not need views
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
+Route::delete('/boards/{board_id}/tile/delete', [BoardController::class, 'deleteTileFromBoard']);
+Route::post('/boards/{board_id}/tile/edit', [BoardController::class, 'editTileFromBoard']);
 Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
 
 Route::get('/words/{id}', [WordController::class, 'getWords']);
@@ -57,3 +60,6 @@ Route::get('/create-word', [WordController::class, 'index'])
     ->middleware(['auth']);
 Route::post('/create-word', [WordController::class, 'createWord'])
     ->middleware(['auth']);
+
+Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'deleteTileFromFolder']);
+Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);

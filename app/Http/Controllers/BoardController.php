@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Board;
+use App\Models\Word;
 use App\Models\User;
+use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,14 +37,63 @@ class BoardController extends Controller
 
         $sorted_board_tiles = $board->toArray();
 
-        // TODO retrieve board from database, replace placeholder
-        // should come up with a good way to recursively serialize folders
         return response()->json($sorted_board_tiles);
     }
 
     public function getBoard(Request $request, int $board_id)
     {
         return view('board', ['board_id' => $board_id]);
+    }
+
+    public function deleteTileFromBoard(Request $request, int $board_id)
+    {
+        $board = Board::find($board_id);
+        $type = $request->tileType;
+        $tileId = $request->tileId;
+
+        if ($type == 'word') {
+            $tile = Word::find($tileId);
+            $board->words()->detach($tile);
+        }
+
+        if ($type == 'folder') {
+            $tile = Folder::find($tileId);
+            $board->folders()->detach($tile);
+        }
+
+        return response('tile deleted');
+    }
+
+    public function editTileFromBoard(Request $request, int $board_id)
+    {
+        $type = $request->tileType;
+        $tileId = $request->tileId;
+
+        if ($type == 'word') {
+            $tile = Word::find($tileId);
+
+            if ($request->text != null) {
+                $tile->update(['text' => $request->text]);
+            }
+
+            if ($request->color != null) {
+                $tile->update(['color' => $request->color]);
+            }
+        }
+
+        if ($type == 'folder') {
+            $tile = Folder::find($tileId);
+
+            if ($request->text != null) {
+                $tile->update(['name' => $request->text]);
+            }
+
+            if ($request->color != null) {
+                $tile->update(['color' => $request->color]);
+            }
+        }
+
+        return response('tile edited');
     }
 
     // FIXME make sure only owner of board can delete

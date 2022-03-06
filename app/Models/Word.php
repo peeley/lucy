@@ -26,6 +26,7 @@ class Word extends Model
         'text',
         'icon',
         'color',
+        'id',
     ];
 
     public function user()

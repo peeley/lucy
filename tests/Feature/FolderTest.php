@@ -121,9 +121,11 @@ class FolderTest extends TestCase
                 [[
                     'text' => 'Hello',
                     'icon' => null,
-                    'color' => '#123456'
-                ]]
+                    'color' => '#123456',
+                    'id' => $word->id,
+                ]],
             ],
+            'id' => $folder->id,
         ];
 
         $this->assertEquals($expected_json, $actual_json);
@@ -160,16 +162,20 @@ class FolderTest extends TestCase
                                 'text' => 'oranges',
                                 'icon' => null,
                                 'color' => '#FFFFFF',
+                                'id' => $word->id,
                             ]]
                         ],
+                        'id' => $inner_folder->id,
                     ],
                     [
                         'text' => 'oranges',
                         'icon' => null,
                         'color' => '#FFFFFF',
+                        'id' => $word->id,
                     ]
                 ]
-            ]
+            ],
+            'id' => $outer_folder->id,
         ];
 
         $this->assertEquals($expected_json, $actual_json);

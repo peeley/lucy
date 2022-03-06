@@ -22,7 +22,8 @@ class Folder extends TileContainer
         'name',
         'color',
         'icon',
-        'contents'
+        'contents',
+        'id'
     ];
 
     // default values for these properties
