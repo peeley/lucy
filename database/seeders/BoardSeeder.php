@@ -23,6 +23,7 @@ class BoardSeeder extends Seeder
         ]);
         
         $default_color = '#b3e6cc';
+        $first_plural_color = '#ccffe6';
         
         $user->words()->createMany([
             ['id' => 1, 'text' => 'Hello', 'color' => '#e6ffe6'],
@@ -52,7 +53,7 @@ class BoardSeeder extends Seeder
                 ['id' => 123, 'text' => 'Hate', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => 25, 'name' => 'Emotions', 'color' => '#c61aff']
+                ['id' => 25, 'name' => 'Emotions', 'color' => $default_color]
             ]);
             $user->folders()->find(25)->words()->attach([
                 16 => ['board_x' => 1, 'board_y' => 1],
@@ -116,11 +117,11 @@ class BoardSeeder extends Seeder
                 18 => ['board_x' => 5, 'board_y' => 4]
             ]);
             $user->words()->createMany([
-                ['id' => 37, 'text' => 'We', 'color' => '#ccffe6'],
-                ['id' => 38, 'text' => 'Us', 'color' => '#ccffe6'],
-                ['id' => 39, 'text' => 'Our', 'color' => '#ccffe6'],
-                ['id' => 40, 'text' => 'Ours', 'color' => '#ccffe6'],
-                ['id' => 41, 'text' => 'Ourselves', 'color' => '#ccffe6']
+                ['id' => 37, 'text' => 'We', 'color' => $first_plural_color],
+                ['id' => 38, 'text' => 'Us', 'color' => $first_plural_color],
+                ['id' => 39, 'text' => 'Our', 'color' => $first_plural_color],
+                ['id' => 40, 'text' => 'Ours', 'color' => $first_plural_color],
+                ['id' => 41, 'text' => 'Ourselves', 'color' => $first_plural_color]
             ]);
             $user->folders()->find(6)->words()->attach([
                 37 => ['board_x' => 1, 'board_y' => 1],
@@ -182,7 +183,8 @@ class BoardSeeder extends Seeder
                 ['id' => 59, 'text' => 'Them', 'color' => '#9ae59a'],
                 ['id' => 60, 'text' => 'Their', 'color' => '#9ae59a'],
                 ['id' => 61, 'text' => 'Theirs', 'color' => '#9ae59a'],
-                ['id' => 62, 'text' => 'Themselves', 'color' => '#9ae59a']
+                ['id' => 62, 'text' => 'Themselves', 'color' => '#9ae59a'],
+                ['id' => 125, 'text' => 'Themself', 'color' => '#9ae59a']
             ]);
             $user->folders()->find(11)->words()->attach([
                 58 => ['board_x' => 1, 'board_y' => 1],
@@ -349,7 +351,7 @@ class BoardSeeder extends Seeder
                 ['id' => 96, 'text' => 'Fruit', 'color' => $default_color],
                 ['id' => 97, 'text' => 'Apple', 'color' => $default_color],
                 ['id' => 98, 'text' => 'Pear', 'color' => $default_color], 
-                ['id' => 112, 'text' => 'Bannana', 'color' => $default_color],
+                ['id' => 112, 'text' => 'Banana', 'color' => $default_color],
                 ['id' => 113, 'text' => 'Grapes', 'color' => $default_color],
                 ['id' => 114, 'text' => 'Peach', 'color' => $default_color],
                 ['id' => 115, 'text' => 'Plumb', 'color' => $default_color],
