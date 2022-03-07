@@ -180,7 +180,7 @@ class BoardTest extends TestCase
         $this->user->refresh();
 
         $this->assertEquals(1, $this->user->boards()->count());
-        $this->assertEquals(0, $this->user->folders()->get()->count());
-        $this->assertEquals(0, $this->user->words()->get()->count());
+        $this->assertEquals(1, $this->user->folders()->get()->count());
+        $this->assertEquals(1, $this->user->words()->get()->count());
     }
 }
