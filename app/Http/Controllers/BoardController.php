@@ -71,32 +71,23 @@ class BoardController extends Controller
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
-
-            if ($request->text != null) {
-                $tile->update(['text' => $request->text]);
-            }
-
-            if ($request->color != null) {
-                $tile->update(['color' => $request->color]);
-            }
-        }
-
-        if ($type == 'folder') {
+        } else {
             $tile = Folder::find($tileId);
-
-            if ($request->text != null) {
-                $tile->update(['name' => $request->text]);
-            }
-
-            if ($request->color != null) {
-                $tile->update(['color' => $request->color]);
-            }
         }
+
+        if ($request->text) {
+            $tile->text = $request->text;
+        }
+
+        if ($request->color) {
+            $tile->color = $request->color;
+        }
+
+        $tile->save();
 
         return response('tile edited');
     }
 
-    // FIXME make sure only owner of board can delete
     public function deleteBoard(Request $request, int $board_id)
     {
         if (!$user = Auth::user()) {

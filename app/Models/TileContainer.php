@@ -50,7 +50,7 @@ class TileContainer extends Model
 
         foreach ($this->folders()->get() as $folder) {
             $folder_copy = $folder->createCopyForUser($user);
-            $user->folders()->save($folder);
+            $user->folders()->save($folder_copy);
 
             $replicant->folders()->attach($folder_copy, [
                 'board_x' => $folder->pivot->board_x,
