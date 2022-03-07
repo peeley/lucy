@@ -301,7 +301,7 @@ class BoardSeeder extends Seeder
             $user->words()->createMany([
                 ['id' => 5, 'text' => 'Food', 'color' => '#e6ffcc'],
                 ['id' => 94, 'text' => 'Pizza', 'color' => $default_color],
-                ['id' => 95, 'text' => 'Hamburger', 'color' => '#ffcc66'],
+                ['id' => 95, 'text' => 'Hamburger', 'color' => '#fde4g9e'],
                 ['id' => 99, 'text' => 'Chicken nuggets', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
@@ -347,7 +347,7 @@ class BoardSeeder extends Seeder
             ]);
             //Fruit
             $user->words()->createMany([
-                ['id' => 6, 'text' => 'Orange', 'color' => '#e24908'],
+                ['id' => 6, 'text' => 'Orange', 'color' => '#ffa024'],
                 ['id' => 96, 'text' => 'Fruit', 'color' => $default_color],
                 ['id' => 97, 'text' => 'Apple', 'color' => $default_color],
                 ['id' => 98, 'text' => 'Pear', 'color' => $default_color], 
