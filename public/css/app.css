@@ -161,7 +161,6 @@ body
 .default-tile {
     margin-left: auto;
     margin-right: auto;
-    background-color: mediumturquoise;
     border: 2px solid black;
     border-radius: 5px;
     height: 100px;
@@ -177,7 +176,7 @@ body
     border-radius: 5px;
     width: 100px;
     height: 100px;
-    background-color:cadetblue;
+    background-color:#56a495;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
@@ -189,18 +188,6 @@ body
 .default-tile:active:hover {
     box-shadow: inset 0 0 100px 0 black;
     color: white;
-}
-.empty-tile {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgb(151, 212, 210);
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 20%;
-    width: 15%;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .sentence-bar {
     margin-left: auto;
@@ -217,7 +204,7 @@ body
 .sentence-backspace {
     margin-left: auto;
     margin-right: auto;
-    background-color: lightcoral;
+    background-color: #6c6fff;
     border: 2px solid black;
     border-radius: 5px;
     height: 100px;
@@ -229,7 +216,7 @@ body
 .sentence-clear {
     margin-left: auto;
     margin-right: auto;
-    background-color:darkkhaki;
+    background-color:#d0f0ff;
     border: 2px solid black;
     border-radius: 5px;
     height: 100px;
@@ -241,23 +228,11 @@ body
 .sentence-speak {
     margin-left: auto;
     margin-right: auto;
-    background-color: lightgreen;
+    background-color: #90eeac;
     border: 2px solid black;
     border-radius: 5px;
     height: 100px;
     width: 100px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.empty-shortcut {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: cornflowerblue;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 15%;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
