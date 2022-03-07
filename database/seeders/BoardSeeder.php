@@ -532,7 +532,12 @@ class BoardSeeder extends Seeder
         // provided so it properly generates the next one, otherwise it
         // auto-generates an id of 1 and blows up since we already have a
         // word/folder w/ id 1.
-        DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
-        DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
+        if (env('DB_CONNECTION') === 'sqlite') { // for CI runs
+            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM words) WHERE name='words'");
+            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM folders) WHERE name='folders'");
+        } else { // for postgres
+            DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
+            DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
+        }
     }
 }
