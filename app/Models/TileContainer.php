@@ -22,15 +22,42 @@ class TileContainer extends Model
         )->sortKeys()->values();
 
         $sorted_rows = $content_rows->map(
-            fn ($row) => $row->sortBy(fn ($item) => $item->pivot->board_x)
+            function ($row) {
+                $sorted_row = $row->sortBy(fn ($item) => $item->pivot->board_x)->values();
+                return $sorted_row->map(fn ($item) => $item->toArray());
+            }
         );
 
-        $expanded_sorted_contents = $sorted_rows->map(function ($row) {
-            return $row->map(function ($item) {
-                return $item->toArray();
-            })->sortKeys()->values();
-        });
+        return $sorted_rows->toArray();
+    }
 
-        return $expanded_sorted_contents->toArray();
+    public function createCopyForUser(User $user): TileContainer
+    {
+        $replicant = $this->replicate();
+        $replicant->save();
+
+        // there's not a `replicateMany` function so we have to replicate and
+        // save each model one-by-one, pretty inefficient :(
+        foreach ($this->words()->get() as $word) {
+            $word_copy = $word->replicate();
+            $user->words()->save($word_copy);
+
+            $replicant->words()->attach($word_copy, [
+                'board_x' => $word->pivot->board_x,
+                'board_y' => $word->pivot->board_y,
+            ]);
+        }
+
+        foreach ($this->folders()->get() as $folder) {
+            $folder_copy = $folder->createCopyForUser($user);
+            $user->folders()->save($folder_copy);
+
+            $replicant->folders()->attach($folder_copy, [
+                'board_x' => $folder->pivot->board_x,
+                'board_y' => $folder->pivot->board_y,
+            ]);
+        }
+
+        return $replicant;
     }
 }
