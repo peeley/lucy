@@ -71,12 +71,16 @@ class BoardController extends Controller
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
+
+            if ($request->text) {
+                $tile->text = $request->text;
+            }
         } else {
             $tile = Folder::find($tileId);
-        }
 
-        if ($request->text) {
-            $tile->text = $request->text;
+            if ($request->text) {
+                $tile->name = $request->text;
+            }
         }
 
         if ($request->color) {
