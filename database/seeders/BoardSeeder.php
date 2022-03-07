@@ -532,7 +532,7 @@ class BoardSeeder extends Seeder
         // provided so it properly generates the next one, otherwise it
         // auto-generates an id of 1 and blows up since we already have a
         // word/folder w/ id 1.
-        DB::update(DB::raw("SELECT SETVAL('words_id_seq', 125);"));
-        DB::update(DB::raw("SELECT SETVAL('folders_id_seq', 26);"));
+        DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
+        DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
     }
 }
