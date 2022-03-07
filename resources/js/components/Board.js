@@ -186,19 +186,20 @@ export class Board extends React.Component {
       this.setState({
         configuringTile: false,
         confirmDeleteModal: false
+      }, () => {
+        // retrieving board from backend again to forcefully refresh the page; would
+        // be more userfriendly to edit the boardstack instead
+        axios.get(`/boards/${this.props.board_id}/tiles`)
+          .then( response => {
+            this.setState({
+              currentBoard: response.data,
+              boardStack: [response.data],
+              loading: false,
+              folderPath: [response.data.name]
+            });
+          });
       });
     });
-
-    //retrieving board from backend again to forcefully refresh the page; would be more userfriendly to edit the boardstack instead
-    axios.get(`/boards/${this.props.board_id}/tiles`)
-      .then( response => {
-        this.setState({
-          currentBoard: response.data,
-          boardStack: [response.data],
-          loading: false,
-          folderPath: [response.data.name]
-        });
-      });
   }
 
   openConfirmDeleteModal = () => {
