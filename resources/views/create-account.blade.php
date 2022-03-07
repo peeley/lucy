@@ -1,17 +1,19 @@
 <html>
   <head>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="@if (session('isDark')) /css/app-dark.css @else /css/app.css @endif">
     <link rel="stylesheet" href="/css/view-transitions.css">
   </head>
   <body>
-    <div class="transition transition-2 is-active"></div>
+  <div class="transition transition-2 is-active"></div>
     <h1 class="general-heading">Create Your Account</h1>
     <h2 style="padding: 20px">
       <form>
         <button class="back-button" formaction="/">Back</button>
       </form>
     </h2>
-    <form action="/create-account" method="POST">
+  @include('layouts.includes.darkThemeToggle')
+
+  <form action="/create-account" method="POST">
       @csrf
 
       @error('name')

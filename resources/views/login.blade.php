@@ -1,17 +1,18 @@
 <html>
 <head>
-  <title>Log in</title>
-  <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/view-transitions.css">
+    @include('layouts.includes.header')
+    <title>Log in</title>
 </head>
 <body>
+@include('layouts.includes.darkThemeToggle')
+
   <div class="transition transition-2 is-active"></div>
-  
+
   <h1 style="padding: 20px">
   <form>
     <button class="back-button" formaction="/">Back</button>
   </form>
-  
+
   </h1>
   <center>
     <form action="/login" method="POST">

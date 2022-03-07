@@ -2,9 +2,8 @@
 <html>
 
 <head>
+    @include('layouts.includes.header')
     <title>Welcome to Lucy!</title>
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 <body class = "welcome-body">
     <div class="transition transition-2 is-active"></div>
@@ -14,6 +13,8 @@
     </div>
     <br>
     <br>
+
+    @include('layouts.includes.darkThemeToggle')
     <div>
         <form>
             <button class="welcome-button" formaction="/login">Log in</button>

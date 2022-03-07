@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include('layouts.includes.header')
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 <!-- TODO: user should be able navigate to this page from the create word shortcut/button, and the back button needs to keep track of where we came from. its set to home for now.-->

@@ -1,9 +1,11 @@
 <html>
   <head>
     <title>Lucy - Home</title>
+      @include('layouts.includes.header')
   </head>
   <body>
-    <p>You are logged in as {{ $name }}.</p>
+  @include('layouts.includes.darkThemeToggle')
+  <p>You are logged in as {{ $name }}.</p>
     <a href="/logout">Logout</a>
     <a href="/user-settings">Settings</a>
 

@@ -13,7 +13,7 @@
     <div class="about-header">
         <h1>
             Spring 2022 <br>
-            CS 426 Senior Project 
+            CS 426 Senior Project
         </h1>
         <h1>Project Lucy</h1>
         <h3>
@@ -23,7 +23,7 @@
         <h4>
             Team 25: <i>Eloisa Burton, Elizabeth Schuon, Elvis Vong, Noah Snelson, Mehar Mangat</i> <br>
             Teaching Team: <i>David Feil-Seifer, Devrin Lee, Vinh Le, Yifan Zhang</i> <br>
-            Advisor: <i>Emily Hand</i> 
+            Advisor: <i>Emily Hand</i>
         </h4>
     </div>
     <div class="about-main">
@@ -42,7 +42,7 @@
             This will all be integrated with the ability to make custom tiles.
             These tiles could be a single word, a phrase, or a folder that contains other words, phrases, or folders.
             Additionally, the application would feature guided use that instructs users on how to use the application rather than going through tutorials or memorizing functionality.
-        </p>        
+        </p>
         <form>
             <button class="welcome-button" formaction="/">Go to Project Lucy</button>
         </form>
