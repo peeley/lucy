@@ -126,10 +126,10 @@ export class Board extends React.Component {
   }
   //_onHoldStart and _onHoldEnd borrowed from: https://www.youtube.com/watch?v=A95mIE2HdcY
   _onHoldStart = (tileType, tileId, tileX, tileY) => {
-      if (this.props.board_id === 1) {
-        //return;
+      if (this.props.board_id == '1') {
+        return;
       }
-      //console.log(tileId);
+
       this.setState({
         isHoldingTile: true,
         activeHoldTimeoutID: setTimeout(() => {
@@ -148,8 +148,8 @@ export class Board extends React.Component {
     }
 
   _onHoldEnd = () => {
-    if (this.props.board_id === 1) {
-      //return;
+    if (this.props.board_id === '1') {
+      return;
     }
 
     this.setState({
