@@ -41,8 +41,8 @@ class BoardSeeder extends Seeder
             ['id' => 7, 'text' => 'Yes', 'color' => '#ccffcc'],
             ['id' => 8, 'text' => 'No', 'color' => '#ffcccc'],
             ['id' => 10, 'text' => 'Talk', 'color' => '#ffecb3'],
-            ['id' => 11, 'text' => 'Okay', 'color' => '#eeffe6']
-
+            ['id' => 11, 'text' => 'Okay', 'color' => '#eeffe6'],
+            ['id' => 1000, 'text' => '', 'color' => $default_color]
         ]);
 
         //Emotions
@@ -507,7 +507,13 @@ class BoardSeeder extends Seeder
 
             124 => ['board_x' => 1, 'board_y' => 3]
         ]);
-
+        //toys
+        $user->words()->createMany([
+            ['id' => 126, 'text' => 'Toy', 'color' => $default_color],
+            ['id' => 127, 'text' => 'Ball', 'color' => $default_color],
+            ['id' => 128, 'text' => 'Block', 'color' => $default_color],
+            ['id' => 129, 'text' => 'Doll', 'color' => $default_color]
+        ]);
 
         $board->words()->attach([
             1 => ['board_x' => 1, 'board_y' => 1],
