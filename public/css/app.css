@@ -27,9 +27,11 @@ button:active:hover { /* Default click/touch hold effect*/
     background-color: black;
 }
 .back-button {
-    width: 100px;
-    height: 80px;
+    width: 110px;
+    height: 15%;
     font-size: large;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 .general-heading {
     text-align: center;
@@ -176,10 +178,12 @@ button:active:hover { /* Default click/touch hold effect*/
 }
 .back-folder-button{
     width: 100px;
-    height: 100px;
+    height: 15%;
     background-color:#56a495;
     text-align: center;
     font-size: larger;
+    vertical-align: top;
+    margin-right: 15px;
 }
 .sentence-bar {
     margin-left: auto;
@@ -189,6 +193,7 @@ button:active:hover { /* Default click/touch hold effect*/
     border-radius: 5px;
     width: 75%;
     height: 15%;
+    margin-right: 15px;
     text-align: center;
     font-size: larger;
 }
@@ -198,10 +203,14 @@ button:active:hover { /* Default click/touch hold effect*/
     background-color: #6c6fff;
     border: 2px solid black;
     border-radius: 5px;
-    height: 100px;
+    height: 15%;
     width: 110px;
     text-align: center;
     font-size: larger;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 .sentence-clear {
     margin-left: auto;
@@ -209,10 +218,14 @@ button:active:hover { /* Default click/touch hold effect*/
     background-color:#d0f0ff;
     border: 2px solid black;
     border-radius: 5px;
-    height: 100px;
+    height: 15%;
     width: 110px;
     text-align: center;
     font-size: larger;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 .sentence-speak {
     margin-left: auto;
@@ -220,21 +233,12 @@ button:active:hover { /* Default click/touch hold effect*/
     background-color: #90eeac;
     border: 2px solid black;
     border-radius: 5px;
-    height: 100px;
+    height: 15%;
     width: 100px;
     text-align: center;
     font-size: larger;
-}
-.user-home-buttons { /* Currently unused? */
-    margin-left: auto;
-    margin-right: auto;
-    background-color: lightgoldenrodyellow;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 20%;
-    text-align: center;
-    font-size: larger;
+    display: inline-block;
+    vertical-align: top; 
 }
 .guest-default-board {
     margin-left: auto;
@@ -274,8 +278,7 @@ button:active:hover { /* Default click/touch hold effect*/
     border-radius: 5px;
     border: 2px solid black;
 }
-.main-modal-overlay
-{
+.main-modal-overlay {
     position: fixed;
     top: 50%;
     left: 50%;
