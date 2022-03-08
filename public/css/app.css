@@ -7,8 +7,7 @@
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
-body
-{
+body {
     background-color: lightsteelblue; /* Default body background color */
 }
 button { /* NOT the same as board tiles */
@@ -32,8 +31,7 @@ button:active:hover { /* Default click/touch hold effect*/
     height: 80px;
     font-size: large;
 }
-.general-heading
-{
+.general-heading {
     text-align: center;
     padding: 2%;
 }
@@ -46,15 +44,13 @@ button:active:hover { /* Default click/touch hold effect*/
     margin-right: auto;
     font-size: larger;
 }
-.create-account-input
-{
+.create-account-input {
     height: 10%;
     width: 30%;
     border-radius: 5px;
     text-align: center;
 }
-#create-account-button
-{
+#create-account-button {
     height: 12%;
     width: 15%;
 }
@@ -63,8 +59,7 @@ button:active:hover { /* Default click/touch hold effect*/
 /*=====================================================*/
 /*                     Settings CSS                    */
 /*=====================================================*/
-.settings-button
-{
+.settings-button {
     margin-left: auto;
     margin-right: auto;
     height: 100px;
@@ -72,8 +67,7 @@ button:active:hover { /* Default click/touch hold effect*/
     text-align: center;
     font-size: larger;
 }
-.form-popup
-{
+.form-popup {
     display: none;
     text-align: center;
     border: solid grey;
@@ -83,8 +77,7 @@ button:active:hover { /* Default click/touch hold effect*/
     margin-left: auto;
     margin-right: auto;
 }
-.update-settings-button /*not actually a button element so need to keep some button css*/
-{
+.update-settings-button { /*not actually a button element so need to keep some button css*/
     background-color: var(--default-button-color);
     border-radius: 5px;
     border: 2px solid black;
@@ -92,8 +85,7 @@ button:active:hover { /* Default click/touch hold effect*/
     width: 70%;
     font-size: larger;
 }
-.close-settings-button
-{
+.close-settings-button {
     height: 50px;
     width: 70%;
     font-size: larger;
@@ -103,6 +95,20 @@ button:active:hover { /* Default click/touch hold effect*/
 /*=====================================================*/
 /*                     Login CSS                       */
 /*=====================================================*/
+#login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    min-width: 410px;
+    min-height: 50vh;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 20px 5px grey;
+}
 .credentials-input {
     background-color:ivory; 
     border-radius: 5px;
