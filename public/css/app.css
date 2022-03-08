@@ -285,16 +285,14 @@ button:active:hover { /* Default click/touch hold effect*/
     width: 100%;
     transform: translate(-50%, -50%);
 }
-.modal-button
-{
+.modal-button {
     height: 50px;
     width: 100px;
     font-size: larger;
     text-align: center;
     vertical-align: top;
 }
-.edit-modal-class
-{
+.edit-modal-class {
     position: fixed;
     top: 50%;
     left: 50%;
