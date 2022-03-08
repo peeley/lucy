@@ -52,13 +52,11 @@ class BoardController extends Controller
         $tileId = $request->tileId;
 
         if ($type == 'word') {
-            $tile = Word::find($tileId);
-            $board->words()->detach($tile);
+            $board->words()->detach($tileId);
         }
 
         if ($type == 'folder') {
-            $tile = Folder::find($tileId);
-            $board->folders()->detach($tile);
+            $board->folders()->detach($tileId);
         }
 
         return response('tile deleted');
