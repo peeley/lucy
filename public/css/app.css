@@ -9,9 +9,9 @@ html {
 }
 body
 {
-    background-color: lightsteelblue;
+    background-color: lightsteelblue; /* Default body background color */
 }
-button {
+button { /* NOT the same as board tiles */
     border:2px solid black;
     border-radius: 5px;
     background-color: var(--default-button-color);
@@ -19,12 +19,12 @@ button {
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
 }
-button:hover {
+button:hover { /* Default hover effect */
     box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
     color: white;
     font-size: large;
 }
-button:active:hover {
+button:active:hover { /* Default click/touch hold effect*/
     background-color: black;
 }
 .back-button {
@@ -40,23 +40,23 @@ button:active:hover {
 /*=====================================================*/
 /*                 Create Account CSS                  */
 /*=====================================================*/
-.create-account-input-button
-{
+.create-account {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 10%;
-    width: 30%;
     font-size: larger;
 }
-.create-account-button
+.create-account-input
 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: 10%;
+    width: 30%;
+    border-radius: 5px;
+    text-align: center;
+}
+#create-account-button
+{
     height: 12%;
     width: 15%;
-    font-size: larger;
 }
 
 
@@ -219,7 +219,7 @@ button:active:hover {
     text-align: center;
     font-size: larger;
 }
-.user-home-buttons {
+.user-home-buttons { /* Currently unused? */
     margin-left: auto;
     margin-right: auto;
     background-color: lightgoldenrodyellow;
