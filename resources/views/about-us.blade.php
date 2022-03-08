@@ -2,10 +2,10 @@
 <html>
 
 <head>
+    @include('layouts.includes.header')
+    @include('layouts.includes.darkThemeToggle')
+    <link rel="stylesheet" href="@if (session('isDark')) /css/about-us-dark.css @else /css/about-us.css @endif">
     <title>About Us</title>
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/about-us.css">
-    <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 
 <body class="about-body">
