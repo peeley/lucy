@@ -2,6 +2,7 @@
 <head>
   <title>Log in</title>
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 <body>

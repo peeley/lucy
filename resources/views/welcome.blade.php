@@ -4,6 +4,7 @@
 <head>
     <title>Welcome to Lucy!</title>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/welcome.css">
     <link rel="stylesheet" href="/css/view-transitions.css">
 </head>
 <body class = "welcome-body">
