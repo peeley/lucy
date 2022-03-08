@@ -175,12 +175,13 @@ body
 .back-folder-button{
     border-radius: 5px;
     width: 100px;
-    height: 100px;
+    height: 15%;
     background-color:#56a495;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
     vertical-align: top;
+    margin-right: 15px;
 }
 .default-tile:hover {
     box-shadow: inset 0 0 10px 0 black;
@@ -196,9 +197,8 @@ body
     background-color: ivory;
     border: 2px solid black;
     border-radius: 5px;
-    width: 75%;
+    width: 60%;
     height: 15%;
-    margin-left: 15px;
     margin-right: 15px;
     text-align: center;
     font-size: larger;
@@ -219,6 +219,7 @@ body
     font-family: Arial, Helvetica, sans-serif;
     display: inline-block;
     vertical-align: top;
+    margin-right: 15px;
 }
 .sentence-clear {
     margin-left: auto;
@@ -226,11 +227,15 @@ body
     background-color:#d0f0ff;
     border: 2px solid black;
     border-radius: 5px;
-    height: 100px;
+    height: 15%;
     width: 110px;
     text-align: center;
     font-size: larger;
     font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    
 }
 .sentence-speak {
     margin-left: auto;
