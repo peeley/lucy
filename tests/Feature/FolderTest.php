@@ -118,7 +118,9 @@ class FolderTest extends TestCase
             'color' => '#FFFFFF',
             'icon' => null,
             'contents' => [
-                [[
+                ['blank', 'blank', 'blank', 'blank', 'blank'],
+                ['blank', 'blank', 'blank', 'blank', 'blank'],
+                ['blank', 'blank', 'blank', 'blank', [
                     'text' => 'Hello',
                     'icon' => null,
                     'color' => '#123456',
@@ -152,13 +154,18 @@ class FolderTest extends TestCase
             'color' => '#FFFFFF',
             'icon' => null,
             'contents' => [
+                ['blank', 'blank', 'blank'],
                 [
                     [
                         'name' => 'orange foods',
                         'color' => '#FFFFFF',
                         'icon' => null,
                         'contents' => [
-                            [[
+                            ['blank', 'blank', 'blank', 'blank', 'blank'],
+                            ['blank', 'blank', 'blank', 'blank', 'blank'],
+                            ['blank', 'blank', 'blank', 'blank', 'blank'],
+                            ['blank', 'blank', 'blank', 'blank', 'blank'],
+                            ['blank', 'blank', 'blank', 'blank', [
                                 'text' => 'oranges',
                                 'icon' => null,
                                 'color' => '#FFFFFF',
@@ -166,7 +173,7 @@ class FolderTest extends TestCase
                             ]]
                         ],
                         'id' => $inner_folder->id,
-                    ],
+                    ], 'blank',
                     [
                         'text' => 'oranges',
                         'icon' => null,

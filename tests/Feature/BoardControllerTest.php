@@ -60,7 +60,10 @@ class BoardControllerTest extends TestCase
 
     public function test_user_can_get_board_tiles()
     {
-        $board = Board::factory()->for($this->user)->create();
+        $board = Board::factory()->for($this->user)->create([
+            'width' => 3,
+            'height' => 2
+        ]);
 
         $words = Word::factory()
             ->for($this->user)
@@ -92,8 +95,8 @@ class BoardControllerTest extends TestCase
             'width' => $board->width,
             'height' => $board->height,
             'contents' => [
-                [$folders[0]->toArray(), $words[4]->toArray()],
-                [$folders[1]->toArray()]
+                [$folders[0]->toArray(), 'blank', $words[4]->toArray()],
+                [$folders[1]->toArray(), 'blank', 'blank']
             ]
         ]);
     }

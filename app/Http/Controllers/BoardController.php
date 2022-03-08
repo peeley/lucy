@@ -52,16 +52,31 @@ class BoardController extends Controller
         $tileId = $request->tileId;
 
         if ($type == 'word') {
-            $tile = Word::find($tileId);
-            $board->words()->detach($tile);
+            $board->words()->detach($tileId);
         }
 
         if ($type == 'folder') {
-            $tile = Folder::find($tileId);
-            $board->folders()->detach($tile);
+            $board->folders()->detach($tileId);
         }
 
         return response('tile deleted');
+    }
+
+    public function addTileToBoard(Request $request, int $board_id)
+    {
+        $board = Board::find($board_id);
+
+        $word = $board->user()->first()->words()->create([
+            'text' => $request->get('text'),
+            'color' => $request->get('color')
+        ]);
+
+        $board->words()->attach($word->id, [
+            'board_x' => $request->get('board_x'),
+            'board_y' => $request->get('board_y'),
+        ]);
+
+        return response('word created.');
     }
 
     public function editTileFromBoard(Request $request, int $board_id)

@@ -20,14 +20,19 @@ export class Board extends React.Component {
       heldTileColumn: null,
       heldTileRow: null,
       confirmDeleteModal: false,
-      editModal: false
+      editModal: false,
+      createModal: false
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
 
   }
 
   componentDidMount = () => {
+    this.fetchBoardTiles();
+  }
+
+  fetchBoardTiles = () => {
     axios.get(`/boards/${this.props.board_id}/tiles`)
       .then( response => {
         this.setState({
@@ -97,13 +102,15 @@ export class Board extends React.Component {
     return this.state.currentBoard.contents.map( (row, rowIndex) =>
       <tr>
       { row.map( (tile, columnIndex) => {
-        const tileType = tile.contents ? 'folder' : 'word';
-        
+        const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
+
         return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
-            onClick={tile.contents
-                     ? () => this.handleFolderClick(tile, tile.name)
-                     : () => this.handleWordClick(tile.text)}
+                   onClick={tileType == 'blank'
+                            ? () => {}
+                            : (tile.contents
+                              ? () => this.handleFolderClick(tile, tile.name)
+                              : () => this.handleWordClick(tile.text))}
             onMouseDown={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
             onTouchStart={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
             onMouseUp={this._onHoldEnd}
@@ -112,7 +119,7 @@ export class Board extends React.Component {
             onTouchEnd={this._onHoldEnd}
             onTouchCancel={this._onHoldEnd}
         >
-          {(tile.text ?? tile.name) + ' '}
+          {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
         </td>
       })}
       </tr>
@@ -135,7 +142,8 @@ export class Board extends React.Component {
         activeHoldTimeoutID: setTimeout(() => {
             if (this.state.isHoldingTile) {
               this.setState({
-                configuringTile: true,
+                configuringTile: tileType != 'blank',
+                createModal: tileType == 'blank',
                 heldTileId: tileId,
                 heldTileType: tileType,
                 heldTileRow: tileY,
@@ -172,33 +180,19 @@ export class Board extends React.Component {
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
 
-    axios.delete(`/${parentType}/${parentId}/tile/delete`,
-      {
-        data:
-        {
-          tileType: this.state.heldTileType,
-          tileId: this.state.heldTileId,
-          boardX: this.state.heldTileColumn,
-          boardY: this.state.heldTileRow
-        }
+    // for DELETE calls only w/ axios, need to supply `data` key explicitly
+    axios.delete(`/${parentType}/${parentId}/tile/delete`, {
+      data: {
+        tileType: this.state.heldTileType,
+        tileId: this.state.heldTileId,
+        boardX: this.state.heldTileColumn,
+        boardY: this.state.heldTileRow
       }
-    ).then( response => {
+    }).then( () => {
       this.setState({
         configuringTile: false,
         confirmDeleteModal: false
-      }, () => {
-        // retrieving board from backend again to forcefully refresh the page; would
-        // be more userfriendly to edit the boardstack instead
-        axios.get(`/boards/${this.props.board_id}/tiles`)
-          .then( response => {
-            this.setState({
-              currentBoard: response.data,
-              boardStack: [response.data],
-              loading: false,
-              folderPath: [response.data.name]
-            });
-          });
-      });
+      }, this.fetchBoardTiles);
     });
   }
 
@@ -232,7 +226,13 @@ export class Board extends React.Component {
     })
   }
 
-  handleSubmit = (event) => {
+  closeCreateModal = () => {
+    this.setState({
+      createModal: false
+    });
+  }
+
+  handleEditSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
       ? 'boards'
@@ -241,34 +241,43 @@ export class Board extends React.Component {
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
 
     axios.post(`/${parentType}/${parentId}/tile/edit`, {
-      text : event.target.text.value,
-      color : event.target.color.value,
-      tileId : this.state.heldTileId,
-      tileType : this.state.heldTileType
-    }).then( response => {
+      text: event.target.text.value,
+      color: event.target.color.value,
+      tileId: this.state.heldTileId,
+      tileType: this.state.heldTileType
+    }).then( () => {
       this.setState({
         configuringTile: false,
         editModal: false
-      }, () => {
-        // retrieving board from backend again to forcefully refresh the page; would
-        // be more userfriendly to edit the boardstack instead
-        axios.get(`/boards/${this.props.board_id}/tiles`)
-          .then( response => {
-            this.setState({
-              currentBoard: response.data,
-              boardStack: [response.data],
-              loading: false,
-              folderPath: [response.data.name]
-            });
-          });
-      });
+      }, this.fetchBoardTiles);
+    });
+  }
+
+  handleCreateSubmit = (event) => {
+    event.preventDefault()
+    const parentType = this.state.folderPath.length === 1
+      ? 'boards'
+      : 'folders';
+
+    const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+
+    axios.post(`/${parentType}/${parentId}/tiles`, {
+      text: event.target.text.value,
+      color: event.target.color.value,
+      board_x: this.state.heldTileColumn + 1,
+      board_y: this.state.heldTileRow + 1
+    }).then( () => {
+      this.setState({
+        configuringTile: false,
+        createModal: false
+      }, this.fetchBoardTiles);
     });
   }
 
   render() {
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
-    //TODO: instead of root, get the folder name assigned by the user.
+
     return (
       <div id="board-container">
         <Modal 
@@ -276,50 +285,70 @@ export class Board extends React.Component {
           className="main-modal-class"
         >
           <h1 className="general-heading">Configure {this.state.heldTileType}</h1>
-            <>
-              <center>
+            <center>
               <button className="modal-button" onClick={this.openEditModal}>Edit {this.state.heldTileType}</button>
               <button className="modal-button" onClick={this.openConfirmDeleteModal}>Delete {this.state.heldTileType}</button>
               <button className="modal-button" onClick={this.closeMainModal}>Close</button>
-              </center>
-            </>
+            </center>
         </Modal>
         <Modal 
           isOpen={this.state.confirmDeleteModal}
           className="main-modal-class"
         >
           <center>
-          <p className="general-heading">Are you sure you want to delete {this.state.heldTileType}? </p>
-          <button className="modal-button" onClick={this.handleDeleteTile}> Yes </button>
-          <button className="modal-button" onClick={this.closeConfirmDeleteModal}> No </button>
+            <p className="general-heading">Are you sure you want to delete {this.state.heldTileType}? </p>
+            <button className="modal-button" onClick={this.handleDeleteTile}> Yes </button>
+            <button className="modal-button" onClick={this.closeConfirmDeleteModal}> No </button>
           </center>
         </Modal>
         <Modal
           isOpen={this.state.editModal}
           className="main-modal-class">
           <h1 className="general-heading">Editing {this.state.heldTileType}</h1>
-            <>
-            <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleEditSubmit}>
+            <center>
+              <input
+                name="text"
+                type="text"
+                placeholder="Text"
+                className="modal-button"
+              />
+              {/*TODO: make color selection more user friendly */}
+                <input
+                  name="color"
+                  type="text"
+                  placeholder="Color (Hexadecimal)"
+                  className="modal-button"
+                />
+              <button type="submit" className="modal-button">Submit</button>
+              <button className="modal-button" onClick={this.closeEditModal}>Close</button>
+            </center>
+          </form>
+        </Modal>
+        <Modal
+          isOpen={this.state.createModal}
+          className="main-modal-class">
+          <h1 className="general-heading">Create New Word</h1>
+            <form onSubmit={this.handleCreateSubmit}>
               <center>
-                <input 
+                <input
                   name="text"
                   type="text"
                   placeholder="Text"
                   className="modal-button"
                 />
                 {/*TODO: make color selection more user friendly */}
-                  <input
-                    name="color"
-                    type="text"
-                    placeholder="Color (Hexadecimal)"
-                    className="modal-button"
-                  />
-                <button type="submit" className="modal-button">Submit</button>
-                <button className="modal-button" onClick={this.closeEditModal}>Close</button>
-                </center>
+                <input
+                  name="color"
+                  type="text"
+                  placeholder="Color (Hexadecimal)"
+                  className="modal-button"
+                />
+                <button type="submit" className="modal-button">Save</button>
+                <button className="modal-button" onClick={this.closeCreateModal}>Close</button>
+              </center>
             </form>
-            </>
-          </Modal>
+        </Modal>
         <form action='/' style={{display: "inline"}}>
           <button className="back-button" type='submit'>Exit</button>
         </form>

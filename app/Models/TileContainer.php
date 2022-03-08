@@ -17,18 +17,24 @@ class TileContainer extends Model
     {
         $contents = $this->folders()->get()->concat($this->words()->get());
 
-        $content_rows = $contents->groupBy(
-            fn ($item) => $item->pivot->board_y
-        )->sortKeys()->values();
+        $max_width = $contents->max('pivot.board_x');
+        $max_height = $contents->max('pivot.board_y');
 
-        $sorted_rows = $content_rows->map(
-            function ($row) {
-                $sorted_row = $row->sortBy(fn ($item) => $item->pivot->board_x)->values();
-                return $sorted_row->map(fn ($item) => $item->toArray());
+        $contents_array = [];
+
+        for ($y = 1; $y <= $max_height; $y++) {
+            $contents_array[$y - 1] = [];
+            for ($x = 1; $x <= $max_width; $x++) {
+                $tile_at_coords = $contents
+                    ->where('pivot.board_x', $x)
+                    ->firstWhere('pivot.board_y', $y);
+                $contents_array[$y - 1][$x - 1] = $tile_at_coords
+                    ? $tile_at_coords->toArray()
+                    : 'blank';
             }
-        );
+        }
 
-        return $sorted_rows->toArray();
+        return $contents_array;
     }
 
     public function createCopyForUser(User $user): TileContainer

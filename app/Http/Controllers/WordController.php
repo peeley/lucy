@@ -12,14 +12,12 @@ class WordController extends Controller
     public function getUserWords(Request $request, int $user_id)
     {
         $user = User::find($user_id);
-        if (!$user)
-        {
+        if (!$user) {
             return response("User $user_id not found", 404);
         }
 
         $words = $user->words()->get();
-        if (count($words) == 0)
-        {
+        if (count($words) == 0) {
             return response("No words found for user $user", 404);
         }
 
@@ -32,8 +30,7 @@ class WordController extends Controller
     public function getWords(Request $request, int $word_id)
     {
         $word = Word::find($word_id);
-        if (!$word)
-        {
+        if (!$word) {
             return response("Word $word_id not found", 404);
         }
 
@@ -44,9 +41,14 @@ class WordController extends Controller
     public function createWord(Request $request)
     {
         $user = $request->user();
-        $word = Word::create([ 'user_id' => $user['id'], 'text' => $request->word_text, 'color' => $request->word_color]);
-        #needs styling; confirms word was created
-        return response("Word successfully created.");
+
+        $word = $user->words()->create([
+            'user_id' => $user['id'],
+            'text' => $request->get('text'),
+            'color' => $request->get('color')
+        ]);
+
+        return response()->json($word->toArray());
     }
 
     public function index(Request $request)

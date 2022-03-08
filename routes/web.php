@@ -50,6 +50,7 @@ Route::redirect('/guest', '/boards/1'); // default board
 
 // fetched by React and returns json, do not need views
 Route::get('/boards/{board_id}/tiles', [BoardController::class, 'getBoardTiles']);
+Route::post('/boards/{board_id}/tiles', [BoardController::class, 'addTileToBoard']);
 Route::delete('/boards/{board_id}/tile/delete', [BoardController::class, 'deleteTileFromBoard']);
 Route::post('/boards/{board_id}/tile/edit', [BoardController::class, 'editTileFromBoard']);
 Route::get('/users/{user_id}/boards', [BoardController::class, 'getUserBoards']);
@@ -63,3 +64,4 @@ Route::post('/create-word', [WordController::class, 'createWord'])
 
 Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'deleteTileFromFolder']);
 Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);
+Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFolder']);
