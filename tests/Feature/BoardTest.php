@@ -83,7 +83,7 @@ class BoardTest extends TestCase
 
     public function test_board_can_add_folder()
     {
-        $folder = Folder::factory()->for($this->user)->create();
+        $folder = Folder::factory()->for($this->user)->create([]);
 
         $board = $this->user->boards()->create([
             'name' => 'my board 2',
@@ -99,15 +99,18 @@ class BoardTest extends TestCase
             'name' => 'my board 2',
             'height' => 3,
             'width' => 2,
-            'contents' => [[
+            'contents' => [
+                ['blank'],
                 [
-                    'name' => $folder->name,
-                    'color' => $folder->color,
-                    'icon' => $folder->icon,
-                    'contents' => [],
-                    'id' => $folder->id,
+                    [
+                        'name' => $folder->name,
+                        'color' => $folder->color,
+                        'icon' => $folder->icon,
+                        'contents' => [],
+                        'id' => $folder->id,
+                    ],
                 ]
-            ]],
+            ],
             'id' => $board->id,
         ];
 
@@ -130,19 +133,20 @@ class BoardTest extends TestCase
         $board->folders()->attach($folder, ['board_x' => 3, 'board_y' => 4]);
         $board->load('words', 'folders');
 
-        // TODO refactor to allow for blank tiles
         $expected_array = [
             'name' => 'my board 3',
             'height' => 6,
             'width' => 6,
             'contents' => [
+                ['blank', 'blank', 'blank'],
                 [[
                     'text' => $word->text,
                     'color' => $word->color,
                     'icon' => $word->icon,
                     'id' => $word->id,
-                ]],
-                [[
+                ], 'blank', 'blank'],
+                ['blank', 'blank', 'blank'],
+                ['blank', 'blank', [
                     'name' => $folder->name,
                     'color' => $folder->color,
                     'icon' => $folder->icon,
