@@ -1,7 +1,7 @@
 <html>
   <head>
-    <link rel="stylesheet" href="@if (session('isDark')) /css/app-dark.css @else /css/app.css @endif">
-    <link rel="stylesheet" href="/css/view-transitions.css">
+      @include('layouts.includes.header')
+      <link rel="stylesheet" href="/css/create-account.css">
   </head>
   <body>
     <div class="transition transition-2 is-active"></div>
@@ -34,8 +34,8 @@
       @error('verified_password')
       <div class="alert alert-danger">{{ $message }}</div><br>
       @enderror
-      <input class="create-account create-account-input" type="password" name="verified_password" value="" placeholder="Verify Password"/><br>
-      <button class="create-account" id="create-account-button" type="submit">Create Account</button>
+      <input class="create-account-input-button" type="password" name="verified_password" value="" placeholder="Verify Password"/><br>
+      <button class="create-account-button" type="submit">Create Account</button>
     </form>
     <script src="/js/view-transitions.js"></script>
   </body>
