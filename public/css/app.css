@@ -1,343 +1,39 @@
-button {
+/*=====================================================*/
+/*                     General CSS                     */
+/*=====================================================*/
+:root {
+    --default-button-color: lightgoldenrodyellow;
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: lightsteelblue; /* Default body background color */
+}
+button { /* NOT the same as board tiles */
     border:2px solid black;
     border-radius: 5px;
+    background-color: var(--default-button-color);
+    text-align: center;
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
 }
-button:hover {
+button:hover { /* Default hover effect */
     box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
     color: white;
     font-size: large;
 }
-button:active:hover {
+button:active:hover { /* Default click/touch hold effect*/
     background-color: black;
 }
-.create-account-input-button
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 10%;
-    width: 30%;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.create-account-button
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 12%;
-    width: 15%;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.general-heading
-{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 2%;
-}
-body
-{
-    background-color: lightsteelblue;
-}
-.settings-button
-{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: lightgoldenrodyellow;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 100px;
-    width: 150px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.form-popup
-{
-    display: none;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    border: solid grey;
-    padding: 1%;
-    width: 30%;
-    background-color: rgb(205, 213, 224);
-    margin-left: auto;
-    margin-right: auto;
-}
-.update-settings-button
-{
-    background-color: lightgoldenrodyellow;
-    border-radius: 5px;
-    border: 2px solid black;
-    height: 50px;
-    width: 70%;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.close-settings-button
-{
-    background-color: lightgoldenrodyellow;
-    border-radius: 5px;
-    border: 2px solid black;
-    height: 50px;
-    width: 70%;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.credentials-input {
-    background-color:ivory; 
-    border-radius: 5px;
-    border: 2px solid black;
-    width: 400px; 
-    height: 50px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.credentials-button {
-    background-color:lightgoldenrodyellow;
-    border-radius: 5px;
-    border: 2px solid black;
-    width: 200px; 
-    height: 50px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.welcome-body {
-    text-align: center;
-    background-color: lightsteelblue;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.welcome-body a {
-    text-decoration: none;
-    padding: 20px
-}
-.welcome-title {
-    padding-top: 30px;
-    color: black;
-    font-weight: bold;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.welcome-header {
-    font-size: 3vw;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.welcome-button {
-    width: 200px;
-    height: 80px;
-    background-color:lightgoldenrodyellow;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 20px;
-}
 .back-button {
-/*     border-radius: 5px; */
     width: 110px;
     height: 15%;
-    background-color:lightgoldenrodyellow;
-    text-align: center;
     font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
     margin-right: 15px;
     margin-top: 15px;
 }
-.board-background {
-    background-color: lightsteelblue;
-}
-.default-tile {
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 100px;
-    width: 150px;
+.general-heading {
     text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-
-    box-shadow: inset 0 0 0 0 green;
-    transition: ease-out 0.15s;
-}
-.back-folder-button{
-    border-radius: 5px;
-    width: 100px;
-    height: 15%;
-    background-color:#56a495;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    vertical-align: top;
-    margin-right: 15px;
-}
-.default-tile:hover {
-    box-shadow: inset 0 0 10px 0 black;
-    color: black;
-}
-.default-tile:active:hover {
-    box-shadow: inset 0 0 100px 0 black;
-    color: white;
-}
-.sentence-bar {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: ivory;
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 75%;
-    height: 15%;
-    margin-right: 15px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-   /*  vertical-align: top; */
-}
-.sentence-backspace {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #6c6fff;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 110px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 15px;
-    margin-top: 15px;
-}
-.sentence-clear {
-    margin-left: auto;
-    margin-right: auto;
-    background-color:#d0f0ff;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 110px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 15px;
-    margin-top: 15px;
-    
-}
-.sentence-speak {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #90eeac;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 100px;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    vertical-align: top; 
-}
-.user-home-buttons {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: lightgoldenrodyellow;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 20%;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.guest-default-board {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: cornflowerblue;
-    border: 2px solid black;
-    border-radius: 5px;
-    height: 15%;
-    width: 30%;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.folder-path
-{
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.submit-form
-{
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: medium;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.main-modal-class
-{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 40%;
-    transform: translate(-50%, -50%);
-    background-color: ivory;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
-.main-modal-overlay
-{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
-}
-
-.modal-button
-{
-    height: 50px;
-    width: 100px;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
-    font-size: larger;
-    text-align: center;
-    vertical-align: top;
-}
-
-.edit-modal-class
-{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    transform: translate(-50%, -50%);
-    background-color: ivory;
-    border-radius: 5px;
-    border: 2px solid black;
+    padding: 2%;
 }
