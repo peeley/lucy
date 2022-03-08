@@ -2,16 +2,14 @@
 <html>
 
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-
-</style>
-<link rel="stylesheet" href="/css/app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/settings.css">
 </head>
 <body>
 <h1 style="padding: 20px">
     <a href="/"><button class = "back-button">Back</button></a>
-  </h1>
+</h1>
 <h2 class="general-heading"> Settings </h2>
 
 <!-- buttons to display and change audio levels/guided use toggles -->

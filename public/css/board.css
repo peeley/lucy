@@ -1,0 +1,151 @@
+/*=====================================================*/
+/*                      Board CSS                      */
+/*=====================================================*/
+.board-background {
+    background-color: lightsteelblue;
+}
+.default-tile {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 100px;
+    width: 150px;
+    text-align: center;
+    font-size: larger;
+    box-shadow: inset 0 0 0 0 green;
+    transition: ease-out 0.15s;
+}
+.default-tile:hover {
+    box-shadow: inset 0 0 10px 0 black;
+    color: black;
+}
+.default-tile:active:hover {
+    box-shadow: inset 0 0 100px 0 black;
+    color: white;
+}
+.back-folder-button{
+    width: 100px;
+    height: 15%;
+    background-color:#56a495;
+    text-align: center;
+    font-size: larger;
+    vertical-align: top;
+    margin-right: 15px;
+}
+.sentence-bar {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: ivory;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 75%;
+    height: 15%;
+    margin-right: 15px;
+    text-align: center;
+    font-size: larger;
+}
+.sentence-backspace {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #6c6fff;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 110px;
+    text-align: center;
+    font-size: larger;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+.sentence-clear {
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#d0f0ff;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 110px;
+    text-align: center;
+    font-size: larger;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+.sentence-speak {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #90eeac;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 100px;
+    text-align: center;
+    font-size: larger;
+    display: inline-block;
+    vertical-align: top; 
+}
+.guest-default-board {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: cornflowerblue;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 15%;
+    width: 30%;
+    text-align: center;
+    font-size: larger;
+}
+.folder-path {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: larger;
+}
+
+/*=====================================================*/
+/*                   Create Word CSS                   */
+/*=====================================================*/
+.submit-form {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: medium;
+}
+.main-modal-class {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    background-color: ivory;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.main-modal-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+.modal-button {
+    height: 50px;
+    width: 100px;
+    font-size: larger;
+    text-align: center;
+    vertical-align: top;
+}
+.edit-modal-class {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    background-color: ivory;
+    border-radius: 5px;
+    border: 2px solid black;
+}
