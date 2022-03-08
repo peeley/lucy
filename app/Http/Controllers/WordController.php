@@ -42,13 +42,11 @@ class WordController extends Controller
     {
         $user = $request->user();
 
-        $word = Word::create([
+        $word = $user->words()->create([
             'user_id' => $user['id'],
             'text' => $request->get('text'),
             'color' => $request->get('color')
         ]);
-
-        $parent_type = $request->get('parent_type');
 
         return response()->json($word->toArray());
     }

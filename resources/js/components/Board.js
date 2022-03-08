@@ -254,11 +254,24 @@ export class Board extends React.Component {
   }
 
   handleCreateSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
+    const parentType = this.state.folderPath.length === 1
+      ? 'boards'
+      : 'folders';
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
 
-    axios.post(``)
+    axios.post(`/${parentType}/${parentId}/tiles`, {
+      text: event.target.text.value,
+      color: event.target.color.value,
+      board_x: this.state.heldTileColumn + 1,
+      board_y: this.state.heldTileRow + 1
+    }).then( () => {
+      this.setState({
+        configuringTile: false,
+        createModal: false
+      }, this.fetchBoardTiles);
+    });
   }
 
   render() {

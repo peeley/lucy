@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Word;
 use App\Models\Folder;
 use Illuminate\Http\Request;
@@ -13,12 +14,12 @@ class FolderController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        if ($type == 'word'){
+        if ($type == 'word') {
             $tile = Word::find($tileId);
             $folder->words()->detach($tile);
         }
 
-        if ($type == 'folder'){
+        if ($type == 'folder') {
             $tile = Folder::find($tileId);
             $folder->folders()->detach($tile);
         }
@@ -31,29 +32,45 @@ class FolderController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        if($type == 'word'){
+        if ($type == 'word') {
             $tile = Word::find($tileId);
 
-            if($request->text != null){
+            if ($request->text != null) {
                 $tile->update(['text' => $request->text]);
             }
 
-            if($request->color != null){
+            if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
         }
 
-        if($type == 'folder'){
+        if ($type == 'folder') {
             $tile = Folder::find($tileId);
 
-            if($request->text != null){
+            if ($request->text != null) {
                 $tile->update(['name' => $request->text]);
             }
 
-            if($request->color != null){
+            if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
-
         }
+    }
+
+    public function addTileToFolder(Request $request, int $folder_id)
+    {
+        $folder = Folder::find($folder_id);
+
+        $word = $folder->user()->first()->words()->create([
+            'text' => $request->get('text'),
+            'color' => $request->get('color')
+        ]);
+
+        $folder->words()->attach($word->id, [
+            'board_x' => $request->get('board_x'),
+            'board_y' => $request->get('board_y'),
+        ]);
+
+        return response('word created.');
     }
 }
