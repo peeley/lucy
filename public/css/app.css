@@ -147,7 +147,7 @@ body
     margin-top: 20px;
 }
 .back-button {
-    border-radius: 5px;
+/*     border-radius: 5px; */
     width: 100px;
     height: 80px;
     background-color:lightgoldenrodyellow;

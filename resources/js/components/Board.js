@@ -320,6 +320,9 @@ export class Board extends React.Component {
             </form>
             </>
           </Modal>
+        <form action='/'>
+          <button className="back-button" type='submit'>Back</button>
+        </form>
         <div style={{textAlign: "center"}}>
         <table className="folder-path">
         {paths}
