@@ -320,9 +320,17 @@ export class Board extends React.Component {
             </form>
             </>
           </Modal>
-        <form action='/'>
-          <button className="back-button" type='submit'>Back</button>
+        <form action='/' style={{display: "inline"}}>
+          <button className="back-button" type='submit'>Last Page</button>
         </form>
+        <button className="sentence-clear"
+                onClick={() => this.setState({sentence: []})}>
+          Clear
+        </button>
+        <button className="sentence-backspace"
+                onClick={this.handleBackspaceButtonClick}>
+          Backspace
+        </button>
         <div style={{textAlign: "center"}}>
         <table className="folder-path">
         {paths}
@@ -331,14 +339,6 @@ export class Board extends React.Component {
                 className="back-folder-button"
                 onClick={this.handleLastFolderButton}>
           Last Folder
-        </button>
-        <button className="sentence-clear"
-                onClick={() => this.setState({sentence: []})}>
-          Clear
-        </button>
-        <button className="sentence-backspace"
-                onClick={this.handleBackspaceButtonClick}>
-          Backspace
         </button>
         <button className="sentence-bar"
                 onClick={this.handleSpeakButtonClick}>
