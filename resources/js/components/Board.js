@@ -129,10 +129,10 @@ export class Board extends React.Component {
   }
   //_onHoldStart and _onHoldEnd borrowed from: https://www.youtube.com/watch?v=A95mIE2HdcY
   _onHoldStart = (tileType, tileId, tileX, tileY) => {
-      if (this.props.board_id === 1) {
-        //return;
+      if (this.props.board_id == '1') {
+        return;
       }
-      //console.log(tileId);
+
       this.setState({
         isHoldingTile: true,
         activeHoldTimeoutID: setTimeout(() => {
@@ -151,8 +151,8 @@ export class Board extends React.Component {
     }
 
   _onHoldEnd = () => {
-    if (this.props.board_id === 1) {
-      //return;
+    if (this.props.board_id === '1') {
+      return;
     }
 
     this.setState({
@@ -297,7 +297,6 @@ export class Board extends React.Component {
           <button className="modal-button" onClick={this.closeConfirmDeleteModal}> No </button>
           </center>
         </Modal>
-
         <Modal
           isOpen={this.state.editModal}
           className="main-modal-class">
@@ -324,28 +323,35 @@ export class Board extends React.Component {
             </form>
             </>
           </Modal>
-        <button disabled={ this.userIsOnBaseBoard() }
-                className="back-folder-button"
-                onClick={this.handleLastFolderButton}>
-          Last Folder
+        <form action='/' style={{display: "inline"}}>
+          <button className="back-button" type='submit'>Exit</button>
+        </form>
+        <button className="sentence-clear"
+                onClick={() => this.setState({sentence: []})}>
+          Clear
         </button>
         <button className="sentence-backspace"
                 onClick={this.handleBackspaceButtonClick}>
           Backspace
         </button>
-        <button className="sentence-clear"
-                onClick={() => this.setState({sentence: []})}>
-          Clear
+        <div style={{textAlign: "center"}}>
+        <table className="folder-path">
+        {paths}
+        </table>
+        <button disabled={ this.userIsOnBaseBoard() }
+                className="back-folder-button"
+                onClick={this.handleLastFolderButton}>
+          Last Folder
+        </button>
+        <button className="sentence-bar"
+                onClick={this.handleSpeakButtonClick}>
+        <h2>{this.buildSentence()}</h2>
         </button>
         <button className="sentence-speak"
                 onClick={this.handleSpeakButtonClick}>
           Speak!
         </button>
-        <br/>
-        <table className="folder-path">
-        {paths}
-        </table>
-        <h1 className="sentence-bar">{this.buildSentence()}</h1>
+        </div>
         <br/>
         <table className="board-tiles-container"
                style={{"width": "90%", "margin": "auto"}}>
