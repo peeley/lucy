@@ -97,8 +97,11 @@ export class Board extends React.Component {
     return this.state.currentBoard.contents.map( (row, rowIndex) =>
       <tr>
       { row.map( (tile, columnIndex) => {
+        if (tile === 'blank') {
+            return <td className="default-tile">+</td>
+        }
         const tileType = tile.contents ? 'folder' : 'word';
-        
+
         return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
             onClick={tile.contents
