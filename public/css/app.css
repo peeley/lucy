@@ -1,6 +1,21 @@
+/*=====================================================*/
+/*                     General CSS                     */
+/*=====================================================*/
+:root {
+    --default-button-color: lightgoldenrodyellow;
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body
+{
+    background-color: lightsteelblue;
+}
 button {
     border:2px solid black;
     border-radius: 5px;
+    background-color: var(--default-button-color);
+    text-align: center;
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
 }
@@ -12,6 +27,19 @@ button:hover {
 button:active:hover {
     background-color: black;
 }
+.back-button {
+    width: 100px;
+    height: 80px;
+    font-size: large;
+}
+.general-heading
+{
+    text-align: center;
+    padding: 2%;
+}
+/*=====================================================*/
+/*                 Create Account CSS                  */
+/*=====================================================*/
 .create-account-input-button
 {
     display: block;
@@ -19,12 +47,7 @@ button:active:hover {
     margin-right: auto;
     height: 10%;
     width: 30%;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
-    text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .create-account-button
 {
@@ -33,41 +56,26 @@ button:active:hover {
     margin-right: auto;
     height: 12%;
     width: 15%;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
-    text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
-.general-heading
-{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 2%;
-}
-body
-{
-    background-color: lightsteelblue;
-}
+
+
+/*=====================================================*/
+/*                     Settings CSS                    */
+/*=====================================================*/
 .settings-button
 {
     margin-left: auto;
     margin-right: auto;
-    background-color: lightgoldenrodyellow;
-    border: 2px solid black;
-    border-radius: 5px;
     height: 100px;
     width: 150px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .form-popup
 {
     display: none;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     border: solid grey;
     padding: 1%;
     width: 30%;
@@ -75,28 +83,26 @@ body
     margin-left: auto;
     margin-right: auto;
 }
-.update-settings-button
+.update-settings-button /*not actually a button element so need to keep some button css*/
 {
-    background-color: lightgoldenrodyellow;
+    background-color: var(--default-button-color);
     border-radius: 5px;
     border: 2px solid black;
     height: 50px;
     width: 70%;
-    text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .close-settings-button
 {
-    background-color: lightgoldenrodyellow;
-    border-radius: 5px;
-    border: 2px solid black;
     height: 50px;
     width: 70%;
-    text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/*=====================================================*/
+/*                     Login CSS                       */
+/*=====================================================*/
 .credentials-input {
     background-color:ivory; 
     border-radius: 5px;
@@ -105,56 +111,40 @@ body
     height: 50px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .credentials-button {
-    background-color:lightgoldenrodyellow;
-    border-radius: 5px;
-    border: 2px solid black;
     width: 200px; 
     height: 50px;
-    text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/*=====================================================*/
+/*                 Create Account CSS                  */
+/*=====================================================*/
 .welcome-body {
     text-align: center;
-    background-color: lightsteelblue;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.welcome-body a {
-    text-decoration: none;
-    padding: 20px
 }
 .welcome-title {
     padding-top: 30px;
     color: black;
     font-weight: bold;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-header {
     font-size: 3vw;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .welcome-button {
     width: 200px;
     height: 80px;
-    background-color:lightgoldenrodyellow;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
     margin-top: 20px;
 }
-.back-button {
-    border-radius: 5px;
-    width: 100px;
-    height: 80px;
-    background-color:lightgoldenrodyellow;
-    text-align: center;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
-}
+
+/*=====================================================*/
+/*                      Board CSS                      */
+/*=====================================================*/
 .board-background {
     background-color: lightsteelblue;
 }
@@ -167,19 +157,8 @@ body
     width: 150px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
-}
-.back-folder-button{
-    border-radius: 5px;
-    width: 100px;
-    height: 100px;
-    background-color:#56a495;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .default-tile:hover {
     box-shadow: inset 0 0 10px 0 black;
@@ -188,6 +167,13 @@ body
 .default-tile:active:hover {
     box-shadow: inset 0 0 100px 0 black;
     color: white;
+}
+.back-folder-button{
+    width: 100px;
+    height: 100px;
+    background-color:#56a495;
+    text-align: center;
+    font-size: larger;
 }
 .sentence-bar {
     margin-left: auto;
@@ -199,7 +185,6 @@ body
     height: 15%;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .sentence-backspace {
     margin-left: auto;
@@ -211,7 +196,6 @@ body
     width: 110px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .sentence-clear {
     margin-left: auto;
@@ -223,7 +207,6 @@ body
     width: 110px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .sentence-speak {
     margin-left: auto;
@@ -235,7 +218,6 @@ body
     width: 100px;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .user-home-buttons {
     margin-left: auto;
@@ -247,7 +229,6 @@ body
     width: 20%;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 .guest-default-board {
     margin-left: auto;
@@ -259,29 +240,25 @@ body
     width: 30%;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
-
-.folder-path
-{
+.folder-path {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-.submit-form
-{
+
+/*=====================================================*/
+/*                   Create Word CSS                   */
+/*=====================================================*/
+.submit-form {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: medium;
-    font-family: Arial, Helvetica, sans-serif;
 }
-
-.main-modal-class
-{
+.main-modal-class {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -291,7 +268,6 @@ body
     border-radius: 5px;
     border: 2px solid black;
 }
-
 .main-modal-overlay
 {
     position: fixed;
@@ -300,18 +276,14 @@ body
     width: 100%;
     transform: translate(-50%, -50%);
 }
-
 .modal-button
 {
     height: 50px;
     width: 100px;
-    border-radius: 5px;
-    background-color: lightgoldenrodyellow;
     font-size: larger;
     text-align: center;
     vertical-align: top;
 }
-
 .edit-modal-class
 {
     position: fixed;
