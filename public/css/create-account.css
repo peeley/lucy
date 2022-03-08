@@ -1,0 +1,20 @@
+/*=====================================================*/
+/*                 Create Account CSS                  */
+/*=====================================================*/
+.create-account {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: larger;
+}
+.create-account-input {
+    height: 10%;
+    width: 30%;
+    border-radius: 5px;
+    text-align: center;
+}
+#create-account-button {
+    height: 12%;
+    width: 15%;
+}
+
