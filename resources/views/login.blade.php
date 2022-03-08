@@ -1,6 +1,7 @@
 <html>
 <head>
     @include('layouts.includes.header')
+    <link rel="stylesheet" href="@if (session('isDark')) /css/login-dark.css @else /css/login.css @endif">
     <title>Log in</title>
 </head>
 <body>
@@ -16,7 +17,7 @@
   </h1>
 
   <div id="login-box">
-    <h1 style="border-bottom: 2px solid black;">Login</h1>
+    <h1>Login</h1>
 
     <form action="/login" method="POST">
       @csrf

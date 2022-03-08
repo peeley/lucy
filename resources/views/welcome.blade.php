@@ -4,7 +4,7 @@
 <head>
     @include('layouts.includes.header')
     <title>Welcome to Lucy!</title>
-    <link rel="stylesheet" href="/css/welcome.css">
+    <link rel="stylesheet" href="@if (session('isDark')) /css/welcome-dark.css @else /css/welcome.css @endif">
 </head>
 <body class = "welcome-body">
     <div class="transition transition-2 is-active"></div>
