@@ -119,14 +119,17 @@ class BoardControllerTest extends TestCase
 
     public function test_user_can_create_board()
     {
-        $this->assertEquals($this->user->boards()->count(), 0);
+        $admin = User::factory()->create();
+        Board::factory()->for($admin)->create();
+
+        $this->assertEquals(0, $this->user->boards()->count());
 
         $response = $this->actingAs($this->user)->post('/boards');
 
         $response->assertRedirectContains('/home');
         $response->assertSessionHas('success');
 
-        $this->assertEquals($this->user->boards()->count(), 1);
+        $this->assertEquals(1, $this->user->boards()->count());
     }
 
     public function test_user_must_be_authenticated_to_create_board()

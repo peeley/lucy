@@ -32,12 +32,6 @@ class Folder extends TileContainer
         'icon' => null
     ];
 
-    // automatically load associated `words` and `folders`
-    protected $with = [
-        'words',
-        'folders'
-    ];
-
     public function words()
     {
         return $this->belongsToMany(

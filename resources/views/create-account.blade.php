@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/css/view-transitions.css">
   </head>
   <body>
-  <div class="transition transition-2 is-active"></div>
+    <div class="transition transition-2 is-active"></div>
     <h1 class="general-heading">Create Your Account</h1>
     <h2 style="padding: 20px">
       <form>
@@ -19,23 +19,23 @@
       @error('name')
       <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <input class="create-account-input-button" type="text" name="name" value="" placeholder="Name"/><br>
+      <input class="create-account create-account-input" type="text" name="name" value="" placeholder="Name"/><br>
 
       @error('username')
       <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <input class="create-account-input-button" type="text" name="username" value="" placeholder="Email"/><br>
+      <input class="create-account create-account-input" type="text" name="username" value="" placeholder="Email"/><br>
 
       @error('password')
       <div class="alert alert-danger">{{ $message }}</div>
       @enderror
-      <input class="create-account-input-button" type="password" name="password" value="" placeholder="Password"/><br>
+      <input class="create-account create-account-input" type="password" name="password" value="" placeholder="Password"/><br>
 
       @error('verified_password')
       <div class="alert alert-danger">{{ $message }}</div><br>
       @enderror
-      <input class="create-account-input-button" type="password" name="verified_password" value="" placeholder="Verify Password"/><br>
-      <button class="create-account-button" type="submit">Create Account</button>
+      <input class="create-account create-account-input" type="password" name="verified_password" value="" placeholder="Verify Password"/><br>
+      <button class="create-account" id="create-account-button" type="submit">Create Account</button>
     </form>
     <script src="/js/view-transitions.js"></script>
   </body>

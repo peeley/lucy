@@ -74,7 +74,7 @@ class BoardTest extends TestCase
                     'icon' => $word->icon,
                     'id' => $word->id
                 ]]
-                ],
+            ],
             'id' => $board->id,
         ];
 
@@ -149,10 +149,38 @@ class BoardTest extends TestCase
                     'contents' => [],
                     'id' => $folder->id,
                 ]],
-                ],
+            ],
             'id' => $board->id,
         ];
 
         $this->assertEquals($expected_array, $board->toArray());
+    }
+
+    public function test_board_and_contents_can_be_copied()
+    {
+        $this->assertEquals($this->user->boards()->count(), 0);
+
+        $other_user = User::factory()->create();
+        $original_board = Board::factory()->for($other_user)->create();
+
+        $word = Word::factory()
+            ->for($other_user)
+            ->create();
+
+        $folder = Folder::factory()
+            ->for($other_user)
+            ->create();
+
+        $original_board->words()->attach([$word->id => ['board_x' => 1, 'board_y' => 1]]);
+        $original_board->folders()->attach([$folder->id => ['board_x' => 1, 'board_y' => 1]]);
+
+        $copy = $original_board->createCopyForUser($this->user);
+        $this->user->boards()->save($copy);
+
+        $this->user->refresh();
+
+        $this->assertEquals(1, $this->user->boards()->count());
+        $this->assertEquals(1, $this->user->folders()->get()->count());
+        $this->assertEquals(1, $this->user->words()->get()->count());
     }
 }

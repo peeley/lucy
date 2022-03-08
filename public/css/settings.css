@@ -1,0 +1,34 @@
+/*=====================================================*/
+/*                     Settings CSS                    */
+/*=====================================================*/
+.settings-button {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 150px;
+    text-align: center;
+    font-size: larger;
+}
+.form-popup {
+    display: none;
+    text-align: center;
+    border: solid grey;
+    padding: 1%;
+    width: 30%;
+    background-color: rgb(205, 213, 224);
+    margin-left: auto;
+    margin-right: auto;
+}
+.update-settings-button { /*not actually a button element so need to keep some button css*/
+    background-color: var(--default-button-color);
+    border-radius: 5px;
+    border: 2px solid black;
+    height: 50px;
+    width: 70%;
+    font-size: larger;
+}
+.close-settings-button {
+    height: 50px;
+    width: 70%;
+    font-size: larger;
+}

@@ -4,6 +4,7 @@
 <head>
     @include('layouts.includes.header')
     <title>Welcome to Lucy!</title>
+    <link rel="stylesheet" href="/css/welcome.css">
 </head>
 <body class = "welcome-body">
     <div class="transition transition-2 is-active"></div>

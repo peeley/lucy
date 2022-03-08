@@ -32,12 +32,6 @@ class Board extends TileContainer
         'height' => 5
     ];
 
-    // automatically load these relationships
-    protected $with = [
-        'words',
-        'folders'
-    ];
-
     public function words()
     {
         return $this->belongsToMany(
@@ -65,12 +59,5 @@ class Board extends TileContainer
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function createCopy(): Board
-    {
-        $replicant = $this->replicate();
-
-        return $replicant;
     }
 }
