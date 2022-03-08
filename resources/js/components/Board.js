@@ -321,7 +321,7 @@ export class Board extends React.Component {
             </>
           </Modal>
         <form action='/' style={{display: "inline"}}>
-          <button className="back-button" type='submit'>Last Page</button>
+          <button className="back-button" type='submit'>Exit</button>
         </form>
         <button className="sentence-clear"
                 onClick={() => this.setState({sentence: []})}>
