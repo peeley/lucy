@@ -41,11 +41,11 @@ class BoardSeeder extends Seeder
             $board_index = 1;
             $emotion_index = $board_index + 7;
             $pronoun_index = $emotion_index + 15;
-            $conjunction_index = $pronoun_index + 41;
+            $conjunction_index = $pronoun_index + 42;
             $food_extra = $conjunction_index + 12;
             $food_pasta = $food_extra + 4;
             $food_snacks = $food_pasta + 8;
-            $food_fruit = $food_snacks + 3;
+            $food_fruit = $food_snacks + 4;
             $food_drinks = $food_fruit + 24;
             $comfort = $food_drinks + 5;
             $quantity = $comfort + 7;
@@ -56,7 +56,8 @@ class BoardSeeder extends Seeder
             $colors = $people + 29;
             $patterns = $colors + 12;
             $vehicles = $patterns + 7;
-            //$clothes = $vehicles + ;
+            $talker = $vehicles + 7;
+            //$clothes = ;
             //$weather = $clothes + ;
             //$tempurature = $weather + ;
             //$numbers = $tempurature + ;
@@ -64,7 +65,7 @@ class BoardSeeder extends Seeder
             //$personal_care = $letters + ;
 
         $user->words()->createMany([
-            ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6'],
+            ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6'],//2
             ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc'],
             ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99'],
             ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc'],
@@ -75,7 +76,7 @@ class BoardSeeder extends Seeder
 
         //Emotions
             $user->words()->createMany([
-                ['id' => $emotion_index + 1, 'text' => 'Panic', 'color' => '#ffad33'],
+                ['id' => $emotion_index + 1, 'text' => 'Panic', 'color' => '#ffad33'],//9
                 ['id' => $emotion_index + 2, 'text' => 'Hurt', 'color' => '#ffd1b3'],
                 ['id' => $emotion_index + 3, 'text' => 'Scared', 'color' => '#fff3e6'],
                 ['id' => $emotion_index + 4, 'text' => 'Happy', 'color' => '#ffff99'],
@@ -114,7 +115,7 @@ class BoardSeeder extends Seeder
                 $emotion_index + 15 => ['board_x' => 3, 'board_y' => 3]
             ]);
 
-        //pronouns
+        //Pronouns
             $user->folders()->createMany([
                 ['id' => 5, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => 6, 'name' => '1st plural', 'color' => $first_plural_color],
@@ -132,15 +133,15 @@ class BoardSeeder extends Seeder
                 ['id' => 18, 'name' => 'Reflexive', 'color' => $pronoun_type_color],
             ]);
             $user->words()->createMany([
-                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],
+                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],//24
                 ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff'],
                 ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff'],
                 ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff'],
                 ['id' => $pronoun_index + 5, 'text' => 'Myself', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 6, 'text' => 'Pronouns', 'color' => $pronoun_color]
+                ['id' => $pronoun_index + 42, 'text' => 'Pronouns', 'color' => $pronoun_color]//66
             ]);
             $user->folders()->find(5)->words()->attach([
-                $pronoun_index + 6 => ['board_x' => 1, 'board_y' => 1],
+                $pronoun_index + 42 => ['board_x' => 1, 'board_y' => 1],
                 $pronoun_index + 1 => ['board_x' => 2, 'board_y' => 1],
                 $pronoun_index + 2 => ['board_x' => 3, 'board_y' => 1],
                 $pronoun_index + 3 => ['board_x' => 4, 'board_y' => 1],
@@ -153,191 +154,193 @@ class BoardSeeder extends Seeder
 
                 //row for, slots 1-5 are folders
             ]);
-            $user->folders()->find(5)->folders()->attach([
-                6 => ['board_x' => 1, 'board_y' => 2],
-                7 => ['board_x' => 2, 'board_y' => 2],
-                8 => ['board_x' => 3, 'board_y' => 2],
-                9 => ['board_x' => 4, 'board_y' => 2],
-                10 => ['board_x' => 5, 'board_y' => 2],
-                11 => ['board_x' => 6, 'board_y' => 2],
+            //pronouns by persons
+                $user->folders()->find(5)->folders()->attach([
+                    6 => ['board_x' => 1, 'board_y' => 2],
+                    7 => ['board_x' => 2, 'board_y' => 2],
+                    8 => ['board_x' => 3, 'board_y' => 2],
+                    9 => ['board_x' => 4, 'board_y' => 2],
+                    10 => ['board_x' => 5, 'board_y' => 2],
+                    11 => ['board_x' => 6, 'board_y' => 2],
 
-                12 => ['board_x' => 1, 'board_y' => 3],
-                13 => ['board_x' => 2, 'board_y' => 3],
+                    12 => ['board_x' => 1, 'board_y' => 3],
+                    13 => ['board_x' => 2, 'board_y' => 3],
 
-                14 => ['board_x' => 1, 'board_y' => 4],
-                15 => ['board_x' => 2, 'board_y' => 4],
-                16 => ['board_x' => 3, 'board_y' => 4],
-                17 => ['board_x' => 4, 'board_y' => 4],
-                18 => ['board_x' => 5, 'board_y' => 4]
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 6, 'text' => 'We', 'color' => $first_plural_color],
-                ['id' => $pronoun_index + 7, 'text' => 'Us', 'color' => $first_plural_color],
-                ['id' => $pronoun_index + 8, 'text' => 'Our', 'color' => $first_plural_color],
-                ['id' => $pronoun_index + 9, 'text' => 'Ours', 'color' => $first_plural_color],
-                ['id' => $pronoun_index + 10, 'text' => 'Ourselves', 'color' => $first_plural_color]
-            ]);
-            $user->folders()->find(6)->words()->attach([
-                $pronoun_index + 6 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 7 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 8 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 9 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 10 => ['board_x' => 5, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 11, 'text' => 'It', 'color' => $thing_color],
-                ['id' => $pronoun_index + 12, 'text' => 'Its', 'color' => $thing_color],
-                ['id' => $pronoun_index + 13, 'text' => 'Itself', 'color' => $thing_color]
-            ]);
-            $user->folders()->find(7)->words()->attach([
-                $pronoun_index + 11 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 12 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 13 => ['board_x' => 3, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 14, 'text' => 'You', 'color' => $second_person_color],
-                ['id' => $pronoun_index + 15, 'text' => 'Your', 'color' => $second_person_color],
-                ['id' => $pronoun_index + 16, 'text' => 'Yours', 'color' => $second_person_color],
-                ['id' => $pronoun_index + 17, 'text' => 'Yourself', 'color' => $second_person_color],
-                ['id' => $pronoun_index + 18, 'text' => 'Yourselves', 'color' => $second_person_color]
-            ]);
-            $user->folders()->find(8)->words()->attach([
-                $pronoun_index + 14 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 15 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 16 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 17 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 18 => ['board_x' => 5, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 19, 'text' => 'He', 'color' => $masculine_color],
-                ['id' => $pronoun_index + 20, 'text' => 'Him', 'color' => $masculine_color],
-                ['id' => $pronoun_index + 21, 'text' => 'His', 'color' => $masculine_color],
-                ['id' => $pronoun_index + 22, 'text' => 'Himself', 'color' => $masculine_color]
-            ]);
-            $user->folders()->find(9)->words()->attach([
-                $pronoun_index + 19 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 20 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 22 => ['board_x' => 4, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 23, 'text' => 'She', 'color' => $feminine_color],
-                ['id' => $pronoun_index + 24, 'text' => 'Her', 'color' => $feminine_color],
-                ['id' => $pronoun_index + 25, 'text' => 'Hers', 'color' => $feminine_color],
-                ['id' => $pronoun_index + 26, 'text' => 'Herself', 'color' => $feminine_color]
-            ]);
-            $user->folders()->find(10)->words()->attach([
-                $pronoun_index + 23 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 24 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 25 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 26 => ['board_x' => 4, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 27, 'text' => 'They', 'color' => $they_color],
-                ['id' => $pronoun_index + 28, 'text' => 'Them', 'color' => $they_color],
-                ['id' => $pronoun_index + 29, 'text' => 'Their', 'color' => $they_color],
-                ['id' => $pronoun_index + 30, 'text' => 'Theirs', 'color' => $they_color],
-                ['id' => $pronoun_index + 31, 'text' => 'Themselves', 'color' => $they_color],
-                ['id' => $pronoun_index + 32, 'text' => 'Themself', 'color' => $they_color]
-            ]);
-            $user->folders()->find(11)->words()->attach([
-                $pronoun_index + 27 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 28 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 29 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 30 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 31 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 32 => ['board_x' => 6, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 33, 'text' => 'Xe', 'color' => $x_pronoun_color],
-                ['id' => $pronoun_index + 34, 'text' => 'Xem', 'color' => $x_pronoun_color],
-                ['id' => $pronoun_index + 35, 'text' => 'Xyr', 'color' => $x_pronoun_color],
-                ['id' => $pronoun_index + 36, 'text' => 'Xyrs', 'color' => $x_pronoun_color],
-                ['id' => $pronoun_index + 37, 'text' => 'Xemself', 'color' => $x_pronoun_color]
-            ]);
-            $user->folders()->find(12)->words()->attach([
-                $pronoun_index + 33 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 34 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 35 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 36 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 37 => ['board_x' => 5, 'board_y' => 1],
-            ]);
-            $user->words()->createMany([
-                ['id' => $pronoun_index + 38, 'text' => 'Ze', 'color' => $z_pronoun_color],
-                ['id' => $pronoun_index + 39, 'text' => 'Zir', 'color' => $z_pronoun_color],
-                ['id' => $pronoun_index + 40, 'text' => 'Zirs', 'color' => $z_pronoun_color],
-                ['id' => $pronoun_index + 41, 'text' => 'Zirself', 'color' => $z_pronoun_color]
-            ]);
-            $user->folders()->find(13)->words()->attach([
-                $pronoun_index + 38 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 39 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 40 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 41 => ['board_x' => 4, 'board_y' => 1],
-            ]);
-            $user->folders()->find(14)->words()->attach([
-                $pronoun_index + 1 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 14 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 19 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 23 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 11 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 6 => ['board_x' => 6, 'board_y' => 1],
+                    14 => ['board_x' => 1, 'board_y' => 4],
+                    15 => ['board_x' => 2, 'board_y' => 4],
+                    16 => ['board_x' => 3, 'board_y' => 4],
+                    17 => ['board_x' => 4, 'board_y' => 4],
+                    18 => ['board_x' => 5, 'board_y' => 4]
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 6, 'text' => 'We', 'color' => $first_plural_color],//29
+                    ['id' => $pronoun_index + 7, 'text' => 'Us', 'color' => $first_plural_color],
+                    ['id' => $pronoun_index + 8, 'text' => 'Our', 'color' => $first_plural_color],
+                    ['id' => $pronoun_index + 9, 'text' => 'Ours', 'color' => $first_plural_color],
+                    ['id' => $pronoun_index + 10, 'text' => 'Ourselves', 'color' => $first_plural_color]
+                ]);
+                $user->folders()->find(6)->words()->attach([
+                    $pronoun_index + 6 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 7 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 8 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 9 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 10 => ['board_x' => 5, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 11, 'text' => 'It', 'color' => $thing_color],//34
+                    ['id' => $pronoun_index + 12, 'text' => 'Its', 'color' => $thing_color],
+                    ['id' => $pronoun_index + 13, 'text' => 'Itself', 'color' => $thing_color]
+                ]);
+                $user->folders()->find(7)->words()->attach([
+                    $pronoun_index + 11 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 12 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 13 => ['board_x' => 3, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 14, 'text' => 'You', 'color' => $second_person_color],//37
+                    ['id' => $pronoun_index + 15, 'text' => 'Your', 'color' => $second_person_color],
+                    ['id' => $pronoun_index + 16, 'text' => 'Yours', 'color' => $second_person_color],
+                    ['id' => $pronoun_index + 17, 'text' => 'Yourself', 'color' => $second_person_color],
+                    ['id' => $pronoun_index + 18, 'text' => 'Yourselves', 'color' => $second_person_color]
+                ]);
+                $user->folders()->find(8)->words()->attach([
+                    $pronoun_index + 14 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 15 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 16 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 17 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 18 => ['board_x' => 5, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 19, 'text' => 'He', 'color' => $masculine_color],//42
+                    ['id' => $pronoun_index + 20, 'text' => 'Him', 'color' => $masculine_color],
+                    ['id' => $pronoun_index + 21, 'text' => 'His', 'color' => $masculine_color],
+                    ['id' => $pronoun_index + 22, 'text' => 'Himself', 'color' => $masculine_color]
+                ]);
+                $user->folders()->find(9)->words()->attach([
+                    $pronoun_index + 19 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 20 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 22 => ['board_x' => 4, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 23, 'text' => 'She', 'color' => $feminine_color],//46
+                    ['id' => $pronoun_index + 24, 'text' => 'Her', 'color' => $feminine_color],
+                    ['id' => $pronoun_index + 25, 'text' => 'Hers', 'color' => $feminine_color],
+                    ['id' => $pronoun_index + 26, 'text' => 'Herself', 'color' => $feminine_color]
+                ]);
+                $user->folders()->find(10)->words()->attach([
+                    $pronoun_index + 23 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 24 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 25 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 26 => ['board_x' => 4, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 27, 'text' => 'They', 'color' => $they_color],//50
+                    ['id' => $pronoun_index + 28, 'text' => 'Them', 'color' => $they_color],
+                    ['id' => $pronoun_index + 29, 'text' => 'Their', 'color' => $they_color],
+                    ['id' => $pronoun_index + 30, 'text' => 'Theirs', 'color' => $they_color],
+                    ['id' => $pronoun_index + 31, 'text' => 'Themselves', 'color' => $they_color],
+                    ['id' => $pronoun_index + 32, 'text' => 'Themself', 'color' => $they_color]
+                ]);
+                $user->folders()->find(11)->words()->attach([
+                    $pronoun_index + 27 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 28 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 29 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 30 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 31 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 32 => ['board_x' => 6, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 33, 'text' => 'Xe', 'color' => $x_pronoun_color],//57
+                    ['id' => $pronoun_index + 34, 'text' => 'Xem', 'color' => $x_pronoun_color],
+                    ['id' => $pronoun_index + 35, 'text' => 'Xyr', 'color' => $x_pronoun_color],
+                    ['id' => $pronoun_index + 36, 'text' => 'Xyrs', 'color' => $x_pronoun_color],
+                    ['id' => $pronoun_index + 37, 'text' => 'Xemself', 'color' => $x_pronoun_color]
+                ]);
+                $user->folders()->find(12)->words()->attach([
+                    $pronoun_index + 33 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 34 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 35 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 36 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 37 => ['board_x' => 5, 'board_y' => 1],
+                ]);
+                $user->words()->createMany([
+                    ['id' => $pronoun_index + 38, 'text' => 'Ze', 'color' => $z_pronoun_color],//62
+                    ['id' => $pronoun_index + 39, 'text' => 'Zir', 'color' => $z_pronoun_color],
+                    ['id' => $pronoun_index + 40, 'text' => 'Zirs', 'color' => $z_pronoun_color],
+                    ['id' => $pronoun_index + 41, 'text' => 'Zirself', 'color' => $z_pronoun_color]
+                ]);
+                $user->folders()->find(13)->words()->attach([
+                    $pronoun_index + 38 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 39 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 40 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 41 => ['board_x' => 4, 'board_y' => 1],
+                ]);
+            //pronouns by part
+                $user->folders()->find(14)->words()->attach([
+                    $pronoun_index + 1 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 14 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 19 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 23 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 11 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 6 => ['board_x' => 6, 'board_y' => 1],
 
-                $pronoun_index + 27 => ['board_x' => 1, 'board_y' => 2],
-                $pronoun_index + 33 => ['board_x' => 2, 'board_y' => 2],
-                $pronoun_index + 38 => ['board_x' => 3, 'board_y' => 2],
-            ]);
-            $user->folders()->find(15)->words()->attach([
-                $pronoun_index + 2 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 14 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 20 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 24 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 11 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 7 => ['board_x' => 6, 'board_y' => 1],
+                    $pronoun_index + 27 => ['board_x' => 1, 'board_y' => 2],
+                    $pronoun_index + 33 => ['board_x' => 2, 'board_y' => 2],
+                    $pronoun_index + 38 => ['board_x' => 3, 'board_y' => 2],
+                ]);
+                $user->folders()->find(15)->words()->attach([
+                    $pronoun_index + 2 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 14 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 20 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 24 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 11 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 7 => ['board_x' => 6, 'board_y' => 1],
 
-                $pronoun_index + 28 => ['board_x' => 1, 'board_y' => 2],
-                $pronoun_index + 34 => ['board_x' => 2, 'board_y' => 2],
-                $pronoun_index + 39 => ['board_x' => 3, 'board_y' => 2],
-            ]);
-            $user->folders()->find(16)->words()->attach([
-                $pronoun_index + 3 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 15 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 24 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 12 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 8 => ['board_x' => 6, 'board_y' => 1],
+                    $pronoun_index + 28 => ['board_x' => 1, 'board_y' => 2],
+                    $pronoun_index + 34 => ['board_x' => 2, 'board_y' => 2],
+                    $pronoun_index + 39 => ['board_x' => 3, 'board_y' => 2],
+                ]);
+                $user->folders()->find(16)->words()->attach([
+                    $pronoun_index + 3 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 15 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 24 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 12 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 8 => ['board_x' => 6, 'board_y' => 1],
 
-                $pronoun_index + 29 => ['board_x' => 1, 'board_y' => 2],
-                $pronoun_index + 35 => ['board_x' => 2, 'board_y' => 2],
-                $pronoun_index + 39 => ['board_x' => 3, 'board_y' => 2],
-            ]);
-            $user->folders()->find(17)->words()->attach([
-                $pronoun_index + 4 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 16 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 25 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 9 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 30 => ['board_x' => 6, 'board_y' => 1],
+                    $pronoun_index + 29 => ['board_x' => 1, 'board_y' => 2],
+                    $pronoun_index + 35 => ['board_x' => 2, 'board_y' => 2],
+                    $pronoun_index + 39 => ['board_x' => 3, 'board_y' => 2],
+                ]);
+                $user->folders()->find(17)->words()->attach([
+                    $pronoun_index + 4 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 16 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 21 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 25 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 9 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 30 => ['board_x' => 6, 'board_y' => 1],
 
-                $pronoun_index + 36 => ['board_x' => 1, 'board_y' => 2],
-                $pronoun_index + 40 => ['board_x' => 2, 'board_y' => 2],
-            ]);
-            $user->folders()->find(18)->words()->attach([
-                $pronoun_index + 5 => ['board_x' => 1, 'board_y' => 1],
-                $pronoun_index + 17 => ['board_x' => 2, 'board_y' => 1],
-                $pronoun_index + 22 => ['board_x' => 3, 'board_y' => 1],
-                $pronoun_index + 26 => ['board_x' => 4, 'board_y' => 1],
-                $pronoun_index + 13 => ['board_x' => 5, 'board_y' => 1],
-                $pronoun_index + 18 => ['board_x' => 6, 'board_y' => 1],
+                    $pronoun_index + 36 => ['board_x' => 1, 'board_y' => 2],
+                    $pronoun_index + 40 => ['board_x' => 2, 'board_y' => 2],
+                ]);
+                $user->folders()->find(18)->words()->attach([
+                    $pronoun_index + 5 => ['board_x' => 1, 'board_y' => 1],
+                    $pronoun_index + 17 => ['board_x' => 2, 'board_y' => 1],
+                    $pronoun_index + 22 => ['board_x' => 3, 'board_y' => 1],
+                    $pronoun_index + 26 => ['board_x' => 4, 'board_y' => 1],
+                    $pronoun_index + 13 => ['board_x' => 5, 'board_y' => 1],
+                    $pronoun_index + 18 => ['board_x' => 6, 'board_y' => 1],
 
-                $pronoun_index + 31 => ['board_x' => 1, 'board_y' => 2],
-                $pronoun_index + 32 => ['board_x' => 2, 'board_y' => 2],
-                $pronoun_index + 37 => ['board_x' => 3, 'board_y' => 2],
-                $pronoun_index + 41 => ['board_x' => 4, 'board_y' => 2],
-            ]);
+                    $pronoun_index + 31 => ['board_x' => 1, 'board_y' => 2],
+                    $pronoun_index + 32 => ['board_x' => 2, 'board_y' => 2],
+                    $pronoun_index + 37 => ['board_x' => 3, 'board_y' => 2],
+                    $pronoun_index + 41 => ['board_x' => 4, 'board_y' => 2],
+                ]);
 
         //Conjunctions
             $user->words()->createMany([
-                ['id' => $conjunction_index + 1, 'text' => 'And', 'color' => $conjunction_color],
+                ['id' => $conjunction_index + 1, 'text' => 'And', 'color' => $conjunction_color],//67
                 ['id' => $conjunction_index + 2, 'text' => 'Also', 'color' => $conjunction_color],
                 ['id' => $conjunction_index + 3, 'text' => 'Except', 'color' => $conjunction_color],
                 ['id' => $conjunction_index + 4, 'text' => 'But', 'color' => $conjunction_color],
@@ -348,7 +351,7 @@ class BoardSeeder extends Seeder
                 ['id' => $conjunction_index + 9, 'text' => 'Nor', 'color' => $conjunction_color],
                 ['id' => $conjunction_index + 10, 'text' => 'So', 'color' => $conjunction_color],
                 ['id' => $conjunction_index + 11, 'text' => 'Yet', 'color' => $conjunction_color],
-                ['id' => $conjunction_index + 12, 'text' => 'Also', 'color' => $conjunction_color]
+                ['id' => $conjunction_index + 12, 'text' => 'Also', 'color' => $conjunction_color]//78
             ]);
             $user->folders()->createMany([
                 ['id' => 4, 'name' => 'Conjunction', 'color' => $conjunction_color]
@@ -371,7 +374,7 @@ class BoardSeeder extends Seeder
 
         //Food
             $user->words()->createMany([
-                ['id' => $food_extra + 1, 'text' => 'Food', 'color' => '#e6ffcc'],
+                ['id' => $food_extra + 1, 'text' => 'Food', 'color' => '#e6ffcc'],//79
                 ['id' => $food_extra + 2, 'text' => 'Pizza', 'color' => '#c73838'],
                 ['id' => $food_extra + 3, 'text' => 'Hamburger', 'color' => '#fde49e'],
                 ['id' => $food_extra + 4, 'text' => 'Chicken nuggets', 'color' => '#fcb321']
@@ -399,7 +402,7 @@ class BoardSeeder extends Seeder
             ]);
             //Pasta
                 $user->words()->createMany([
-                    ['id' => $food_pasta + 1, 'text' => 'Pasta', 'color' => '#ffedb3'],
+                    ['id' => $food_pasta + 1, 'text' => 'Pasta', 'color' => '#ffedb3'],//83
                     ['id' => $food_pasta + 2, 'text' => 'Spaghetti', 'color' => '#ffedb3'],
                     ['id' => $food_pasta + 3, 'text' => 'Macaroni', 'color' => '#ffedb3'],
                     ['id' => $food_pasta + 4, 'text' => 'Penne', 'color' => '#ffedb3'],
@@ -421,7 +424,7 @@ class BoardSeeder extends Seeder
                 ]);
             //Fruit
                 $user->words()->createMany([
-                    ['id' => $food_fruit + 1, 'text' => 'Orange', 'color' => '#ffa024'],
+                    ['id' => $food_fruit + 1, 'text' => 'Orange', 'color' => '#ffa024'],//95
                     ['id' => $food_fruit + 2, 'text' => 'Fruit', 'color' => '#ff8080'],
                     ['id' => $food_fruit + 3, 'text' => 'Apple', 'color' => '#ff5b45'],
                     ['id' => $food_fruit + 4, 'text' => 'Pear', 'color' => '#dbfca2'],
@@ -444,7 +447,7 @@ class BoardSeeder extends Seeder
                     ['id' => $food_fruit + 21, 'text' => 'Honeydew', 'color' => $default_color],
                     ['id' => $food_fruit + 22, 'text' => 'Apricot', 'color' => $default_color],
                     ['id' => $food_fruit + 23, 'text' => 'Cherry', 'color' => $default_color],
-                    ['id' => $food_fruit + 24, 'text' => 'Lemon', 'color' => $default_color]
+                    ['id' => $food_fruit + 24, 'text' => 'Lemon', 'color' => $default_color]//118
                 ]);
                 $user->folders()->find(22)->words()->attach([
                     $food_fruit + 2 => ['board_x' => 1, 'board_y' => 1],
@@ -477,7 +480,7 @@ class BoardSeeder extends Seeder
                 ]);
             //Snack
                 $user->words()->createMany([
-                    ['id' => $food_snacks + 1, 'text' => 'Snack', 'color' => ' #edb25a'],
+                    ['id' => $food_snacks + 1, 'text' => 'Snack', 'color' => ' #edb25a'],//91
                     ['id' => $food_snacks + 2, 'text' => 'Potato Chips', 'color' => '#fff0c2'],
                     ['id' => $food_snacks + 3, 'text' => 'Goldfish', 'color' => '#ffc859'],
                     ['id' => $food_snacks + 4, 'text' => 'Fruit Snacks', 'color' => '#db2c4f ']
@@ -500,11 +503,11 @@ class BoardSeeder extends Seeder
                 ]);
             //Drinks
                 $user->words()->createMany([
-                    ['id' => $food_drinks + 1, 'text' => 'Drink', 'color' => '#d9b6bd'],
+                    ['id' => $food_drinks + 1, 'text' => 'Drink', 'color' => '#d9b6bd'],//119
                     ['id' => $food_drinks + 2, 'text' => 'Soda', 'color' => '#c2937a'],
                     ['id' => $food_drinks + 3, 'text' => 'Juice', 'color' => '#ffb93d'],
                     ['id' => $food_drinks + 4, 'text' => 'Water', 'color' => '#b3e6ff'],
-                    ['id' => $food_drinks + 5, 'text' => 'Flavored Water', 'color' => '#c3bfff']
+                    ['id' => $food_drinks + 5, 'text' => 'Flavored Water', 'color' => '#c3bfff']//123
                 ]);
                 $user->folders()->find(21)->words()->attach([
                     $food_drinks + 1 => ['board_x' => 1, 'board_y' => 1],
@@ -516,13 +519,13 @@ class BoardSeeder extends Seeder
 
         //Comfort
             $user->words()->createMany([
-                ['id' => $comfort + 1, 'text' => 'Comfort', 'color' => '#cceeff'],
+                ['id' => $comfort + 1, 'text' => 'Comfort', 'color' => '#cceeff'],//124
                 ['id' => $comfort + 2, 'text' => 'Blanket', 'color' => $default_color],
                 ['id' => $comfort + 3, 'text' => 'Stuffed animal', 'color' => '#cccccc'],
                 ['id' => $comfort + 4, 'text' => 'Hug', 'color' => '#eee6ff'],
                 ['id' => $comfort + 5, 'text' => 'Gentle touch', 'color' => $default_color],
                 ['id' => $comfort + 6, 'text' => 'Pressure', 'color' => $default_color],
-                ['id' => $comfort + 7, 'text' => 'Distance', 'color' => $default_color]
+                ['id' => $comfort + 7, 'text' => 'Distance', 'color' => $default_color]//130
             ]);
             $user->folders()->createMany([
                 ['id' => 23, 'name' => 'Comfort', 'color' => '#cceeff']
@@ -541,7 +544,7 @@ class BoardSeeder extends Seeder
 
         //Quantity
             $user->words()->createMany([
-                ['id' => $quantity + 1, 'text' => 'More', 'color' => $quantity_color],
+                ['id' => $quantity + 1, 'text' => 'More', 'color' => $quantity_color],//125
                 ['id' => $quantity + 2, 'text' => 'Less', 'color' => $quantity_color],
                 ['id' => $quantity + 3, 'text' => 'Lot', 'color' => $quantity_color],
                 ['id' => $quantity + 4, 'text' => 'Little', 'color' => $quantity_color],
@@ -550,7 +553,7 @@ class BoardSeeder extends Seeder
                 ['id' => $quantity + 7, 'text' => 'Many', 'color' => $quantity_color],
                 ['id' => $quantity + 8, 'text' => 'Few', 'color' => $quantity_color],
                 ['id' => $quantity + 9, 'text' => 'Light', 'color' => $quantity_color],
-                ['id' => $quantity + 10, 'text' => 'Heavy', 'color' => $quantity_color]
+                ['id' => $quantity + 10, 'text' => 'Heavy', 'color' => $quantity_color]//133
             ]);
             $user->folders()->createMany([
                 ['id' => 24, 'name' => 'Quantity', 'color' => $quantity_color]
@@ -571,7 +574,7 @@ class BoardSeeder extends Seeder
 
         //Articles
             $user->words()->createMany([
-                ['id' => $article + 1, 'text' => 'A', 'color' => $article_color],
+                ['id' => $article + 1, 'text' => 'A', 'color' => $article_color],//134
                 ['id' => $article + 2, 'text' => 'An', 'color' => $article_color],
                 ['id' => $article + 3, 'text' => 'The', 'color' => $article_color]
             ]);
@@ -586,7 +589,7 @@ class BoardSeeder extends Seeder
 
         //Help
             $user->words()->createMany([
-                ['id' => $help + 1, 'text' => 'Help', 'color' => '#e6e6ff'],
+                ['id' => $help + 1, 'text' => 'Help', 'color' => '#e6e6ff'],//137
                 ['id' => $help + 2, 'text' => 'Help me', 'color' => '#e6e6ff'],
                 ['id' => $help + 3, 'text' => 'Call for help', 'color' => '#ff99c2'],
                 ['id' => $help + 4, 'text' => 'Medical emergency', 'color' => '#ff8080'],
@@ -595,7 +598,7 @@ class BoardSeeder extends Seeder
                 ['id' => $help + 7, 'text' => 'I cannot speak', 'color' => '#ffdf80'],
                 ['id' => $help + 8, 'text' => 'I am using a talker', 'color' => '#ffecb3'],
                 ['id' => $help + 9, 'text' => 'I Need', 'color' => $default_color],
-                ['id' => $help + 10, 'text' => 'Stop', 'color' => '#c42b2b']
+                ['id' => $help + 10, 'text' => 'Stop', 'color' => '#c42b2b']//146
             ]);
             $user->folders()->createMany([
                 ['id' => 2, 'name' => 'Help', 'color' => '#ffff66']
@@ -621,10 +624,10 @@ class BoardSeeder extends Seeder
             ]);
         //Toys
             $user->words()->createMany([
-                ['id' => $toys + 1, 'text' => 'Toy', 'color' => '#60d164'],
+                ['id' => $toys + 1, 'text' => 'Toy', 'color' => '#60d164'],//147
                 ['id' => $toys + 2, 'text' => 'Ball', 'color' => '#596df0'],
                 ['id' => $toys + 3, 'text' => 'Block', 'color' => '#f23a3a'],
-                ['id' => $toys + 4, 'text' => 'Doll', 'color' => '#ffefad']
+                ['id' => $toys + 4, 'text' => 'Doll', 'color' => '#ffefad']//150
             ]);
             $user->folders()->createMany([
                 ['id' => 26, 'name' => 'Toys', 'color' => '#60d164']
@@ -640,7 +643,7 @@ class BoardSeeder extends Seeder
 
         //People
             $user->words()->createMany([
-                ['id' => $people + 1, 'text' => 'People', 'color' => $default_color],
+                ['id' => $people + 1, 'text' => 'People', 'color' => $default_color],//151
                 ['id' => $people + 2, 'text' => 'Teacher', 'color' => $default_color],
                 ['id' => $people + 3, 'text' => 'Classmate', 'color' => $default_color],
                 ['id' => $people + 4, 'text' => 'Friend', 'color' => $default_color],
@@ -649,7 +652,7 @@ class BoardSeeder extends Seeder
                 ['id' => $people + 7, 'text' => 'Cashier', 'color' => $default_color],
                 ['id' => $people + 8, 'text' => 'Wait Staff', 'color' => $default_color],
                 ['id' => $people + 9, 'text' => 'Piolot', 'color' => $default_color],
-                ['id' => $people + 10, 'text' => 'Staff', 'color' => $default_color]
+                ['id' => $people + 10, 'text' => 'Staff', 'color' => $default_color]//160
             ]);
             $user->folders()->createMany([
                 ['id' => 28, 'name' => 'People', 'color' => $default_color],
