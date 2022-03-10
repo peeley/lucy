@@ -795,7 +795,7 @@ class BoardSeeder extends Seeder
             $user->folders()->createMany([
                 ['id' => 32, 'name' => 'Vehicles', 'color' => $default_color]
             ]);
-            $user->folders()->find(26)->words()->attach([
+            $user->folders()->find(32)->words()->attach([
                 $vehicles + 1 => ['board_x' => 1, 'board_y' => 1],
                 $vehicles + 2 => ['board_x' => 2, 'board_y' => 1],
                 $vehicles + 3 => ['board_x' => 3, 'board_y' => 1],
@@ -804,7 +804,10 @@ class BoardSeeder extends Seeder
                 $vehicles + 6 => ['board_x' => 6, 'board_y' => 1],
                 $vehicles + 7 => ['board_x' => 1, 'board_y' => 2]
             ]);
-        
+            //attaching vehicles to toys
+            $user->folders()->find(26)->folders()->attach([
+                32 => ['board_x' => 1, 'board_y' => 2]
+            ]);
         //adjictives
             
         
@@ -847,6 +850,7 @@ class BoardSeeder extends Seeder
                 $board_index + 5 => ['board_x' => 4, 'board_y' => 1],
                 $board_index + 7 => ['board_x' => 5, 'board_y' => 1],
                 $help + 10 => ['board_x' => 6, 'board_y' => 1],
+
                 $help + 1 => ['board_x' => 1, 'board_y' => 2],
                 $board_index + 6 => ['board_x' => 2, 'board_y' => 2],
                 $board_index + 3 => ['board_x' => 3, 'board_y' => 2],
@@ -857,11 +861,15 @@ class BoardSeeder extends Seeder
                 25 => ['board_x' => 2, 'board_y' => 3],
                 23 => ['board_x' => 3, 'board_y' => 3],
                 2 => ['board_x' => 4, 'board_y' => 3],
+                30 => ['board_x' => 5, 'board_y' => 3],
+                31 => ['board_x' => 6, 'board_y' => 3],
+
                 3 => ['board_x' => 1, 'board_y' => 4],
                 24 => ['board_x' => 2, 'board_y' => 4],
                 4 => ['board_x' => 3, 'board_y' => 4],
                 5 => ['board_x' => 4, 'board_y' => 4],
-                26 => ['board_x' => 5, 'board_y' => 4]
+                26 => ['board_x' => 5, 'board_y' => 4],
+                28 => ['board_x' => 6, 'board_y' => 4]
             ]);
 
         // !! raw sql alert !!
