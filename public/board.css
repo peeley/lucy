@@ -12,7 +12,7 @@
 
     --margin: auto;
     --control-button-margin: 15px;
-    --vertical-margin: 5px;
+    --vertical-margin: 15px;
     --vertical-align: top;
     
     --default-border: 2px solid black;
@@ -103,7 +103,7 @@
     border-radius: var(--default-border-radius);
 
     text-align: var(--default-text-align);
-    font-size: medium;
+    font-size: var(--default-font-size);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
