@@ -5,8 +5,10 @@
     @include('layouts.includes.header')
     <title>Welcome to Lucy!</title>
     <link rel="stylesheet" href="@if (session('isDark')) /css/welcome-dark.css @else /css/welcome.css @endif">
+    @include('layouts.includes.darkThemeToggle')
 </head>
 <body class = "welcome-body">
+
     <div class="transition transition-2 is-active"></div>
     <div class = "welcome-title">
         <p class = "welcome-header">Welcome to Project Lucy</p>
@@ -15,7 +17,6 @@
     <br>
     <br>
 
-    @include('layouts.includes.darkThemeToggle')
     <div>
         <form>
             <button class="welcome-button" formaction="/login">Log in</button>

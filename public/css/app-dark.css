@@ -219,15 +219,7 @@ body
     font-size: 3vw;
     font-family: Arial, Helvetica, sans-serif;
 }
-.welcome-button {
-    width: 200px;
-    height: 80px;
-    background-color: lightgoldenrodyellow;
-    text-align: center;
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 20px;
-}
+
 .back-button {
     border-radius: 5px;
     width: 100px;
