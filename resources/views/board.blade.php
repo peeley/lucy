@@ -2,7 +2,7 @@
 
 @include('layouts.includes.header')
 @include('layouts.includes.darkThemeToggle')
-
+<link rel="stylesheet" href="board.blade.php"/>
  <h2 style="padding: 20px">
     <form>
       <button class="back-button" formaction="/">Back</button>
