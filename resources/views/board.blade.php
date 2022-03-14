@@ -1,13 +1,8 @@
 <html>
 
-@include('layouts.includes.header')
-@include('layouts.includes.darkThemeToggle')
-<link rel="stylesheet" href="board.blade.php"/>
- <h2 style="padding: 20px">
-    <form>
-      <button class="back-button" formaction="/">Back</button>
-    </form>
-  </h2>
+  @include('layouts.includes.header')
+  @include('layouts.includes.darkThemeToggle')
+  <link rel="stylesheet" href="/css/board.css"/>
 
   <div id="root" board_id={{ $board_id }}></div>
   <script src="/js/app.js"></script>
