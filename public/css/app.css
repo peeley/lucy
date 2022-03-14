@@ -37,3 +37,84 @@ button:active:hover { /* Default click/touch hold effect*/
     text-align: center;
     padding: 2%;
 }
+
+
+.darkThemeLabel
+{
+    position:absolute;
+    top: 0;
+    right: 0;
+    transition: 0.2s;
+    display: flex;
+    width: 55px;
+    height: 25px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6px;
+    border-radius: 50px;
+    cursor: pointer;
+    background: #ffffff;
+}
+
+#darkThemeSwitch:checked + .darkThemeLabel
+{
+    background: #ffffff;
+}
+
+.darkThemeLabel i
+{
+    font-size: 18px;
+}
+
+.darkThemeLabel .fa-moon
+{
+    transform: translateX(35px);
+    transition: 0.3s;
+    opacity: 0;
+    color: silver;
+}
+.darkThemeLabel .fa-sun
+{
+    transition: 0.3s;
+    opacity: 1;
+    color: goldenrod;
+}
+
+.darkThemeLabel .ball
+{
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: silver;
+    border-radius: 50%;
+    transition: 0.3s;
+
+}
+
+
+#darkThemeSwitch:checked + .darkThemeLabel .fa-sun
+{
+    transform: translateX(35px);
+    opacity: 0;
+}
+
+#darkThemeSwitch:checked + .darkThemeLabel .fa-moon
+{
+    opacity: 1;
+    transform: translateX(0);
+
+}
+
+#darkThemeSwitch:checked + .darkThemeLabel .ball
+{
+    transform: translateX(-30px);
+    background: goldenrod;
+}
+
+#darkThemeSwitch
+{
+    display: none;
+}

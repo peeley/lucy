@@ -1,6 +1,7 @@
 .about-body {
     width: 95%;
     margin: 0 auto;
+
 }
 .about-header {
     padding: 1rem;
@@ -13,17 +14,31 @@
     width:80%;
     margin: 0 auto;
     text-align:justify;
+    color: whitesmoke;
+
 }
 .about-main p {
     width:80%;
     margin: 0 auto;
+    color: whitesmoke;
+
 }
 .about-main form {
+
     display: block;
     text-align: center;
 }
+
 .about-resources {
+    color: whitesmoke
+}
+
+.about-resources ul a {
+    color: forestgreen;
     width:80%;
     margin: 0 auto;
     text-align:justify;
+}
+.about-resources ul {
+    color: grey
 }

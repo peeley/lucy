@@ -1,22 +1,24 @@
 <html>
 <head>
-  <title>Log in</title>
-  <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/login.css">
-  <link rel="stylesheet" href="/css/view-transitions.css">
+    @include('layouts.includes.header')
+    <link rel="stylesheet" href="@if (session('isDark')) /css/login-dark.css @else /css/login.css @endif">
+    <title>Log in</title>
 </head>
 <body>
+@include('layouts.includes.darkThemeToggle')
+
   <div class="transition transition-2 is-active"></div>
-  
+
   <h1 style="padding: 20px">
-    <form>
-      <button class="back-button" formaction="/">Back</button>
-    </form>
+  <form>
+    <button class="back-button" formaction="/">Back</button>
+  </form>
+
   </h1>
 
   <div id="login-box">
-    <h1 style="border-bottom: 2px solid black;">Login</h1>
-    
+    <h1>Login</h1>
+
     <form action="/login" method="POST">
       @csrf
 

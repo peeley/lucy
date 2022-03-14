@@ -1,17 +1,20 @@
 <html>
   <head>
-    <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/create-account.css">
-    <link rel="stylesheet" href="/css/view-transitions.css">
+      @include('layouts.includes.header')
+      <link rel="stylesheet" href="/css/create-account.css">
   </head>
   <body>
+  <form>
+      <button class="back-button" formaction="/">Back</button>
+  </form>
     <div class="transition transition-2 is-active"></div>
-    <form>
-        <button class="back-button" formaction="/">Back</button>
-    </form>
     <h1 class="general-heading">Create Your Account</h1>
-      
-    <form action="/create-account" method="POST">
+    <h2 style="padding: 20px">
+
+    </h2>
+  @include('layouts.includes.darkThemeToggle')
+
+  <form action="/create-account" method="POST">
       @csrf
 
       @error('name')
@@ -33,7 +36,7 @@
       <div class="alert alert-danger">{{ $message }}</div><br>
       @enderror
       <input class="create-account create-account-input" type="password" name="verified_password" value="" placeholder="Verify Password"/><br>
-      <button class="create-account" id="create-account-button" type="submit">Create Account</button>
+      <button class="create-account-button" type="submit">Create Account</button>
     </form>
     <script src="/js/view-transitions.js"></script>
   </body>

@@ -1,7 +1,10 @@
 <html>
+
+  @include('layouts.includes.header')
+  @include('layouts.includes.darkThemeToggle')
+  <link rel="stylesheet" href="/css/board.css"/>
+
   <div id="root" board_id={{ $board_id }}></div>
-  <link rel="stylesheet" href="/css/app.css">
-  <link rel="stylesheet" href="/css/board.css">
   <script src="/js/app.js"></script>
 
   <link rel="stylesheet" href="/css/view-transitions.css">

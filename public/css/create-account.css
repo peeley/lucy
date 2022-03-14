@@ -7,14 +7,27 @@
     margin-right: auto;
     font-size: larger;
 }
+
 .create-account-input {
     height: 10%;
     width: 30%;
     border-radius: 5px;
     text-align: center;
 }
-#create-account-button {
+.create-account-button
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height: 12%;
     width: 15%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: lightgoldenrodyellow;
+    text-align: center;
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+
 

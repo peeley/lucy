@@ -4,10 +4,12 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CreateAccountController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\FolderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +21,9 @@ use App\Http\Controllers\FolderController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'get']);
+Route::get('/nightmode', [WelcomeController::class, 'switchModes']);
+
 Route::get('/about-us', function () {
     return view('about-us');
 });

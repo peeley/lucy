@@ -2,11 +2,14 @@
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@include('layouts.includes.header')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/settings.css">
 </head>
 <body>
+@include('layouts.includes.darkThemeToggle')
+
 <h1 style="padding: 20px">
     <a href="/"><button class = "back-button">Back</button></a>
 </h1>
@@ -18,7 +21,7 @@
 <button class="settings-button" onclick="openAudioForm()">Audio</button>
 </center>
 <!-- forms which allow the user to see and adjust their settings -->
-<div class="form-popup" id = "GuidedUseForm"> 
+<div class="form-popup" id = "GuidedUseForm">
 <form action="/user-settings" method="POST">
     @csrf
     <h2>Guided Use</h2>
@@ -32,7 +35,7 @@
 </form>
 </div>
 
-<div class="form-popup" id="AudioForm"> 
+<div class="form-popup" id="AudioForm">
 <form action="/user-settings" method="POST">
     @csrf
     <h2>Audio Settings</h2>
