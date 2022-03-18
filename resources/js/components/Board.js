@@ -21,7 +21,8 @@ export class Board extends React.Component {
       heldTileRow: null,
       confirmDeleteModal: false,
       editModal: false,
-      createModal: false
+      createModal: false,
+      selectedFile: null
     };
 
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
@@ -120,6 +121,7 @@ export class Board extends React.Component {
             onTouchCancel={this._onHoldEnd}
         >
           {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
+          {tileType != 'blank' && this.getTileIcon(tileType, tile.id)}
         </td>
       })}
       </tr>
@@ -239,18 +241,32 @@ export class Board extends React.Component {
       : 'folders';
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+    const formData = new FormData()
+    formData.append("image", event.target.image.files[0])
+    formData.append("color", event.target.color.value)
+    formData.append("tileId", this.state.heldTileId)
+    formData.append("tileType", this.state.heldTileType)
 
-    axios.post(`/${parentType}/${parentId}/tile/edit`, {
-      text: event.target.text.value,
-      color: event.target.color.value,
-      tileId: this.state.heldTileId,
-      tileType: this.state.heldTileType
-    }).then( () => {
-      this.setState({
-        configuringTile: false,
-        editModal: false
-      }, this.fetchBoardTiles);
-    });
+    axios({
+        method: "post",
+        url: `/${parentType}/${parentId}/tile/edit`,
+        data: formData,
+        headers: {"Content-Type": "multipart/form-data"},
+      }).then( () => {
+        this.setState({
+          configuringTile: false,
+          editModal: false
+        }, this.fetchBoardTiles);
+      });
+    }
+
+  getTileIcon = (tileType, tileId) => {
+
+    console.log(`${tileType}/tile/${tileId}/getIcon`);
+    axios.get(`/${tileType}/tile/${tileId}/getIcon`);
+/*       .then (response => {
+        console.log(response.icon)
+      }); */
   }
 
   handleCreateSubmit = (event) => {
@@ -273,6 +289,12 @@ export class Board extends React.Component {
       }, this.fetchBoardTiles);
     });
   }
+
+/*   handleFileUpload = (event) => {
+    this.setState({
+      selectedFile: event.target.image.files[0]
+      });
+  }  */
 
   render() {
     const rows = this.renderBoardTiles();
@@ -318,6 +340,12 @@ export class Board extends React.Component {
                   name="color"
                   type="text"
                   placeholder="Color (Hexadecimal)"
+                  className="modal-button"
+                />
+                <input 
+                  name="image"
+                  type="file"
+                  placeholder="Image"
                   className="modal-button"
                 />
               <button type="submit" className="modal-button">Submit</button>

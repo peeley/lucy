@@ -55,4 +55,10 @@ class WordController extends Controller
     {
         return view('create-word');
     }
+
+    public function getTileIcon(Request $request, int $tileId)
+    {
+        $tile = Word::find($tileId);
+        return $tile->icon;
+    }
 }

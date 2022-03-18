@@ -21,9 +21,12 @@ class Folder extends TileContainer
     protected $visible = [
         'name',
         'color',
-        'icon',
         'contents',
         'id'
+    ];
+
+    protected $hidden = [
+        'icon'
     ];
 
     // default values for these properties

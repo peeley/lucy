@@ -67,3 +67,6 @@ Route::post('/create-word', [WordController::class, 'createWord'])
 Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'deleteTileFromFolder']);
 Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);
 Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFolder']);
+
+Route::get('/folder/tile/{tile_id}/getIcon', [FolderController::class, 'getTileIcon']);
+Route::get('/word/tile/{tile_id}/getIcon', [WordController::class, 'getTileIcon']);

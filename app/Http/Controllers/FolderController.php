@@ -42,6 +42,11 @@ class FolderController extends Controller
             if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
+
+            if ($request->image != null) {
+                $path = $request->file('image')->store('images');
+                $tile->icon = $path;
+            } 
         }
 
         if ($type == 'folder') {
@@ -54,6 +59,11 @@ class FolderController extends Controller
             if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
+ 
+            if ($request->image != null) {
+                $path = $request->file('image')->store('images');
+                $tile->icon = $path;
+            } 
         }
     }
 
@@ -72,5 +82,12 @@ class FolderController extends Controller
         ]);
 
         return response('word created.');
+    }
+
+    public function getTileIcon(Request $request, int $tileId)
+    {
+        $tile = Folder::find($tileId);
+        echo(gettype($tile->icon));
+        return $tile->icon;
     }
 }

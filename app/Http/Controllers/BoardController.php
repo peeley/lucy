@@ -37,6 +37,7 @@ class BoardController extends Controller
 
         $sorted_board_tiles = $board->toArray();
 
+        //dd($sorted_board_tiles);
         return response()->json($sorted_board_tiles);
     }
 
@@ -83,6 +84,9 @@ class BoardController extends Controller
     {
         $type = $request->tileType;
         $tileId = $request->tileId;
+        
+        //todo: see if we need to include more image types and if this is a suitable max file size (kb)
+        $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
@@ -102,9 +106,14 @@ class BoardController extends Controller
             $tile->color = $request->color;
         }
 
+        if($request->image) {
+            $path = $request->file('image')->store('images');
+            $tile->icon = $path;
+        }
+
         $tile->save();
 
-        return response('tile edited');
+        return response($path);
     }
 
     public function deleteBoard(Request $request, int $board_id)
