@@ -26,9 +26,6 @@ class Word extends Model
         'text',
         'color',
         'id',
-    ];
-
-    protected $hidden = [
         'icon'
     ];
 

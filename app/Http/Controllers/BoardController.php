@@ -109,11 +109,12 @@ class BoardController extends Controller
         if($request->image) {
             $path = $request->file('image')->store('images');
             $tile->icon = $path;
+            echo(gettype($tile->icon));
         }
 
         $tile->save();
 
-        return response($path);
+        return response(gettype($tile->icon));
     }
 
     public function deleteBoard(Request $request, int $board_id)

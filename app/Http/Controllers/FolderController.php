@@ -32,6 +32,8 @@ class FolderController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
+        $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+
         if ($type == 'word') {
             $tile = Word::find($tileId);
 
@@ -44,7 +46,7 @@ class FolderController extends Controller
             }
 
             if ($request->image != null) {
-                $path = $request->file('image')->store('images');
+                $path = request()->file('image')->store('images');
                 $tile->icon = $path;
             } 
         }
@@ -61,7 +63,7 @@ class FolderController extends Controller
             }
  
             if ($request->image != null) {
-                $path = $request->file('image')->store('images');
+                $path = request()->file('image')->store('images');
                 $tile->icon = $path;
             } 
         }
@@ -87,7 +89,13 @@ class FolderController extends Controller
     public function getTileIcon(Request $request, int $tileId)
     {
         $tile = Folder::find($tileId);
-        echo(gettype($tile->icon));
-        return $tile->icon;
+        if (is_null($tile->icon))
+        {
+            return response('null');
+        }
+        else
+        {
+            return response(stream_get_contents($tile->icon));
+        }
     }
 }

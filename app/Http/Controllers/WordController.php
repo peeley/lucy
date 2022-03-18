@@ -59,6 +59,13 @@ class WordController extends Controller
     public function getTileIcon(Request $request, int $tileId)
     {
         $tile = Word::find($tileId);
-        return $tile->icon;
+        if(is_null($tile->icon))
+        {
+            return response('null');
+        }
+        else
+        {
+            return response(stream_get_contents($tile->icon));
+        }
     }
 }

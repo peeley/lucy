@@ -22,10 +22,7 @@ class Folder extends TileContainer
         'name',
         'color',
         'contents',
-        'id'
-    ];
-
-    protected $hidden = [
+        'id',
         'icon'
     ];
 
