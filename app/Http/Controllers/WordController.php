@@ -56,16 +56,4 @@ class WordController extends Controller
         return view('create-word');
     }
 
-    public function getTileIcon(Request $request, int $tileId)
-    {
-        $tile = Word::find($tileId);
-        if(is_null($tile->icon))
-        {
-            return response('null');
-        }
-        else
-        {
-            return response(stream_get_contents($tile->icon));
-        }
-    }
 }

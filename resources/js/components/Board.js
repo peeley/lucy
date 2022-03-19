@@ -104,8 +104,6 @@ export class Board extends React.Component {
       <tr>
       { row.map( (tile, columnIndex) => {
         const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
-        //const icon = this.getTileIcon(tileType, tile.id)
-        //console.log(icon)
         return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
                    onClick={tileType == 'blank'
@@ -122,11 +120,7 @@ export class Board extends React.Component {
             onTouchCancel={this._onHoldEnd}
         >
           {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
-          {//calling a get request for every tile is not ideal; could be fixed if the toArray can be modified to 
-           //accept the stream resource that stores the path
-          }
-      
-          {/* {icon != 'null' && <img src={icon}/>} */}
+          {tile.icon != null && <img src={tile.icon}/>}
         </td>
       })}
       </tr>
@@ -265,18 +259,6 @@ export class Board extends React.Component {
       });
     }
 
-  getTileIcon = (tileType, tileId) => {
-
-    var data;
-
-    axios.get(`/${tileType}/tile/${tileId}/getIcon`)
-      .then (response => {
-        data = response.data;
-      }); 
-
-    return data;
-  }
-
   handleCreateSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
@@ -297,12 +279,6 @@ export class Board extends React.Component {
       }, this.fetchBoardTiles);
     });
   }
-
-/*   handleFileUpload = (event) => {
-    this.setState({
-      selectedFile: event.target.image.files[0]
-      });
-  }  */
 
   render() {
     const rows = this.renderBoardTiles();

@@ -86,16 +86,4 @@ class FolderController extends Controller
         return response('word created.');
     }
 
-    public function getTileIcon(Request $request, int $tileId)
-    {
-        $tile = Folder::find($tileId);
-        if (is_null($tile->icon))
-        {
-            return response('null');
-        }
-        else
-        {
-            return response(stream_get_contents($tile->icon));
-        }
-    }
 }
