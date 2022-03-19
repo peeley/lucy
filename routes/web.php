@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,5 @@ Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFo
 
 Route::get('/folder/tile/{tile_id}/getIcon', [FolderController::class, 'getTileIcon']);
 Route::get('/word/tile/{tile_id}/getIcon', [WordController::class, 'getTileIcon']);
+
+Route::get('/boards/images/{file_path}', [ImageController::class, 'getImage']);
