@@ -651,7 +651,7 @@ class BoardSeeder extends Seeder
                 ['id' => $people + 6, 'text' => 'Nurse', 'color' => $default_color],
                 ['id' => $people + 7, 'text' => 'Cashier', 'color' => $default_color],
                 ['id' => $people + 8, 'text' => 'Wait Staff', 'color' => $default_color],
-                ['id' => $people + 9, 'text' => 'Piolot', 'color' => $default_color],
+                ['id' => $people + 9, 'text' => 'Pilot', 'color' => $default_color],
                 ['id' => $people + 10, 'text' => 'Staff', 'color' => $default_color]//160
             ]);
             $user->folders()->createMany([
