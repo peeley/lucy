@@ -1,14 +1,22 @@
 /*=====================================================*/
 /*                      Welcome CSS                    */
 /*=====================================================*/
+/*variables*/
+:root {
+    --align: center;
+}
+.welcome-background{
+    background-color: #b4b2c2;
+}
 .welcome-body {
-    text-align: center;
+    text-align: var(--align);
+    font-size: large;
 }
 .welcome-title {
     padding-top: 30px;
     color: black;
     font-weight: bold;
-    text-align: center;
+    text-align: var(--align);
 }
 .welcome-header {
     font-size: 3vw;
@@ -16,7 +24,7 @@
 .welcome-button {
     width: 200px;
     height: 80px;
-    text-align: center;
+    text-align: var(--align);
     font-size: larger;
     margin-top: 20px;
 }
