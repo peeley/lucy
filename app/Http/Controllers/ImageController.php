@@ -11,6 +11,6 @@ class ImageController extends Controller
     {
         //echo($file_path); 
         //$actual_path = config('filesystems.disks.local.root') . DIRECTORY_SEPARATOR . $url;
-        return response()->file('/storage/app/images/' . $file_path);
+        return response()->file('storage/app/images/' . $file_path);
     }
 }
