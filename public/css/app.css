@@ -2,13 +2,13 @@
 /*                     General CSS                     */
 /*=====================================================*/
 :root {
-    --default-button-color: lightgoldenrodyellow;
+    --default-button-color: #daeace;
 }
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
 body {
-    background-color: lightsteelblue; /* Default body background color */
+    background-color: #b4b2c2; /* Default body background color */
 }
 button { /* NOT the same as board tiles */
     border:2px solid black;
@@ -27,9 +27,9 @@ button:active:hover { /* Default click/touch hold effect*/
     background-color: black;
 }
 .back-button {
-    width: 110px;
-    height: 15%;
-    font-size: large;
+    width: 125px;
+    height: 12%;
+    font-size: x-large;
     margin-right: 15px;
     margin-top: 15px;
 }

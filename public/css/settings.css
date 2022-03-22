@@ -7,7 +7,7 @@
     height: 100px;
     width: 150px;
     text-align: center;
-    font-size: larger;
+    font-size: x-large;
 }
 .form-popup {
     display: none;
@@ -25,10 +25,10 @@
     border: 2px solid black;
     height: 50px;
     width: 70%;
-    font-size: larger;
+    font-size: large;
 }
 .close-settings-button {
     height: 50px;
     width: 70%;
-    font-size: larger;
+    font-size: x-large;
 }

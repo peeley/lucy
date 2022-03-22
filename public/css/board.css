@@ -3,16 +3,15 @@
 /*=====================================================*/
 /*variables*/
 :root {
-    --default-background-color: #b4b2c2;
-
-    --tile-height: 100px;
-    --tile-width: 150px;
+    --tile-height: 11%;
+    --tile-width: 9%;
     --control-button-width: 125px;
-    --height-relative: 15%;
+    --height-relative: 12%;
 
-    --margin: auto;
+    --margin: 5px;
     --control-button-margin: 15px;
     --vertical-margin: 5px;
+    --top-vertical-margin: 15px;
     --vertical-align: top;
     
     --default-border: 2px solid black;
@@ -26,13 +25,12 @@
     --default-transition: ease-out 0.15s;
 }
 
-.board-background {
-    background-color: var(--default-background-color);
-}
 .default-tile {
     height: var(--tile-height);
     width: var(--tile-width);
     
+    display: inline-flex;
+    justify-content: center;
     margin: var(--margin);
     margin-top: var(--vertical-margin);
     vertical-align: var(--vertical-align);
@@ -48,14 +46,13 @@
     transition: var(--default-transition);
 }
 .folder-tile {
-    height: var(--tile-height);
-    width: var(--tile-width);
-    
-    /*margin: var(--margin);*/
+    display: inline-flex;
+    justify-content: center;
+    margin: var(--margin);
     margin-top: var(--vertical-margin);
     vertical-align: var(--vertical-align);
 
-    border: var(--default-border);
+    border: 5px double black;
     border-radius: var(--default-border-radius);
 
     padding: var(--padding);
@@ -113,7 +110,7 @@
     width: var(--control-button-width);
 
     margin: var(--control-button-margin);
-    margin-top: var(--vertical-margin);
+    margin-top: var(--top-vertical-margin);
     vertical-align: var(--vertical-align);
 
     background-color: #6c6fff;
@@ -129,7 +126,7 @@
     width: var(--control-button-width);
 
     margin: var(--control-button-margin);
-    margin-top: var(--vertical-margin);
+    margin-top: var(--top-vertical-margin);
     vertical-align: var(--vertical-align);
 
     background-color:#d0f0ff;
@@ -163,8 +160,8 @@
     height: var(--height-relative);
     width: 30%;
 
+    justify-content: center;
     margin: var(--margin);
-    margin-top: var(--vertical-margin);
     vertical-align: var(--vertical-align);
 
     background-color: var(--default-background-color);
@@ -176,8 +173,9 @@
     font-size: var(--default-font-size);
 }
 .folder-path {
+    display: flex;
+    justify-content: center;
     margin: var(--margin);
-    margin-top: var(--vertical-margin);
     vertical-align: var(--vertical-align);
 
     text-align: var(--default-text-align);
