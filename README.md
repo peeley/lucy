@@ -46,6 +46,6 @@ Then make a new pull request in GitHub. You can do this by going to the `Pull re
 
 - Eloisa Burton
 - Mehar Mangat
-- Elizabeth Schuon
+- Ren Schuon
 - Noah Snelson
 - Elvis Vong
