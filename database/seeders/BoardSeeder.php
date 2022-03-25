@@ -61,8 +61,8 @@ class BoardSeeder extends Seeder
             $adjectives = $talker + 4;
             $clothes = $adjectives + 57;
             $weather = $clothes + 58;
-            //$tempurature = $weather + ;
-            //$numbers = $tempurature + ;
+            $tempurature = $weather + 19;
+            $numbers = $tempurature + 4;
             //$letters = $numbers + ;
             //$personal_care = $letters + ;
 
@@ -1524,29 +1524,81 @@ class BoardSeeder extends Seeder
             ]);
 
         //tempurature
-        $user->words()->createMany([
-            ['id' => $tempurature + 1, 'text' => 'Temputrature', 'color' => $default_color],
-            ['id' => $tempurature + 2, 'text' => 'Farenheight', 'color' => $default_color],
-            ['id' => $tempurature + 3, 'text' => 'Celcius', 'color' => $default_color],
-            ['id' => $tempurature + 4, 'text' => 'Degrees', 'color' => $default_color]
-        ]);
-        $user->folders()->createMany([
-            ['id' => 57, 'name' => 'Tempurature', 'color' => $default_color]
-        ]);
-        $user->folders()->find(56)->words()->attach([
-            $tempurature + 1 => ['board_x' => 1, 'board_y' => 1],
-            $tempurature + 2 => ['board_x' => 2, 'board_y' => 1],
-            $tempurature + 3 => ['board_x' => 3, 'board_y' => 1],
-            $tempurature + 4 => ['board_x' => 4, 'board_y' => 1],
-            //spot for hot and cold
+            $user->words()->createMany([
+                ['id' => $tempurature + 1, 'text' => 'Temputrature', 'color' => $default_color],
+                ['id' => $tempurature + 2, 'text' => 'Farenheight', 'color' => $default_color],
+                ['id' => $tempurature + 3, 'text' => 'Celcius', 'color' => $default_color],
+                ['id' => $tempurature + 4, 'text' => 'Degrees', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 57, 'name' => 'Tempurature', 'color' => $default_color]
+            ]);
+            $user->folders()->find(56)->words()->attach([
+                $tempurature + 1 => ['board_x' => 1, 'board_y' => 1],
+                $tempurature + 2 => ['board_x' => 2, 'board_y' => 1],
+                $tempurature + 3 => ['board_x' => 3, 'board_y' => 1],
+                $tempurature + 4 => ['board_x' => 4, 'board_y' => 1],
+                //spot for hot and cold
 
-            $empty => ['board_x' => 1, 'board_y' => 2],
+                $empty => ['board_x' => 1, 'board_y' => 2],
 
-            $empty => ['board_x' => 1, 'board_y' => 3],
+                $empty => ['board_x' => 1, 'board_y' => 3],
 
-            $empty => ['board_x' => 1, 'board_y' => 4]
-        ]);
+                $empty => ['board_x' => 1, 'board_y' => 4]
+            ]);
         //numbers
+            $user->words()->createMany([
+                ['id' => $numbers + 1, 'text' => '1', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '2', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '3', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '4', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '5', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '6', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '7', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '8', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '9', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '10', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '11', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '12', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '13', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '14', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '15', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '16', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '17', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '18', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '19', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '20', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '30', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '40', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '50', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => '60', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '70', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => '80', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => '90', 'color' => $default_color],
+                ['id' => $numbers + 1, 'text' => '0', 'color' => $default_color],
+                ['id' => $numbers + 2, 'text' => 'Hundred', 'color' => $default_color],
+                ['id' => $numbers + 3, 'text' => 'Thousand', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => 'Million', 'color' => $default_color],
+                ['id' => $numbers + 4, 'text' => 'Billion', 'color' => $default_color],
+
+            ]);
+            $user->folders()->createMany([
+                ['id' => 58, 'name' => 'Numbers', 'color' => $default_color],
+                ['id' => 59, 'name' => 'Page 2', 'color' => $default_color]
+            ]);
+            $user->folders()->find(56)->words()->attach([
+                $numbers + 1 => ['board_x' => 1, 'board_y' => 1],
+                $numbers + 2 => ['board_x' => 2, 'board_y' => 1],
+                $numbers + 3 => ['board_x' => 3, 'board_y' => 1],
+                $numbers + 4 => ['board_x' => 4, 'board_y' => 1],
+                //spot for hot and cold
+
+                $empty => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]
+            ]);
 
         //letters
 
