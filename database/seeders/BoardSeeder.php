@@ -1473,51 +1473,54 @@ class BoardSeeder extends Seeder
 
         //weather
             $user->words()->createMany([
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color],
-                ['id' => $weather + 1, 'text' => 'Clothes', 'color' => $default_color],
-                ['id' => $weather + 2, 'text' => 'Compression', 'color' => $default_color]
+                ['id' => $weather + 1, 'text' => 'Cloudy', 'color' => $default_color],
+                ['id' => $weather + 2, 'text' => 'Sunny', 'color' => $default_color],
+                ['id' => $weather + 3, 'text' => 'Overcast', 'color' => $default_color],
+                ['id' => $weather + 4, 'text' => 'Rain', 'color' => $default_color],
+                ['id' => $weather + 5, 'text' => 'Fog', 'color' => $default_color],
+                ['id' => $weather + 6, 'text' => 'Smog', 'color' => $default_color],
+                ['id' => $weather + 7, 'text' => 'Wind', 'color' => $default_color],
+                ['id' => $weather + 8, 'text' => 'Breeze', 'color' => $default_color],
+                ['id' => $weather + 9, 'text' => 'Flood', 'color' => $default_color],
+                ['id' => $weather + 10, 'text' => 'Frost', 'color' => $default_color],
+                ['id' => $weather + 11, 'text' => 'Blizzard', 'color' => $default_color],
+                ['id' => $weather + 12, 'text' => 'Snow', 'color' => $default_color],
+                ['id' => $weather + 13, 'text' => 'Sleet', 'color' => $default_color],
+                ['id' => $weather + 14, 'text' => 'Hail', 'color' => $default_color],
+                ['id' => $weather + 15, 'text' => 'Thunder', 'color' => $default_color],
+                ['id' => $weather + 16, 'text' => 'Lightening', 'color' => $default_color],
+                ['id' => $weather + 17, 'text' => 'Tornado', 'color' => $default_color],
+                ['id' => $weather + 18, 'text' => 'Hurricane', 'color' => $default_color],
+                ['id' => $weather + 19, 'text' => 'Storm', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
                 ['id' => 56, 'name' => 'Weather', 'color' => $default_color]
             ]);
-            $user->folders()->find(55)->words()->attach([
+            $user->folders()->find(56)->words()->attach([
                 $weather + 1 => ['board_x' => 1, 'board_y' => 1],
                 $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1],
-                $weather + 1 => ['board_x' => 1, 'board_y' => 1],
-                $weather + 2 => ['board_x' => 2, 'board_y' => 1]
+                $weather + 3 => ['board_x' => 3, 'board_y' => 1],
+                $weather + 4 => ['board_x' => 4, 'board_y' => 1],
+                $weather + 5 => ['board_x' => 5, 'board_y' => 1],
+                $weather + 6 => ['board_x' => 6, 'board_y' => 1],
+
+                $weather + 7 => ['board_x' => 1, 'board_y' => 2],
+                $weather + 8 => ['board_x' => 2, 'board_y' => 2],
+                $weather + 9 => ['board_x' => 3, 'board_y' => 2],
+                $weather + 10 => ['board_x' => 4, 'board_y' => 2],
+                $weather + 11 => ['board_x' => 5, 'board_y' => 2],
+                $weather + 12 => ['board_x' => 6, 'board_y' => 2],
+
+                //spot for light and heavy, wet and dry
+                $weather + 13 => ['board_x' => 5, 'board_y' => 3],
+                $weather + 14 => ['board_x' => 6, 'board_y' => 3],
+
+                $weather + 15 => ['board_x' => 1, 'board_y' => 4],
+                $weather + 16 => ['board_x' => 2, 'board_y' => 4],
+                $weather + 17 => ['board_x' => 3, 'board_y' => 4],
+                $weather + 18 => ['board_x' => 4, 'board_y' => 4],
+                $weather + 19 => ['board_x' => 5, 'board_y' => 4]
+                //room for temourature folder
             ]);
 
         //tempurature
