@@ -1250,7 +1250,6 @@ class BoardSeeder extends Seeder
                     $empty => ['board_x' => 1, 'board_y' => 4]
                 ]);
             //Shirts
-            //here down i need to fix id stuff
                 $user->words()->createMany([
                     ['id' => $clothes + 9, 'text' => 'Shirt', 'color' => $default_color],
                     ['id' => $clothes + 10, 'text' => 'T-shirt', 'color' => $default_color],
@@ -1473,6 +1472,28 @@ class BoardSeeder extends Seeder
                 ]);
 
         //weather
+            $user->words()->createMany([
+                ['id' => $clothes + 1, 'text' => 'Clothes', 'color' => $default_color],
+                ['id' => $clothes + 2, 'text' => 'Compression', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 44, 'name' => 'Material', 'color' => $default_color],
+                ['id' => 45, 'name' => 'Shirts', 'color' => $default_color],
+                ['id' => 46, 'name' => 'Pants', 'color' => $default_color],
+                ['id' => 47, 'name' => 'Dress', 'color' => $default_color],
+                ['id' => 48, 'name' => 'Jacket', 'color' => $default_color],
+                ['id' => 49, 'name' => 'Skirt', 'color' => $default_color],
+                ['id' => 50, 'name' => 'Socks', 'color' => $default_color],
+                ['id' => 51, 'name' => 'Shoes', 'color' => $default_color],
+                ['id' => 52, 'name' => 'Underwear', 'color' => $default_color],
+                ['id' => 53, 'name' => 'Laundry', 'color' => $default_color],
+                ['id' => 54, 'name' => 'Location', 'color' => $default_color],
+                ['id' => 55, 'name' => 'Clothes', 'color' => $default_color]
+            ]);
+            $user->folders()->find(55)->words()->attach([
+                $clothes + 1 => ['board_x' => 1, 'board_y' => 1],
+                $clothes + 2 => ['board_x' => 2, 'board_y' => 1]
+            ]);
 
         //tempurature
 
