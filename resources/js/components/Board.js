@@ -119,8 +119,9 @@ export class Board extends React.Component {
             onTouchEnd={this._onHoldEnd}
             onTouchCancel={this._onHoldEnd}
         >
+          {console.log(tile.icon)}
           {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
-          {tile.icon != null && <img src={tile.icon}/>}
+          {tile.icon != null && <img className="tile-icons" src={tile.icon} style={{border: '1px solid black'}}/>}
         </td>
       })}
       </tr>
