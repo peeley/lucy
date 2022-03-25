@@ -38,6 +38,7 @@ class BoardSeeder extends Seeder
             $pronoun_color = '#ffffb3';
             $pronoun_type_color = '#b77dff';
         //indexes
+            $empty = 1;    
             $board_index = 1;
             $emotion_index = $board_index + 7;
             $pronoun_index = $emotion_index + 15;
@@ -65,6 +66,7 @@ class BoardSeeder extends Seeder
             //$personal_care = $letters + ;
 
         $user->words()->createMany([
+            ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
             ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6'],//2
             ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc'],
             ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99'],
