@@ -1524,7 +1524,28 @@ class BoardSeeder extends Seeder
             ]);
 
         //tempurature
+        $user->words()->createMany([
+            ['id' => $tempurature + 1, 'text' => 'Temputrature', 'color' => $default_color],
+            ['id' => $tempurature + 2, 'text' => 'Farenheight', 'color' => $default_color],
+            ['id' => $tempurature + 3, 'text' => 'Celcius', 'color' => $default_color],
+            ['id' => $tempurature + 4, 'text' => 'Degrees', 'color' => $default_color]
+        ]);
+        $user->folders()->createMany([
+            ['id' => 57, 'name' => 'Tempurature', 'color' => $default_color]
+        ]);
+        $user->folders()->find(56)->words()->attach([
+            $tempurature + 1 => ['board_x' => 1, 'board_y' => 1],
+            $tempurature + 2 => ['board_x' => 2, 'board_y' => 1],
+            $tempurature + 3 => ['board_x' => 3, 'board_y' => 1],
+            $tempurature + 4 => ['board_x' => 4, 'board_y' => 1],
+            //spot for hot and cold
 
+            $empty => ['board_x' => 1, 'board_y' => 2],
+
+            $empty => ['board_x' => 1, 'board_y' => 3],
+
+            $empty => ['board_x' => 1, 'board_y' => 4]
+        ]);
         //numbers
 
         //letters
