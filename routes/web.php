@@ -71,5 +71,3 @@ Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFo
 
 Route::get('/folder/tile/{tile_id}/getIcon', [FolderController::class, 'getTileIcon']);
 Route::get('/word/tile/{tile_id}/getIcon', [WordController::class, 'getTileIcon']);
-
-Route::get('/boards/images/{file_path}', [ImageController::class, 'getImage']);

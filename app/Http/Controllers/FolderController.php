@@ -45,10 +45,11 @@ class FolderController extends Controller
                 $tile->update(['color' => $request->color]);
             }
 
-            if ($request->image != null) {
-                $path = request()->file('image')->store('images');
-                $tile->icon = $path;
-            } 
+            if($request->image) {
+                $path = $request->file('image')->storePublicly('images', 'public');
+                $url = Storage::disk('public')->url($path);
+                $tile->icon = $url;
+            }
         }
 
         if ($type == 'folder') {
@@ -62,10 +63,11 @@ class FolderController extends Controller
                 $tile->update(['color' => $request->color]);
             }
  
-            if ($request->image != null) {
-                $path = request()->file('image')->store('images');
-                $tile->icon = $path;
-            } 
+            if($request->image) {
+                $path = $request->file('image')->storePublicly('images', 'public');
+                $url = Storage::disk('public')->url($path);
+                $tile->icon = $url;
+            }
         }
     }
 

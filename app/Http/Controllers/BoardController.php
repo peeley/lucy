@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BoardController extends Controller
 {
@@ -107,8 +108,9 @@ class BoardController extends Controller
         }
 
         if($request->image) {
-            $path = $request->file('image')->store('images');
-            $tile->icon = $path;
+            $path = $request->file('image')->storePublicly('images', 'public');
+            $url = Storage::disk('public')->url($path);
+            $tile->icon = $url;
         }
 
         $tile->save();
