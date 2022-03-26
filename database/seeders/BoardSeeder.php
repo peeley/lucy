@@ -1797,6 +1797,73 @@ class BoardSeeder extends Seeder
                 $empty => ['board_x' => 1, 'board_y' => 4]                   
             ]);
 
+        //Medical
+
+
+        //Plants
+
+        
+        //Animals
+
+
+        //Manners
+
+
+        //House
+
+
+            //Furnature
+
+
+            //Furnishings
+
+
+            //Linen
+
+
+            //Cleaning Supplies
+
+        
+            //Rooms
+
+
+                //Bedroom
+
+                
+                //Bathroom
+
+
+                //Family Room
+
+
+                //Living Room
+
+
+                //Office
+
+
+                //Play Room
+
+
+                //Laundry Room
+
+
+                //Kitchen
+
+
+                    //Meals
+
+
+                    //Cooking Tools
+
+
+                    //Dishes
+
+
+                    //Cutlery
+
+
+
         //main board
             $board->words()->attach([
                 $board_index + 1 => ['board_x' => 1, 'board_y' => 1],
