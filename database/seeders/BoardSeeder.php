@@ -1000,6 +1000,19 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
+            $user->folders()->find(33)->folders()->attach([
+                34 => ['board_x' => 1, 'board_y' => 2],
+                35 => ['board_x' => 2, 'board_y' => 2],
+                36 => ['board_x' => 3, 'board_y' => 2],
+                37 => ['board_x' => 4, 'board_y' => 2],
+                38 => ['board_x' => 5, 'board_y' => 2],
+                39 => ['board_x' => 6, 'board_y' => 2],
+
+                40 => ['board_x' => 1, 'board_y' => 2],
+                41 => ['board_x' => 2, 'board_y' => 2],
+                42 => ['board_x' => 3, 'board_y' => 1],
+                43 => ['board_x' => 4, 'board_y' => 1]
+            ]);
             
             //asthetics
                 $user->words()->createMany([
@@ -1068,7 +1081,8 @@ class BoardSeeder extends Seeder
                     $adjectives + 24 => ['board_x' => 5, 'board_y' => 1],
                     $adjectives + 25 => ['board_x' => 6, 'board_y' => 1],
 
-                    //leave space in row 2 for kind and mean
+                    $adjectives + 12 => ['board_x' => 1, 'board_y' => 2],
+                    $adjectives + 13 => ['board_x' => 2, 'board_y' => 2],
 
                     $empty => ['board_x' => 1, 'board_y' => 3],
 
@@ -1995,7 +2009,8 @@ class BoardSeeder extends Seeder
 
             ]);
             $user->folders()->find(68)->folders()->attach([
-                69 => ['board_x' => 3, 'board_y' => 1]                 
+                69 => ['board_x' => 1, 'board_y' => 3],
+                69 => ['board_x' => 2, 'board_y' => 3]        
             ]);
             $user->folders()->find(68)->words()->attach([
                 $house + 1 => ['board_x' => 1, 'board_y' => 1],
