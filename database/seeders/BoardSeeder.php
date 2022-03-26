@@ -527,6 +527,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]
                 ]);
+            
             //Fruit
                 $user->words()->createMany([
                     ['id' => $food_fruit + 1, 'text' => 'Orange', 'color' => '#ffa024'],//95
@@ -583,6 +584,7 @@ class BoardSeeder extends Seeder
                     $food_fruit + 23 => ['board_x' => 5, 'board_y' => 4],
                     $food_fruit + 24 => ['board_x' => 6, 'board_y' => 4]
                 ]);
+            
             //Snack
                 $user->words()->createMany([
                     ['id' => $food_snacks + 1, 'text' => 'Snack', 'color' => ' #edb25a'],//91
@@ -610,6 +612,7 @@ class BoardSeeder extends Seeder
                 $user->folders()->find(20)->folders()->attach([
                     22 => ['board_x' => 1, 'board_y' => 3]
                 ]);
+            
             //Drinks
                 $user->words()->createMany([
                     ['id' => $food_drinks + 1, 'text' => 'Drink', 'color' => '#d9b6bd'],//119
@@ -962,6 +965,7 @@ class BoardSeeder extends Seeder
             $user->folders()->find(26)->folders()->attach([
                 32 => ['board_x' => 1, 'board_y' => 2]
             ]);
+        
         //adjictives
             $user->words()->createMany([
                 ['id' => $adjectives + 1, 'text' => 'Hot', 'color' => $default_color],
@@ -996,6 +1000,7 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
+            
             //asthetics
                 $user->words()->createMany([
                     ['id' => $adjectives + 7, 'text' => 'Bold', 'color' => $default_color],
@@ -1018,6 +1023,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]
                 ]);
+            
             //People
                 $user->words()->createMany([
                     ['id' => $adjectives + 12, 'text' => 'Kind', 'color' => $default_color],
@@ -1044,6 +1050,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Opinions
                 $user->words()->createMany([
                     ['id' => $adjectives + 20, 'text' => 'Great', 'color' => $default_color],
@@ -1090,8 +1097,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
-            //Movement
-                //all are sub folders
+            
             //speed
                 $user->words()->createMany([
                     ['id' => $adjectives + 31, 'text' => 'Fast', 'color' => $default_color],
@@ -1111,6 +1117,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Distance
                 $user->words()->createMany([
                     ['id' => $adjectives + 33, 'text' => 'Near', 'color' => $default_color],
@@ -1131,6 +1138,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //direction
                 $user->words()->createMany([
                     ['id' => $adjectives + 36, 'text' => 'Vertical', 'color' => $default_color],
@@ -1154,7 +1162,11 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
-            //Size
+            
+            //Movement
+                //all are sub folders
+            
+                //Size
                 $user->words()->createMany([
                     ['id' => $adjectives + 42, 'text' => 'Long', 'color' => $default_color],
                     ['id' => $adjectives + 43, 'text' => 'Tall', 'color' => $default_color],
@@ -1178,6 +1190,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //texture
                 $user->words()->createMany([
                     ['id' => $adjectives + 49, 'text' => 'Texture', 'color' => $default_color],
@@ -1230,6 +1243,7 @@ class BoardSeeder extends Seeder
                 $clothes + 1 => ['board_x' => 1, 'board_y' => 1],
                 $clothes + 2 => ['board_x' => 2, 'board_y' => 1]
             ]);
+            
             //material
                 $user->words()->createMany([
                     ['id' => $clothes + 3, 'text' => 'Jean', 'color' => $default_color],
@@ -1253,6 +1267,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]
                 ]);
+            
             //Shirts
                 $user->words()->createMany([
                     ['id' => $clothes + 9, 'text' => 'Shirt', 'color' => $default_color],
@@ -1279,6 +1294,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Pants
                 $user->words()->createMany([
                     ['id' => $clothes + 17, 'text' => 'Pants', 'color' => $default_color],
@@ -1305,6 +1321,7 @@ class BoardSeeder extends Seeder
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
 
+            
             //Dresses
                 $user->words()->createMany([
                     ['id' => $clothes + 24, 'text' => 'Dress', 'color' => $default_color],
@@ -1329,7 +1346,8 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
-            //Jackets
+           
+             //Jackets
                 $user->words()->createMany([
                     ['id' => $clothes + 31, 'text' => 'Jacket', 'color' => $default_color],
                     ['id' => $clothes + 32, 'text' => 'Windbreaker', 'color' => $default_color],
@@ -1352,6 +1370,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Skirts
                 $user->words()->createMany([
                     ['id' => $clothes + 37, 'text' => 'Skirt', 'color' => $default_color],
@@ -1374,6 +1393,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+           
             //Socks
                 $user->words()->createMany([
                     ['id' => $clothes + 42, 'text' => 'Socks', 'color' => $default_color],
@@ -1397,6 +1417,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Shoes
                 $user->words()->createMany([
                     ['id' => $clothes + 48, 'text' => 'Shoes', 'color' => $default_color],
@@ -1431,6 +1452,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Underwear
                 $user->words()->createMany([
                     ['id' => $clothes + 60, 'text' => 'Underwear', 'color' => $default_color],
@@ -1454,6 +1476,7 @@ class BoardSeeder extends Seeder
 
                     $empty => ['board_x' => 1, 'board_y' => 4]              
                 ]);
+            
             //Laundry
                 $user->words()->createMany([
                     ['id' => $clothes + 55, 'text' => 'Hamper', 'color' => $default_color],
@@ -1550,6 +1573,7 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
+        
         //numbers
             $user->words()->createMany([
                 ['id' => $numbers + 1, 'text' => '1', 'color' => $default_color],
@@ -1597,7 +1621,6 @@ class BoardSeeder extends Seeder
                 $numbers + 4 => ['board_x' => 4, 'board_y' => 1],
                 $numbers + 5 => ['board_x' => 5, 'board_y' => 1],
                 $numbers + 6 => ['board_x' => 6, 'board_y' => 1],
-                
 
                 $numbers + 7 => ['board_x' => 1, 'board_y' => 2],
                 $numbers + 8 => ['board_x' => 2, 'board_y' => 2],
@@ -1672,45 +1695,44 @@ class BoardSeeder extends Seeder
                 ['id' => $letters + 28, 'text' => 'Lowercase', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => 60, 'name' => 'Numbers', 'color' => $default_color],
+                ['id' => 60, 'name' => 'Letters', 'color' => $default_color],
                 ['id' => 61, 'name' => 'Page 2', 'color' => $default_color]
             ]);
             $user->folders()->find(60)->words()->attach([
-                $numbers + 1 => ['board_x' => 1, 'board_y' => 1],
-                $numbers + 2 => ['board_x' => 2, 'board_y' => 1],
-                $numbers + 3 => ['board_x' => 3, 'board_y' => 1],
-                $numbers + 4 => ['board_x' => 4, 'board_y' => 1],
-                $numbers + 5 => ['board_x' => 5, 'board_y' => 1],
-                $numbers + 6 => ['board_x' => 6, 'board_y' => 1],
-                
+                $letters + 1 => ['board_x' => 1, 'board_y' => 1],
+                $letters + 2 => ['board_x' => 2, 'board_y' => 1],
+                $letters + 3 => ['board_x' => 3, 'board_y' => 1],
+                $letters + 4 => ['board_x' => 4, 'board_y' => 1],
+                $letters + 5 => ['board_x' => 5, 'board_y' => 1],
+                $letters + 6 => ['board_x' => 6, 'board_y' => 1],
 
-                $numbers + 7 => ['board_x' => 1, 'board_y' => 2],
-                $numbers + 8 => ['board_x' => 2, 'board_y' => 2],
-                $numbers + 9 => ['board_x' => 3, 'board_y' => 2],
-                $numbers + 10 => ['board_x' => 4, 'board_y' => 2],
-                $numbers + 11 => ['board_x' => 5, 'board_y' => 2],
-                $numbers + 12 => ['board_x' => 6, 'board_y' => 2],
+                $letters + 7 => ['board_x' => 1, 'board_y' => 2],
+                $letters + 8 => ['board_x' => 2, 'board_y' => 2],
+                $letters + 9 => ['board_x' => 3, 'board_y' => 2],
+                $letters + 10 => ['board_x' => 4, 'board_y' => 2],
+                $letters + 11 => ['board_x' => 5, 'board_y' => 2],
+                $letters + 12 => ['board_x' => 6, 'board_y' => 2],
 
-                $numbers + 13 => ['board_x' => 1, 'board_y' => 3],
-                $numbers + 14 => ['board_x' => 2, 'board_y' => 3],
-                $numbers + 15 => ['board_x' => 3, 'board_y' => 3],
-                $numbers + 16 => ['board_x' => 4, 'board_y' => 3],
-                $numbers + 17 => ['board_x' => 5, 'board_y' => 3],
-                $numbers + 18 => ['board_x' => 6, 'board_y' => 3],
+                $letters + 13 => ['board_x' => 1, 'board_y' => 3],
+                $letters + 14 => ['board_x' => 2, 'board_y' => 3],
+                $letters + 15 => ['board_x' => 3, 'board_y' => 3],
+                $letters + 16 => ['board_x' => 4, 'board_y' => 3],
+                $letters + 17 => ['board_x' => 5, 'board_y' => 3],
+                $letters + 18 => ['board_x' => 6, 'board_y' => 3],
 
-                $numbers + 19 => ['board_x' => 1, 'board_y' => 4],
-                $numbers + 20 => ['board_x' => 2, 'board_y' => 4],
-                $numbers + 21 => ['board_x' => 3, 'board_y' => 4],
-                $numbers + 22 => ['board_x' => 4, 'board_y' => 4],
-                $numbers + 23 => ['board_x' => 5, 'board_y' => 4]
+                $letters + 19 => ['board_x' => 1, 'board_y' => 4],
+                $letters + 20 => ['board_x' => 2, 'board_y' => 4],
+                $letters + 21 => ['board_x' => 3, 'board_y' => 4],
+                $letters + 22 => ['board_x' => 4, 'board_y' => 4],
+                $letters + 23 => ['board_x' => 5, 'board_y' => 4]
                 //spot for folder to next page
             ]);
             $user->folders()->find(61)->words()->attach([
-                $numbers + 24 => ['board_x' => 1, 'board_y' => 1],
-                $numbers + 25 => ['board_x' => 2, 'board_y' => 1],
-                $numbers + 26 => ['board_x' => 3, 'board_y' => 1],
-                $numbers + 27 => ['board_x' => 4, 'board_y' => 1],
-                $numbers + 28 => ['board_x' => 5, 'board_y' => 1],
+                $letters + 24 => ['board_x' => 1, 'board_y' => 1],
+                $letters + 25 => ['board_x' => 2, 'board_y' => 1],
+                $letters + 26 => ['board_x' => 3, 'board_y' => 1],
+                $letters + 27 => ['board_x' => 4, 'board_y' => 1],
+                $letters + 28 => ['board_x' => 5, 'board_y' => 1],
                 $empty => ['board_x' => 6, 'board_y' => 1],
 
                 $empty => ['board_x' => 1, 'board_y' => 2],
@@ -1720,6 +1742,7 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
+        
         //personal care
             $user->words()->createMany([
                 ['id' => $person_care + 1, 'text' => 'Brush Teeth', 'color' => $default_color],
@@ -1856,13 +1879,125 @@ class BoardSeeder extends Seeder
             ]);
         
         //Animals
+            $user->words()->createMany([
+                ['id' => $animals + 1, 'text' => 'Animal', 'color' => $default_color],
+                ['id' => $animals + 2, 'text' => 'Pet', 'color' => $default_color],
+                ['id' => $animals + 3, 'text' => 'Dog', 'color' => $default_color],
+                ['id' => $animals + 4, 'text' => 'Cat', 'color' => $default_color],
+                ['id' => $animals + 5, 'text' => 'Mammal', 'color' => $default_color],
+                ['id' => $animals + 6, 'text' => 'Bird', 'color' => $default_color],
+                ['id' => $animals + 7, 'text' => 'Reptile', 'color' => $default_color],
+                ['id' => $animals + 8, 'text' => 'Amphibian', 'color' => $default_color],
+                ['id' => $animals + 9, 'text' => 'Bug', 'color' => $default_color],
+                ['id' => $animals + 10, 'text' => 'Rabbit', 'color' => $default_color],
+                ['id' => $animals + 11, 'text' => 'Wolf', 'color' => $default_color],
+                ['id' => $animals + 12, 'text' => 'Mouse', 'color' => $default_color],
+                ['id' => $animals + 13, 'text' => 'Lizard', 'color' => $default_color],
+                ['id' => $animals + 14, 'text' => 'Snake', 'color' => $default_color],
+                ['id' => $animals + 15, 'text' => 'Frog', 'color' => $default_color],
+                ['id' => $animals + 16, 'text' => 'Salamander', 'color' => $default_color],
+                ['id' => $animals + 17, 'text' => 'Spider', 'color' => $default_color],
+                ['id' => $animals + 18, 'text' => 'Fly', 'color' => $default_color],
+                ['id' => $animals + 19, 'text' => 'Crow', 'color' => $default_color],
+                ['id' => $animals + 20, 'text' => 'Robin', 'color' => $default_color],
+                ['id' => $animals + 21, 'text' => 'Finch', 'color' => $default_color],
+                ['id' => $animals + 22, 'text' => 'Blackbird', 'color' => $default_color],
+                ['id' => $animals + 23, 'text' => 'Hawk', 'color' => $default_color],
+                ['id' => $animals + 24, 'text' => 'Eagle', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 66, 'name' => 'Animals', 'color' => $default_color]
+            ]);
+            $user->folders()->find(66)->words()->attach([
+                $animals + 1 => ['board_x' => 1, 'board_y' => 1],
+                $animals + 2 => ['board_x' => 2, 'board_y' => 1],
+                $animals + 3 => ['board_x' => 3, 'board_y' => 1],
+                $animals + 4 => ['board_x' => 4, 'board_y' => 1],
+                $animals + 5 => ['board_x' => 5, 'board_y' => 1],
+                $animals + 6 => ['board_x' => 6, 'board_y' => 1],
 
+                $animals + 7 => ['board_x' => 1, 'board_y' => 2],
+                $animals + 8 => ['board_x' => 2, 'board_y' => 2],
+                $animals + 9 => ['board_x' => 3, 'board_y' => 2],
+                $animals + 10 => ['board_x' => 4, 'board_y' => 2],
+                $animals + 11 => ['board_x' => 5, 'board_y' => 2],
+                $animals + 12 => ['board_x' => 6, 'board_y' => 2],
 
+                $animals + 13 => ['board_x' => 1, 'board_y' => 3],
+                $animals + 14 => ['board_x' => 2, 'board_y' => 3],
+                $animals + 15 => ['board_x' => 3, 'board_y' => 3],
+                $animals + 16 => ['board_x' => 4, 'board_y' => 3],
+                $animals + 17 => ['board_x' => 5, 'board_y' => 3],
+                $animals + 18 => ['board_x' => 6, 'board_y' => 3],
+
+                $animals + 20 => ['board_x' => 2, 'board_y' => 4],
+                $animals + 21 => ['board_x' => 3, 'board_y' => 4],
+                $animals + 22 => ['board_x' => 4, 'board_y' => 4],
+                $animals + 23 => ['board_x' => 5, 'board_y' => 4],
+                $animals + 24 => ['board_x' => 5, 'board_y' => 4]
+            ]);
+            
         //Manners
+            $user->words()->createMany([
+                ['id' => $manners + 1, 'text' => 'Please', 'color' => $default_color],
+                ['id' => $manners + 2, 'text' => 'Thank You', 'color' => $default_color],
+                ['id' => $manners + 3, 'text' => 'You\'re welcome', 'color' => $default_color],
+                ['id' => $manners + 4, 'text' => 'Bless you', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 67, 'name' => 'Plants', 'color' => $default_color]
+            ]);
+            $user->folders()->find(67)->words()->attach([
+                $plants + 1 => ['board_x' => 1, 'board_y' => 1],
+                $plants + 2 => ['board_x' => 2, 'board_y' => 1],
+                $plants + 3 => ['board_x' => 3, 'board_y' => 1],
+                $plants + 4 => ['board_x' => 4, 'board_y' => 1],
+                $empty => ['board_x' => 5, 'board_y' => 1],
+                $empty => ['board_x' => 6, 'board_y' => 1],
 
+                $empty => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
 
         //House
+            $user->words()->createMany([
+                ['id' => $house + 1, 'text' => 'House', 'color' => $default_color],
+                ['id' => $house + 2, 'text' => 'Door', 'color' => $default_color],
+                ['id' => $house + 3, 'text' => 'Closet', 'color' => $default_color],
+                ['id' => $house + 4, 'text' => 'Shelf', 'color' => $default_color],
+                ['id' => $house + 5, 'text' => 'Window', 'color' => $default_color],
+                ['id' => $house + 6, 'text' => 'Floor', 'color' => $default_color],
+                ['id' => $house + 7, 'text' => 'Wall', 'color' => $default_color],
+                ['id' => $house + 8, 'text' => 'Ceiling', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 68, 'name' => 'House', 'color' => $default_color],
+                ['id' => 69, 'name' => 'Rooms', 'color' => $default_color],
+                ['id' => 70, 'name' => 'Bedroom', 'color' => $default_color],
+                ['id' => 71, 'name' => 'Bathroom', 'color' => $default_color],
+                ['id' => 72, 'name' => 'Kitchen', 'color' => $default_color],
+                ['id' => 73, 'name' => 'Living Room', 'color' => $default_color],
+                ['id' => 74, 'name' => 'Family Room', 'color' => $default_color],
 
+            ]);
+            $user->folders()->find(68)->words()->attach([
+                $house + 1 => ['board_x' => 1, 'board_y' => 1],
+                $house + 2 => ['board_x' => 2, 'board_y' => 1],
+                $house + 3 => ['board_x' => 3, 'board_y' => 1],
+                $house + 4 => ['board_x' => 4, 'board_y' => 1],
+                $house + 5 => ['board_x' => 5, 'board_y' => 1],
+                $house + 6 => ['board_x' => 6, 'board_y' => 1],
+
+                $house + 7 => ['board_x' => 1, 'board_y' => 2],
+                $house + 8 => ['board_x' => 2, 'board_y' => 2],
+
+                //rooms folder here
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
 
             //Furnature
 
@@ -1877,7 +2012,26 @@ class BoardSeeder extends Seeder
 
         
             //Rooms
+                $user->words()->createMany([
+                    ['id' => $rooms + 1, 'text' => 'House', 'color' => $default_color],
+                    ['id' => $rooms + 2, 'text' => 'Door', 'color' => $default_color],
+                    ['id' => $rooms + 3, 'text' => 'Closet', 'color' => $default_color],
+                    ['id' => $rooms + 4, 'text' => 'Shelf', 'color' => $default_color]
+                ]);
+                $user->folders()->find(68)->words()->attach([
+                    $rooms + 1 => ['board_x' => 1, 'board_y' => 1],
+                    $rooms + 2 => ['board_x' => 2, 'board_y' => 1],
+                    $rooms + 3 => ['board_x' => 3, 'board_y' => 1],
+                    $rooms + 4 => ['board_x' => 4, 'board_y' => 1],
+                    $empty => ['board_x' => 5, 'board_y' => 1],
+                    $empty => ['board_x' => 6, 'board_y' => 1],
 
+                    $empty => ['board_x' => 1, 'board_y' => 2],
+
+                    $empty => ['board_x' => 1, 'board_y' => 3],
+
+                    $empty => ['board_x' => 1, 'board_y' => 4]                   
+                ]);
 
                 //Bedroom
 
