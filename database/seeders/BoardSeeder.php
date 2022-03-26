@@ -1166,7 +1166,7 @@ class BoardSeeder extends Seeder
             //Movement
                 //all are sub folders
             
-                //Size
+            //Size
                 $user->words()->createMany([
                     ['id' => $adjectives + 42, 'text' => 'Long', 'color' => $default_color],
                     ['id' => $adjectives + 43, 'text' => 'Tall', 'color' => $default_color],
@@ -1976,11 +1976,22 @@ class BoardSeeder extends Seeder
             $user->folders()->createMany([
                 ['id' => 68, 'name' => 'House', 'color' => $default_color],
                 ['id' => 69, 'name' => 'Rooms', 'color' => $default_color],
-                ['id' => 70, 'name' => 'Bedroom', 'color' => $default_color],
-                ['id' => 71, 'name' => 'Bathroom', 'color' => $default_color],
-                ['id' => 72, 'name' => 'Kitchen', 'color' => $default_color],
-                ['id' => 73, 'name' => 'Living Room', 'color' => $default_color],
-                ['id' => 74, 'name' => 'Family Room', 'color' => $default_color],
+                //['id' => 70, 'name' => 'Bedroom', 'color' => $default_color],
+                //['id' => 71, 'name' => 'Bathroom', 'color' => $default_color],
+                //['id' => 72, 'name' => 'Kitchen', 'color' => $default_color],
+                //['id' => 73, 'name' => 'Living Room', 'color' => $default_color],
+                //['id' => 74, 'name' => 'Family Room', 'color' => $default_color],
+                ['id' => 75, 'name' => 'Linen', 'color' => $default_color],
+                //['id' => 76, 'name' => 'Office', 'color' => $default_color],
+                //['id' => 77, 'name' => 'Play Room', 'color' => $default_color],
+                //['id' => 78, 'name' => 'Laundry Room', 'color' => $default_color],
+                //['id' => 79, 'name' => 'Furnature', 'color' => $default_color],
+                //['id' => 80, 'name' => 'Furnashings', 'color' => $default_color],
+                //['id' => 81, 'name' => 'Cutlery', 'color' => $default_color],
+                //['id' => 82, 'name' => 'Cooking Tools', 'color' => $default_color],
+                //['id' => 83, 'name' => 'Dishes', 'color' => $default_color],
+                //['id' => 84, 'name' => 'Meals', 'color' => $default_color],
+                //['id' => 85, 'name' => Cleaning Supplies', 'color' => $default_color]
 
             ]);
             $user->folders()->find(68)->words()->attach([
@@ -1998,6 +2009,7 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]                   
             ]);
+            
 
             //Furnature
 
@@ -2006,29 +2018,63 @@ class BoardSeeder extends Seeder
 
 
             //Linen
+                $user->words()->createMany([
+                    ['id' => $linin + 1, 'text' => 'Towel', 'color' => $default_color],
+                    ['id' => $linin + 2, 'text' => 'Hand Towel', 'color' => $default_color],
+                    ['id' => $linin + 3, 'text' => 'Bath Towel', 'color' => $default_color],
+                    ['id' => $linin + 4, 'text' => 'Beach Towel', 'color' => $default_color],
+                    ['id' => $linin + 5, 'text' => 'Rag', 'color' => $default_color],
+                    ['id' => $linin + 6, 'text' => 'Washcloth', 'color' => $default_color],
+                    ['id' => $linin + 7, 'text' => 'Pillowcase', 'color' => $default_color],
+                    ['id' => $linin + 8, 'text' => 'Sheets', 'color' => $default_color],
+                    ['id' => $linin + 9, 'text' => 'Top Sheet', 'color' => $default_color],
+                    ['id' => $linin + 10, 'text' => 'Fitted Sheet', 'color' => $default_color],
+                    ['id' => $linin + 11, 'text' => 'Comforter', 'color' => $default_color],
+                    ['id' => $linin + 12, 'text' => 'Comforter Cover', 'color' => $default_color],
+                    ['id' => $linin + 5, 'text' => 'Rag', 'color' => $default_color],
+                    ['id' => $linin + 6, 'text' => 'Washcloth', 'color' => $default_color],
+                    ['id' => $linin + 7, 'text' => 'Pillowcase', 'color' => $default_color],
+                    ['id' => $linin + 8, 'text' => 'Sheets', 'color' => $default_color]
+                ]);
+                $user->folders()->find(75)->words()->attach([
+                    $linin + 1 => ['board_x' => 1, 'board_y' => 1],
+                    $linin + 2 => ['board_x' => 2, 'board_y' => 1],
+                    $linin + 3 => ['board_x' => 3, 'board_y' => 1],
+                    $linin + 4 => ['board_x' => 4, 'board_y' => 1],
+                    $linin + 5 => ['board_x' => 5, 'board_y' => 1],
+                    $linin + 6 => ['board_x' => 6, 'board_y' => 1],
 
+                    $linin + 7 => ['board_x' => 1, 'board_y' => 2],
+                    $linin + 8 => ['board_x' => 2, 'board_y' => 2],
+                    $linin + 9 => ['board_x' => 3, 'board_y' => 2],
+                    $linin + 10 => ['board_x' => 4, 'board_y' => 2],
+                    $linin + 11 => ['board_x' => 5, 'board_y' => 2],
+                    $linin + 12 => ['board_x' => 6, 'board_y' => 2],
+
+                    //rooms folder here
+
+                    $empty => ['board_x' => 1, 'board_y' => 4]                   
+                ]);
 
             //Cleaning Supplies
 
         
             //Rooms
                 $user->words()->createMany([
-                    ['id' => $rooms + 1, 'text' => 'House', 'color' => $default_color],
-                    ['id' => $rooms + 2, 'text' => 'Door', 'color' => $default_color],
-                    ['id' => $rooms + 3, 'text' => 'Closet', 'color' => $default_color],
-                    ['id' => $rooms + 4, 'text' => 'Shelf', 'color' => $default_color]
+                    ['id' => $rooms + 1, 'text' => 'Room', 'color' => $default_color],
+                    ['id' => $rooms + 2, 'text' => 'Hallway', 'color' => $default_color],
+                    ['id' => $rooms + 3, 'text' => 'Den', 'color' => $default_color],
+                    ['id' => $rooms + 4, 'text' => 'Mud Room', 'color' => $default_color]
                 ]);
                 $user->folders()->find(68)->words()->attach([
                     $rooms + 1 => ['board_x' => 1, 'board_y' => 1],
                     $rooms + 2 => ['board_x' => 2, 'board_y' => 1],
                     $rooms + 3 => ['board_x' => 3, 'board_y' => 1],
                     $rooms + 4 => ['board_x' => 4, 'board_y' => 1],
-                    $empty => ['board_x' => 5, 'board_y' => 1],
+                    //space for closet
                     $empty => ['board_x' => 6, 'board_y' => 1],
 
-                    $empty => ['board_x' => 1, 'board_y' => 2],
-
-                    $empty => ['board_x' => 1, 'board_y' => 3],
+                    //space for room folders
 
                     $empty => ['board_x' => 1, 'board_y' => 4]                   
                 ]);
