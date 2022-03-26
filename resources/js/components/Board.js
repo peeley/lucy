@@ -219,6 +219,7 @@ export class Board extends React.Component {
   closeEditModal = () => {
     this.setState({
       editModal: false,
+      selectedFile: false,
     });
   }
 
@@ -255,7 +256,8 @@ export class Board extends React.Component {
       }).then( () => {
         this.setState({
           configuringTile: false,
-          editModal: false
+          editModal: false,
+          selectedFile: false
         }, this.fetchBoardTiles);
       });
     }

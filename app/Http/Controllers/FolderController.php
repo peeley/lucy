@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Word;
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FolderController extends Controller
 {
@@ -69,6 +70,10 @@ class FolderController extends Controller
                 $tile->icon = $url;
             }
         }
+
+        $tile->save();
+
+        return response('folder edited');
     }
 
     public function addTileToFolder(Request $request, int $folder_id)
