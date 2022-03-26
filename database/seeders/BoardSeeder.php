@@ -1552,57 +1552,224 @@ class BoardSeeder extends Seeder
                 ['id' => $numbers + 2, 'text' => '2', 'color' => $default_color],
                 ['id' => $numbers + 3, 'text' => '3', 'color' => $default_color],
                 ['id' => $numbers + 4, 'text' => '4', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '5', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '6', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '7', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => '8', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '9', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '10', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '11', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => '12', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '13', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '14', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '15', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => '16', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '17', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '18', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '19', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => '20', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '30', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '40', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '50', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => '60', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '70', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => '80', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => '90', 'color' => $default_color],
-                ['id' => $numbers + 1, 'text' => '0', 'color' => $default_color],
-                ['id' => $numbers + 2, 'text' => 'Hundred', 'color' => $default_color],
-                ['id' => $numbers + 3, 'text' => 'Thousand', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => 'Million', 'color' => $default_color],
-                ['id' => $numbers + 4, 'text' => 'Billion', 'color' => $default_color],
+                ['id' => $numbers + 5, 'text' => '5', 'color' => $default_color],
+                ['id' => $numbers + 6, 'text' => '6', 'color' => $default_color],
+                ['id' => $numbers + 7, 'text' => '7', 'color' => $default_color],
+                ['id' => $numbers + 8, 'text' => '8', 'color' => $default_color],
+                ['id' => $numbers + 9, 'text' => '9', 'color' => $default_color],
+                ['id' => $numbers + 10, 'text' => '10', 'color' => $default_color],
+                ['id' => $numbers + 11, 'text' => '11', 'color' => $default_color],
+                ['id' => $numbers + 12, 'text' => '12', 'color' => $default_color],
+                ['id' => $numbers + 13, 'text' => '13', 'color' => $default_color],
+                ['id' => $numbers + 14, 'text' => '14', 'color' => $default_color],
+                ['id' => $numbers + 15, 'text' => '15', 'color' => $default_color],
+                ['id' => $numbers + 16, 'text' => '16', 'color' => $default_color],
+                ['id' => $numbers + 17, 'text' => '17', 'color' => $default_color],
+                ['id' => $numbers + 18, 'text' => '18', 'color' => $default_color],
+                ['id' => $numbers + 19, 'text' => '19', 'color' => $default_color],
+                ['id' => $numbers + 20, 'text' => '20', 'color' => $default_color],
+                ['id' => $numbers + 21, 'text' => '30', 'color' => $default_color],
+                ['id' => $numbers + 22, 'text' => '40', 'color' => $default_color],
+                ['id' => $numbers + 23, 'text' => '50', 'color' => $default_color],
+                ['id' => $numbers + 24, 'text' => '60', 'color' => $default_color],
+                ['id' => $numbers + 25, 'text' => '70', 'color' => $default_color],
+                ['id' => $numbers + 26, 'text' => '80', 'color' => $default_color],
+                ['id' => $numbers + 27, 'text' => '90', 'color' => $default_color],
+                ['id' => $numbers + 28, 'text' => '0', 'color' => $default_color],
+                ['id' => $numbers + 29, 'text' => 'Hundred', 'color' => $default_color],
+                ['id' => $numbers + 30, 'text' => 'Thousand', 'color' => $default_color],
+                ['id' => $numbers + 31, 'text' => 'Million', 'color' => $default_color],
+                ['id' => $numbers + 32, 'text' => 'Billion', 'color' => $default_color],
 
             ]);
             $user->folders()->createMany([
                 ['id' => 58, 'name' => 'Numbers', 'color' => $default_color],
                 ['id' => 59, 'name' => 'Page 2', 'color' => $default_color]
             ]);
-            $user->folders()->find(56)->words()->attach([
+            $user->folders()->find(58)->words()->attach([
                 $numbers + 1 => ['board_x' => 1, 'board_y' => 1],
                 $numbers + 2 => ['board_x' => 2, 'board_y' => 1],
                 $numbers + 3 => ['board_x' => 3, 'board_y' => 1],
                 $numbers + 4 => ['board_x' => 4, 'board_y' => 1],
+                $numbers + 5 => ['board_x' => 5, 'board_y' => 1],
+                $numbers + 6 => ['board_x' => 6, 'board_y' => 1],
+                
+
+                $numbers + 7 => ['board_x' => 1, 'board_y' => 2],
+                $numbers + 8 => ['board_x' => 2, 'board_y' => 2],
+                $numbers + 9 => ['board_x' => 3, 'board_y' => 2],
+                $numbers + 10 => ['board_x' => 4, 'board_y' => 2],
+                $numbers + 11 => ['board_x' => 5, 'board_y' => 2],
+                $numbers + 12 => ['board_x' => 6, 'board_y' => 2],
+
+                $numbers + 13 => ['board_x' => 1, 'board_y' => 3],
+                $numbers + 14 => ['board_x' => 2, 'board_y' => 3],
+                $numbers + 15 => ['board_x' => 3, 'board_y' => 3],
+                $numbers + 16 => ['board_x' => 4, 'board_y' => 3],
+                $numbers + 17 => ['board_x' => 5, 'board_y' => 3],
+                $numbers + 18 => ['board_x' => 6, 'board_y' => 3],
+
+                $numbers + 19 => ['board_x' => 1, 'board_y' => 4],
+                $numbers + 20 => ['board_x' => 2, 'board_y' => 4],
+                $numbers + 21 => ['board_x' => 3, 'board_y' => 4],
+                $numbers + 22 => ['board_x' => 4, 'board_y' => 4],
+                $numbers + 23 => ['board_x' => 5, 'board_y' => 4]
+                //spot for folder to next page
+            ]);
+            $user->folders()->find(59)->words()->attach([
+                $numbers + 24 => ['board_x' => 1, 'board_y' => 1],
+                $numbers + 25 => ['board_x' => 2, 'board_y' => 1],
+                $numbers + 26 => ['board_x' => 3, 'board_y' => 1],
+                $numbers + 27 => ['board_x' => 4, 'board_y' => 1],
+                $numbers + 28 => ['board_x' => 5, 'board_y' => 1],
+                $empty => ['board_x' => 6, 'board_y' => 1],
                 //spot for hot and cold
 
-                $empty => ['board_x' => 1, 'board_y' => 2],
+                $numbers + 29 => ['board_x' => 1, 'board_y' => 2],
+                $numbers + 30 => ['board_x' => 2, 'board_y' => 2],
+                $numbers + 31 => ['board_x' => 3, 'board_y' => 2],
+                $numbers + 32 => ['board_x' => 4, 'board_y' => 2],
 
                 $empty => ['board_x' => 1, 'board_y' => 3],
+            
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
 
         //letters
+            $user->words()->createMany([
+                ['id' => $letters + 1, 'text' => 'A', 'color' => $default_color],
+                ['id' => $letters + 2, 'text' => 'B', 'color' => $default_color],
+                ['id' => $letters + 3, 'text' => 'C', 'color' => $default_color],
+                ['id' => $letters + 4, 'text' => 'D', 'color' => $default_color],
+                ['id' => $letters + 5, 'text' => 'E', 'color' => $default_color],
+                ['id' => $letters + 6, 'text' => 'F', 'color' => $default_color],
+                ['id' => $letters + 7, 'text' => 'G', 'color' => $default_color],
+                ['id' => $letters + 8, 'text' => 'H', 'color' => $default_color],
+                ['id' => $letters + 9, 'text' => 'I', 'color' => $default_color],
+                ['id' => $letters + 10, 'text' => 'J', 'color' => $default_color],
+                ['id' => $letters + 11, 'text' => 'K', 'color' => $default_color],
+                ['id' => $letters + 12, 'text' => 'L', 'color' => $default_color],
+                ['id' => $letters + 13, 'text' => 'M', 'color' => $default_color],
+                ['id' => $letters + 14, 'text' => 'N', 'color' => $default_color],
+                ['id' => $letters + 15, 'text' => 'O', 'color' => $default_color],
+                ['id' => $letters + 16, 'text' => 'P', 'color' => $default_color],
+                ['id' => $letters + 17, 'text' => 'Q', 'color' => $default_color],
+                ['id' => $letters + 18, 'text' => 'R', 'color' => $default_color],
+                ['id' => $letters + 19, 'text' => 'S', 'color' => $default_color],
+                ['id' => $letters + 20, 'text' => 'T', 'color' => $default_color],
+                ['id' => $letters + 21, 'text' => 'U', 'color' => $default_color],
+                ['id' => $letters + 22, 'text' => 'V', 'color' => $default_color],
+                ['id' => $letters + 23, 'text' => 'W', 'color' => $default_color],
+                ['id' => $letters + 24, 'text' => 'X', 'color' => $default_color],
+                ['id' => $letters + 25, 'text' => 'Y', 'color' => $default_color],
+                ['id' => $letters + 26, 'text' => 'Z', 'color' => $default_color],
+                ['id' => $letters + 27, 'text' => 'Uppercase', 'color' => $default_color],
+                ['id' => $letters + 28, 'text' => 'Lowercase', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 60, 'name' => 'Numbers', 'color' => $default_color],
+                ['id' => 61, 'name' => 'Page 2', 'color' => $default_color]
+            ]);
+            $user->folders()->find(60)->words()->attach([
+                $numbers + 1 => ['board_x' => 1, 'board_y' => 1],
+                $numbers + 2 => ['board_x' => 2, 'board_y' => 1],
+                $numbers + 3 => ['board_x' => 3, 'board_y' => 1],
+                $numbers + 4 => ['board_x' => 4, 'board_y' => 1],
+                $numbers + 5 => ['board_x' => 5, 'board_y' => 1],
+                $numbers + 6 => ['board_x' => 6, 'board_y' => 1],
+                
 
+                $numbers + 7 => ['board_x' => 1, 'board_y' => 2],
+                $numbers + 8 => ['board_x' => 2, 'board_y' => 2],
+                $numbers + 9 => ['board_x' => 3, 'board_y' => 2],
+                $numbers + 10 => ['board_x' => 4, 'board_y' => 2],
+                $numbers + 11 => ['board_x' => 5, 'board_y' => 2],
+                $numbers + 12 => ['board_x' => 6, 'board_y' => 2],
+
+                $numbers + 13 => ['board_x' => 1, 'board_y' => 3],
+                $numbers + 14 => ['board_x' => 2, 'board_y' => 3],
+                $numbers + 15 => ['board_x' => 3, 'board_y' => 3],
+                $numbers + 16 => ['board_x' => 4, 'board_y' => 3],
+                $numbers + 17 => ['board_x' => 5, 'board_y' => 3],
+                $numbers + 18 => ['board_x' => 6, 'board_y' => 3],
+
+                $numbers + 19 => ['board_x' => 1, 'board_y' => 4],
+                $numbers + 20 => ['board_x' => 2, 'board_y' => 4],
+                $numbers + 21 => ['board_x' => 3, 'board_y' => 4],
+                $numbers + 22 => ['board_x' => 4, 'board_y' => 4],
+                $numbers + 23 => ['board_x' => 5, 'board_y' => 4]
+                //spot for folder to next page
+            ]);
+            $user->folders()->find(61)->words()->attach([
+                $numbers + 24 => ['board_x' => 1, 'board_y' => 1],
+                $numbers + 25 => ['board_x' => 2, 'board_y' => 1],
+                $numbers + 26 => ['board_x' => 3, 'board_y' => 1],
+                $numbers + 27 => ['board_x' => 4, 'board_y' => 1],
+                $numbers + 28 => ['board_x' => 5, 'board_y' => 1],
+                $empty => ['board_x' => 6, 'board_y' => 1],
+
+                $empty => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+            
+
+                $empty => ['board_x' => 1, 'board_y' => 4]
+            ]);
         //personal care
+            $user->words()->createMany([
+                ['id' => $person_care + 1, 'text' => 'Brush Teeth', 'color' => $default_color],
+                ['id' => $person_care + 2, 'text' => 'Brush Teeth', 'color' => $default_color],
+                ['id' => $person_care + 3, 'text' => 'Take Shower', 'color' => $default_color],
+                ['id' => $person_care + 4, 'text' => 'Take Bath', 'color' => $default_color],
+                ['id' => $person_care + 5, 'text' => 'Change Clothes', 'color' => $default_color],
+                ['id' => $person_care + 6, 'text' => 'Go to the Bathroom', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 62, 'name' => 'Personal Care', 'color' => $default_color]
+            ]);
+            $user->folders()->find(62)->words()->attach([
+                $person_care + 1 => ['board_x' => 1, 'board_y' => 1],
+                $person_care + 2 => ['board_x' => 2, 'board_y' => 1],
+                $person_care + 3 => ['board_x' => 3, 'board_y' => 1],
+                $person_care + 4 => ['board_x' => 4, 'board_y' => 1],
+                $person_care + 5 => ['board_x' => 5, 'board_y' => 1],
+                $person_care + 6 => ['board_x' => 6, 'board_y' => 1],
+
+                $empty => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);  
+        
+        //entertainment
+            $user->words()->createMany([
+                ['id' => $entertainment + 1, 'text' => 'TV', 'color' => $default_color],
+                ['id' => $entertainment + 2, 'text' => 'Movie', 'color' => $default_color],
+                ['id' => $entertainment + 3, 'text' => 'Game', 'color' => $default_color],
+                ['id' => $entertainment + 4, 'text' => 'Reading', 'color' => $default_color],
+                ['id' => $entertainment + 5, 'text' => 'Hobby', 'color' => $default_color],
+                ['id' => $entertainment + 6, 'text' => 'Play', 'color' => $default_color],
+                ['id' => $entertainment + 7, 'text' => 'Music', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 63, 'name' => 'Entertainment', 'color' => $default_color]
+            ]);
+            $user->folders()->find(63)->words()->attach([
+                $entertainment + 1 => ['board_x' => 1, 'board_y' => 1],
+                $entertainment + 2 => ['board_x' => 2, 'board_y' => 1],
+                $entertainment + 3 => ['board_x' => 3, 'board_y' => 1],
+                $entertainment + 4 => ['board_x' => 4, 'board_y' => 1],
+                $entertainment + 5 => ['board_x' => 5, 'board_y' => 1],
+                $entertainment + 6 => ['board_x' => 6, 'board_y' => 1],
+
+                $entertainment + 7 => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);  
 
         //talker
             $user->words()->createMany([
