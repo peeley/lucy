@@ -432,8 +432,30 @@ body
     left: 50%;
     width: 50%;
     transform: translate(-50%, -50%);
-    background-color: ivory;
+    background-color: darkslategrey;
     border-radius: 5px;
     border: 2px solid black;
 }
 
+.file-input 
+{
+    height: 47px;
+    width: 100px;
+    font-size: larger;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    border:2px solid black;
+    border-radius: 5px;
+    background-color: var(--default-button-color);
+    text-align: center;
+    box-shadow: inset 0 0 0 0 green;
+    transition: ease-out 0.15s;
+}
+
+.file-input:hover 
+{
+    box-shadow: inset 0 0 100px 0 darkorange;
+    color: black;
+    font-size: large;
+}

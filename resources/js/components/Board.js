@@ -22,7 +22,7 @@ export class Board extends React.Component {
       confirmDeleteModal: false,
       editModal: false,
       createModal: false,
-      selectedFile: null
+      selectedFile: false
     };
 
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
@@ -281,6 +281,13 @@ export class Board extends React.Component {
     });
   }
 
+  handleImageSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      selectedFile: true
+    });
+  }
+
   render() {
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
@@ -327,12 +334,17 @@ export class Board extends React.Component {
                   placeholder="Color (Hexadecimal)"
                   className="modal-button"
                 />
+                <label for='file-input-button' className="file-input">
+                {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
+                </label>
                 <input 
                   name="image"
                   type="file"
-                  placeholder="Image"
-                  className="modal-button"
+                  placeholder="Image*"
+                  id='file-input-button'
+                  onChange={this.handleImageSubmit}
                 />
+                <p>*Images uploaded can be publicly accessed.</p>
               <button type="submit" className="modal-button">Submit</button>
               <button className="modal-button" onClick={this.closeEditModal}>Close</button>
             </center>
