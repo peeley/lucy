@@ -2108,7 +2108,25 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Bathroom
+                    $user->words()->createMany([
+                        ['id' => $bathroom + 1, 'text' => 'Bathroom', 'color' => $default_color],
+                        ['id' => $bathroom + 2, 'text' => 'Bathtub', 'color' => $default_color],
+                        ['id' => $bathroom + 3, 'text' => 'Shower', 'color' => $default_color],
+                        ['id' => $bathroom + 4, 'text' => 'Toilet', 'color' => $default_color]
+                    ]);
+                    $user->folders()->find(70)->words()->attach([
+                        $bathroom + 1 => ['board_x' => 1, 'board_y' => 1],
+                        $bathroom + 2 => ['board_x' => 1, 'board_y' => 1],
+                        $bathroom + 3 => ['board_x' => 1, 'board_y' => 1],
+                        $bathroom + 4 => ['board_x' => 1, 'board_y' => 1],
+                        //spot for sink and rug
 
+                        //spot for towel, bath towel, hand towel, and washcloth
+
+                        $empty => ['board_x' => 1, 'board_y' => 3],
+
+                        $empty => ['board_x' => 1, 'board_y' => 4]                   
+                    ]);
 
                 //Family Room
 
