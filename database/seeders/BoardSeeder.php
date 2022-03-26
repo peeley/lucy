@@ -67,8 +67,8 @@ class BoardSeeder extends Seeder
             $person_care = $letters + 28;
             $entertainment = $person_care + 6;
             $medical = $entertainment + 7;
-            //$plants
-            //$animals
+            $plants = $medical + 6;
+            //$animals = $plants + ;
 
         $user->words()->createMany([
             ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
@@ -1829,7 +1829,31 @@ class BoardSeeder extends Seeder
             ]);
 
         //Plants
+            $user->words()->createMany([
+                ['id' => $plants + 1, 'text' => 'Plant', 'color' => $default_color],
+                ['id' => $plants + 2, 'text' => 'Flower', 'color' => $default_color],
+                ['id' => $plants + 3, 'text' => 'Tree', 'color' => $default_color],
+                ['id' => $plants + 4, 'text' => 'Bush', 'color' => $default_color],
+                ['id' => $plants + 5, 'text' => 'Grass', 'color' => $default_color],
+                ['id' => $plants + 6, 'text' => 'Leaf', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 65, 'name' => 'Plants', 'color' => $default_color]
+            ]);
+            $user->folders()->find(65)->words()->attach([
+                $plants + 1 => ['board_x' => 1, 'board_y' => 1],
+                $plants + 2 => ['board_x' => 2, 'board_y' => 1],
+                $plants + 3 => ['board_x' => 3, 'board_y' => 1],
+                $plants + 4 => ['board_x' => 4, 'board_y' => 1],
+                $plants + 5 => ['board_x' => 5, 'board_y' => 1],
+                $plants + 6 => ['board_x' => 6, 'board_y' => 1],
 
+                $empty => ['board_x' => 1, 'board_y' => 2],
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
         
         //Animals
 
