@@ -66,6 +66,9 @@ class BoardSeeder extends Seeder
             $letters = $numbers + 31;
             $person_care = $letters + 28;
             $entertainment = $person_care + 6;
+            $medical = $entertainment + 7;
+            //$plants
+            //$animals
 
         $user->words()->createMany([
             ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
@@ -1777,7 +1780,8 @@ class BoardSeeder extends Seeder
                 ['id' => $talker + 1, 'text' => 'Word', 'color' => $default_color],
                 ['id' => $talker + 2, 'text' => 'Words', 'color' => $default_color],
                 ['id' => $talker + 3, 'text' => 'Speak', 'color' => $default_color],
-                ['id' => $talker + 4, 'text' => 'Say', 'color' => $default_color]
+                ['id' => $talker + 4, 'text' => 'Say', 'color' => $default_color],
+                ['id' => $talker + 5, 'text' => 'Say', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
                 ['id' => 27, 'name' => 'Talker', 'color' => $default_color]
@@ -1790,7 +1794,7 @@ class BoardSeeder extends Seeder
                 $help + 7 => ['board_x' => 5, 'board_y' => 1],
                 $help + 8 => ['board_x' => 6, 'board_y' => 1],
 
-                $empty => ['board_x' => 1, 'board_y' => 2],
+                $talker + 5 => ['board_x' => 1, 'board_y' => 2],
 
                 $empty => ['board_x' => 1, 'board_y' => 3],
 
@@ -1798,7 +1802,31 @@ class BoardSeeder extends Seeder
             ]);
 
         //Medical
+            $user->words()->createMany([
+                ['id' => $medical + 1, 'text' => 'Sick', 'color' => $default_color],
+                ['id' => $medical + 2, 'text' => 'Pain', 'color' => $default_color],
+                ['id' => $medical + 3, 'text' => 'Dizzy', 'color' => $default_color],
+                ['id' => $medical + 4, 'text' => 'Nausous', 'color' => $default_color],
+                ['id' => $medical + 5, 'text' => 'Ouch', 'color' => $default_color],
+                ['id' => $medical + 6, 'text' => 'Allergic', 'color' => $default_color]
+            ]);
+            $user->folders()->createMany([
+                ['id' => 64, 'name' => 'Medical', 'color' => $default_color]
+            ]);
+            $user->folders()->find(64)->words()->attach([
+                $medical + 1 => ['board_x' => 1, 'board_y' => 1],
+                $medical + 2 => ['board_x' => 2, 'board_y' => 1],
+                $medical + 3 => ['board_x' => 3, 'board_y' => 1],
+                $medical + 4 => ['board_x' => 4, 'board_y' => 1],
+                $medical + 5 => ['board_x' => 5, 'board_y' => 1],
+                $medical + 6 => ['board_x' => 6, 'board_y' => 1],
 
+                //space for doctor, doctor's office and body parts
+
+                $empty => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
 
         //Plants
 
@@ -1829,7 +1857,7 @@ class BoardSeeder extends Seeder
 
                 //Bedroom
 
-                
+
                 //Bathroom
 
 
