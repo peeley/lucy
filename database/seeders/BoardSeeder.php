@@ -63,8 +63,9 @@ class BoardSeeder extends Seeder
             $weather = $clothes + 58;
             $tempurature = $weather + 19;
             $numbers = $tempurature + 4;
-            //$letters = $numbers + ;
-            //$personal_care = $letters + ;
+            $letters = $numbers + 31;
+            $person_care = $letters + 28;
+            $entertainment = $person_care + 6;
 
         $user->words()->createMany([
             ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
