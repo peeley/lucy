@@ -808,7 +808,7 @@ class BoardSeeder extends Seeder
                     $food_pasta + 6 => ['board_x' => 6, 'board_y' => 1],
 
                     $food_pasta + 7 => ['board_x' => 1, 'board_y' => 2],
-                    $food_pasta + 8 => ['board_x' => 2, 'board_y' => 2],
+                    $adjectives + 11 => ['board_x' => 2, 'board_y' => 2],
 
                     $empty => ['board_x' => 1, 'board_y' => 3],
 
@@ -1276,7 +1276,28 @@ class BoardSeeder extends Seeder
             ]);
             $user->folders()->find(55)->words()->attach([
                 $clothes + 1 => ['board_x' => 1, 'board_y' => 1],
-                $clothes + 2 => ['board_x' => 2, 'board_y' => 1]
+                $clothes + 2 => ['board_x' => 2, 'board_y' => 1],
+
+                //room for folders
+
+                $empty => ['board_x' => 1, 'board_y' => 4]
+
+            ]);
+            $user->folders()->find(55)->Folders()->attach([
+                44 => ['board_x' => 2, 'board_y' => 1],
+
+                45 => ['board_x' => 1, 'board_y' => 2],
+                46 => ['board_x' => 2, 'board_y' => 2],
+                47 => ['board_x' => 3, 'board_y' => 2],
+                48 => ['board_x' => 4, 'board_y' => 2],
+                49 => ['board_x' => 5, 'board_y' => 2],
+                50 => ['board_x' => 6, 'board_y' => 2],
+
+                51 => ['board_x' => 1, 'board_y' => 3],
+                52 => ['board_x' => 1, 'board_y' => 3],
+                53 => ['board_x' => 1, 'board_y' => 3],
+                54 => ['board_x' => 1, 'board_y' => 3],
+                55 => ['board_x' => 1, 'board_y' => 3]
             ]);
             
             //material
