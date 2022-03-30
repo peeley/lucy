@@ -2302,7 +2302,7 @@ class BoardSeeder extends Seeder
 
                 //Play Room
                     $user->words()->createMany([
-                        ['id' => $office + 1, 'text' => 'Play Room', 'color' => $default_color]
+                        ['id' => $play_room + 1, 'text' => 'Play Room', 'color' => $default_color]
                     ]);
                     $user->folders()->find(77)->words()->attach([
                         $play_room + 1 => ['board_x' => 1, 'board_y' => 1],
@@ -2327,7 +2327,7 @@ class BoardSeeder extends Seeder
                         $laundry_room + 1 => ['board_x' => 1, 'board_y' => 1],
                         $laundry_room + 2 => ['board_x' => 2, 'board_y' => 1],
                         $laundry_room + 3 => ['board_x' => 3, 'board_y' => 1],
-                        $empty => ['board_x' => 4, 'board_y' => 1],
+                        $clean_supply + 2 => ['board_x' => 4, 'board_y' => 1],
                         $empty => ['board_x' => 5, 'board_y' => 1],
                         $empty => ['board_x' => 6, 'board_y' => 1],
 
