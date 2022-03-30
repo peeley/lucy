@@ -22,7 +22,9 @@ export class Board extends React.Component {
       confirmDeleteModal: false,
       editModal: false,
       createModal: false,
-      selectedFile: false
+      selectedFile: false,
+      errorModal: false,
+      errorMessage: null,
     };
 
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
@@ -235,6 +237,18 @@ export class Board extends React.Component {
     });
   }
 
+  openErrorModal = () => {
+    this.setState({
+      errorModal: true
+    })
+  }
+
+  closeErrorModal = () => {
+    this.setState({
+      errorModal: false
+    })
+  }
+
   handleEditSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
@@ -259,6 +273,12 @@ export class Board extends React.Component {
           editModal: false,
           selectedFile: false
         }, this.fetchBoardTiles);
+      }).catch((error) => {
+        console.log(error.response.data.errors.image);
+        this.setState({
+          errorModal: true,
+          errorMessage: error.response.data.errors.image
+        })
       });
     }
 
@@ -375,6 +395,15 @@ export class Board extends React.Component {
                 <button className="modal-button" onClick={this.closeCreateModal}>Close</button>
               </center>
             </form>
+        </Modal>
+        <Modal
+          isOpen={this.state.errorModal}
+          className="main-modal-class">
+            <center>
+            <h1 className="general-heading">Error</h1>
+            <p>{this.state.errorMessage}</p>
+            <button className="modal-button" onClick={this.closeErrorModal}>Close</button>
+            </center>
         </Modal>
         <form action='/' style={{display: "inline"}}>
           <button className="back-button" type='submit'>Exit</button>

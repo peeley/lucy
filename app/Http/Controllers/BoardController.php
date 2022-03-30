@@ -9,6 +9,7 @@ use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidException;
 
 class BoardController extends Controller
 {
@@ -86,36 +87,45 @@ class BoardController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
         
+        try {
         //todo: see if we need to include more image types and if this is a suitable max file size (kb)
-        $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+            $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
 
-        if ($type == 'word') {
-            $tile = Word::find($tileId);
+            if ($type == 'word') {
+                $tile = Word::find($tileId);
 
-            if ($request->text) {
-                $tile->text = $request->text;
+                if ($request->text) {
+                    $tile->text = $request->text;
+                }
+            } else {
+                $tile = Folder::find($tileId);
+
+                if ($request->text) {
+                    $tile->name = $request->text;
+                }
             }
-        } else {
-            $tile = Folder::find($tileId);
 
-            if ($request->text) {
-                $tile->name = $request->text;
+            if ($request->color) {
+                $tile->color = $request->color;
             }
+
+            if($request->image) {
+                $path = $request->file('image')->storePublicly('images', 'public');
+                $url = Storage::disk('public')->url($path);
+                $tile->icon = $url;
+            }
+
+            $tile->save();
+
+            return response()->json([
+                'msg' => 'Tile Edited Successfully'
+            ], 201); 
         }
-
-        if ($request->color) {
-            $tile->color = $request->color;
+        catch (ValidException $exception) {
+            return response()->json([
+                'msg' => 'Please submit file type of jpeg, jpg, or png.'
+            ], 422);
         }
-
-        if($request->image) {
-            $path = $request->file('image')->storePublicly('images', 'public');
-            $url = Storage::disk('public')->url($path);
-            $tile->icon = $url;
-        }
-
-        $tile->save();
-
-        return response('board edited');
     }
 
     public function deleteBoard(Request $request, int $board_id)
