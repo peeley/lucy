@@ -39,7 +39,6 @@ class BoardController extends Controller
 
         $sorted_board_tiles = $board->toArray();
 
-        //dd($sorted_board_tiles);
         return response()->json($sorted_board_tiles);
     }
 

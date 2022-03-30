@@ -274,7 +274,6 @@ export class Board extends React.Component {
           selectedFile: false
         }, this.fetchBoardTiles);
       }).catch((error) => {
-        console.log(error.response.data.errors.image);
         this.setState({
           errorModal: true,
           errorMessage: error.response.data.errors.image

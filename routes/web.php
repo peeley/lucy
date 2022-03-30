@@ -69,5 +69,5 @@ Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'del
 Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);
 Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFolder']);
 
-//idea behind this route was to restrict image urls to uploaded users but that didnt work.
+//idea behind this route was to restrict image urls to uploaded users but that didnt work; keeping it in for now so we dont get a 404 error
 Route::get('/storage/images/{file_path}', [ImageController::class, 'getImage'])->middleware(['auth']);
