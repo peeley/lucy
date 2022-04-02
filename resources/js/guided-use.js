@@ -17,16 +17,17 @@ function addLoadEvent(func) {
 }
 
 //The idle detection
+var inProgress = false;
 function inactivityTime(){
     var time;
     var idle_threshold = 5000;
     window.onload = resetTimer;
     document.onmousemove = resetTimer;
-    var inProgress = false;
     function guided_use(){
         if(inProgress) {return;}
         inProgress = true;
-        alert("test");
+        //alert("test");
+        guidedSequence1();
     }
 
     function resetTimer(){
@@ -35,6 +36,7 @@ function inactivityTime(){
     }
 }
 
+//aux functions
 function displayElement(name){
     var ele = document.getElementById(name);
     ele.style.display = "block";
@@ -42,4 +44,53 @@ function displayElement(name){
 function hideElement(name){
     var ele = document.getElementById(name);
     ele.style.display = "none";
+}
+function addPulse(name){
+    var ele = document.getElementsByClassName(name);
+    Array.from(ele).forEach(function(e) {
+        e.classList.add("pulse");
+    });
+}
+function removePulse(name){
+    var ele = document.getElementsByClassName(name);
+    Array.from(ele).forEach(function(e) {
+        e.classList.remove("pulse");
+    });
+}
+function guidedSequence1(){
+    displayElement("guidedPopup1");
+    addPulse("default-tile");
+
+    var myButtons = document.getElementsByClassName("default-tile");
+    Array.from(myButtons).forEach(function(e) {
+        e.addEventListener('click', function handler1() {
+            guidedSequence2();
+            e.removeEventListener('click', handler1);
+        });
+    });
+}
+function guidedSequence2(){
+    hideElement("guidedPopup1");
+    removePulse("default-tile");
+
+    displayElement("guidedPopup2")
+    addPulse("sentence-bar");
+    addPulse("sentence-speak");
+
+    var array1 = Array.prototype.slice.call(document.getElementsByClassName("sentence-bar"), 0);
+    var array2 = Array.prototype.slice.call(document.getElementsByClassName("sentence-speak"), 0);
+    var myButtons = array1.concat(array2);
+    myButtons.forEach(function(e) {
+        e.addEventListener('click', function handler1() {
+            finishSequence();
+            e.removeEventListener('click', handler1);
+        });
+    });
+}
+function finishSequence(){
+    hideElement("guidedPopup2");
+
+    removePulse("sentence-bar");
+    removePulse("sentence-speak");
+    inProgress = false;
 }
