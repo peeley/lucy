@@ -10,4 +10,5 @@
   <link rel="stylesheet" href="/css/view-transitions.css">
   <div class="transition transition-2 is-active"></div>
   <script src="/js/view-transitions.js"></script>
+  <script src="/js/guided-use.js"></script>
 </html>
