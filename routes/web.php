@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\FolderController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,6 @@ Route::post('/create-word', [WordController::class, 'createWord'])
 Route::delete('/folders/{folder_id}/tile/delete', [FolderController::class, 'deleteTileFromFolder']);
 Route::post('/folders/{folder_id}/tile/edit', [FolderController::class, 'editTileFromFolder']);
 Route::post('/folders/{folder_id}/tiles', [FolderController::class, 'addTileToFolder']);
+
+//idea behind this route was to restrict image urls to uploaded users but that didnt work; keeping it in for now so we dont get a 404 error
+Route::get('/storage/images/{file_path}', [ImageController::class, 'getImage'])->middleware(['auth']);

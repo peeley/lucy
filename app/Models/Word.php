@@ -24,9 +24,9 @@ class Word extends Model
 
     protected $visible = [
         'text',
-        'icon',
         'color',
         'id',
+        'icon'
     ];
 
     public function user()

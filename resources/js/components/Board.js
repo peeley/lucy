@@ -23,7 +23,10 @@ export class Board extends React.Component {
       heldTileColor: null,
       confirmDeleteModal: false,
       editModal: false,
-      createModal: false
+      createModal: false,
+      selectedFile: false,
+      errorModal: false,
+      errorMessage: null,
     };
 
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
@@ -122,6 +125,7 @@ export class Board extends React.Component {
             onTouchCancel={this._onHoldEnd}
         >
           {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
+          {tile.icon != null && <img className="tile-icons" src={tile.icon} style={{border: '1px solid black'}}/>}
         </td>
       })}
       </tr>
@@ -221,6 +225,7 @@ export class Board extends React.Component {
   closeEditModal = () => {
     this.setState({
       editModal: false,
+      selectedFile: false,
     });
   }
 
@@ -236,6 +241,18 @@ export class Board extends React.Component {
     });
   }
 
+  openErrorModal = () => {
+    this.setState({
+      errorModal: true
+    })
+  }
+
+  closeErrorModal = () => {
+    this.setState({
+      errorModal: false
+    })
+  }
+
   handleEditSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
@@ -243,19 +260,30 @@ export class Board extends React.Component {
       : 'folders';
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+    const formData = new FormData()
+    formData.append("image", event.target.image.files[0])
+    formData.append("color", event.target.color.value)
+    formData.append("tileId", this.state.heldTileId)
+    formData.append("tileType", this.state.heldTileType)
 
-    axios.post(`/${parentType}/${parentId}/tile/edit`, {
-      text: event.target.text.value,
-      color: event.target.color.value,
-      tileId: this.state.heldTileId,
-      tileType: this.state.heldTileType
-    }).then( () => {
-      this.setState({
-        configuringTile: false,
-        editModal: false
-      }, this.fetchBoardTiles);
-    });
-  }
+    axios({
+        method: "post",
+        url: `/${parentType}/${parentId}/tile/edit`,
+        data: formData,
+        headers: {"Content-Type": "multipart/form-data"},
+      }).then( () => {
+        this.setState({
+          configuringTile: false,
+          editModal: false,
+          selectedFile: false
+        }, this.fetchBoardTiles);
+      }).catch((error) => {
+        this.setState({
+          errorModal: true,
+          errorMessage: error.response.data.errors.image
+        })
+      });
+    }
 
   handleCreateSubmit = (event) => {
     event.preventDefault()
@@ -275,6 +303,13 @@ export class Board extends React.Component {
         configuringTile: false,
         createModal: false
       }, this.fetchBoardTiles);
+    });
+  }
+
+  handleImageSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      selectedFile: true
     });
   }
 
@@ -324,6 +359,17 @@ export class Board extends React.Component {
                   placeholder={this.state.heldTileColor}
                   className="modal-button"
                 />
+                <label for='file-input-button' className="file-input">
+                {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
+                </label>
+                <input 
+                  name="image"
+                  type="file"
+                  placeholder="Image*"
+                  id='file-input-button'
+                  onChange={this.handleImageSubmit}
+                />
+                <p>*Images uploaded can be publicly accessed.</p>
               <button type="submit" className="modal-button">Submit</button>
               <button className="modal-button" onClick={this.closeEditModal}>Close</button>
             </center>
@@ -352,6 +398,15 @@ export class Board extends React.Component {
                 <button className="modal-button" onClick={this.closeCreateModal}>Close</button>
               </center>
             </form>
+        </Modal>
+        <Modal
+          isOpen={this.state.errorModal}
+          className="main-modal-class">
+            <center>
+            <h1 className="general-heading">Error</h1>
+            <p>{this.state.errorMessage}</p>
+            <button className="modal-button" onClick={this.closeErrorModal}>Close</button>
+            </center>
         </Modal>
         <form action='/' style={{display: "inline"}}>
           <button className="back-button" type='submit'>Exit</button>
