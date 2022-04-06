@@ -1,10 +1,12 @@
 addLoadEvent(inactivityTime);
 addLoadEvent(resetTimer);
+var time;
 
+var guided_toggle = parseInt(document.getElementById("guided-use-state").innerText, 10);
+var guided_idle = document.getElementById("idle-threshold").innerText;
 
 //The idle detection
-var time;
-var idle_threshold = 10000;
+var idle_threshold = guided_idle * 1000; //convert to seconds
 function inactivityTime(){
     document.onmousemove = resetTimer;
     document.onmousedown = resetTimer;
@@ -21,11 +23,13 @@ function stopIdleDetection(){
     document.ontouchstart = null;
     document.onkeydown = null;
 }
-//the guided use
+//the guided use for the board
 function guided_use(){
     stopIdleDetection();
     clearTimeout(time);
-    guidedSequence1();
+    if(guided_toggle == "1"){
+        guidedSequence1();
+    }
 }
 function guidedSequence1(){
     displayElement("guidedPopup1");
