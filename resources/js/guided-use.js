@@ -3,7 +3,6 @@ addLoadEvent(resetTimer);
 
 
 //The idle detection
-var inProgress = false;
 var time;
 var idle_threshold = 10000;
 function inactivityTime(){
@@ -24,12 +23,8 @@ function stopIdleDetection(){
 }
 //the guided use
 function guided_use(){
-    if(inProgress) {
-        stopIdleDetection();
-        clearTimeout(time);
-        return;
-    }
-    inProgress = true;
+    stopIdleDetection();
+    clearTimeout(time);
     guidedSequence1();
 }
 function guidedSequence1(){
@@ -76,7 +71,8 @@ function guidedSequence3(){
 }
 function guidedSequence4(){
     hideElement("guidedPopup3");
-    inProgress = false;
+
+    //turn back on the guided use
     inactivityTime();
 }
 
