@@ -314,14 +314,14 @@ export class Board extends React.Component {
               <input
                 name="text"
                 type="text"
-                placeholder={this.state.heldTileText}
+                value={this.state.heldTileText}
                 className="modal-button"
               />
               {/*TODO: make color selection more user friendly */}
                 <input
                   name="color"
                   type="text"
-                  placeholder={this.state.heldTileColor}
+                  value={this.state.heldTileColor}
                   className="modal-button"
                 />
               <button type="submit" className="modal-button">Submit</button>
