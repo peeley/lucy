@@ -1,4 +1,9 @@
-
+#guided-use-state {
+    display: none;
+}
+#idle-threshold {
+    display: none;
+}
 #guidedPopup1 {
     display: none;
     position: absolute;
