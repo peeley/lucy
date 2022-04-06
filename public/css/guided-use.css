@@ -2,18 +2,31 @@
 #guidedPopup1 {
     display: none;
     position: absolute;
-    right: 40%;
-    top: 50px;
+    right: 20%;
+    left: 20%;
+    top: 20%;
     padding: 50px;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
+    text-align: center;
 }
 #guidedPopup2 {
     display: none;
     position: absolute;
     right: 20%;
     bottom: 50px;
+    padding: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#guidedPopup3 {
+    display: none;
+    position: absolute;
+    right: 10%;
+    left: 10%;
+    bottom: 40%;
     padding: 50px;
     background-color: white;
     border: 2px solid black;
