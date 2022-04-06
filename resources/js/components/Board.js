@@ -106,6 +106,7 @@ export class Board extends React.Component {
       <tr>
       { row.map( (tile, columnIndex) => {
         const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
+        const tileText = tile.contents ? tile.name : tile.text;
         return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
                    onClick={tileType == 'blank'
