@@ -55,5 +55,4 @@ class WordController extends Controller
     {
         return view('create-word');
     }
-
 }
