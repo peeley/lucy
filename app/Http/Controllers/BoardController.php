@@ -42,25 +42,7 @@ class BoardController extends Controller
 
     public function getBoard(Request $request, int $board_id)
     {
-        $user = $request->user();
-        if(!$user) {
-            $default_guided_toggle = 1;
-            $default_guided_idle = 30;
-            return view('board', [
-                'board_id' => $board_id,
-                'guided_use' => $default_guided_toggle,
-                'idle_threshold' =>$default_guided_idle
-            ]);
-        }
-        else {
-            $user_settings = $user->settings()->get()->first();
-            return view('board', [
-                'board_id' => $board_id,
-                'guided_use' => $user_settings->guided_use_toggle,
-                'idle_threshold' =>$user_settings->idle_threshold
-            ]);
-        }
-        
+        return view('board', ['board_id' => $board_id]);
     }
 
     public function deleteTileFromBoard(Request $request, int $board_id)
