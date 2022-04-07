@@ -22,31 +22,30 @@ class BoardSeeder extends Seeder
             'width' => 6,
             'height' => 4
         ]);
-        //color variables
+        //color variable
             $default_color = '#b3e6cc';
-            $conjunction_color = '#cbb3e6';
-            $article_color = '#9fff80';
-            $quantity_color = '#8cedb9';
-            $pronoun_color = '#ffffb3';
-            $pronoun_type_color = '#b77dff';
         //indexes
             $empty = 1;    
-            $board_index = 1;
+            $board_index = 1;//this is for words that are only on the board
 
         $user->words()->createMany([
             ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
-            ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6'],//2
-            ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc'],
-            ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99'],
-            ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc'],
-            ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc'],
-            ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3'],
-            ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6']
+            ['id' => $board_index+1, 'text' => 'Hello', 'color' => '#e6ffe6'],//2
+            ['id' => $board_index+2, 'text' => 'Goodbye', 'color' => '#ffe6cc'],
+            ['id' => $board_index+3, 'text' => 'Yay!', 'color' => '#ffff99'],
+            ['id' => $board_index+4, 'text' => 'Yes', 'color' => '#ccffcc'],
+            ['id' => $board_index+5, 'text' => 'No', 'color' => '#ffcccc'],
+            ['id' => $board_index+6, 'text' => 'Talk', 'color' => '#ffecb3'],
+            ['id' => $board_index+7, 'text' => 'Okay', 'color' => '#eeffe6']
         ]);
         
+        //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
+            // $adjectives = DB::table('words')->max('id');
+            // $adjectivesF = DB::table('folders')->max('id');
+
         //Adjictives
-            $adjectives = DB::table('words')->max('id');
-            $adjectivesF = DB::table('folders')->max('id');
+            $adjectives = $board_index+7;
+            $adjectivesF = 1;
             $user->words()->createMany([
                 ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color],
                 ['id' => $adjectives+4, 'text' => 'Clean', 'color' => $default_color],
@@ -326,12 +325,12 @@ class BoardSeeder extends Seeder
 
 
         //Verbs
-            $verbs = DB::table('words')->max('id');
-            $verbsF = DB::table('folders')->max('id');
+            $verbs = $adjectives+59;
+            $verbsF = $adjectivesF+11;
 
         //Pronouns
-            $pronoun_index = DB::table('words')->max('id');
-            $pronounF = DB::table('folders')->max('id');
+            $pronoun_index = $verbs;
+            $pronounF = $verbsF;
             //colors
                 $first_plural_color = '#ccffe6';
                 $thing_color = '#cceaae';
@@ -341,6 +340,8 @@ class BoardSeeder extends Seeder
                 $they_color = '#9ae59a';
                 $x_pronoun_color = '#ecb3ff';
                 $z_pronoun_color = '#ffd9b3';
+                $pronoun_color = '#ffffb3';
+                $pronoun_type_color = '#b77dff';
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
@@ -645,8 +646,9 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Conjunctions
-            $conjunction_index = DB::table('words')->max('id');
-            $conjunctionF = DB::table('folders')->max('id');
+            $conjunction_index = $pronoun_index+41;
+            $conjunctionF = $pronounF+14;
+            $conjunction_color = '#cbb3e6';
             $user->words()->createMany([
                 ['id' => $conjunction_index+1, 'text' => 'And', 'color' => $conjunction_color],//67
                 ['id' => $conjunction_index+2, 'text' => 'Also', 'color' => $conjunction_color],
@@ -685,8 +687,9 @@ class BoardSeeder extends Seeder
             ]);
         
         //Articles
-            $article = DB::table('words')->max('id');
-            $articleF = DB::table('folders')->max('id');
+            $article = $conjunction_index+12;
+            $articleF = $conjunctionF+1;
+            $article_color = '#9fff80';
             $user->words()->createMany([
                 ['id' => $article+1, 'text' => 'A', 'color' => $article_color],//134
                 ['id' => $article+2, 'text' => 'An', 'color' => $article_color],
@@ -712,12 +715,12 @@ class BoardSeeder extends Seeder
         
 
         //Demonstrative
-            $demonst = DB::table('words')->max('id');
-            $demonstF = DB::table('folders')->max('id');
+            $demonst = $article+3;
+            $demonstF = $articleF+1;
 
         //Nouns
-            $noun = DB::table('words')->max('id');
-            $nounF = DB::table('folders')->max('id');
+            $noun = $demonst;
+            $nounF = $articleF+1;
             $user->words()->createMany([
                 ['id' => $noun+1, 'text' => 'Noun', 'color' => $default_color],
                 ['id' => $noun+2, 'text' => 'Descriptive Noun', 'color' => $default_color]
@@ -746,8 +749,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Emotions
-            $emotion_index = DB::table('words')->max('id');
-            $emotionF = DB::table('folders')->max('id');
+            $emotion_index = $noun+2;
+            $emotionF = $nounF+2;
             $user->words()->createMany([
                 ['id' => $emotion_index+1, 'text' => 'Panic', 'color' => '#ffad33'],//9
                 ['id' => $emotion_index+2, 'text' => 'Hurt', 'color' => '#ffd1b3'],
@@ -792,8 +795,8 @@ class BoardSeeder extends Seeder
 
 
         //Food
-            $food_extra = DB::table('words')->max('id');
-            $foodF = DB::table('folders')->max('id');
+            $food_extra = $emotion_index+15;
+            $foodF = $emotionF+1;
             $user->words()->createMany([
                 ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//79
                 ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'],
@@ -829,7 +832,7 @@ class BoardSeeder extends Seeder
                 $foodF+5 => ['board_x' => 5, 'board_y' => 1]
             ]);
             //Pasta
-                $food_pasta = DB::table('words')->max('id');
+                $food_pasta = $food_extra+4;
                 $user->words()->createMany([
                     ['id' => $food_pasta+1, 'text' => 'Pasta', 'color' => '#ffedb3'],//83
                     ['id' => $food_pasta+2, 'text' => 'Spaghetti', 'color' => '#ffedb3'],
@@ -856,7 +859,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Fruit
-                $food_fruit = DB::table('words')->max('id');
+                $food_fruit = $food_pasta+7;
                 $user->words()->createMany([
                     ['id' => $food_fruit+1, 'text' => 'Orange', 'color' => '#ffa024'],//95
                     ['id' => $food_fruit+2, 'text' => 'Fruit', 'color' => '#ff8080'],
@@ -914,7 +917,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Snack
-                $food_snacks = DB::table('words')->max('id');
+                $food_snacks = $food_fruit+24;
                 $user->words()->createMany([
                     ['id' => $food_snacks+1, 'text' => 'Snack', 'color' => ' #edb25a'],//91
                     ['id' => $food_snacks+2, 'text' => 'Potato Chips', 'color' => '#fff0c2'],
@@ -943,7 +946,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Drinks
-                $food_drinks = DB::table('words')->max('id');
+                $food_drinks = $food_snacks+4;
                 $user->words()->createMany([
                     ['id' => $food_drinks+1, 'text' => 'Drink', 'color' => '#d9b6bd'],//119
                     ['id' => $food_drinks+2, 'text' => 'Soda', 'color' => '#c2937a'],
@@ -967,8 +970,8 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Comfort
-            $comfort = DB::table('words')->max('id');
-            $comfortF = DB::table('folders')->max('id');
+            $comfort = $food_drinks+5;
+            $comfortF = $foodF+5;
             $user->words()->createMany([
                 ['id' => $comfort+1, 'text' => 'Comfort', 'color' => '#cceeff'],//124
                 ['id' => $comfort+2, 'text' => 'Blanket', 'color' => $default_color],
@@ -998,8 +1001,9 @@ class BoardSeeder extends Seeder
             ]);
 
         //Quantity
-            $quantity = DB::table('words')->max('id');
-            $quantityF = DB::table('folders')->max('id');
+            $quantity = $comfort+7;
+            $quantityF = $comfortF+1;
+            $quantity_color = '#8cedb9';
             $user->words()->createMany([
                 ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],//125
                 ['id' => $quantity+2, 'text' => 'Less', 'color' => $quantity_color],
@@ -1035,8 +1039,8 @@ class BoardSeeder extends Seeder
 
 
         //Help
-            $help = DB::table('words')->max('id');
-            $helpF = DB::table('folders')->max('id');
+            $help = $quantity+10;
+            $helpF = $quantityF+1;
             $user->words()->createMany([
                 ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff'],//137
                 ['id' => $help+2, 'text' => 'Help me', 'color' => '#e6e6ff'],
@@ -1073,9 +1077,11 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
+
+
         //Toys
-            $toys = DB::table('words')->max('id');
-            $toysF = DB::table('folders')->max('id');
+            $toys = $help+10;
+            $toysF = $helpF+1;
             $user->words()->createMany([
                 ['id' => $toys+1, 'text' => 'Toy', 'color' => '#60d164'],//147
                 ['id' => $toys+2, 'text' => 'Ball', 'color' => '#596df0'],
@@ -1100,14 +1106,14 @@ class BoardSeeder extends Seeder
                 $empty => ['board_x' => 1, 'board_y' => 4] 
             ]);
             //attach vehicles folder below
-            $user->folders()->find($nounF+1)->folders()->attach([
-                $toysF+1 => ['board_x' => 2, 'board_y' => 1]
-            ]);
+                $user->folders()->find($nounF+1)->folders()->attach([
+                    $toysF+1 => ['board_x' => 2, 'board_y' => 1]
+                ]);
 
 
         //People
-            $people = DB::table('words')->max('id');
-            $peopleF = DB::table('folders')->max('id');
+            $people = $toys+4;
+            $peopleF = $toysF+1;
             $user->words()->createMany([
                 ['id' => $people+1, 'text' => 'People', 'color' => $default_color],//151
                 ['id' => $people+2, 'text' => 'Teacher', 'color' => $default_color],
@@ -1192,8 +1198,8 @@ class BoardSeeder extends Seeder
             ]);
         
         //Colors
-            $colors = DB::table('words')->max('id');
-            $colorsF = DB::table('folders')->max('id');
+            $colors = $people+29;
+            $colorsF = $peopleF+2;
             $user->words()->createMany([
                 ['id' => $colors+1, 'text' => 'Red', 'color' => $default_color],
                 ['id' => $colors+2, 'text' => 'Orange', 'color' => $default_color],
@@ -1236,8 +1242,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Patterns
-            $patterns = DB::table('words')->max('id');
-            $patternsF = DB::table('folders')->max('id');
+            $patterns = $colors+12;
+            $patternsF = $colorsF+1;
             $user->words()->createMany([
                 ['id' => $patterns+1, 'text' => 'Pattern', 'color' => $default_color],
                 ['id' => $patterns+2, 'text' => 'Spots', 'color' => $default_color],
@@ -1269,8 +1275,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Vehicles
-            $vehicles = DB::table('words')->max('id');
-            $vehiclesF = DB::table('folders')->max('id');
+            $vehicles = $patterns+7;
+            $vehiclesF = $patternsF+1;
             $user->words()->createMany([
                 ['id' => $vehicles+1, 'text' => 'Vehicle', 'color' => $default_color],
                 ['id' => $vehicles+2, 'text' => 'Car', 'color' => $default_color],
@@ -1297,17 +1303,17 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]
             ]);
-            //attaching vehicles to toys
-            $user->folders()->find($toysF+1)->folders()->attach([
-                $vehiclesF+1 => ['board_x' => 1, 'board_y' => 2]
-            ]);
-            $user->folders()->find($nounF+1)->folders()->attach([
-                $vehiclesF+1 => ['board_x' => 4, 'board_y' => 1]
-            ]);    
+            //attaching vehicles to toys & nouns
+                $user->folders()->find($toysF+1)->folders()->attach([
+                    $vehiclesF+1 => ['board_x' => 1, 'board_y' => 2]
+                ]);
+                $user->folders()->find($nounF+1)->folders()->attach([
+                    $vehiclesF+1 => ['board_x' => 4, 'board_y' => 1]
+                ]);    
         
         //Clothes
-            $clothes = DB::table('words')->max('id');
-            $clothesF = DB::table('folders')->max('id');
+            $clothes = $vehicles+7;
+            $clothesF = $vehiclesF+1;
             $user->words()->createMany([
                 ['id' => $clothes+1, 'text' => 'Clothes', 'color' => $default_color],
                 ['id' => $clothes+2, 'text' => 'Compression', 'color' => $default_color]
@@ -1612,8 +1618,8 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Numbers
-            $numbers = DB::table('words')->max('id');
-            $numbersF = DB::table('folders')->max('id');
+            $numbers = $clothes+2;
+            $numbersF = $clothesF+12;
             $user->words()->createMany([
                 ['id' => $numbers+1, 'text' => '1', 'color' => $default_color],
                 ['id' => $numbers+2, 'text' => '2', 'color' => $default_color],
@@ -1704,8 +1710,8 @@ class BoardSeeder extends Seeder
             ]);
         
         //Tempurature
-            $tempurature = DB::table('words')->max('id');
-            $tempuratureF = DB::table('folders')->max('id');
+            $tempurature = $numbers+32;
+            $tempuratureF = $numbersF+2;
             $user->words()->createMany([
                 ['id' => $tempurature+1, 'text' => 'Temputrature', 'color' => $default_color],
                 ['id' => $tempurature+2, 'text' => 'Farenheight', 'color' => $default_color],
@@ -1737,8 +1743,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Weather
-            $weather = DB::table('words')->max('id');
-            $weatherF = DB::table('folders')->max('id');
+            $weather = $tempurature+4;
+            $weatherF = $tempuratureF+1;
             $user->words()->createMany([
                 ['id' => $weather+1, 'text' => 'Cloudy', 'color' => $default_color],
                 ['id' => $weather+2, 'text' => 'Sunny', 'color' => $default_color],
