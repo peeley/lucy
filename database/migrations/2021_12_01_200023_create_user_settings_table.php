@@ -9,7 +9,7 @@ class CreateUserSettingsTable extends Migration
     /**
      * Run the migrations.
      *
-    * @return void
+     * @return void
      */
     public function up()
     {
@@ -17,8 +17,7 @@ class CreateUserSettingsTable extends Migration
         Schema::create('user_settings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->boolean('guided_use_toggle')->default('true'); //lets us know whether the user wants guided use on or off NOTE: also change the stuff in CreateAccountController
-            $table->integer('idle_threshold')->default('30'); //default idle time a user has to wait before guided use activates
+            $table->boolean('guided_use_toggle')->default('false'); //lets us know whether the user wants guided use on or off
             $table->integer('audio_level')->default('5'); //the volume level of the text-to-speech voice; not sure if we should use int or float
             $table->foreignID('user_id')->constrained(); //users settings cannot exist without a user
         });

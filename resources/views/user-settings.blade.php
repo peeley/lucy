@@ -30,9 +30,6 @@
     <br>
     <input type="radio" name="guided_use" value="0" {{ (! $guided_use_toggle) ?  "checked" : ""}} >
     <label>Guided Use: Off</label><br>
-
-    <label>Idle Threshold (in seconds)</label>
-    <input type="number" name="idle_threshold" min="5" max="300" value={{$idle_threshold}}><br>
     <input class="update-settings-button" type="submit" value="Update Guided Use Settings"><br>
     <button class="close-settings-button" type="button" onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
 </form>
