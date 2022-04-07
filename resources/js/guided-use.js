@@ -37,12 +37,18 @@ function guidedSequence1(){
 
     var myButtons = document.getElementsByClassName("default-tile");
     Array.from(myButtons).forEach(function(e) {
-        e.addEventListener('click', function handler() {
-            guidedSequence2();
-            e.removeEventListener('click', handler);
-        });
+        e.addEventListener('click', tileHandler);
     });
+
+    function tileHandler() {
+        guidedSequence2();
+        //erase all event listeners
+        Array.from(myButtons).forEach(function(elem) {
+            elem.removeEventListener('click', tileHandler);
+        });
+    }
 }
+
 function guidedSequence2(){
     hideElement("guidedPopup1");
     removePulse("default-tile");
@@ -55,11 +61,15 @@ function guidedSequence2(){
     var array2 = Array.prototype.slice.call(document.getElementsByClassName("sentence-speak"), 0);
     var myButtons = array1.concat(array2);
     myButtons.forEach(function(e) {
-        e.addEventListener('click', function handler() {
-            guidedSequence3();
-            e.removeEventListener('click', handler);
-        });
+        e.addEventListener('click', tileHandler);
     });
+    function tileHandler() {
+        guidedSequence3();
+        //erase all event listeners
+        Array.from(myButtons).forEach(function(elem) {
+            elem.removeEventListener('click', tileHandler);
+        });
+    }
 }
 function guidedSequence3(){
     hideElement("guidedPopup2");
