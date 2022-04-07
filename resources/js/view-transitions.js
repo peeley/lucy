@@ -1,6 +1,10 @@
 //Followed tutorial created by: Tyler Potts
 //link: https://www.youtube.com/watch?v=ckJ7gdIeebc&t=780s
 window.onload = () => {
+    pageTransition();
+}
+
+function pageTransition(){
     const transition_el = document.querySelector('.transition');
     const anchors = document.querySelectorAll('a');
     const animation_time = 100; //in ms
