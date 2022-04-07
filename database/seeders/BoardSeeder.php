@@ -1806,8 +1806,8 @@ class BoardSeeder extends Seeder
             ]);
             
         //Letters
-            $letters = DB::table('words')->max('id');
-            $lettersF = DB::table('folders')->max('id');
+            $letters = $weather+19;
+            $lettersF = $weatherF+1;
             $user->words()->createMany([
                 ['id' => $letters+1, 'text' => 'A', 'color' => $default_color],
                 ['id' => $letters+2, 'text' => 'B', 'color' => $default_color],
@@ -1891,8 +1891,8 @@ class BoardSeeder extends Seeder
             ]);
         
         //Personal care
-            $person_care = DB::table('words')->max('id');
-            $person_careF = DB::table('folders')->max('id');
+            $person_care = $letters+28;
+            $person_careF = $lettersF+2;
             $user->words()->createMany([
                 ['id' => $person_care+1, 'text' => 'Brush Teeth', 'color' => $default_color],
                 ['id' => $person_care+2, 'text' => 'Brush Teeth', 'color' => $default_color],
@@ -1920,8 +1920,8 @@ class BoardSeeder extends Seeder
             ]);  
         
         //Entertainment
-            $entertainment = DB::table('words')->max('id');
-            $entertainmentF = DB::table('folders')->max('id');
+            $entertainment = $person_care+6;
+            $entertainmentF = $person_careF+1;
             $user->words()->createMany([
                 ['id' => $entertainment+1, 'text' => 'TV', 'color' => $default_color],
                 ['id' => $entertainment+2, 'text' => 'Movie', 'color' => $default_color],
@@ -1953,8 +1953,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Talker
-            $talker = DB::table('words')->max('id');
-            $talkerF = DB::table('folders')->max('id');
+            $talker = $entertainment+7;
+            $talkerF = $entertainmentF+1;
             $user->words()->createMany([
                 ['id' => $talker+1, 'text' => 'Word', 'color' => $default_color],
                 ['id' => $talker+2, 'text' => 'Words', 'color' => $default_color],
@@ -1981,8 +1981,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Medical
-            $medical = DB::table('words')->max('id');
-            $medicalF = DB::table('folders')->max('id');
+            $medical = $talker+5;
+            $medicalF = $talkerF+1;
             $user->words()->createMany([
                 ['id' => $medical+1, 'text' => 'Sick', 'color' => $default_color],
                 ['id' => $medical+2, 'text' => 'Pain', 'color' => $default_color],
@@ -2014,8 +2014,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //Plants
-            $plants = DB::table('words')->max('id');
-            $plantsF = DB::table('folders')->max('id');
+            $plants = $medical+6;
+            $plantsF = $medicalF+1;
             $user->words()->createMany([
                 ['id' => $plants+1, 'text' => 'Plant', 'color' => $default_color],
                 ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color],
@@ -2046,8 +2046,8 @@ class BoardSeeder extends Seeder
             ]);
         
         //Animals
-            $animals = DB::table('words')->max('id');
-            $animalsF = DB::table('folders')->max('id');
+            $animals = $plants+6;
+            $animalsF = $plantsF+1;
             $user->words()->createMany([
                 ['id' => $animals+1, 'text' => 'Animal', 'color' => $default_color],
                 ['id' => $animals+2, 'text' => 'Pet', 'color' => $default_color],
@@ -2110,8 +2110,8 @@ class BoardSeeder extends Seeder
             ]);
             
         //Manners
-            $manners = DB::table('words')->max('id');
-            $mannersF = DB::table('folders')->max('id');
+            $manners = $animals+24;
+            $mannersF = $animalsF+1;
             $user->words()->createMany([
                 ['id' => $manners+1, 'text' => 'Please', 'color' => $default_color],
                 ['id' => $manners+2, 'text' => 'Thank You', 'color' => $default_color],
@@ -2137,8 +2137,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //House
-            $house = DB::table('words')->max('id');
-            $houseF = DB::table('folders')->max('id');
+            $house = $manners+4;
+            $houseF = $mannersF+1;
             $user->words()->createMany([
                 ['id' => $house+1, 'text' => 'House', 'color' => $default_color],
                 ['id' => $house+2, 'text' => 'Door', 'color' => $default_color],
@@ -2194,7 +2194,7 @@ class BoardSeeder extends Seeder
             ]);
 
             //Furnature
-                $furnature = DB::table('words')->max('id');
+                $furnature = $house+8;
                 $user->words()->createMany([
                     ['id' => $furnature+1, 'text' => 'Bed', 'color' => $default_color],
                     ['id' => $furnature+2, 'text' => 'Couch', 'color' => $default_color],
@@ -2226,7 +2226,7 @@ class BoardSeeder extends Seeder
                 ]);
 
             //Furnishings
-                $furnishings = DB::table('words')->max('id');
+                $furnishings = $furnature+10;
                 $user->words()->createMany([
                     ['id' => $furnishings+1, 'text' => 'Rug', 'color' => $default_color],
                     ['id' => $furnishings+2, 'text' => 'Pillow', 'color' => $default_color],
@@ -2250,7 +2250,7 @@ class BoardSeeder extends Seeder
                 ]);
 
             //Linen
-                $linin = DB::table('words')->max('id');
+                $linin = $furnishings+5;
                 $user->words()->createMany([
                     ['id' => $linin+1, 'text' => 'Towel', 'color' => $default_color],
                     ['id' => $linin+2, 'text' => 'Hand Towel', 'color' => $default_color],
@@ -2259,10 +2259,10 @@ class BoardSeeder extends Seeder
                     ['id' => $linin+5, 'text' => 'Rag', 'color' => $default_color],
                     ['id' => $linin+6, 'text' => 'Washcloth', 'color' => $default_color],
                     ['id' => $linin+7, 'text' => 'Pillowcase', 'color' => $default_color],
-                    ['id' => $linin+ 8, 'text' => 'Sheets', 'color' => $default_color],
-                    ['id' => $linin+ 9, 'text' => 'Top Sheet', 'color' => $default_color],
-                    ['id' => $linin+ 10, 'text' => 'Fitted Sheet', 'color' => $default_color],
-                    ['id' => $linin+ 11, 'text' => 'Comforter', 'color' => $default_color],
+                    ['id' => $linin+8, 'text' => 'Sheets', 'color' => $default_color],
+                    ['id' => $linin+9, 'text' => 'Top Sheet', 'color' => $default_color],
+                    ['id' => $linin+10, 'text' => 'Fitted Sheet', 'color' => $default_color],
+                    ['id' => $linin+11, 'text' => 'Comforter', 'color' => $default_color],
                     ['id' => $linin+12, 'text' => 'Comforter Cover', 'color' => $default_color]
                 ]);
                 $user->folders()->find($houseF+8)->words()->attach([
@@ -2286,7 +2286,7 @@ class BoardSeeder extends Seeder
                 ]);
 
             //Cleaning Supplies
-                $clean_supply = DB::table('words')->max('id');
+                $clean_supply = $linin+12;
                 $user->words()->createMany([
                     ['id' => $clean_supply+1, 'text' => 'Soap', 'color' => $default_color],
                     ['id' => $clean_supply+2, 'text' => 'Detergent', 'color' => $default_color],
@@ -2310,7 +2310,7 @@ class BoardSeeder extends Seeder
                 ]);
         
             //Rooms
-                $rooms = DB::table('words')->max('id');
+                $rooms = $clean_supply+5;
                 $user->words()->createMany([
                     ['id' => $rooms+1, 'text' => 'Room', 'color' => $default_color],
                     ['id' => $rooms+2, 'text' => 'Hallway', 'color' => $default_color],
@@ -2343,7 +2343,7 @@ class BoardSeeder extends Seeder
                 ]);
 
                 //Bedroom
-                    $bedroom = DB::table('words')->max('id');
+                    $bedroom = $rooms+5;
                     $user->words()->createMany([
                         ['id' => $bedroom+1, 'text' => 'Bedroom', 'color' => $default_color]
                     ]);
@@ -2371,7 +2371,7 @@ class BoardSeeder extends Seeder
 
 
                 //Bathroom
-                    $bathroom = DB::table('words')->max('id');
+                    $bathroom = $bedroom+1;
                     $user->words()->createMany([
                         ['id' => $bathroom+1, 'text' => 'Bathroom', 'color' => $default_color],
                         ['id' => $bathroom+2, 'text' => 'Bathtub', 'color' => $default_color],
@@ -2396,7 +2396,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Family Room
-                    $fam_room = DB::table('words')->max('id');
+                    $fam_room = $bathroom+4;
                     $user->words()->createMany([
                         ['id' => $fam_room+1, 'text' => 'Family Room', 'color' => $default_color]
                     ]);
@@ -2416,7 +2416,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Living Room
-                    $live_room = DB::table('words')->max('id');
+                    $live_room = $fam_room+1;
                     $user->words()->createMany([
                         ['id' => $live_room+1, 'text' => 'Living Room', 'color' => $default_color]
                     ]);
@@ -2436,7 +2436,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Office
-                    $office = DB::table('words')->max('id');
+                    $office = $live_room+1;
                     $user->words()->createMany([
                         ['id' => $office+1, 'text' => 'Office', 'color' => $default_color]
                     ]);
@@ -2457,7 +2457,7 @@ class BoardSeeder extends Seeder
                     //add school supplies when made
 
                 //Play Room
-                    $play_room = DB::table('words')->max('id');
+                    $play_room = $office+1;
                     $user->words()->createMany([
                         ['id' => $play_room+1, 'text' => 'Play Room', 'color' => $default_color]
                     ]);
@@ -2480,7 +2480,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Laundry Room
-                    $laundry_room = DB::table('words')->max('id');
+                    $laundry_room = $play_room+1;
                     $user->words()->createMany([
                         ['id' => $laundry_room+1, 'text' => 'Laundry Room', 'color' => $default_color],
                         ['id' => $laundry_room+2, 'text' => 'Washer', 'color' => $default_color],
@@ -2505,7 +2505,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Kitchen
-                    $kitchen = DB::table('words')->max('id');
+                    $kitchen = $laundry_room+3;
                     $user->words()->createMany([
                         ['id' => $kitchen+1, 'text' => 'Kitchen', 'color' => $default_color],
                         ['id' => $kitchen+2, 'text' => 'Counter', 'color' => $default_color],
@@ -2535,7 +2535,7 @@ class BoardSeeder extends Seeder
                     ]);
 
                     //Meals
-                        $meals = DB::table('words')->max('id');
+                        $meals = $kitchen+3;
                         $user->words()->createMany([
                             ['id' => $meals+1, 'text' => 'Breakfast', 'color' => $default_color],
                             ['id' => $meals+2, 'text' => 'Lunch', 'color' => $default_color],
@@ -2561,7 +2561,7 @@ class BoardSeeder extends Seeder
                         ]);
 
                     //Cooking Tools
-                        $cook_tool = DB::table('words')->max('id');
+                        $cook_tool = $meals+7;
                         $user->words()->createMany([
                             ['id' => $cook_tool+1, 'text' => 'Pot', 'color' => $default_color],
                             ['id' => $cook_tool+2, 'text' => 'Pan', 'color' => $default_color],
@@ -2598,7 +2598,7 @@ class BoardSeeder extends Seeder
                         ]);
 
                     //Dishes
-                        $dishes = DB::table('words')->max('id');
+                        $dishes = $cook_tool+13;
                         $user->words()->createMany([
                             ['id' => $dishes+1, 'text' => 'Dish', 'color' => $default_color],
                             ['id' => $dishes+2, 'text' => 'Dishes', 'color' => $default_color],
@@ -2623,7 +2623,7 @@ class BoardSeeder extends Seeder
                         ]);
 
                     //Cutlery
-                        $cutlery = DB::table('words')->max('id');
+                        $cutlery = $dishes+6;
                         $user->words()->createMany([
                             ['id' => $cutlery+1, 'text' => 'Fork', 'color' => $default_color],
                             ['id' => $cutlery+2, 'text' => 'Knife', 'color' => $default_color],
@@ -2650,8 +2650,8 @@ class BoardSeeder extends Seeder
 
 
         //Places
-            $places = DB::table('words')->max('id');
-            $placesF = DB::table('folders')->max('id');
+            $places = $cutlery+6;
+            $placesF = $houseF+18;
             $user->words()->createMany([
                 ['id' => $places+1, 'text' => 'Place', 'color' => $default_color],
                 ['id' => $places+2, 'text' => 'Doctor\'s Office', 'color' => $default_color],
@@ -2688,8 +2688,8 @@ class BoardSeeder extends Seeder
                 $placesF+1 => ['board_x' => 1, 'board_y' => 3]
             ]);
         //Aids
-            $aids = DB::table('words')->max('id');
-            $aidsF = DB::table('folders')->max('id');
+            $aids = $places+9;
+            $aidsF = $placesF+1;
             $user->words()->createMany([
                 ['id' => $aids+1, 'text' => 'Glasses', 'color' => $default_color],
                 ['id' => $aids+2, 'text' => 'Wheelchair', 'color' => $default_color],
@@ -2721,8 +2721,8 @@ class BoardSeeder extends Seeder
             ]);
 
         //School
-            $school = DB::table('words')->max('id');
-            $schoolF = DB::table('folders')->max('id');
+            $school = $aids+7;
+            $schoolF = $aidsF+1;
             $user->words()->createMany([
                 ['id' => $school+1, 'text' => 'Recess', 'color' => $default_color],//151
                 ['id' => $school+2, 'text' => 'Book', 'color' => $default_color],
@@ -2811,27 +2811,27 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Body Parts
-            $body = DB::table('words')->max('id');
-            $bodyF = DB::table('folders')->max('id');
+            $body = $school+18;
+            $bodyF = $schoolF+3;
 
 
         //Computer\Tech
-            $tech = DB::table('words')->max('id');
-            $techF = DB::table('folders')->max('id');
+            $tech = $body;
+            $techF = $bodyF;
 
         //Parts of Speech
-            $speech = DB::table('words')->max('id');
-            $speechF = DB::table('folders')->max('id');
+            $speech = $speech;
+            $speechF = $techF;
             $user->folders()->createMany([
                 ['id' => $speechF+1, 'name' => 'Parts Of Speech', 'color' => $default_color]
             ]);
             $user->folders()->find($speechF+1)->words()->attach([
                 $adjectivesF+1 => ['board_x' => 1, 'board_y' => 1],
-                $verbsF+1 => ['board_x' => 2, 'board_y' => 1],
+                //$verbsF+1 => ['board_x' => 2, 'board_y' => 1],
                 $pronounF+1 => ['board_x' => 3, 'board_y' => 1],
                 $conjunctionF+1 => ['board_x' => 4, 'board_y' => 1],
                 $articleF+1 => ['board_x' => 5, 'board_y' => 1],
-                $demonstF+1 => ['board_x' => 6, 'board_y' => 1],
+                //$demonstF+1 => ['board_x' => 6, 'board_y' => 1],
             ]);
 
         //main board
