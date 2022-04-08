@@ -1715,7 +1715,7 @@ class BoardSeeder extends Seeder
             $user->folders()->find($nounF+1)->folders()->attach([
                 $numbersF+1 => ['board_x' => 6, 'board_y' => 1]
             ]);
-            $user->folders()->find($numbersF+11)->folders()->attach([
+            $user->folders()->find($numbersF+1)->folders()->attach([
                 $numbersF+2 => ['board_x' => 6, 'board_y' => 4]
             ]);
         
