@@ -29,22 +29,17 @@
     height: var(--tile-height);
     width: var(--tile-width);
     
-    /*display: block; 
-    /*justify-content: center; */
     margin: var(--margin);
     margin-top: var(--vertical-margin);
-    /* vertical-align: var(--vertical-align); */
 
     border: var(--default-border);
     border-radius: var(--default-border-radius);
 
-    /*padding: var(--padding); */
     text-align: var(--default-text-align);
     font-size: var(--default-font-size);
 
     box-shadow: var(--default-box-shadow);
     transition: var(--default-transition);
-    /*flex-wrap: wrap; */
 }
 .folder-tile {
     display: inline-flex;
@@ -183,13 +178,9 @@
     font-size: var(--default-font-size);
 }
 .tile-icons{
-    /*flex: auto; */
     max-width: 100%; 
     height: 75%; 
     object-fit: contain;
-    /* display: block; 
-    margin-left: auto;
-    margin-right: auto;  */
 }
 /*=====================================================*/
 /*                   Create Word CSS                   */
@@ -228,7 +219,7 @@ input[type="file"] {
 .modal-button {
     height: 50px;
     width: 100px;
-    font-size: var(--default-font-size);
+    font-size: large;
     text-align: var(--default-text-align);
     vertical-align: var(--vertical-align);
 }
