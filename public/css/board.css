@@ -44,6 +44,7 @@
 
     box-shadow: var(--default-box-shadow);
     transition: var(--default-transition);
+    flex-wrap: wrap;
 }
 .folder-tile {
     display: inline-flex;
@@ -182,13 +183,16 @@
     font-size: var(--default-font-size);
 }
 
+.icon-container{
+    flex-grow: 1 1 0;
+    display: flex;
+}
 .tile-icons{
-    width: auto;
-    height: 75%;
+    /*flex: auto; */
+    max-width: 100%;
+    max-height: auto;
     object-fit: contain;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /*display: block; */
 }
 /*=====================================================*/
 /*                   Create Word CSS                   */
