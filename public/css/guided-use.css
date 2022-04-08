@@ -40,7 +40,7 @@
 
 
 .pulse {
-    --old-color: transparent;
+    background-color: rgb(131, 131, 255);
     animation: color-pulse;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -51,7 +51,7 @@
     
     }
     50% {
-        background-color: var(--old-color);
+        background-color: azure;
 
     }
     100% {

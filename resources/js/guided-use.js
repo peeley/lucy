@@ -107,13 +107,7 @@ function hideElement(name){
 function addPulse(name){
     var ele = document.getElementsByClassName(name);
     Array.from(ele).forEach(function(e) {
-        var rs = getComputedStyle(e);
-        var old_color = rs.getPropertyValue('background-color');
         e.classList.add("pulse");
-        //grab all pulse classes (I don't know else to do this lol)
-        var pulseItems = document.querySelectorAll(".pulse");
-        var pulse = pulseItems[pulseItems.length - 1];  //grab the latest one
-        pulse.style.setProperty("--old-color", old_color); //change its color to match the old color
     });
 }
 function removePulse(name){
