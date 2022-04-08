@@ -1,0 +1,61 @@
+#guided-use-state {
+    display: none;
+}
+#idle-threshold {
+    display: none;
+}
+#guidedPopup1 {
+    display: none;
+    position: absolute;
+    right: 20%;
+    left: 20%;
+    top: 20%;
+    padding: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+#guidedPopup2 {
+    display: none;
+    position: absolute;
+    right: 20%;
+    bottom: 50px;
+    padding: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+#guidedPopup3 {
+    display: none;
+    position: absolute;
+    right: 10%;
+    left: 10%;
+    bottom: 40%;
+    padding: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+
+.pulse {
+    --old-color: transparent;
+    animation: color-pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes color-pulse {
+    0% {
+        background-color: rgb(131, 131, 255);
+    
+    }
+    50% {
+        background-color: var(--old-color);
+
+    }
+    100% {
+        background-color: rgb(131, 131, 255);
+    
+    }
+}
