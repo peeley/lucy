@@ -19,8 +19,6 @@ export class Board extends React.Component {
       heldTileId: null,
       heldTileColumn: null,
       heldTileRow: null,
-      heldTileText: null,
-      heldTileColor: null,
       confirmDeleteModal: false,
       editModal: false,
       createModal: false
@@ -105,7 +103,7 @@ export class Board extends React.Component {
       <tr>
       { row.map( (tile, columnIndex) => {
         const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
-        const tileText = tile.contents ? tile.name : tile.text;
+
         return <td style={{ backgroundColor: `${tile.color}`}}
             className="default-tile"
                    onClick={tileType == 'blank'
@@ -113,8 +111,8 @@ export class Board extends React.Component {
                             : (tile.contents
                               ? () => this.handleFolderClick(tile, tile.name)
                               : () => this.handleWordClick(tile.text))}
-            onMouseDown={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex, tileText, tile.color)}
-            onTouchStart={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex, tileText, tile.color)}
+            onMouseDown={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
+            onTouchStart={() => this._onHoldStart(tileType, tile.id, columnIndex, rowIndex)}
             onMouseUp={this._onHoldEnd}
             onMouseOut={() => { // FIXME for drag and drop
             }}
@@ -134,7 +132,7 @@ export class Board extends React.Component {
       );
   }
   //_onHoldStart and _onHoldEnd borrowed from: https://www.youtube.com/watch?v=A95mIE2HdcY
-  _onHoldStart = (tileType, tileId, tileX, tileY, tileText, tileColor) => {
+  _onHoldStart = (tileType, tileId, tileX, tileY) => {
       if (this.props.board_id == '1') {
         return;
       }
@@ -149,9 +147,7 @@ export class Board extends React.Component {
                 heldTileId: tileId,
                 heldTileType: tileType,
                 heldTileRow: tileY,
-                heldTileColumn: tileX,
-                heldTileText: tileText,
-                heldTileColor: tileColor,
+                heldTileColumn: tileX
               });
             }
           }, 1000),
@@ -314,14 +310,14 @@ export class Board extends React.Component {
               <input
                 name="text"
                 type="text"
-                placeholder={this.state.heldTileText}
+                placeholder="Text"
                 className="modal-button"
               />
               {/*TODO: make color selection more user friendly */}
                 <input
                   name="color"
                   type="text"
-                  placeholder={this.state.heldTileColor}
+                  placeholder="Color (Hexadecimal)"
                   className="modal-button"
                 />
               <button type="submit" className="modal-button">Submit</button>

@@ -17,6 +17,7 @@ class UserSettings extends Model
      */
         protected $fillable = [
         'guided_use_toggle',
+        'idle_threshold',
         'audio_level',
         'user_id',
     ];
