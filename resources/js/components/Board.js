@@ -109,7 +109,7 @@ export class Board extends React.Component {
       { row.map( (tile, columnIndex) => {
         const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
         const tileText = tile.contents ? tile.name : tile.text;
-        return <td style={{ backgroundColor: `${tile.color}`}}
+        return <td style={{ "backgroundColor": `${tile.color}`}}
             className="default-tile"
                    onClick={tileType == 'blank'
                             ? () => {}
@@ -124,10 +124,8 @@ export class Board extends React.Component {
             onTouchEnd={this._onHoldEnd}
             onTouchCancel={this._onHoldEnd}
         >
-          {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')}
-          <div>
+          {tileType === 'blank' ? '+' : ((tile.text ?? tile.name) + ' ')} <br></br>
           {tile.icon != null && <img className="tile-icons" src={tile.icon} style={{border: '1px solid '}}/>}
-          </div>
         </td>
       })}
       </tr>

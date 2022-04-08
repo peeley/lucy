@@ -3,7 +3,7 @@
 /*=====================================================*/
 /*variables*/
 :root {
-    --tile-height: 11%;
+    --tile-height: 100px;
     --tile-width: 9%;
     --control-button-width: 125px;
     --height-relative: 12%;
@@ -29,22 +29,22 @@
     height: var(--tile-height);
     width: var(--tile-width);
     
-    display: inline-flex;
-    justify-content: center;
+    /*display: block; 
+    /*justify-content: center; */
     margin: var(--margin);
     margin-top: var(--vertical-margin);
-    vertical-align: var(--vertical-align);
+    /* vertical-align: var(--vertical-align); */
 
     border: var(--default-border);
     border-radius: var(--default-border-radius);
 
-    padding: var(--padding);
+    /*padding: var(--padding); */
     text-align: var(--default-text-align);
     font-size: var(--default-font-size);
 
     box-shadow: var(--default-box-shadow);
     transition: var(--default-transition);
-    flex-wrap: wrap;
+    /*flex-wrap: wrap; */
 }
 .folder-tile {
     display: inline-flex;
@@ -182,17 +182,14 @@
     text-align: var(--default-text-align);
     font-size: var(--default-font-size);
 }
-
-.icon-container{
-    flex-grow: 1 1 0;
-    display: flex;
-}
 .tile-icons{
     /*flex: auto; */
-    max-width: 100%;
-    max-height: auto;
+    max-width: 100%; 
+    height: 75%; 
     object-fit: contain;
-    /*display: block; */
+    /* display: block; 
+    margin-left: auto;
+    margin-right: auto;  */
 }
 /*=====================================================*/
 /*                   Create Word CSS                   */
