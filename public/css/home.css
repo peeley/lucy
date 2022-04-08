@@ -51,6 +51,7 @@
     list-style-type: none;
     position: relative;
     align-content: center;
+    
 }
 
 .home-board
@@ -59,21 +60,34 @@
     padding: 1vw;
     background: #B8FFB7 ;
     border: 0.3vw solid black;
+    
 }
 .home-board:not(:last-child)
 {
     margin-bottom: 1vw;
 }
-
+.board-separator {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 2fr 1fr;
+}
 .home-board a
 {
     text-decoration: none;
     font-size: xxx-large;
     display:inline-block;
     color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #EFEFEF;
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+    transition: ease-out 0.15s;
 }
 
-.home-board > button , .home-board > form > button
+.home-board > div > button , .home-board > div > form > button
 {
     width: 100%;
     height:4vw;
@@ -84,7 +98,7 @@
     transition: ease-out 0.15s;
 }
 
-.home-board > button:hover , .home-board > form > button:hover
+.home-board > div > button:hover , .home-board > div > form > button:hover, .home-board a:hover
 {
     box-shadow: inset 0 0 100px 0 darkorange;
     color: black;
