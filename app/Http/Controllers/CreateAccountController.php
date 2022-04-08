@@ -34,7 +34,7 @@ class CreateAccountController extends Controller
 
         //create default user settings
         //to do: make more user settings after demo
-        $user->settings()->create(['guided_use_toggle' => true, 'audio_level' => 5]);
+        $user->settings()->create(['guided_use_toggle' => false, 'audio_level' => 5]);
 
         // log the new user in, and go to the home page
         Auth::login($user);
