@@ -432,7 +432,7 @@ body
     left: 50%;
     width: 50%;
     transform: translate(-50%, -50%);
-    background-color: ivory;
+    background-color: darkslategrey;
     border-radius: 5px;
     border: 2px solid black;
 }
