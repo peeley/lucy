@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Word;
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidException;
 
 class FolderController extends Controller
 {
@@ -32,28 +34,47 @@ class FolderController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        if ($type == 'word') {
-            $tile = Word::find($tileId);
+        try{
+            
+            $image_submitted = $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+            
+            if ($type == 'word') {
+                $tile = Word::find($tileId);
 
-            if ($request->text != null) {
-                $tile->update(['text' => $request->text]);
+                if ($request->text != null) {
+                    $tile->update(['text' => $request->text]);
+                }
+            }
+
+            if ($type == 'folder') {
+                $tile = Folder::find($tileId);
+
+                if ($request->text != null) {
+                    $tile->update(['name' => $request->text]);
+                }
             }
 
             if ($request->color != null) {
                 $tile->update(['color' => $request->color]);
             }
+
+            if($request->image) {
+                $path = $request->file('image')->storePublicly('images', 'public');
+                $url = Storage::disk('public')->url($path);
+                $tile->icon = $url;
+            }
+
+            $tile->save();
+
+            return response()->json([
+                'msg' => 'Tile Edited Successfully'
+            ], 201);
         }
-
-        if ($type == 'folder') {
-            $tile = Folder::find($tileId);
-
-            if ($request->text != null) {
-                $tile->update(['name' => $request->text]);
-            }
-
-            if ($request->color != null) {
-                $tile->update(['color' => $request->color]);
-            }
+        catch(ValidException $exception) {
+            return response()->json([
+                'msg' => 'Please submit file type of jpeg, jpg, or png.',
+                'errors' => $exception->errors()
+            ], 422);
         }
     }
 
