@@ -16,7 +16,6 @@ function pageTransition(){
         anchor.addEventListener('click', e => {
             e.preventDefault();
             let target = e.target.href;
-            transition_el.classList.add('is-active');
             setTimeout(() => {
                 window.location.href = target;
             }, animation_time);

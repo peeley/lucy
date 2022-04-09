@@ -349,7 +349,7 @@ export class Board extends React.Component {
               </center>
             </form>
         </Modal>
-        <form action='/' style={{display: "inline"}}>
+        <form action="javascript:window.history.back();" style={{display: "inline"}}>
           <button className="back-button" type='submit'>Exit</button>
         </form>
         <button className="sentence-clear"
