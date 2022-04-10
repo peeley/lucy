@@ -35,3 +35,33 @@ jobs:
       run: |
         php artisan migrate:fresh --seed
         php artisan test
+
+  deploy-image:
+    needs:
+      - laravel-tests
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: SSH into server, pull new version, and deploy
+      run: |
+        echo "$SSH_KEY" > ssh-key
+        chmod 400 ssh-key
+        mkdir -p ~/.ssh
+        ssh-keyscan ed25519 $HOST > ~/.ssh/known_hosts
+        ssh -i ssh-key $ADMIN@$HOST '
+        cd /var/www
+        git pull
+        docker-compose down
+        docker-compose -f docker-compose.yml up --build -d'
+      env:
+        SSH_KEY: ${{ secrets.CI_SSH_KEY }}
+        ADMIN: ${{ secrets.HOST_USER }}
+        HOST: ${{ secrets.PROJECT_URL }}
+    - name: Discord notification
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        URL: ${{ secrets.PROJECT_URL }}
+      uses: Ilshidur/action-discord@master
+      with:
+        args: 'Project has been deployed to {{ URL }}.'
