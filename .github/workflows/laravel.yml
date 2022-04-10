@@ -47,7 +47,7 @@ jobs:
       run: |
         echo "$SSH_KEY" > ssh-key
         ssh-keyscan ed25519 $HOST >> ~/.ssh/known_hosts
-        ssh -i ssh_key $ADMIN@$HOST:/var/www ''
+        ssh -i ssh_key $ADMIN@$HOST:/var/www
         git pull
         docker-compose down
         docker-compose up --build -d
@@ -61,4 +61,4 @@ jobs:
         URL: ${{ secrets.PROJECT_URL }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'Project has been deployed to ${{ URL }}.'
+        args: 'Project has been deployed to {{ URL }}.'
