@@ -10,7 +10,7 @@ services:
     networks:
       - lucy
     volumes:
-      - lucy_image_storage:/var/www/html/storage/app/public
+      - lucy_image_storage:/var/www/html/storage/app/public/images
 
 networks:
   lucy:
