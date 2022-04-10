@@ -46,7 +46,7 @@ jobs:
     - name: SSH into server, pull new version, and deploy
       run: |
         echo "$SSH_KEY" > ssh-key
-        mkdir -p ~/.ssh/known_hosts
+        mkdir -p ~/.ssh
         ssh-keyscan ed25519 $HOST > ~/.ssh/known_hosts
         ssh -i ssh_key $ADMIN@$HOST '
         cd /var/www
