@@ -47,10 +47,11 @@ jobs:
       run: |
         echo "$SSH_KEY" > ssh-key
         ssh-keyscan ed25519 $HOST >> ~/.ssh/known_hosts
-        ssh -i ssh_key $ADMIN@$HOST:/var/www
+        ssh -i ssh_key $ADMIN@$HOST
+        cd /var/www
         git pull
         docker-compose down
-        docker-compose up --build -d
+        docker-compose -f docker-compose.yml up --build -d
       env:
         SSH_KEY: ${{ secrets.CI_SSH_KEY }}
         ADMIN: ${{ secrets.HOST_USER }}
