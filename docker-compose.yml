@@ -9,7 +9,12 @@ services:
       - 80:80
     networks:
       - lucy
+    volumes:
+      - lucy_image_storage:/var/www/html/storage/app/public/images
 
 networks:
   lucy:
     driver: bridge
+
+volumes:
+  lucy_image_storage:
