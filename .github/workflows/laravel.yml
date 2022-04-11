@@ -64,4 +64,4 @@ jobs:
         URL: ${{ secrets.PROJECT_URL }}
       uses: Ilshidur/action-discord@master
       with:
-        args: 'Project has been deployed to {{ URL }}.'
+        args: 'Pull request `{{ EVENT_PAYLOAD.pull_request.title }}` has been merged and deployed to {{ URL }}.'
