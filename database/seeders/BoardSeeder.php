@@ -1071,19 +1071,19 @@ class BoardSeeder extends Seeder
             $help = $quantity+10;
             $helpF = $quantityF+1;//38
             $user->words()->createMany([
-                ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff'],//137
+                ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff', 'icon' => $help_url],//137
                 ['id' => $help+2, 'text' => 'Help me', 'color' => '#e6e6ff'],
                 ['id' => $help+3, 'text' => 'Call for help', 'color' => '#ff99c2'],
                 ['id' => $help+4, 'text' => 'Medical emergency', 'color' => '#ff8080'],
                 ['id' => $help+5, 'text' => 'Medical symptoms', 'color' => '#ffcccc'],
                 ['id' => $help+6, 'text' => 'Ask companion', 'color' => '#ccffcc'],
-                ['id' => $help+7, 'text' => 'I cannot speak', 'color' => '#ffdf80'],
-                ['id' => $help+8, 'text' => 'I am using a talker', 'color' => '#ffecb3'],
+                ['id' => $help+7, 'text' => 'I cannot speak', 'color' => '#ffdf80', 'icon' => $cant_talk_url],
+                ['id' => $help+8, 'text' => 'I am using a talker', 'color' => '#ffecb3', 'icon' => $talker_url],
                 ['id' => $help+9, 'text' => 'I Need', 'color' => $default_color],
                 ['id' => $help+10, 'text' => 'Stop', 'color' => '#c42b2b']//146
             ]);
             $user->folders()->createMany([
-                ['id' => $helpF+1, 'name' => 'Help', 'color' => '#ffff66']
+                ['id' => $helpF+1, 'name' => 'Help', 'color' => '#ffff66', 'icon' => $help_url]
             ]);
             $user->folders()->find($helpF+1)->words()->attach([
                 $help+1 => ['board_x' => 1, 'board_y' => 1],
