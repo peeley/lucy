@@ -106,7 +106,6 @@ class BoardController extends Controller
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
-
             if ($request->text) {
                 $tile->text = $request->text;
             }
@@ -124,18 +123,12 @@ class BoardController extends Controller
 
         if($request->image != 'undefined') {
 
-            #echo("sanity check");
             try{
                 $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
-                #echo("\n validated image");
                 $image = $request->file('image');
-                #echo("\n accessed image");
                 $path = $image->storePublicly('images', 'public');
-                #echo("\n set path");
                 $url = Storage::disk('public')->url($path);
-                #echo("\n set url");
                 $tile->icon = $url;
-                #echo("\n saved url to database");
             }
             catch (ValidException $exception) {
                 return response()->json([
