@@ -25,20 +25,20 @@ class BoardSeeder extends Seeder
         ]);
 
         //urls to the icons
-        $bye_url = Storage::disk('public')->url('Icons/bye.png');
-        $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');
-        $feminine_url = Storage::disk('public')->url('Icons/Feminine_symbol_es.png');
-        $hello_url = Storage::disk('public')->url('Icons/hello.png');
-        $help_url = Storage::disk('public')->url('Icons/help.png');
-        $masculine_url = Storage::disk('public')->url('Icons/Masculine_symbol_es.png');
-        $no_url = Storage::disk('public')->url('Icons/no.png');
-        $okay_url = Storage::disk('public')->url('Icons/okay.png');
-        $talk_url = Storage::disk('public')->url('Icons/talk.png');
-        $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
-        $X_neutral_url = Storage::disk('public')->url('Icons/X_neutral_symbol_es.png');
-        $yay_url = Storage::disk('public')->url('Icons/yay.png');
-        $yes_url = Storage::disk('public')->url('Icons/yes.png');
-        $Z_neutral_url = Storage::disk('public')->url('Icons/Z_neutral_symbol_es.png');
+        $bye_url = Storage::disk('public')->url('images/bye.png');
+        $cant_talk_url = Storage::disk('public')->url('images/cant-talk.png');
+        $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
+        $hello_url = Storage::disk('public')->url('images/hello.png');
+        $help_url = Storage::disk('public')->url('images/help.png');
+        $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
+        $no_url = Storage::disk('public')->url('images/no.png');
+        $okay_url = Storage::disk('public')->url('images/okay.png');
+        $talk_url = Storage::disk('public')->url('images/talk.png');
+        $talker_url = Storage::disk('public')->url('images/using-talker.png');
+        $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
+        $yay_url = Storage::disk('public')->url('images/yay.png');
+        $yes_url = Storage::disk('public')->url('images/yes.png');
+        $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
         
         //color variables
 
