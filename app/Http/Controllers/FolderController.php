@@ -33,49 +33,49 @@ class FolderController extends Controller
     {
         $type = $request->tileType;
         $tileId = $request->tileId;
-
-        try{
             
-            $image_submitted = $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
-            
-            if ($type == 'word') {
-                $tile = Word::find($tileId);
+        if ($type == 'word') {
+            $tile = Word::find($tileId);
 
-                if ($request->text != null) {
-                    $tile->update(['text' => $request->text]);
-                }
+            if ($request->text != null) {
+                $tile->update(['text' => $request->text]);
             }
+        }
 
-            if ($type == 'folder') {
-                $tile = Folder::find($tileId);
+        if ($type == 'folder') {
+            $tile = Folder::find($tileId);
 
-                if ($request->text != null) {
-                    $tile->update(['name' => $request->text]);
-                }
+            if ($request->text != null) {
+                $tile->update(['name' => $request->text]);
             }
+        }
 
-            if ($request->color != null) {
-                $tile->update(['color' => $request->color]);
-            }
+        if ($request->color != null) {
+            $tile->update(['color' => $request->color]);
+        }
 
-            if($request->image) {
+        if($request->image != 'undefined') {
+
+            try{
+                $image_submitted = $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
                 $path = $request->file('image')->storePublicly('images', 'public');
                 $url = Storage::disk('public')->url($path);
                 $tile->icon = $url;
             }
-
-            $tile->save();
-
-            return response()->json([
-                'msg' => 'Tile Edited Successfully'
-            ], 201);
+        
+            catch(ValidException $exception) {
+                return response()->json([
+                    'msg' => 'Please submit file type of jpeg, jpg, or png.',
+                    'errors' => $exception->errors()
+                ], 422);
+            }
         }
-        catch(ValidException $exception) {
-            return response()->json([
-                'msg' => 'Please submit file type of jpeg, jpg, or png.',
-                'errors' => $exception->errors()
-            ], 422);
-        }
+
+        $tile->save();
+
+        return response()->json([
+            'msg' => 'Tile Edited Successfully'
+        ], 201);
     }
 
     public function addTileToFolder(Request $request, int $folder_id)
