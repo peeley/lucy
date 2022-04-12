@@ -104,45 +104,51 @@ class BoardController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        try{
+        if ($type == 'word') {
+            $tile = Word::find($tileId);
 
-            $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
-
-            if ($type == 'word') {
-                $tile = Word::find($tileId);
-
-                if ($request->text) {
-                    $tile->text = $request->text;
-                }
-            } else {
-                $tile = Folder::find($tileId);
-
-                if ($request->text) {
-                    $tile->name = $request->text;
-                }
+            if ($request->text) {
+                $tile->text = $request->text;
             }
+        } else {
+            $tile = Folder::find($tileId);
 
-            if ($request->color) {
-                $tile->color = $request->color;
+            if ($request->text) {
+                $tile->name = $request->text;
             }
+        }
 
-            if($request->image) {
-                $path = $request->file('image')->storePublicly('images', 'public');
+        if ($request->color) {
+            $tile->color = $request->color;
+        }
+
+        if($request->image != 'undefined') {
+
+            #echo("sanity check");
+            try{
+                $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+                #echo("\n validated image");
+                $image = $request->file('image');
+                #echo("\n accessed image");
+                $path = $image->storePublicly('images', 'public');
+                #echo("\n set path");
                 $url = Storage::disk('public')->url($path);
+                #echo("\n set url");
                 $tile->icon = $url;
+                #echo("\n saved url to database");
             }
-
-            $tile->save();
-
-            return response()->json([
-                'msg' => 'Tile Edited Successfully'
-            ], 201); ;
+            catch (ValidException $exception) {
+                return response()->json([
+                    'msg' => 'Please submit file type of jpeg, jpg, or png.'
+                ], 422);
+            }
         }
-        catch (ValidException $exception) {
-            return response()->json([
-                'msg' => 'Please submit file type of jpeg, jpg, or png.'
-            ], 422);
-        }
+
+        $tile->save();
+
+        return response()->json([
+            'msg' => 'Tile Edited Successfully'
+        ], 201); 
     }
 
     public function deleteBoard(Request $request, int $board_id)

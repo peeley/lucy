@@ -263,6 +263,7 @@ export class Board extends React.Component {
     const formData = new FormData()
     formData.append("image", event.target.image.files[0])
     formData.append("color", event.target.color.value)
+    formData.append("text", event.target.text.value)
     formData.append("tileId", this.state.heldTileId)
     formData.append("tileType", this.state.heldTileType)
 
