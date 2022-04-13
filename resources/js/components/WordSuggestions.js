@@ -17,12 +17,12 @@ export default class WordSuggestiosn extends React.Component {
 
   fetchWordSuggestions = (sentence) => {
     if (!sentence || sentence == ' ') {
+      this.setState({ suggestedWords: [] });
       return [];
     }
 
     return axios.get(`https://api.imagineville.org/word/predict/next/future?left=${sentence}`)
       .then( response => {
-        console.log(response);
         this.setState({
           suggestedWords: response.data.futures.map( future => future.next )
         });
@@ -34,12 +34,16 @@ export default class WordSuggestiosn extends React.Component {
   }
 
   render() {
-    let suggestedWordElements = this.state.suggestedWords.map( word =>
-      <span onClick={() => this.handleWordClick(word)}>{word}</span>
+    let suggestedWordElements = this.state.suggestedWords.map( (word, index) =>
+      <span className="suggested-word"
+            key={index}
+            onClick={() => this.handleWordClick(word)}>
+        {word}
+      </span>
     );
 
     return (
-      <div style={{display: 'flex', justifyContent: 'space-around'}}>
+      <div id="word-suggestion-bar">
         { suggestedWordElements }
       </div>
     );
