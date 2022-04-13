@@ -15,7 +15,7 @@
   <p class="home-welcome-title">Welcome, {{ $name }}.</p>
   <ul class="home-bar">
     <li><button onclick="window.location = '/logout' ">Logout</button></li>
-    <li><button onclick="window.location = '/user-settings' ">Settings</button></li>
+    <li><button onclick="window.location = '/user-settings?/home' ">Settings</button></li>
   </ul>
 
   <form action="/boards" method="POST">
