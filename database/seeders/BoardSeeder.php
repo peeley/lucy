@@ -24,22 +24,7 @@ class BoardSeeder extends Seeder
             'height' => 4
         ]);
 
-        //urls to the icons
-            //later I am going to move these under the categories where the words are made
-            $bye_url = Storage::disk('public')->url('Icons/bye.png');
-            $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');
-            $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
-            $hello_url = Storage::disk('public')->url('Icons/hello.png');
-            $help_url = Storage::disk('public')->url('Icons/help.png');
-            $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
-            $no_url = Storage::disk('public')->url('Icons/no.png');
-            $okay_url = Storage::disk('public')->url('Icons/okay.png');
-            $talk_url = Storage::disk('public')->url('Icons/talk.png');
-            $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
-            $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
-            $yay_url = Storage::disk('public')->url('Icons/yay.png');
-            $yes_url = Storage::disk('public')->url('Icons/yes.png');
-            $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
+        //new talker urls
         
         //color variables
             $default_color = '#b3e6cc';
@@ -47,17 +32,27 @@ class BoardSeeder extends Seeder
             $empty = 1;    
             $board_index = 1;//this is for words that are only on the board
 
-        $user->words()->createMany([
+        //main board words
+            //icons urls
+                $hello_url = Storage::disk('public')->url('Icons/hello.png');
+                $bye_url = Storage::disk('public')->url('Icons/bye.png');
+                $yay_url = Storage::disk('public')->url('Icons/yay.png');
+                $yes_url = Storage::disk('public')->url('Icons/yes.png');
+                $no_url = Storage::disk('public')->url('Icons/no.png');
+                $talk_url = Storage::disk('public')->url('Icons/talk.png');
+                $okay_url = Storage::disk('public')->url('Icons/okay.png');
 
-            ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
-            ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
-            ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
-            ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
-            ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
-            ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
-            ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
-            ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url]
-        ]);
+
+            $user->words()->createMany([
+                ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
+                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
+                ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
+                ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
+                ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
+                ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
+                ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
+                ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url]
+            ]);
         
         //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
             // $adjectives = DB::table('words')->max('id');
@@ -362,6 +357,13 @@ class BoardSeeder extends Seeder
                 $z_pronoun_color = '#ffd9b3';
                 $pronoun_color = '#ffffb3';
                 $pronoun_type_color = '#b77dff';
+            
+            //icon urls
+                $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
+                $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
+                $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
+                $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
+
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
@@ -1069,6 +1071,11 @@ class BoardSeeder extends Seeder
         //Help
             $help = $quantity+10;
             $helpF = $quantityF+1;//38
+            //icon urls
+                $help_url = Storage::disk('public')->url('Icons/help.png');
+                $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');              
+                $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
+
             $user->words()->createMany([
                 ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff', 'icon' => $help_url],//137
                 ['id' => $help+2, 'text' => 'Help me', 'color' => '#e6e6ff'],
@@ -1995,11 +2002,11 @@ class BoardSeeder extends Seeder
             $user->words()->createMany([
                 ['id' => $talker+1, 'text' => 'Word', 'color' => $default_color],
                 ['id' => $talker+2, 'text' => 'Words', 'color' => $default_color],
-                ['id' => $talker+3, 'text' => 'Speak', 'color' => $default_color],
-                ['id' => $talker+4, 'text' => 'Say', 'color' => $default_color],
-                ['id' => $talker+5, 'text' => 'Say', 'color' => $default_color],
-                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color],
-                ['id' => $talker+7, 'text' => 'Guided Use', 'color' => $default_color],
+                ['id' => $talker+3, 'text' => 'Speak', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+4, 'text' => 'Say', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+5, 'text' => 'Talk', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color, 'icon' => $talker_url],
+                ['id' => $talker+7, 'text' => 'Guided Use', 'color' => $default_color, 'icon' => $talker_url],
                 ['id' => $talker+8, 'text' => 'Project', 'color' => $default_color],
                 //these three are temporarily in here for demo, will be moved to appropriate catigory soon
                 ['id' => $talker+9, 'text' => 'This', 'color' => $default_color],
