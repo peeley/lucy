@@ -451,7 +451,7 @@ export class Board extends React.Component {
         <Modal
           isOpen={this.state.swapModal}
           className="swap-modal-class">
-          <h1 style={{"color": "black", "text-align": "center", "border-bottom": "10px solid black"}}>Swap to another board</h1> 
+          <h1 style={{"color": "black", "textAlign": "center", "borderBottom": "10px solid black"}}>Swap to another board</h1> 
           <form className="swap-button-container">
             {user_boards}
           </form>
