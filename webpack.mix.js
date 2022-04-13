@@ -17,3 +17,4 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/view-transitions.js', 'public/js');
 mix.js('resources/js/guided-use.js', 'public/js');
+mix.js('resources/js/back-button.js', 'public/js');
