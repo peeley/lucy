@@ -25,23 +25,23 @@ class BoardSeeder extends Seeder
         ]);
 
         //urls to the icons
-        $bye_url = Storage::disk('public')->url('Icons/bye.png');
-        $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');
-        $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
-        $hello_url = Storage::disk('public')->url('Icons/hello.png');
-        $help_url = Storage::disk('public')->url('Icons/help.png');
-        $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
-        $no_url = Storage::disk('public')->url('Icons/no.png');
-        $okay_url = Storage::disk('public')->url('Icons/okay.png');
-        $talk_url = Storage::disk('public')->url('Icons/talk.png');
-        $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
-        $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
-        $yay_url = Storage::disk('public')->url('Icons/yay.png');
-        $yes_url = Storage::disk('public')->url('Icons/yes.png');
-        $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
+            //later I am going to move these under the categories where the words are made
+            $bye_url = Storage::disk('public')->url('Icons/bye.png');
+            $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');
+            $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
+            $hello_url = Storage::disk('public')->url('Icons/hello.png');
+            $help_url = Storage::disk('public')->url('Icons/help.png');
+            $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
+            $no_url = Storage::disk('public')->url('Icons/no.png');
+            $okay_url = Storage::disk('public')->url('Icons/okay.png');
+            $talk_url = Storage::disk('public')->url('Icons/talk.png');
+            $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
+            $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
+            $yay_url = Storage::disk('public')->url('Icons/yay.png');
+            $yes_url = Storage::disk('public')->url('Icons/yes.png');
+            $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
         
         //color variables
-
             $default_color = '#b3e6cc';
         //indexes
             $empty = 1;    
@@ -363,7 +363,6 @@ class BoardSeeder extends Seeder
                 $pronoun_color = '#ffffb3';
                 $pronoun_type_color = '#b77dff';
             $user->folders()->createMany([
-
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
                 ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color],
@@ -1999,10 +1998,17 @@ class BoardSeeder extends Seeder
                 ['id' => $talker+3, 'text' => 'Speak', 'color' => $default_color],
                 ['id' => $talker+4, 'text' => 'Say', 'color' => $default_color],
                 ['id' => $talker+5, 'text' => 'Say', 'color' => $default_color],
-                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color]
+                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color],
+                ['id' => $talker+7, 'text' => 'Guided Use', 'color' => $default_color],
+                ['id' => $talker+8, 'text' => 'Project', 'color' => $default_color],
+                //these three are temporarily in here for demo, will be moved to appropriate catigory soon
+                ['id' => $talker+9, 'text' => 'This', 'color' => $default_color],
+                ['id' => $talker+10, 'text' => 'Is', 'color' => $default_color],
+                ['id' => $talker+11, 'text' => 'Am', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => $talkerF+1, 'name' => 'Talker', 'color' => $default_color]
+                ['id' => $talkerF+1, 'name' => 'Talker', 'color' => $default_color],
+                ['id' => $talkerF+2, 'name' => 'Talker', 'color' => $default_color]
             ]);
             $user->folders()->find($talkerF+1)->words()->attach([
                 $talker+1 => ['board_x' => 1, 'board_y' => 1],
@@ -2019,10 +2025,30 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]                   
             ]);
+            $user->folders()->find($talkerF+1)->folders()->attach([
+                $talkerF+2 => ['board_x' => 6, 'board_y' => 4],                  
+            ]);
+            $user->folders()->find($talkerF+2)->words()->attach([
+                $pronoun_index+1 => ['board_x' => 1, 'board_y' => 1],
+                $talker+11 => ['board_x' => 2, 'board_y' => 1],
+                $talker+8 => ['board_x' => 3, 'board_y' => 1],
+                $talker+6 => ['board_x' => 4, 'board_y' => 1],
+                $empty => ['board_x' => 5, 'board_y' => 1],
+                $empty => ['board_x' => 6, 'board_y' => 1],
+
+                $talker+9 => ['board_x' => 1, 'board_y' => 2],
+                $talker+10 => ['board_x' => 2, 'board_y' => 2],
+                $article+1 => ['board_x' => 3, 'board_y' => 2],
+                $talker+1 => ['board_x' => 4, 'board_y' => 2],
+
+                $talker+7 => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
 
         //Medical
             $medical = $talker+6;
-            $medicalF = $talkerF+1;//66
+            $medicalF = $talkerF+2;//66
             $user->words()->createMany([
                 ['id' => $medical+1, 'text' => 'Sick', 'color' => $default_color],
                 ['id' => $medical+2, 'text' => 'Pain', 'color' => $default_color],
