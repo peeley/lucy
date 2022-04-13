@@ -206,6 +206,18 @@
     right: 5%;
 }
 
+#word-suggestion-bar {
+    display: flex;
+    justify-content: space-around;
+}
+.suggested-word {
+    background-color: ivory;
+    font-size: large;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: var(--default-border-radius);
+    border: var(--default-border);
+}
 
 
 
@@ -285,7 +297,6 @@ work. */
     border-radius: var(--default-border-radius);
     border: var(--default-border);
 }
-
 
 /*=====================================================*/
 /*                    Swap Modal CSS                   */
