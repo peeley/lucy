@@ -27,6 +27,8 @@ export class Board extends React.Component {
       selectedFile: false,
       errorModal: false,
       errorMessage: null,
+      swapModal: false,
+      boards: []
     };
 
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
@@ -36,7 +38,15 @@ export class Board extends React.Component {
   componentDidMount = () => {
     this.fetchBoardTiles();
   }
-
+  fetchBoards = () => {
+    let user_id = document.getElementById('user-id').innerText; //couldn't get the props to work with the user_id so I did it this way
+    axios.get(`/users/${user_id}/boards`)
+      .then( response => {
+        this.setState({
+          boards: response.data
+        });
+      });
+  }
   fetchBoardTiles = () => {
     axios.get(`/boards/${this.props.board_id}/tiles`)
       .then( response => {
@@ -135,6 +145,11 @@ export class Board extends React.Component {
   renderFolderPath = () => {    
     return this.state.folderPath.map(folder =>
       <td> { folder} {'>'}</td>
+      );
+  }
+  renderBoards = () => {
+    return this.state.boards.map(({name, id}) => 
+      <button className="board-select-button" key={name} formAction={"/boards/" + id}> { name } </button>
       );
   }
   //_onHoldStart and _onHoldEnd borrowed from: https://www.youtube.com/watch?v=A95mIE2HdcY
@@ -253,6 +268,21 @@ export class Board extends React.Component {
     })
   }
 
+  openSwapModal = () => {
+    this.setState({
+      swapModal: true
+    });
+    this.fetchBoards();
+  }
+  closeSwapModal = () => {
+    this.setState({
+      swapModal: false,
+    });
+  }
+  backButtonFunc = () => {
+    window.location = '/user-settings?/boards/' + this.props.board_id
+  }
+
   handleEditSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
@@ -317,7 +347,7 @@ export class Board extends React.Component {
   render() {
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
-
+    const user_boards = this.renderBoards();
     return (
       <div id="board-container">
         <Modal 
@@ -409,7 +439,16 @@ export class Board extends React.Component {
             <button className="modal-button" onClick={this.closeErrorModal}>Close</button>
             </center>
         </Modal>
-        <form action="javascript:window.history.back();" style={{display: "inline"}}>
+        <Modal
+          isOpen={this.state.swapModal}
+          className="swap-modal-class">
+          <h1 style={{"color": "black", "text-align": "center", "border-bottom": "10px solid black"}}>Swap to another board</h1> 
+          <form className="swap-button-container">
+            {user_boards}
+          </form>
+          <button className="back-button" onClick={this.closeSwapModal}>Close</button>  
+        </Modal>
+        <form action="/home" style={{display: "inline"}}>
           <button className="back-button" type='submit'>Exit</button>
         </form>
         <button className="sentence-clear"
@@ -420,6 +459,17 @@ export class Board extends React.Component {
                 onClick={this.handleBackspaceButtonClick}>
           Backspace
         </button>
+        
+
+        
+        <button className="swap-button" onClick={this.openSwapModal}>Swap Boards</button>
+        
+        
+        <button className="settings-button" onClick={this.backButtonFunc}>Settings</button>
+       
+
+
+
         <div style={{textAlign: "center"}}>
         <table className="folder-path">
         {paths}

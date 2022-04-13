@@ -49,6 +49,7 @@ class BoardController extends Controller
             $default_guided_toggle = 1;
             $default_guided_idle = 30;
             return view('board', [
+                'user_id' => $user,
                 'board_id' => $board_id,
                 'guided_use' => $default_guided_toggle,
                 'idle_threshold' =>$default_guided_idle
@@ -57,6 +58,7 @@ class BoardController extends Controller
         else {
             $user_settings = $user->settings()->get()->first();
             return view('board', [
+                'user_id' => $user_settings->user_id,
                 'board_id' => $board_id,
                 'guided_use' => $user_settings->guided_use_toggle,
                 'idle_threshold' =>$user_settings->idle_threshold
