@@ -309,7 +309,7 @@ work. */
     top: 5%;
     padding-bottom: 20px;
     animation: test;
-    animation-duration: 1s;
+    animation-duration: .5s;
     animation-iteration-count: 1;
 
     background: ivory;
