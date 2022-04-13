@@ -2008,7 +2008,7 @@ class BoardSeeder extends Seeder
             ]);
             $user->folders()->createMany([
                 ['id' => $talkerF+1, 'name' => 'Talker', 'color' => $default_color],
-                ['id' => $talkerF+2, 'name' => 'Talker', 'color' => $default_color]
+                ['id' => $talkerF+2, 'name' => 'Presentation', 'color' => $default_color]
             ]);
             $user->folders()->find($talkerF+1)->words()->attach([
                 $talker+1 => ['board_x' => 1, 'board_y' => 1],
