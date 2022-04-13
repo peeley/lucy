@@ -279,10 +279,19 @@ export class Board extends React.Component {
       swapModal: false,
     });
   }
-  backButtonFunc = () => {
+  settingsButtonFunc = () => {
     window.location = '/user-settings?/boards/' + this.props.board_id
   }
-
+  backButtonFunc = () => {
+    let user_id = document.getElementById('user-id').textContent;
+    if (user_id) {
+      window.location = '/home';
+    }
+    else {
+      window.location = '/';
+    }
+    
+  }
   handleEditSubmit = (event) => {
     event.preventDefault()
     const parentType = this.state.folderPath.length === 1
@@ -448,9 +457,12 @@ export class Board extends React.Component {
           </form>
           <button className="back-button" onClick={this.closeSwapModal}>Close</button>  
         </Modal>
-        <form action="/home" style={{display: "inline"}}>
-          <button className="back-button" type='submit'>Exit</button>
-        </form>
+
+        <button className="back-button" style={{display: "inline"}}
+                onClick={this.backButtonFunc}>
+          Exit
+        </button>
+
         <button className="sentence-clear"
                 onClick={() => this.setState({sentence: []})}>
           Clear
@@ -461,15 +473,9 @@ export class Board extends React.Component {
         </button>
         
 
-        
-        <button className="swap-button" onClick={this.openSwapModal}>Swap Boards</button>
-        
-        
-        <button className="settings-button" onClick={this.backButtonFunc}>Settings</button>
+        <button className="swap-button" onClick={this.openSwapModal}>Swap Boards</button> 
+        <button className="settings-button" onClick={this.settingsButtonFunc}>Settings</button>
        
-
-
-
         <div style={{textAlign: "center"}}>
         <table className="folder-path">
         {paths}
