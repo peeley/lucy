@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import Modal from 'react-modal';
+import WordSuggestions from './WordSuggestions.js';
 
 export class Board extends React.Component {
   constructor(props) {
@@ -438,6 +439,10 @@ export class Board extends React.Component {
           Speak!
         </button>
         </div>
+        <br/>
+        <WordSuggestions sentence={this.buildSentence() + ' '}
+                         addWordToSentence={this.handleWordClick}
+        />
         <br/>
         <table className="board-tiles-container"
                style={{"width": "90%", "margin": "auto"}}>
