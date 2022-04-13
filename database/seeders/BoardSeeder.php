@@ -2047,7 +2047,7 @@ class BoardSeeder extends Seeder
             ]);
 
         //Medical
-            $medical = $talker+6;
+            $medical = $talker+10;
             $medicalF = $talkerF+2;//66
             $user->words()->createMany([
                 ['id' => $medical+1, 'text' => 'Sick', 'color' => $default_color],
