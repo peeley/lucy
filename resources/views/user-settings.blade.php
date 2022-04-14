@@ -6,11 +6,12 @@
 @include('layouts.includes.header')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/settings.css">
+    <script src="/js/back-button.js"></script>
 </head>
 <body>
 @include('layouts.includes.darkThemeToggle')
-
-<form action="javascript:window.history.back();"}>
+<p id="url" style="display:none">{{ $url ?? ''}}</p>
+<form id="back" action="/home" }>
     <button class="settings-button" type='submit'>Exit</button>
 </form>
 <h2 class="general-heading"> Settings </h2>
@@ -33,6 +34,7 @@
 
     <label>Idle Threshold (in seconds)</label>
     <input type="number" name="idle_threshold" min="5" max="300" value={{$idle_threshold}}><br>
+    <input class="update-url" type="hidden" name="secret" value="/home"><br>
     <input class="update-settings-button" type="submit" value="Update Guided Use Settings"><br>
     <button class="close-settings-button" type="button" onclick="closeGuidedUseForm()">Close Guided Use Settings </button>
 </form>
@@ -44,6 +46,7 @@
     <h2>Audio Settings</h2>
     <label for="audio_level">Audio Level: </label>
     <input type="number" name="audio_level" min="0" max="100" value={{$audio_level}}><br>
+    <input class="update-url" type="hidden" name="secret" value="/home"><br>
     <input class="update-settings-button" type="submit" value="Update Audio Settings"><br>
     <button class="close-settings-button" type="button" onclick="closeAudioForm()">Close Audio Setings</button>
 </form>
