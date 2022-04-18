@@ -20,4 +20,5 @@
   <div class="transition transition-2 is-active"></div>
   <script src="/js/view-transitions.js"></script>
   <script src="/js/guided-use.js"></script>
+  <script src="/js/hide-guest-buttons.js"></script>
 </html>
