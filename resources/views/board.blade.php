@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="/css/board.css"/>
 
   <div id="root" board_id={{ $board_id }}></div>
+  <p id ="audio-level" style="display:none">{{ $audio_level }}</p>
   <script src="/js/app.js"></script>
   <div style="display:none">
     <p id="guided-use-state">{{ $guided_use }}</p>

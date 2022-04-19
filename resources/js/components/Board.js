@@ -93,10 +93,11 @@ export class Board extends React.Component {
   }
 
 
-  handleSpeakButtonClick = () => {
+  handleSpeakButtonClick = (event, audio_level) => {
     // TODO set TTS voice according to user settings
     let synth = window.speechSynthesis;
     let utterance = new SpeechSynthesisUtterance(this.buildSentence());
+    utterance.volume = audio_level;
     synth.speak(utterance);
 
     // TODO clear sentence only after it's done being read out instead of
@@ -357,7 +358,8 @@ export class Board extends React.Component {
   render() {
     const rows = this.renderBoardTiles();
     const paths = this.renderFolderPath();
-    const user_boards = this.renderBoards();
+    const audio_level = document.getElementById("audio-level").innerText/100;
+    const user_boards = this.renderBoards(); 
     return (
       <div id="board-container">
         <Modal 
@@ -487,11 +489,11 @@ export class Board extends React.Component {
           Last Folder
         </button>
         <button className="sentence-bar"
-                onClick={this.handleSpeakButtonClick}>
+                onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
         <h2>{this.buildSentence()}</h2>
         </button>
         <button className="sentence-speak"
-                onClick={this.handleSpeakButtonClick}>
+                onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
           Speak!
         </button>
         </div>

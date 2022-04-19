@@ -48,9 +48,11 @@ class BoardController extends Controller
         if(!$user) {
             $default_guided_toggle = 1;
             $default_guided_idle = 30;
+            $default_audio_level = 100;
             return view('board', [
                 'user_id' => $user,
                 'board_id' => $board_id,
+                'audio_level' => $default_audio_level,
                 'guided_use' => $default_guided_toggle,
                 'idle_threshold' =>$default_guided_idle
             ]);
@@ -60,8 +62,9 @@ class BoardController extends Controller
             return view('board', [
                 'user_id' => $user_settings->user_id,
                 'board_id' => $board_id,
+                'audio_level' => $user_settings->audio_level,
                 'guided_use' => $user_settings->guided_use_toggle,
-                'idle_threshold' =>$user_settings->idle_threshold
+                'idle_threshold' =>$user_settings->idle_threshold,
             ]);
         }
         
