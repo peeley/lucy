@@ -91,8 +91,8 @@ class BoardController extends Controller
     public function addTileToBoard(Request $request, int $board_id)
     {
         $board = Board::find($board_id);
-
-        if ($request->color)
+        
+        if ($request->color != null)
         {
             $request->validate(['color' => new hex_color]);
         }
@@ -113,7 +113,7 @@ class BoardController extends Controller
     public function editTileFromBoard(Request $request, int $board_id)
     {
         $type = $request->tileType;
-        $tileId = $request->tileId;     
+        $tileId = $request->tileId;
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
@@ -128,8 +128,7 @@ class BoardController extends Controller
             }
         }
 
-        if ($request->color) {
-            
+        if ($request->color != null) {
             $request->validate(['color' => new hex_color]);
             $tile->color = $request->color;
         }

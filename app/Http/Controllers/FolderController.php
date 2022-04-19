@@ -84,6 +84,11 @@ class FolderController extends Controller
     {
         $folder = Folder::find($folder_id);
 
+        if ($request->color != null)
+        {
+            $request->validate(['color' => new hex_color]);
+        }
+
         $word = $folder->user()->first()->words()->create([
             'text' => $request->get('text'),
             'color' => $request->get('color')

@@ -325,7 +325,7 @@ export class Board extends React.Component {
         console.log(error_message)
         this.setState({
           errorModal: true,
-          errorMessage: error_message ,
+          errorMessage: error_message,
         })
       });
     }
@@ -348,6 +348,11 @@ export class Board extends React.Component {
         configuringTile: false,
         createModal: false
       }, this.fetchBoardTiles);
+    }).catch((error) => {
+      this.setState({
+        errorModal: true,
+        errorMessage: error.response.data.errors.color,
+      })
     });
   }
 

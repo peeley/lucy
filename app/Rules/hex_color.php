@@ -28,7 +28,7 @@ class hex_color implements Rule
         $value = strtolower($value);
         $css_colors = array('black','silver','gray','white');
 
-        if (ctype_xdigit($value) and (strlen($value)==6))
+        if (ctype_xdigit($value) and strlen($value)==6)
         {
             return True;
         }
@@ -37,6 +37,8 @@ class hex_color implements Rule
         {
             return True;
         }
+
+        return False;
     }
 
     /**
