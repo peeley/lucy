@@ -320,9 +320,12 @@ export class Board extends React.Component {
           selectedFile: false
         }, this.fetchBoardTiles);
       }).catch((error) => {
+        const error_message = error.response.data.errors.image == 'undefined' ? 
+        error.response.data.errors.image : error.response.data.errors.color
+        console.log(error_message)
         this.setState({
           errorModal: true,
-          errorMessage: error.response.data.errors.image
+          errorMessage: error_message ,
         })
       });
     }

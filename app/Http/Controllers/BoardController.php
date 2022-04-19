@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidException;
+use App\Rules\hex_color;
 
 class BoardController extends Controller
 {
@@ -91,6 +92,11 @@ class BoardController extends Controller
     {
         $board = Board::find($board_id);
 
+        if ($request->color)
+        {
+            $request->validate(['color' => new hex_color]);
+        }
+
         $word = $board->user()->first()->words()->create([
             'text' => $request->get('text'),
             'color' => $request->get('color')
@@ -107,7 +113,7 @@ class BoardController extends Controller
     public function editTileFromBoard(Request $request, int $board_id)
     {
         $type = $request->tileType;
-        $tileId = $request->tileId;
+        $tileId = $request->tileId;     
 
         if ($type == 'word') {
             $tile = Word::find($tileId);
@@ -123,6 +129,8 @@ class BoardController extends Controller
         }
 
         if ($request->color) {
+            
+            $request->validate(['color' => new hex_color]);
             $tile->color = $request->color;
         }
 

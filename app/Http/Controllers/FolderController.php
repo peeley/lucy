@@ -7,6 +7,7 @@ use App\Models\Folder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidException;
+use App\Rules\hex_color;
 
 class FolderController extends Controller
 {
@@ -51,6 +52,7 @@ class FolderController extends Controller
         }
 
         if ($request->color != null) {
+            $request->validate(['color' => new hex_color]);
             $tile->update(['color' => $request->color]);
         }
 
