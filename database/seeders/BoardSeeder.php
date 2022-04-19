@@ -33,6 +33,10 @@ class BoardSeeder extends Seeder
             $empty = 1;    
             $board_index = 1;//this is for words that are only on the board
 
+        //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
+            // $adjectives = DB::table('words')->max('id');
+            // $adjectivesF = DB::table('folders')->max('id');
+        
         //main board words
             //icons urls
                 $hello_url = Storage::disk('public')->url('Icons/hello.png');
@@ -57,7 +61,7 @@ class BoardSeeder extends Seeder
             ]);
 
         //Adjictives
-            $adjectives = $board_index+7;
+            $adjectives = $board_index+8;
             $adjectivesF = 1;
             $user->words()->createMany([
                 ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color],
