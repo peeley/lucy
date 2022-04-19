@@ -46,41 +46,52 @@ class BoardSeeder extends Seeder
                 $no_url = Storage::disk('public')->url('Icons/no.png');
                 $talk_url = Storage::disk('public')->url('Icons/talk.png');
                 $okay_url = Storage::disk('public')->url('Icons/okay.png');
-
+                $i_want_url = Storage::disk('public')->url('Icons/i-want.png');
 
             $user->words()->createMany([
                 ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
-                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
+                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],
                 ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
                 ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
                 ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
                 ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
                 ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
                 ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url],
-                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color]
+                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color, 'icon' => $i_want_url]
             ]);
 
         //Adjictives
-            $adjectives = $board_index+8;
-            $adjectivesF = 1;
+            $adjectives = DB::table('words')->max('id');
+            $adjectivesF = DB::table('folders')->max('id');
+
+            //icons urls
+                $dirty_url = Storage::disk('public')->url('Icons/dirty.png');
+                $clean_url = Storage::disk('public')->url('Icons/clean.png');
+                $light_url = Storage::disk('public')->url('Icons/light.png');
+                $heavy_url = Storage::disk('public')->url('Icons/heavy.png');
+                $asthetics_url = Storage::disk('public')->url('Icons/asthetics.png');
+                $people_url = Storage::disk('public')->url('Icons/people.png');
+                $sensory_url = Storage::disk('public')->url('Icons/sensory.png');
+                $movement_url = Storage::disk('public')->url('Icons/movement.png');
+
             $user->words()->createMany([
-                ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color],
-                ['id' => $adjectives+4, 'text' => 'Clean', 'color' => $default_color],
-                ['id' => $adjectives+5, 'text' => 'Light', 'color' => $default_color],
-                ['id' => $adjectives+6, 'text' => 'Heavy', 'color' => $default_color]
+                ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color, 'icon' => $dirty_url],
+                ['id' => $adjectives+4, 'text' => 'Clean', 'color' => $default_color, 'icon' => $clean_url],
+                ['id' => $adjectives+5, 'text' => 'Light', 'color' => $default_color, 'icon' => $light_url],
+                ['id' => $adjectives+6, 'text' => 'Heavy', 'color' => $default_color, 'icon' => $heavy_url]
             ]);
             $user->folders()->createMany([
-                ['id' => $adjectivesF+1, 'name' => 'Adjectives', 'color' => $default_color],
-                ['id' => $adjectivesF+2, 'name' => 'Asthetics', 'color' => $default_color],
-                ['id' => $adjectivesF+3, 'name' => 'People', 'color' => $default_color],
-                ['id' => $adjectivesF+4, 'name' => 'Opinions', 'color' => $default_color],
-                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color],
-                ['id' => $adjectivesF+6, 'name' => 'Movement', 'color' => $default_color],
-                ['id' => $adjectivesF+7, 'name' => 'Speed', 'color' => $default_color],
-                ['id' => $adjectivesF+8, 'name' => 'Distance', 'color' => $default_color],
-                ['id' => $adjectivesF+9, 'name' => 'Direction', 'color' => $default_color],
-                ['id' => $adjectivesF+10, 'name' => 'Size', 'color' => $default_color],
-                ['id' => $adjectivesF+11, 'name' => 'Texture', 'color' => $default_color]
+                ['id' => $adjectivesF+1, 'name' => 'Adjectives', 'color' => $default_color], //how on earth do i draw this
+                ['id' => $adjectivesF+2, 'name' => 'Asthetics', 'color' => $default_color, 'icon' => $asthetics_url],
+                ['id' => $adjectivesF+3, 'name' => 'People', 'color' => $default_color, 'icon' => $people_url],
+                ['id' => $adjectivesF+4, 'name' => 'Opinions', 'color' => $default_color], //how on earth do i draw this
+                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color], 'icon' => $sensory_url],
+                ['id' => $adjectivesF+6, 'name' => 'Movement', 'color' => $default_color], 'icon' => $movement_url],
+                ['id' => $adjectivesF+7, 'name' => 'Speed', 'color' => $default_color], // box with speed lines
+                ['id' => $adjectivesF+8, 'name' => 'Distance', 'color' => $default_color], //two boxes, double ended arrow between
+                ['id' => $adjectivesF+9, 'name' => 'Direction', 'color' => $default_color], //arrow
+                ['id' => $adjectivesF+10, 'name' => 'Size', 'color' => $default_color], //big box and smaller box
+                ['id' => $adjectivesF+11, 'name' => 'Texture', 'color' => $default_color] //bumpy fabric
             ]);
             $user->folders()->find($adjectivesF+1)->words()->attach([
                 $adjectives+3 => ['board_x' => 1, 'board_y' => 1],
@@ -112,11 +123,11 @@ class BoardSeeder extends Seeder
 
                 //Asthetics
                     $user->words()->createMany([
-                        ['id' => $adjectives+7, 'text' => 'Bold', 'color' => $default_color],
-                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color],
-                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_color],
-                        ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color],
-                        ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color]
+                        ['id' => $adjectives+7, 'text' => 'Bold', 'color' => $default_color], //how on earth do i draw this
+                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color], //thin shading
+                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_color], //thick shaqding
+                        ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color], //flower
+                        ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color] //rainbow
                     ]);
                     $user->folders()->find($adjectivesF+2)->words()->attach([
                         $adjectives+9 => ['board_x' => 1, 'board_y' => 1],
@@ -135,11 +146,11 @@ class BoardSeeder extends Seeder
                 
                 //People
                     $user->words()->createMany([
-                        ['id' => $adjectives+12, 'text' => 'Kind', 'color' => $default_color],
-                        ['id' => $adjectives+13, 'text' => 'Mean', 'color' => $default_color],
-                        ['id' => $adjectives+14, 'text' => 'Gay', 'color' => $default_color],
-                        ['id' => $adjectives+15, 'text' => 'Queer', 'color' => $default_color],
-                        ['id' => $adjectives+16, 'text' => 'Attractive', 'color' => $default_color],
+                        ['id' => $adjectives+12, 'text' => 'Kind', 'color' => $default_color], //how on earth do i draw this
+                        ['id' => $adjectives+13, 'text' => 'Mean', 'color' => $default_color], //how on earth do i draw this
+                        ['id' => $adjectives+14, 'text' => 'Gay', 'color' => $default_color], //reuse colorful's symbol
+                        ['id' => $adjectives+15, 'text' => 'Queer', 'color' => $default_color], //reuse colorful's symbol
+                        ['id' => $adjectives+16, 'text' => 'Attractive', 'color' => $default_color], //how on earth do i draw this
                         ['id' => $adjectives+17, 'text' => 'Beautiful', 'color' => $default_color],
                         ['id' => $adjectives+18, 'text' => 'Handsome', 'color' => $default_color],
                         ['id' => $adjectives+19, 'text' => 'Goregous', 'color' => $default_color]
@@ -187,13 +198,13 @@ class BoardSeeder extends Seeder
 
                 //Sensory
                     $user->words()->createMany([
-                        ['id' => $adjectives+1, 'text' => 'Hot', 'color' => $default_color],
-                        ['id' => $adjectives+2, 'text' => 'Cold', 'color' => $default_color],
-                        ['id' => $adjectives+26, 'text' => 'Wet', 'color' => $default_color],
-                        ['id' => $adjectives+27, 'text' => 'Dry', 'color' => $default_color],
-                        ['id' => $adjectives+28, 'text' => 'Hard', 'color' => $default_color],
-                        ['id' => $adjectives+29, 'text' => 'Loud', 'color' => $default_color],
-                        ['id' => $adjectives+30, 'text' => 'Quiet', 'color' => $default_color]
+                        ['id' => $adjectives+1, 'text' => 'Hot', 'color' => $default_color], //fire
+                        ['id' => $adjectives+2, 'text' => 'Cold', 'color' => $default_color], //ice cube
+                        ['id' => $adjectives+26, 'text' => 'Wet', 'color' => $default_color], //cube in puddle
+                        ['id' => $adjectives+27, 'text' => 'Dry', 'color' => $default_color], //lone cube
+                        ['id' => $adjectives+28, 'text' => 'Hard', 'color' => $default_color], //cube with arrow down
+                        ['id' => $adjectives+29, 'text' => 'Loud', 'color' => $default_color], //volume symbol with one curve
+                        ['id' => $adjectives+30, 'text' => 'Quiet', 'color' => $default_color] //volume symbol with three curve
                     ]);
                     $user->folders()->find($adjectivesF+5)->words()->attach([
                         $adjectives+26 => ['board_x' => 1, 'board_y' => 1],
@@ -212,8 +223,8 @@ class BoardSeeder extends Seeder
                 
                 //Speed
                     $user->words()->createMany([
-                        ['id' => $adjectives+31, 'text' => 'Fast', 'color' => $default_color],
-                        ['id' => $adjectives+32, 'text' => 'Slow', 'color' => $default_color]
+                        ['id' => $adjectives+31, 'text' => 'Fast', 'color' => $default_color], //cube with long lines
+                        ['id' => $adjectives+32, 'text' => 'Slow', 'color' => $default_color] //cube with short lines
                     ]);
                     $user->folders()->find($adjectivesF+7)->words()->attach([
                         $adjectives+31 => ['board_x' => 1, 'board_y' => 1],
@@ -232,9 +243,9 @@ class BoardSeeder extends Seeder
                 
                 //Distance
                     $user->words()->createMany([
-                        ['id' => $adjectives+33, 'text' => 'Near', 'color' => $default_color],
-                        ['id' => $adjectives+34, 'text' => 'Far', 'color' => $default_color],
-                        ['id' => $adjectives+35, 'text' => 'Close', 'color' => $default_color]
+                        ['id' => $adjectives+33, 'text' => 'Near', 'color' => $default_color], //two cubes close together with double ended arrow
+                        ['id' => $adjectives+34, 'text' => 'Far', 'color' => $default_color], //two cubes far apart with double ended arrow
+                        ['id' => $adjectives+35, 'text' => 'Close', 'color' => $default_color] //same as near
                     ]);
                     $user->folders()->find($adjectivesF+8)->words()->attach([
                         $adjectives+12 => ['board_x' => 1, 'board_y' => 1],
@@ -253,7 +264,7 @@ class BoardSeeder extends Seeder
                 
                 //Direction
                     $user->words()->createMany([
-                        ['id' => $adjectives+36, 'text' => 'Vertical', 'color' => $default_color],
+                        ['id' => $adjectives+36, 'text' => 'Vertical', 'color' => $default_color], 
                         ['id' => $adjectives+37, 'text' => 'Horizontal', 'color' => $default_color],
                         ['id' => $adjectives+38, 'text' => 'Right', 'color' => $default_color],
                         ['id' => $adjectives+39, 'text' => 'Left', 'color' => $default_color],
@@ -283,6 +294,7 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Size
+                    //literally just draw exactly what it is
                     $user->words()->createMany([
                         ['id' => $adjectives+42, 'text' => 'Long', 'color' => $default_color],
                         ['id' => $adjectives+43, 'text' => 'Tall', 'color' => $default_color],
@@ -361,6 +373,7 @@ class BoardSeeder extends Seeder
                 $pronoun_type_color = '#b77dff';
             
             //icon urls
+                //redo these with transparent background
                 $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
                 $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
                 $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
@@ -368,12 +381,12 @@ class BoardSeeder extends Seeder
 
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
-                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
-                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color],
-                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color],
+                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color], //use three people with one looking different
+                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color], //use one of my cube thingies
+                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color], //use first plural with arrows from different person to other two
                 ['id' => $pronounF+5, 'name' => 'Masculine', 'color' => $masculine_color, 'icon' => $masculine_url],
                 ['id' => $pronounF+6, 'name' => 'Feminine', 'color' => $feminine_color, 'icon' => $feminine_url],
-                ['id' => $pronounF+7, 'name' => 'Plural/Neutral', 'color' => $they_color],
+                ['id' => $pronounF+7, 'name' => 'Plural/Neutral', 'color' => $they_color], // use the peole one
                 ['id' => $pronounF+8, 'name' => 'Neutral - X', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
                 ['id' => $pronounF+9, 'name' => 'Neutral - Z', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
                 ['id' => $pronounF+10, 'name' => 'Subject', 'color' => $pronoun_type_color],
@@ -384,7 +397,7 @@ class BoardSeeder extends Seeder
             ]);
       
             $user->words()->createMany([
-                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],//24
+                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],//one person but have it the kind of different used in first plural
                 ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff'],
                 ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff'],
                 ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff'],
@@ -787,11 +800,11 @@ class BoardSeeder extends Seeder
                 ['id' => $emotion_index+2, 'text' => 'Hurt', 'color' => '#ffd1b3'],
                 ['id' => $emotion_index+3, 'text' => 'Scared', 'color' => '#fff3e6'],
                 ['id' => $emotion_index+4, 'text' => 'Happy', 'color' => '#ffff99'],
-                ['id' => $emotion_index+5, 'text' => 'Sad', 'color' => '#ccf2ff'],
+                ['id' => $emotion_index+5, 'text' => 'Sad', 'color' => '#ccf2ff'], //sad face
                 ['id' => $emotion_index+6, 'text' => 'Care', 'color' => '#ccccff'],
                 ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80'],
                 ['id' => $emotion_index+8, 'text' => 'Safe', 'color' => '#e6ffec'],
-                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6'],
+                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6'], //heart
                 ['id' => $emotion_index+10, 'text' => 'Like', 'color' => '#edc7d1'],
                 ['id' => $emotion_index+11, 'text' => 'Frustrated', 'color' => '#e8b692'],
                 ['id' => $emotion_index+12, 'text' => 'Hate', 'color' => '#ababab'],
@@ -828,9 +841,10 @@ class BoardSeeder extends Seeder
         //Food
             $food_extra = $emotion_index+15;
             $foodF = $emotionF+1;//31
+            //images: just draw what it is unless otherwise specified
             $user->words()->createMany([
-                ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//79
-                ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'],
+                ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//a collection of other foods I drew
+                ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'], 
                 ['id' => $food_extra+3, 'text' => 'Hamburger', 'color' => '#fde49e'],
                 ['id' => $food_extra+4, 'text' => 'Chicken nuggets', 'color' => '#fcb321']
             ]);
