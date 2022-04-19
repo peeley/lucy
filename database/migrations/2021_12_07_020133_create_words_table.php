@@ -21,7 +21,7 @@ class CreateWordsTable extends Migration
 
             $table->text('text');
             $table->binary('icon')->nullable();
-            $table->text('color')->default('#FFFFFF');
+            $table->text('color')->nullable()->default('#FFFFFF');
 
             $table->timestamps();
         });
