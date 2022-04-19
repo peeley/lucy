@@ -90,10 +90,27 @@ class BoardController extends Controller
     public function addTileToBoard(Request $request, int $board_id)
     {
         $board = Board::find($board_id);
+        $url = NULL; 
+
+        if($request->image != 'undefined') {
+
+            try{
+                $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+                $image = $request->file('image');
+                $path = $image->storePublicly('images', 'public');
+                $url = Storage::disk('public')->url($path);
+            }
+            catch (ValidException $exception) {
+                return response()->json([
+                    'msg' => 'Please submit file type of jpeg, jpg, or png.'
+                ], 422);
+            }
+        }
 
         $word = $board->user()->first()->words()->create([
             'text' => $request->get('text'),
-            'color' => $request->get('color')
+            'color' => $request->get('color'),
+            'icon' => $url
         ]);
 
         $board->words()->attach($word->id, [
