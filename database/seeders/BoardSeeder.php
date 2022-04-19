@@ -25,6 +25,7 @@ class BoardSeeder extends Seeder
         ]);
 
         //new talker urls
+            //this is a placeholder for any you want to just drop in
         
         //color variables
             $default_color = '#b3e6cc';
@@ -51,12 +52,9 @@ class BoardSeeder extends Seeder
                 ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
                 ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
                 ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
-                ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url]
+                ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url],
+                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color]
             ]);
-        
-        //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
-            // $adjectives = DB::table('words')->max('id');
-            // $adjectivesF = DB::table('folders')->max('id');
 
         //Adjictives
             $adjectives = $board_index+7;
@@ -2925,11 +2923,12 @@ class BoardSeeder extends Seeder
                 $help+1 => ['board_x' => 1, 'board_y' => 2],
                 $board_index+6 => ['board_x' => 2, 'board_y' => 2],
                 $board_index+3 => ['board_x' => 3, 'board_y' => 2],
+                $board_index+7 => ['board_x' => 4, 'board_y' => 2]
             ]);
             
             $board->folders()->attach([
-                $mannersF+1 => ['board_x' => 4, 'board_y' => 2],
-                $speechF+1 => ['board_x' => 5, 'board_y' => 2],
+                $mannersF+1 => ['board_x' => 5, 'board_y' => 2],
+                $speechF+1 => ['board_x' => 6, 'board_y' => 2],
                 
                 $foodF+1 => ['board_x' => 1, 'board_y' => 3],
                 $emotionF+1 => ['board_x' => 2, 'board_y' => 3],
@@ -2938,30 +2937,29 @@ class BoardSeeder extends Seeder
                 $talkerF+1 => ['board_x' => 5, 'board_y' => 3],
                 $person_careF+1 => ['board_x' => 6, 'board_y' => 3],
 
-                $articleF+1 => ['board_x' => 1, 'board_y' => 4],
-                $quantityF+1 => ['board_x' => 2, 'board_y' => 4],
-                $conjunctionF+1 => ['board_x' => 3, 'board_y' => 4],
-                $pronounF+1 => ['board_x' => 4, 'board_y' => 4],
-                $toysF+1 => ['board_x' => 5, 'board_y' => 4],
-                $lettersF+1 => ['board_x' => 6, 'board_y' => 4]
+                $quantityF+1 => ['board_x' => 1, 'board_y' => 4],
+                $conjunctionF+1 => ['board_x' => 2, 'board_y' => 4],
+                $pronounF+1 => ['board_x' => 3, 'board_y' => 4],
+                $toysF+1 => ['board_x' => 4, 'board_y' => 4],
+                $lettersF+1 => ['board_x' => 5, 'board_y' => 4]
             ]);
             
 
         // !! raw sql alert !!
-        // usually, we can leave out the `id` param when creating models since
-        // postgres tracks what value the `id` col should be w/ an
-        // auto-incrementing int.  since we've manually provided all the ids,
-        // that auto-incrementing int never gets updated and stays at 1. we need
-        // to update the auto-incrementer to generate the last id we manually
-        // provided so it properly generates the next one, otherwise it
-        // auto-generates an id of 1 and blows up since we already have a
-        // word/folder w/ id 1.
-        if (env('DB_CONNECTION') === 'sqlite') { // for CI runs
-            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM words) WHERE name='words'");
-            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM folders) WHERE name='folders'");
-        } else { // for postgres
-            DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
-            DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
-        }
+            // usually, we can leave out the `id` param when creating models since
+            // postgres tracks what value the `id` col should be w/ an
+            // auto-incrementing int.  since we've manually provided all the ids,
+            // that auto-incrementing int never gets updated and stays at 1. we need
+            // to update the auto-incrementer to generate the last id we manually
+            // provided so it properly generates the next one, otherwise it
+            // auto-generates an id of 1 and blows up since we already have a
+            // word/folder w/ id 1.
+            if (env('DB_CONNECTION') === 'sqlite') { // for CI runs
+                DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM words) WHERE name='words'");
+                DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM folders) WHERE name='folders'");
+            } else { // for postgres
+                DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
+                DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
+            }
     }
 }
