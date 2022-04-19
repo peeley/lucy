@@ -2927,7 +2927,7 @@ class BoardSeeder extends Seeder
                 $help+1 => ['board_x' => 1, 'board_y' => 2],
                 $board_index+6 => ['board_x' => 2, 'board_y' => 2],
                 $board_index+3 => ['board_x' => 3, 'board_y' => 2],
-                $board_index+7 => ['board_x' => 4, 'board_y' => 2]
+                $board_index+8 => ['board_x' => 4, 'board_y' => 2]
             ]);
             
             $board->folders()->attach([
