@@ -34,9 +34,10 @@ class UserSettingsController extends Controller
         {
             $user_settings->update(['idle_threshold' => $request->idle_threshold]);
         }
-
+        
         return view('user-settings', ['audio_level'=> $user_settings->audio_level, 
                                       'guided_use_toggle'=> $user_settings->guided_use_toggle,
-                                      'idle_threshold'=> $user_settings->idle_threshold]);
+                                      'idle_threshold'=> $user_settings->idle_threshold,
+                                      'url'=> $_POST['secret']]);
     }
 }

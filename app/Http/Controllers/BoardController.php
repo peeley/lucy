@@ -50,6 +50,7 @@ class BoardController extends Controller
             $default_guided_idle = 30;
             $default_audio_level = 100;
             return view('board', [
+                'user_id' => $user,
                 'board_id' => $board_id,
                 'audio_level' => $default_audio_level,
                 'guided_use' => $default_guided_toggle,
@@ -59,6 +60,7 @@ class BoardController extends Controller
         else {
             $user_settings = $user->settings()->get()->first();
             return view('board', [
+                'user_id' => $user_settings->user_id,
                 'board_id' => $board_id,
                 'audio_level' => $user_settings->audio_level,
                 'guided_use' => $user_settings->guided_use_toggle,
@@ -107,45 +109,44 @@ class BoardController extends Controller
         $type = $request->tileType;
         $tileId = $request->tileId;
 
-        try{
-
-            $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
-
-            if ($type == 'word') {
-                $tile = Word::find($tileId);
-
-                if ($request->text) {
-                    $tile->text = $request->text;
-                }
-            } else {
-                $tile = Folder::find($tileId);
-
-                if ($request->text) {
-                    $tile->name = $request->text;
-                }
+        if ($type == 'word') {
+            $tile = Word::find($tileId);
+            if ($request->text) {
+                $tile->text = $request->text;
             }
+        } else {
+            $tile = Folder::find($tileId);
 
-            if ($request->color) {
-                $tile->color = $request->color;
+            if ($request->text) {
+                $tile->name = $request->text;
             }
+        }
 
-            if($request->image) {
-                $path = $request->file('image')->storePublicly('images', 'public');
+        if ($request->color) {
+            $tile->color = $request->color;
+        }
+
+        if($request->image != 'undefined') {
+
+            try{
+                $request->validate(['image' => 'mimes:jpg,jpeg,png|max:5048']);
+                $image = $request->file('image');
+                $path = $image->storePublicly('images', 'public');
                 $url = Storage::disk('public')->url($path);
                 $tile->icon = $url;
             }
-
-            $tile->save();
-
-            return response()->json([
-                'msg' => 'Tile Edited Successfully'
-            ], 201); ;
+            catch (ValidException $exception) {
+                return response()->json([
+                    'msg' => 'Please submit file type of jpeg, jpg, or png.'
+                ], 422);
+            }
         }
-        catch (ValidException $exception) {
-            return response()->json([
-                'msg' => 'Please submit file type of jpeg, jpg, or png.'
-            ], 422);
-        }
+
+        $tile->save();
+
+        return response()->json([
+            'msg' => 'Tile Edited Successfully'
+        ], 201); 
     }
 
     public function deleteBoard(Request $request, int $board_id)
