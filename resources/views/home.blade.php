@@ -36,6 +36,9 @@
           <button type="submit">Delete</button>
         </form>
         <button onclick="document.getElementById('modal-{{ $board->id }}').style.display='block'"> Edit </button>
+        <button>
+          <a href="/boards/{{ $board->id }}/export" download>Export</a>
+        </button>
       </div>
 
       <div id="modal-{{ $board->id }}" style="display: none;">

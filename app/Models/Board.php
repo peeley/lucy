@@ -64,12 +64,12 @@ class Board extends TileContainer
             })
             ->map( function($tile): array {
                 return [
-                    'id' => $tile->id,
+                    'id' => (string) $tile->id,
                     'url' => $tile->icon,
                     'height' => "76",
                     'width' => "76",
                     'content_type' => $tile->icon
-                        ? 'image/' . end(explode('.', $tile->icon))
+                        ? 'image/' . substr(strrchr($tile->icon, '.'), 1)
                         : null,
                 ];
             });
@@ -78,8 +78,8 @@ class Board extends TileContainer
             return [
                 // hack: folders and words share the same id space, so just make
                 // folder ids negative to prevent collisions
-                'id' => $tile->name ? -$tile->id : $tile->id,
-                'label' => $tile->text,
+                'id' => (string) ($tile->name ? -$tile->id : $tile->id),
+                'label' => $tile->name ?? $tile->text,
                 'border_color' => 'rbg(0, 0, 0)',
                 'background_color' => $tile->color,
                 'image_id' => $tile->id
@@ -104,8 +104,9 @@ class Board extends TileContainer
         ];
 
         return [
-            'format' => 'open-boiard-0.1',
-            'id' => $this->id,
+            'format' => 'open-board-0.1',
+            'locale' => 'en',
+            'id' => (string) $this->id,
             'url' => url("/boards/{$this->id}"),
             'name' => $this->name,
             'description' => 'Board created by Project Lucy',
