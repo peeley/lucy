@@ -72,7 +72,7 @@ class Board extends TileContainer
                         ? 'image/' . substr(strrchr($tile->icon, '.'), 1)
                         : null,
                 ];
-            });
+            })->values();
 
         $buttons = $this->tiles()->map( function($tile): array {
             return [
@@ -82,20 +82,24 @@ class Board extends TileContainer
                 'label' => $tile->name ?? $tile->text,
                 'border_color' => 'rbg(0, 0, 0)',
                 'background_color' => $tile->color,
-                'image_id' => $tile->id
+                'image_id' => (string) $tile->id
             ];
-        });
+        })->values();
 
         $grid_order = [];
 
         for ($y = 1; $y <= $this->height; $y++) {
             for ($x = 1; $x <= $this->width; $x++) {
-                $grid_order[$y][$x] = $this->tiles()
+                (string) $grid_order[$y][$x] = $this->tiles()
                     ->where('pivot.board_x', $x)
                     ->firstWhere('pivot.board_y', $y)
                     ?->id;
             }
+
+            $grid_order[$y] = array_values($grid_order[$y]);
         }
+
+        $grid_order = array_values($grid_order);
 
         $grid = [
             'rows' => $this->height,
@@ -112,7 +116,8 @@ class Board extends TileContainer
             'description' => 'Board created by Project Lucy',
             'images' => $images,
             'buttons' => $buttons,
-            'grid' => $grid
+            'grid' => $grid,
+            'sounds' => []
         ];
     }
 }
