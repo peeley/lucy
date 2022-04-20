@@ -441,12 +441,14 @@ class BoardSeeder extends Seeder
                 $X_neutral_url = Storage::disk('public')->url('Icons/xpronoun.png');
                 $Z_neutral_url = Storage::disk('public')->url('Icons/xpronoun.png');
                 $personal_url = Storage::disk('public')->url('Icons/personal.png');
+                $second_url = Storage::disk('public')->url('Icons/second.png');
+                $first_plural_url = Storage::disk('public')->url('Icons/first-plural.png');
 
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color], //use three people with one looking different
-                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color], //use one of my cube thingies
-                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color], //use first plural with arrows from different person to other two
+                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color, 'icon' => $dry_url], //use one of my cube thingies
+                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color, 'icon' => $second_url],
                 ['id' => $pronounF+5, 'name' => 'Masculine', 'color' => $masculine_color, 'icon' => $masculine_url],
                 ['id' => $pronounF+6, 'name' => 'Feminine', 'color' => $feminine_color, 'icon' => $feminine_url],
                 ['id' => $pronounF+7, 'name' => 'Plural/Neutral', 'color' => $they_color, 'icon' => $people_url],
@@ -460,11 +462,11 @@ class BoardSeeder extends Seeder
             ]);
       
             $user->words()->createMany([
-                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],//one person but have it the kind of different used in first plural
-                ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 5, 'text' => 'Myself', 'color' => '#ccd9ff'],
+                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 5, 'text' => 'Myself', 'color' => '#ccd9ff', 'icon' => $personal_url],
                 ['id' => $pronoun_index + 42, 'text' => 'Pronouns', 'color' => $pronoun_color]//66
             ]);
             $user->folders()->find(5)->words()->attach([
@@ -523,9 +525,9 @@ class BoardSeeder extends Seeder
                     ]);
                 //Thing
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+11, 'text' => 'It', 'color' => $thing_color],//34
-                        ['id' => $pronoun_index+12, 'text' => 'Its', 'color' => $thing_color],
-                        ['id' => $pronoun_index+13, 'text' => 'Itself', 'color' => $thing_color]
+                        ['id' => $pronoun_index+11, 'text' => 'It', 'color' => $thing_color, 'icon' => $dry_url],
+                        ['id' => $pronoun_index+12, 'text' => 'Its', 'color' => $thing_color, 'icon' => $dry_url],
+                        ['id' => $pronoun_index+13, 'text' => 'Itself', 'color' => $thing_color, 'icon' => $dry_url]
                     ]);
                     $user->folders()->find($pronounF+3)->words()->attach([
                         $pronoun_index+11 => ['board_x' => 1, 'board_y' => 1],
@@ -630,11 +632,11 @@ class BoardSeeder extends Seeder
                     ]);
                 //Neutral - X
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+33, 'text' => 'Xe', 'color' => $x_pronoun_color],//57
-                        ['id' => $pronoun_index+34, 'text' => 'Xem', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+35, 'text' => 'Xyr', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+36, 'text' => 'Xyrs', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+37, 'text' => 'Xemself', 'color' => $x_pronoun_color]
+                        ['id' => $pronoun_index+33, 'text' => 'Xe', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+34, 'text' => 'Xem', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+35, 'text' => 'Xyr', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+36, 'text' => 'Xyrs', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+37, 'text' => 'Xemself', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url]
                     ]);
                     $user->folders()->find($pronounF+8)->words()->attach([
                         $pronoun_index+33 => ['board_x' => 1, 'board_y' => 1],
@@ -652,10 +654,10 @@ class BoardSeeder extends Seeder
                     ]);
                 //Neutral - Z
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+38, 'text' => 'Ze', 'color' => $z_pronoun_color],//62
-                        ['id' => $pronoun_index+39, 'text' => 'Zir', 'color' => $z_pronoun_color],
-                        ['id' => $pronoun_index+40, 'text' => 'Zirs', 'color' => $z_pronoun_color],
-                        ['id' => $pronoun_index+41, 'text' => 'Zirself', 'color' => $z_pronoun_color]
+                        ['id' => $pronoun_index+38, 'text' => 'Ze', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+39, 'text' => 'Zir', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+40, 'text' => 'Zirs', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+41, 'text' => 'Zirself', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url]
                     ]);
                     $user->folders()->find($pronounF+9)->words()->attach([
                         $pronoun_index+38 => ['board_x' => 1, 'board_y' => 1],
@@ -1122,8 +1124,8 @@ class BoardSeeder extends Seeder
                 ['id' => $quantity+6, 'text' => 'All', 'color' => $quantity_color],
                 ['id' => $quantity+7, 'text' => 'Many', 'color' => $quantity_color],
                 ['id' => $quantity+8, 'text' => 'Few', 'color' => $quantity_color],
-                ['id' => $quantity+9, 'text' => 'Light', 'color' => $quantity_color],
-                ['id' => $quantity+10, 'text' => 'Heavy', 'color' => $quantity_color]//133
+                ['id' => $quantity+9, 'text' => 'Light', 'color' => $quantity_color, 'icon' => $lightq_url],
+                ['id' => $quantity+10, 'text' => 'Heavy', 'color' => $quantity_color, 'icon' => $heavyq_url]
             ]);
             $user->folders()->createMany([
                 ['id' => $quantityF+1, 'name' => 'Quantity', 'color' => $quantity_color]
@@ -1230,7 +1232,7 @@ class BoardSeeder extends Seeder
             $people = $toys+4;
             $peopleF = $toysF+1;//40
             $user->words()->createMany([
-                ['id' => $people+1, 'text' => 'People', 'color' => $default_color],//151
+                ['id' => $people+1, 'text' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $people+2, 'text' => 'Teacher', 'color' => $default_color],
                 ['id' => $people+3, 'text' => 'Classmate', 'color' => $default_color],
                 ['id' => $people+4, 'text' => 'Friend', 'color' => $default_color],
@@ -1239,10 +1241,10 @@ class BoardSeeder extends Seeder
                 ['id' => $people+7, 'text' => 'Cashier', 'color' => $default_color],
                 ['id' => $people+8, 'text' => 'Wait Staff', 'color' => $default_color],
                 ['id' => $people+9, 'text' => 'Pilot', 'color' => $default_color],
-                ['id' => $people+10, 'text' => 'Staff', 'color' => $default_color]//160
+                ['id' => $people+10, 'text' => 'Staff', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => $peopleF+1, 'name' => 'People', 'color' => $default_color],
+                ['id' => $peopleF+1, 'name' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $peopleF+2, 'name' => 'Family', 'color' => $default_color] 
             ]);
             $user->folders()->find($peopleF+1)->words()->attach([
