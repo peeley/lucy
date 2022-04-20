@@ -47,6 +47,7 @@ Route::get('/home', [HomeController::class, 'index'])
 Route::get('/boards/{board_id}', [BoardController::class, 'getBoard']);
 Route::delete('/boards/{board_id}', [BoardController::class, 'deleteBoard']);
 Route::put('/boards/{board_id}', [BoardController::class, 'editBoard']);
+Route::get('/boards/{board_id}/export', [BoardController::class, 'exportBoard']);
 Route::post('/boards', [BoardController::class, 'createBoard']);
 Route::redirect('/guest', '/boards/1'); // default board
 

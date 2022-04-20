@@ -6,6 +6,7 @@ use App\Models\Board;
 use App\Models\Word;
 use App\Models\User;
 use App\Models\Folder;
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -226,5 +227,17 @@ class BoardController extends Controller
         $board->fill($validated)->save();
 
         return redirect('/home')->with('success', 'Board updated.');
+    }
+
+    public function exportBoard(Request $request, int $board_id)
+    {
+        $board = Board::find($board_id);
+
+        $obf_json = $board->exportToObf();
+
+        Storage::put("public/obf/{$board_id}/{$board->name}.obf",
+                     json_encode($obf_json, JSON_UNESCAPED_SLASHES));
+
+        return Storage::download("public/obf/{$board_id}/{$board->name}.obf");
     }
 }

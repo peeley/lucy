@@ -13,9 +13,9 @@ class TileContainer extends Model
 
     // when this model gets serialized w/ toArray, a field called `contents`
     // will be populated with the result of this function
-    public function getContentsAttribute()
+    public function getContentsAttribute(): array
     {
-        $contents = $this->folders()->get()->concat($this->words()->get());
+        $contents = $this->tiles();
 
         $max_width = $contents->max('pivot.board_x');
         $max_height = $contents->max('pivot.board_y');
@@ -65,5 +65,9 @@ class TileContainer extends Model
         }
 
         return $replicant;
+    }
+
+    public function tiles() {
+        return $this->words()->get()->concat($this->folders()->get());
     }
 }
