@@ -400,7 +400,7 @@ body
     left: 50%;
     width: 40%;
     transform: translate(-50%, -50%);
-    background-color: ivory;
+    background-color: midnightblue;
     border-radius: 5px;
     border: 2px solid black;
 }
@@ -447,7 +447,7 @@ body
     display: inline-block;
     border:2px solid black;
     border-radius: 5px;
-    background-color: var(--default-button-color);
+    background-color: lightgoldenrodyellow;
     text-align: center;
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
@@ -458,4 +458,14 @@ body
     box-shadow: inset 0 0 100px 0 darkorange;
     color: black;
     font-size: large;
+}
+
+/*to hide the ugly default styling for the file upload button*/
+input[type="file"] {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
