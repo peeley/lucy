@@ -118,3 +118,79 @@ button:active:hover { /* Default click/touch hold effect*/
 {
     display: none;
 }
+
+/*=====================================================*/
+/*                   Create Word CSS                   */
+/*=====================================================*/
+.submit-form {
+    margin: var(--margin);
+    text-align: var(--default-text-align);
+    font-size: medium;
+}
+.main-modal-class {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    transform: translate(-50%, -50%);
+    background-color: ivory;
+    border-radius: var(--default-border-radius);
+    border: var(--default-border);
+}
+.main-modal-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+/*to hide the ugly default styling for the file upload button*/
+input[type="file"] {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.modal-button {
+    height: 50px;
+    width: 100px;
+    font-size: large;
+    text-align: var(--default-text-align);
+    vertical-align: var(--vertical-align);
+}
+
+/*This will have similar styings to the button. I cant make it an actual button because then the file upload wont
+work. */
+.file-input {
+    height: 47px;
+    width: 100px;
+    font-size: larger;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+    border:2px solid black;
+    border-radius: 5px;
+    background-color: var(--default-button-color);
+    text-align: center;
+    box-shadow: inset 0 0 0 0 green;
+    transition: ease-out 0.15s;
+}
+
+.file-input:hover {
+    box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
+    color: white;
+    font-size: large;
+}
+
+.edit-modal-class {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    background-color: ivory;
+    border-radius: var(--default-border-radius);
+    border: var(--default-border);
+}
