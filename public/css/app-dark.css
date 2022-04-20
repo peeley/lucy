@@ -233,13 +233,13 @@ body
 }
 
 .back-button {
-    width: 110px;
-    height: 15%;
+    width: 125px;
+    height: 12%;
     margin-right: 15px;
     margin-top: 15px;
     background-color:lightgoldenrodyellow;
     text-align: center;
-    font-size: large;
+    font-size: x-large;
     font-family: Arial, Helvetica, sans-serif;
 }
 .board-background {
