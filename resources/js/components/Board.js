@@ -336,21 +336,30 @@ export class Board extends React.Component {
       : 'folders';
 
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
+    const formData = new FormData()
+    formData.append("image", event.target.image.files[0])
+    formData.append("color", event.target.color.value)
+    formData.append("text", event.target.text.value)
+    formData.append("board_x", this.state.heldTileColumn + 1)
+    formData.append("board_y", this.state.heldTileRow + 1)
 
-    axios.post(`/${parentType}/${parentId}/tiles`, {
-      text: event.target.text.value,
-      color: event.target.color.value,
-      board_x: this.state.heldTileColumn + 1,
-      board_y: this.state.heldTileRow + 1
+    axios({
+      method: "post",
+      url: `/${parentType}/${parentId}/tiles`,
+      data: formData,
+      headers: {"Content-Type": "multipart/form-data"},
     }).then( () => {
       this.setState({
         configuringTile: false,
-        createModal: false
+        createModal: false,
+        selectedFile: false
       }, this.fetchBoardTiles);
     }).catch((error) => {
+      const error_message = error.response.data.errors.image == 'undefined' ? 
+      error.response.data.errors.image : error.response.data.errors.color
       this.setState({
         errorModal: true,
-        errorMessage: error.response.data.errors.color,
+        errorMessage: error_message,
       })
     });
   }
@@ -444,6 +453,17 @@ export class Board extends React.Component {
                   placeholder="Color (Hexadecimal)"
                   className="modal-button"
                 />
+                <label for='file-input-button' className="file-input">
+                {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
+                </label>
+                <input 
+                  name="image"
+                  type="file"
+                  placeholder="Image*"
+                  id='file-input-button'
+                  onChange={this.handleImageSubmit}
+                />
+                <p>*Images uploaded can be publicly accessed.</p>
                 <button type="submit" className="modal-button">Save</button>
                 <button className="modal-button" onClick={this.closeCreateModal}>Close</button>
               </center>

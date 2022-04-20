@@ -24,47 +24,44 @@ class BoardSeeder extends Seeder
             'height' => 4
         ]);
 
-        //urls to the icons
-        $bye_url = Storage::disk('public')->url('Icons/bye.png');
-        $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');
-        $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
-        $hello_url = Storage::disk('public')->url('Icons/hello.png');
-        $help_url = Storage::disk('public')->url('Icons/help.png');
-        $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
-        $no_url = Storage::disk('public')->url('Icons/no.png');
-        $okay_url = Storage::disk('public')->url('Icons/okay.png');
-        $talk_url = Storage::disk('public')->url('Icons/talk.png');
-        $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
-        $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
-        $yay_url = Storage::disk('public')->url('Icons/yay.png');
-        $yes_url = Storage::disk('public')->url('Icons/yes.png');
-        $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
+        //new talker urls
+            //this is a placeholder for any you want to just drop in
         
         //color variables
-
             $default_color = '#b3e6cc';
         //indexes
             $empty = 1;    
             $board_index = 1;//this is for words that are only on the board
 
-        $user->words()->createMany([
-
-            ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
-            ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
-            ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
-            ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
-            ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
-            ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
-            ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
-            ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url]
-        ]);
-        
         //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
             // $adjectives = DB::table('words')->max('id');
             // $adjectivesF = DB::table('folders')->max('id');
+        
+        //main board words
+            //icons urls
+                $hello_url = Storage::disk('public')->url('Icons/hello.png');
+                $bye_url = Storage::disk('public')->url('Icons/bye.png');
+                $yay_url = Storage::disk('public')->url('Icons/yay.png');
+                $yes_url = Storage::disk('public')->url('Icons/yes.png');
+                $no_url = Storage::disk('public')->url('Icons/no.png');
+                $talk_url = Storage::disk('public')->url('Icons/talk.png');
+                $okay_url = Storage::disk('public')->url('Icons/okay.png');
+
+
+            $user->words()->createMany([
+                ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
+                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
+                ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
+                ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
+                ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
+                ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
+                ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
+                ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url],
+                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color]
+            ]);
 
         //Adjictives
-            $adjectives = $board_index+7;
+            $adjectives = $board_index+8;
             $adjectivesF = 1;
             $user->words()->createMany([
                 ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color],
@@ -362,8 +359,14 @@ class BoardSeeder extends Seeder
                 $z_pronoun_color = '#ffd9b3';
                 $pronoun_color = '#ffffb3';
                 $pronoun_type_color = '#b77dff';
-            $user->folders()->createMany([
+            
+            //icon urls
+                $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
+                $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
+                $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
+                $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
 
+            $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
                 ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
                 ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color],
@@ -1070,6 +1073,11 @@ class BoardSeeder extends Seeder
         //Help
             $help = $quantity+10;
             $helpF = $quantityF+1;//38
+            //icon urls
+                $help_url = Storage::disk('public')->url('Icons/help.png');
+                $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');              
+                $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
+
             $user->words()->createMany([
                 ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff', 'icon' => $help_url],//137
                 ['id' => $help+2, 'text' => 'Help me', 'color' => '#e6e6ff'],
@@ -1996,13 +2004,20 @@ class BoardSeeder extends Seeder
             $user->words()->createMany([
                 ['id' => $talker+1, 'text' => 'Word', 'color' => $default_color],
                 ['id' => $talker+2, 'text' => 'Words', 'color' => $default_color],
-                ['id' => $talker+3, 'text' => 'Speak', 'color' => $default_color],
-                ['id' => $talker+4, 'text' => 'Say', 'color' => $default_color],
-                ['id' => $talker+5, 'text' => 'Say', 'color' => $default_color],
-                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color]
+                ['id' => $talker+3, 'text' => 'Speak', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+4, 'text' => 'Say', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+5, 'text' => 'Talk', 'color' => $default_color, 'icon' => $talk_url],
+                ['id' => $talker+6, 'text' => 'Lucy', 'color' => $default_color, 'icon' => $talker_url],
+                ['id' => $talker+7, 'text' => 'Guided Use', 'color' => $default_color, 'icon' => $talker_url],
+                ['id' => $talker+8, 'text' => 'Project', 'color' => $default_color],
+                //these three are temporarily in here for demo, will be moved to appropriate catigory soon
+                ['id' => $talker+9, 'text' => 'This', 'color' => $default_color],
+                ['id' => $talker+10, 'text' => 'Is', 'color' => $default_color],
+                ['id' => $talker+11, 'text' => 'Am', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => $talkerF+1, 'name' => 'Talker', 'color' => $default_color]
+                ['id' => $talkerF+1, 'name' => 'Talker', 'color' => $default_color],
+                ['id' => $talkerF+2, 'name' => 'Presentation', 'color' => $default_color]
             ]);
             $user->folders()->find($talkerF+1)->words()->attach([
                 $talker+1 => ['board_x' => 1, 'board_y' => 1],
@@ -2019,10 +2034,30 @@ class BoardSeeder extends Seeder
 
                 $empty => ['board_x' => 1, 'board_y' => 4]                   
             ]);
+            $user->folders()->find($talkerF+1)->folders()->attach([
+                $talkerF+2 => ['board_x' => 6, 'board_y' => 4],                  
+            ]);
+            $user->folders()->find($talkerF+2)->words()->attach([
+                $pronoun_index+1 => ['board_x' => 1, 'board_y' => 1],
+                $talker+11 => ['board_x' => 2, 'board_y' => 1],
+                $talker+8 => ['board_x' => 3, 'board_y' => 1],
+                $talker+6 => ['board_x' => 4, 'board_y' => 1],
+                $empty => ['board_x' => 5, 'board_y' => 1],
+                $empty => ['board_x' => 6, 'board_y' => 1],
+
+                $talker+9 => ['board_x' => 1, 'board_y' => 2],
+                $talker+10 => ['board_x' => 2, 'board_y' => 2],
+                $article+1 => ['board_x' => 3, 'board_y' => 2],
+                $talker+1 => ['board_x' => 4, 'board_y' => 2],
+
+                $talker+7 => ['board_x' => 1, 'board_y' => 3],
+
+                $empty => ['board_x' => 1, 'board_y' => 4]                   
+            ]);
 
         //Medical
-            $medical = $talker+6;
-            $medicalF = $talkerF+1;//66
+            $medical = $talker+11;
+            $medicalF = $talkerF+2;//66
             $user->words()->createMany([
                 ['id' => $medical+1, 'text' => 'Sick', 'color' => $default_color],
                 ['id' => $medical+2, 'text' => 'Pain', 'color' => $default_color],
@@ -2892,11 +2927,12 @@ class BoardSeeder extends Seeder
                 $help+1 => ['board_x' => 1, 'board_y' => 2],
                 $board_index+6 => ['board_x' => 2, 'board_y' => 2],
                 $board_index+3 => ['board_x' => 3, 'board_y' => 2],
+                $board_index+8 => ['board_x' => 4, 'board_y' => 2]
             ]);
             
             $board->folders()->attach([
-                $mannersF+1 => ['board_x' => 4, 'board_y' => 2],
-                $speechF+1 => ['board_x' => 5, 'board_y' => 2],
+                $mannersF+1 => ['board_x' => 5, 'board_y' => 2],
+                $speechF+1 => ['board_x' => 6, 'board_y' => 2],
                 
                 $foodF+1 => ['board_x' => 1, 'board_y' => 3],
                 $emotionF+1 => ['board_x' => 2, 'board_y' => 3],
@@ -2905,30 +2941,29 @@ class BoardSeeder extends Seeder
                 $talkerF+1 => ['board_x' => 5, 'board_y' => 3],
                 $person_careF+1 => ['board_x' => 6, 'board_y' => 3],
 
-                $articleF+1 => ['board_x' => 1, 'board_y' => 4],
-                $quantityF+1 => ['board_x' => 2, 'board_y' => 4],
-                $conjunctionF+1 => ['board_x' => 3, 'board_y' => 4],
-                $pronounF+1 => ['board_x' => 4, 'board_y' => 4],
-                $toysF+1 => ['board_x' => 5, 'board_y' => 4],
-                $lettersF+1 => ['board_x' => 6, 'board_y' => 4]
+                $quantityF+1 => ['board_x' => 1, 'board_y' => 4],
+                $conjunctionF+1 => ['board_x' => 2, 'board_y' => 4],
+                $pronounF+1 => ['board_x' => 3, 'board_y' => 4],
+                $toysF+1 => ['board_x' => 4, 'board_y' => 4],
+                $lettersF+1 => ['board_x' => 5, 'board_y' => 4]
             ]);
             
 
         // !! raw sql alert !!
-        // usually, we can leave out the `id` param when creating models since
-        // postgres tracks what value the `id` col should be w/ an
-        // auto-incrementing int.  since we've manually provided all the ids,
-        // that auto-incrementing int never gets updated and stays at 1. we need
-        // to update the auto-incrementer to generate the last id we manually
-        // provided so it properly generates the next one, otherwise it
-        // auto-generates an id of 1 and blows up since we already have a
-        // word/folder w/ id 1.
-        if (env('DB_CONNECTION') === 'sqlite') { // for CI runs
-            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM words) WHERE name='words'");
-            DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM folders) WHERE name='folders'");
-        } else { // for postgres
-            DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
-            DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
-        }
+            // usually, we can leave out the `id` param when creating models since
+            // postgres tracks what value the `id` col should be w/ an
+            // auto-incrementing int.  since we've manually provided all the ids,
+            // that auto-incrementing int never gets updated and stays at 1. we need
+            // to update the auto-incrementer to generate the last id we manually
+            // provided so it properly generates the next one, otherwise it
+            // auto-generates an id of 1 and blows up since we already have a
+            // word/folder w/ id 1.
+            if (env('DB_CONNECTION') === 'sqlite') { // for CI runs
+                DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM words) WHERE name='words'");
+                DB::statement("UPDATE sqlite_sequence SET seq = (SELECT MAX(id) FROM folders) WHERE name='folders'");
+            } else { // for postgres
+                DB::statement("SELECT setval('words_id_seq', (SELECT max(id) FROM words));");
+                DB::statement("SELECT setval('folders_id_seq', (SELECT max(id) FROM folders));");
+            }
     }
 }
