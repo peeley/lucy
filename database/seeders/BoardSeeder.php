@@ -1198,15 +1198,18 @@ class BoardSeeder extends Seeder
 
         //Toys
             $toys = $help+10;
-            $toysF = $helpF+1;//39
+            $toysF = $helpF+1;
+            //icons
+                $ball_url = Storage::disk('public')->url('Icons/ball.PNG');
+                $doll_url = Storage::disk('public')->url('Icons/doll.PNG');
             $user->words()->createMany([
-                ['id' => $toys+1, 'text' => 'Toy', 'color' => '#60d164'],
-                ['id' => $toys+2, 'text' => 'Ball', 'color' => '#596df0'],
+                ['id' => $toys+1, 'text' => 'Toy', 'color' => '#60d164', 'icon' => $doll_url],
+                ['id' => $toys+2, 'text' => 'Ball', 'color' => '#596df0', 'icon' => $ball_url],
                 ['id' => $toys+3, 'text' => 'Block', 'color' => '#f23a3a', 'icon' => $dry_url],
-                ['id' => $toys+4, 'text' => 'Doll', 'color' => '#ffefad']
+                ['id' => $toys+4, 'text' => 'Doll', 'color' => '#ffefad', 'icon' => $doll_url]
             ]);
             $user->folders()->createMany([
-                ['id' => $toysF+1, 'name' => 'Toys', 'color' => '#60d164']
+                ['id' => $toysF+1, 'name' => 'Toys', 'color' => '#60d164', 'icon' => $doll_url]
             ]);
             $user->folders()->find($toysF+1)->words()->attach([
                 $toys+1 => ['board_x' => 1, 'board_y' => 1],
