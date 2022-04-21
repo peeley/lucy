@@ -421,7 +421,7 @@ class BoardSeeder extends Seeder
 
         //Pronouns
             $pronoun_index = DB::table('words')->max('id');
-            $pronounF = DB::table('folders')->max('id');//12
+            $pronounF = DB::table('folders')->max('id');
             //colors
                 $first_plural_color = '#ccffe6';
                 $thing_color = '#cceaae';
@@ -446,8 +446,8 @@ class BoardSeeder extends Seeder
 
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
-                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color], //use three people with one looking different
-                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color, 'icon' => $dry_url], //use one of my cube thingies
+                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color, 'icon' => $dry_url],
                 ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color, 'icon' => $second_url],
                 ['id' => $pronounF+5, 'name' => 'Masculine', 'color' => $masculine_color, 'icon' => $masculine_url],
                 ['id' => $pronounF+6, 'name' => 'Feminine', 'color' => $feminine_color, 'icon' => $feminine_url],
@@ -503,11 +503,11 @@ class BoardSeeder extends Seeder
             //pronouns by persons
                 //1st plural
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+6, 'text' => 'We', 'color' => $first_plural_color],//29
-                        ['id' => $pronoun_index+7, 'text' => 'Us', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+8, 'text' => 'Our', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+9, 'text' => 'Ours', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+10, 'text' => 'Ourselves', 'color' => $first_plural_color]
+                        ['id' => $pronoun_index+6, 'text' => 'We', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+7, 'text' => 'Us', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+8, 'text' => 'Our', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+9, 'text' => 'Ours', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+10, 'text' => 'Ourselves', 'color' => $first_plural_color, 'icon' => $first_plural_url]
                     ]);
                     $user->folders()->find($pronounF+2)->words()->attach([
                         $pronoun_index+6 => ['board_x' => 1, 'board_y' => 1],
@@ -545,11 +545,11 @@ class BoardSeeder extends Seeder
                     ]);
                 //2nd person
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+14, 'text' => 'You', 'color' => $second_person_color],//37
-                        ['id' => $pronoun_index+15, 'text' => 'Your', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+16, 'text' => 'Yours', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+17, 'text' => 'Yourself', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+18, 'text' => 'Yourselves', 'color' => $second_person_color]
+                        ['id' => $pronoun_index+14, 'text' => 'You', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+15, 'text' => 'Your', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+16, 'text' => 'Yours', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+17, 'text' => 'Yourself', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+18, 'text' => 'Yourselves', 'color' => $second_person_color, 'icon' => $second_url]
                     ]);
                     $user->folders()->find($pronounF+4)->words()->attach([
                         $pronoun_index+14 => ['board_x' => 1, 'board_y' => 1],
@@ -1324,7 +1324,7 @@ class BoardSeeder extends Seeder
                 ['id' => $colors+4, 'text' => 'Green', 'color' => $default_color],
                 ['id' => $colors+5, 'text' => 'Blue', 'color' => $default_color],
                 ['id' => $colors+6, 'text' => 'Purple', 'color' => $default_color],
-                ['id' => $colors+7, 'text' => 'Rainbow', 'color' => $default_color],
+                ['id' => $colors+7, 'text' => 'Rainbow', 'color' => $default_color, 'icon' => $rainbow_url],
                 ['id' => $colors+8, 'text' => 'Brown', 'color' => $default_color],
                 ['id' => $colors+9, 'text' => 'Black', 'color' => $default_color],
                 ['id' => $colors+10, 'text' => 'White', 'color' => $default_color],
@@ -1332,7 +1332,7 @@ class BoardSeeder extends Seeder
                 ['id' => $colors+12, 'text' => 'Neon', 'color' => $default_color],
             ]);
             $user->folders()->createMany([
-                ['id' => $colorsF+1, 'name' => 'Colors', 'color' => $default_color]
+                ['id' => $colorsF+1, 'name' => 'Colors', 'color' => $default_color, 'icon' => $rainbow_url]
             ]);
             $user->folders()->find($colorsF+1)->words()->attach([
                 $colors+1 => ['board_x' => 1, 'board_y' => 1],
@@ -2172,7 +2172,7 @@ class BoardSeeder extends Seeder
             $plantsF = $medicalF+1;//67
             $user->words()->createMany([
                 ['id' => $plants+1, 'text' => 'Plant', 'color' => $default_color],
-                ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color],
+                ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color, 'icon' => $flower_url],
                 ['id' => $plants+3, 'text' => 'Tree', 'color' => $default_color],
                 ['id' => $plants+4, 'text' => 'Bush', 'color' => $default_color],
                 ['id' => $plants+5, 'text' => 'Grass', 'color' => $default_color],
