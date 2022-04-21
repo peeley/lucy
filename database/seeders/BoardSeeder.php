@@ -1879,7 +1879,7 @@ class BoardSeeder extends Seeder
                 ['id' => $weather+9, 'text' => 'Flood', 'color' => $default_color],
                 ['id' => $weather+10, 'text' => 'Frost', 'color' => $default_color],
                 ['id' => $weather+11, 'text' => 'Blizzard', 'color' => $default_color],
-                ['id' => $weather+12, 'text' => 'Snow', 'color' => $default_color],
+                ['id' => $weather+12, 'text' => 'Snow', 'color' => $default_color, 'icon' => $snowflake_url],
                 ['id' => $weather+13, 'text' => 'Sleet', 'color' => $default_color],
                 ['id' => $weather+14, 'text' => 'Hail', 'color' => $default_color],
                 ['id' => $weather+15, 'text' => 'Thunder', 'color' => $default_color],
@@ -2207,30 +2207,41 @@ class BoardSeeder extends Seeder
         
         //Animals
             $animals = $plants+6;
-            $animalsF = $plantsF+1;//68
+            $animalsF = $plantsF+1;
+            //icons
+                $cat_url = Storage::disk('public')->url('Icons/cat.PNG');
+                $bird_url = Storage::disk('public')->url('Icons/bird.PNG');
+                $turtle_url = Storage::disk('public')->url('Icons/turtle.PNG');
+                $frog_url = Storage::disk('public')->url('Icons/frog.PNG');
+                $snake_url = Storage::disk('public')->url('Icons/snake.PNG');
+                $salamander_url = Storage::disk('public')->url('Icons/salamander.PNG');
+                $fly_url = Storage::disk('public')->url('Icons/fly.PNG');
+                $butterfly_url = Storage::disk('public')->url('Icons/butterfly.PNG');
+                $bat_url = Storage::disk('public')->url('Icons/bat.PNG');
+                //$leaf_url = Storage::disk('public')->url('Icons/leaf.PNG');
             $user->words()->createMany([
                 ['id' => $animals+1, 'text' => 'Animal', 'color' => $default_color],
                 ['id' => $animals+2, 'text' => 'Pet', 'color' => $default_color],
                 ['id' => $animals+3, 'text' => 'Dog', 'color' => $default_color],
-                ['id' => $animals+4, 'text' => 'Cat', 'color' => $default_color],
+                ['id' => $animals+4, 'text' => 'Cat', 'color' => $default_color, 'icon' => $cat_url],
                 ['id' => $animals+5, 'text' => 'Mammal', 'color' => $default_color],
-                ['id' => $animals+6, 'text' => 'Bird', 'color' => $default_color],
-                ['id' => $animals+7, 'text' => 'Reptile', 'color' => $default_color],
-                ['id' => $animals+8, 'text' => 'Amphibian', 'color' => $default_color],
+                ['id' => $animals+6, 'text' => 'Bird', 'color' => $default_color, 'icon' => $bird_url],
+                ['id' => $animals+7, 'text' => 'Reptile', 'color' => $default_color, 'icon' => $turtle_url],
+                ['id' => $animals+8, 'text' => 'Amphibian', 'color' => $default_color, 'icon' => $frog_url],
                 ['id' => $animals+9, 'text' => 'Bug', 'color' => $default_color],
                 ['id' => $animals+10, 'text' => 'Rabbit', 'color' => $default_color],
                 ['id' => $animals+11, 'text' => 'Wolf', 'color' => $default_color],
                 ['id' => $animals+12, 'text' => 'Mouse', 'color' => $default_color],
                 ['id' => $animals+13, 'text' => 'Lizard', 'color' => $default_color],
-                ['id' => $animals+14, 'text' => 'Snake', 'color' => $default_color],
-                ['id' => $animals+ 15, 'text' => 'Frog', 'color' => $default_color],
-                ['id' => $animals+ 16, 'text' => 'Salamander', 'color' => $default_color],
+                ['id' => $animals+14, 'text' => 'Snake', 'color' => $default_color, 'icon' => $snake_url],
+                ['id' => $animals+ 15, 'text' => 'Frog', 'color' => $default_color, 'icon' => $frog_url],
+                ['id' => $animals+ 16, 'text' => 'Salamander', 'color' => $default_color, 'icon' => $salamander_url],
                 ['id' => $animals+17, 'text' => 'Spider', 'color' => $default_color],
-                ['id' => $animals+18, 'text' => 'Fly', 'color' => $default_color],
+                ['id' => $animals+18, 'text' => 'Fly', 'color' => $default_color, 'icon' => $fly_url],
                 ['id' => $animals+19, 'text' => 'Crow', 'color' => $default_color],
-                ['id' => $animals+20, 'text' => 'Robin', 'color' => $default_color],
+                ['id' => $animals+20, 'text' => 'Butterfly', 'color' => $default_color, 'icon' => $butterfly_url],
                 ['id' => $animals+21, 'text' => 'Finch', 'color' => $default_color],
-                ['id' => $animals+22, 'text' => 'Blackbird', 'color' => $default_color],
+                ['id' => $animals+22, 'text' => 'Bat', 'color' => $default_color, 'icon' => $bat_url],
                 ['id' => $animals+23, 'text' => 'Hawk', 'color' => $default_color],
                 ['id' => $animals+24, 'text' => 'Eagle', 'color' => $default_color]
             ]);
