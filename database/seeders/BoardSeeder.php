@@ -130,14 +130,14 @@ class BoardSeeder extends Seeder
 
                 //Asthetics
                     //icons
-                        $light_url = Storage::disk('public')->url('Icons/light.png');
+                        $light1_url = Storage::disk('public')->url('Icons/light1.png');
                         $dark_url = Storage::disk('public')->url('Icons/dark.png');
                         $flower_url = Storage::disk('public')->url('Icons/flower.png');
                         $rainbow_url = Storage::disk('public')->url('Icons/rainbow.png');
                         //bold
                     $user->words()->createMany([
                         ['id' => $adjectives+7, 'text' => 'Bold', 'color' => $default_color],
-                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color, 'icon' => $light_url],
+                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color, 'icon' => $light1_url],
                         ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_colo, 'icon' => $dark_url],
                         ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color, 'icon' => $flower_url],
                         ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color, 'icon' => $rainbow_url]
