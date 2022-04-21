@@ -2171,11 +2171,11 @@ class BoardSeeder extends Seeder
             $plants = $medical+6;
             $plantsF = $medicalF+1;
             //icons
-                $plant_url = Storage::disk('public')->url('Icons/plant.png');
-                $tree_url = Storage::disk('public')->url('Icons/tree.png');
-                $bush_url = Storage::disk('public')->url('Icons/bush.png');
-                $grass_url = Storage::disk('public')->url('Icons/grass.png');
-                $leaf_url = Storage::disk('public')->url('Icons/leaf.png');
+                $plant_url = Storage::disk('public')->url('Icons/plant.PNG');
+                $tree_url = Storage::disk('public')->url('Icons/tree.PNG');
+                $bush_url = Storage::disk('public')->url('Icons/bush.PNG');
+                $grass_url = Storage::disk('public')->url('Icons/grass.PNG');
+                $leaf_url = Storage::disk('public')->url('Icons/leaf.PNG');
             $user->words()->createMany([
                 ['id' => $plants+1, 'text' => 'Plant', 'color' => $default_color, 'icon' => $plant_url],
                 ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color, 'icon' => $flower_url],
