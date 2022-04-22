@@ -445,7 +445,9 @@ export class Board extends React.Component {
                 {this.state.colorChanged == false ? "Edit Color" : "Color Selected"}
               </button>
               <Modal isOpen={this.state.editColor} className="main-modal-class">
+                <center>
                 <PhotoshopPicker color={this.state.heldTileColor} onChangeComplete={this.handleChangeComplete} onAccept={this.handleColorAccept} onCancel={this.closeColorPicker} />
+                </center>
               </Modal>
                 <label for='file-input-button' className="file-input">
                 {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
@@ -479,7 +481,9 @@ export class Board extends React.Component {
                 {this.state.colorChanged == false ? "Edit Color" : "Color Selected"}
               </button>
               <Modal isOpen={this.state.editColor} className="main-modal-class">
+                <center>
                 <PhotoshopPicker color={this.state.heldTileColor} onChangeComplete={this.handleChangeComplete} onAccept={this.handleColorAccept} onCancel={this.closeColorPicker} />
+                </center>
               </Modal>
                 <label for='file-input-button' className="file-input">
                 {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
