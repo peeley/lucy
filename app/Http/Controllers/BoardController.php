@@ -93,10 +93,10 @@ class BoardController extends Controller
     {
         $board = Board::find($board_id);
         
-        if ($request->color != null)
+/*         if ($request->color != null)
         {
             $request->validate(['color' => new hex_color]);
-        }
+        } */
       
         $url = NULL; 
 
@@ -148,7 +148,6 @@ class BoardController extends Controller
         }
 
         if ($request->color != null) {
-            $request->validate(['color' => new hex_color]);
             $tile->color = $request->color;
         }
 

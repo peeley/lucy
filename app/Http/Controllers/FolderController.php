@@ -52,7 +52,7 @@ class FolderController extends Controller
         }
 
         if ($request->color != null) {
-            $request->validate(['color' => new hex_color]);
+            //$request->validate(['color' => new hex_color]);
             $tile->update(['color' => $request->color]);
         }
 
@@ -84,10 +84,10 @@ class FolderController extends Controller
     {
         $folder = Folder::find($folder_id);
 
-        if ($request->color != null)
+/*         if ($request->color != null)
         {
             $request->validate(['color' => new hex_color]);
-        }
+        } */
       
         $url = NULL; 
 
