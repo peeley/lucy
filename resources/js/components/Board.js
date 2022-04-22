@@ -357,7 +357,9 @@ export class Board extends React.Component {
       this.setState({
         configuringTile: false,
         createModal: false,
-        selectedFile: false
+        selectedFile: false,
+        editColor: false,
+        colorChanged: false,
       }, this.fetchBoardTiles);
     }).catch((error) => {
       const error_message = error.response.data.errors.image == 'undefined' ? 
