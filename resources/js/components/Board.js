@@ -299,7 +299,6 @@ export class Board extends React.Component {
   }
   handleEditSubmit = (event) => {
     event.preventDefault()
-    console.log("form submitted");
     const parentType = this.state.folderPath.length === 1
       ? 'boards'
       : 'folders';
@@ -384,21 +383,18 @@ export class Board extends React.Component {
   }
 
   closeColorPicker = () => {
-    console.log('closed')
     this.setState({
       editColor: false
     });
   }
 
   handleChangeComplete = (color) => {
-    console.log(color.hex)
     this.setState({
       heldTileColor: color.hex,
     });
   }
 
   handleColorAccept = () => {
-    console.log('accepted')
     this.setState({
       colorChanged: true,
       editColor: false
