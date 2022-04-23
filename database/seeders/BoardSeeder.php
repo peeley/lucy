@@ -864,22 +864,21 @@ class BoardSeeder extends Seeder
             $emotion_index = DB::table('words')->max('id');
             $emotionF = DB::table('folders')->max('id');
             //icons urls
-                $happy_url = Storage::disk('public')->url('Icons/happy.PNG');
-                $heart_url = Storage::disk('public')->url('Icons/heart.PNG');
-                $upset_url = Storage::disk('public')->url('Icons/upset.PNG');
-                $sad_url = Storage::disk('public')->url('Icons/sad.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                $happy_url = Storage::disk('public')->url('Icons/happy.png');
+                $heart_url = Storage::disk('public')->url('Icons/heart.png');
+                $upset_url = Storage::disk('public')->url('Icons/upset.png');
+                $sad_url = Storage::disk('public')->url('Icons/sad.png');
+                // $panic_url = Storage::disk('public')->url('Icons/panic.PNG');
+                // $hurt_url = Storage::disk('public')->url('Icons/hurt.PNG');
+                // $scared_url = Storage::disk('public')->url('Icons/scared.PNG');
+                // $care_url = Storage::disk('public')->url('Icons/care.PNG');
+                // $safe_url = Storage::disk('public')->url('Icons/safe.PNG');
+                // $like_url = Storage::disk('public')->url('Icons/like.PNG');
+                // $frustrated_url = Storage::disk('public')->url('Icons/frustrated.PNG');
+                // $hate_url = Storage::disk('public')->url('Icons/hate.PNG');
+                // $miss_url = Storage::disk('public')->url('Icons/miss.PNG');
+                // $excited_url = Storage::disk('public')->url('Icons/excited.PNG');
+                // $proud_url = Storage::disk('public')->url ('Icons/proud.PNG');
             //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $emotion_index+1, 'text' => 'Panic', 'color' => '#ffad33'],
@@ -890,7 +889,7 @@ class BoardSeeder extends Seeder
                 ['id' => $emotion_index+6, 'text' => 'Care', 'color' => '#ccccff'],
                 ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80', 'icon' => $upset_url]],
                 ['id' => $emotion_index+8, 'text' => 'Safe', 'color' => '#e6ffec'],
-                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6', 'icon' => $heart_url], //heart
+                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6', 'icon' => $heart_url],
                 ['id' => $emotion_index+10, 'text' => 'Like', 'color' => '#edc7d1'],
                 ['id' => $emotion_index+11, 'text' => 'Frustrated', 'color' => '#e8b692'],
                 ['id' => $emotion_index+12, 'text' => 'Hate', 'color' => '#ababab'],
@@ -1105,8 +1104,11 @@ class BoardSeeder extends Seeder
             $comfort = DB::table('words')->max('id');
             $comfortF = DB::table('folders')->max('id');
             //icons urls
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-            //, 'icon' => $THING_url
+                // $blanket_url = Storage::disk('public')->url('Icons/blanket.png');
+                // $stuffed_animal_url = Storage::disk('public')->url('Icons/stuffed-animal.PNG');
+                // $hug_url = Storage::disk('public')->url('Icons/hug.PNG');
+                // $pressure_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $pressure_url
             $user->words()->createMany([
                 ['id' => $comfort+1, 'text' => 'Comfort', 'color' => '#cceeff'],
                 ['id' => $comfort+2, 'text' => 'Blanket', 'color' => $default_color],
@@ -1137,10 +1139,10 @@ class BoardSeeder extends Seeder
 
         //Quantity
             $quantity = $comfort+7;
-            $quantityF = $comfortF+1;//37
+            $quantityF = $comfortF+1;
             $quantity_color = '#8cedb9';
             $user->words()->createMany([
-                ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],//125
+                ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],
                 ['id' => $quantity+2, 'text' => 'Less', 'color' => $quantity_color],
                 ['id' => $quantity+3, 'text' => 'Lot', 'color' => $quantity_color],
                 ['id' => $quantity+4, 'text' => 'Little', 'color' => $quantity_color],
@@ -1347,9 +1349,6 @@ class BoardSeeder extends Seeder
         //Colors
             $colors = $people+29;
             $colorsF = $peopleF+2;
-            //icons urls
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
-            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $colors+1, 'text' => 'Red', 'color' => $default_color],
                 ['id' => $colors+2, 'text' => 'Orange', 'color' => $default_color],
@@ -1395,7 +1394,13 @@ class BoardSeeder extends Seeder
             $patterns = $colors+12;
             $patternsF = $colorsF+1;
             //icons urls
-                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                // $pattern_url = Storage::disk('public')->url('Icons/pattern.PNG');
+                // $spots_url = Storage::disk('public')->url('Icons/spots.PNG');
+                // $stripes_url = Storage::disk('public')->url('Icons/stripes.PNG');
+                // $checkered_url = Storage::disk('public')->url('Icons/checkered.PNG');
+                // $houndstooth_url = Storage::disk('public')->url('Icons/houndstooth.PNG');
+                // $floral_url = Storage::disk('public')->url('Icons/floral.PNG');
+                // $paisley_url = Storage::disk('public')->url('Icons/paisley.PNG');
             //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $patterns+1, 'text' => 'Pattern', 'color' => $default_color],
