@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import Modal from 'react-modal';
 import WordSuggestions from './WordSuggestions.js';
+import  { PhotoshopPicker } from 'react-color';
 
 export class Board extends React.Component {
   constructor(props) {
@@ -29,6 +30,8 @@ export class Board extends React.Component {
       errorModal: false,
       errorMessage: null,
       swapModal: false,
+      editColor: false,
+      colorChanged: false,
       boards: []
     };
 
@@ -303,7 +306,7 @@ export class Board extends React.Component {
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
     const formData = new FormData()
     formData.append("image", event.target.image.files[0])
-    formData.append("color", event.target.color.value)
+    formData.append("color", this.state.heldTileColor)
     formData.append("text", event.target.text.value)
     formData.append("tileId", this.state.heldTileId)
     formData.append("tileType", this.state.heldTileType)
@@ -317,7 +320,9 @@ export class Board extends React.Component {
         this.setState({
           configuringTile: false,
           editModal: false,
-          selectedFile: false
+          selectedFile: false,
+          editColor: false,
+          colorChanged: false,
         }, this.fetchBoardTiles);
       }).catch((error) => {
         const error_message = error.response.data.errors.image == 'undefined' ? 
@@ -338,7 +343,7 @@ export class Board extends React.Component {
     const parentId = this.state.boardStack[this.state.boardStack.length - 1].id;
     const formData = new FormData()
     formData.append("image", event.target.image.files[0])
-    formData.append("color", event.target.color.value)
+    formData.append("color", this.state.heldTileColor)
     formData.append("text", event.target.text.value)
     formData.append("board_x", this.state.heldTileColumn + 1)
     formData.append("board_y", this.state.heldTileRow + 1)
@@ -352,7 +357,9 @@ export class Board extends React.Component {
       this.setState({
         configuringTile: false,
         createModal: false,
-        selectedFile: false
+        selectedFile: false,
+        editColor: false,
+        colorChanged: false,
       }, this.fetchBoardTiles);
     }).catch((error) => {
       const error_message = error.response.data.errors.image == 'undefined' ? 
@@ -369,6 +376,31 @@ export class Board extends React.Component {
     this.setState({
       selectedFile: true
     });
+  }
+
+  openColorPicker = () => {
+    this.setState({
+      editColor: true
+    });
+  }
+
+  closeColorPicker = () => {
+    this.setState({
+      editColor: false
+    });
+  }
+
+  handleChangeComplete = (color) => {
+    this.setState({
+      heldTileColor: color.hex,
+    });
+  }
+
+  handleColorAccept = () => {
+    this.setState({
+      colorChanged: true,
+      editColor: false
+    })
   }
 
   render() {
@@ -411,13 +443,14 @@ export class Board extends React.Component {
                 placeholder={this.state.heldTileText}
                 className="modal-button"
               />
-              {/*TODO: make color selection more user friendly */}
-                <input
-                  name="color"
-                  type="text"
-                  placeholder={this.state.heldTileColor}
-                  className="modal-button"
-                />
+              <button className="modal-button" type="button" onClick={this.openColorPicker}>
+                {this.state.colorChanged == false ? "Edit Color" : "Color Selected"}
+              </button>
+              <Modal isOpen={this.state.editColor} className="main-modal-class">
+                <center>
+                <PhotoshopPicker color={this.state.heldTileColor} onChangeComplete={this.handleChangeComplete} onAccept={this.handleColorAccept} onCancel={this.closeColorPicker} />
+                </center>
+              </Modal>
                 <label for='file-input-button' className="file-input">
                 {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
                 </label>
@@ -446,13 +479,14 @@ export class Board extends React.Component {
                   placeholder="Text"
                   className="modal-button"
                 />
-                {/*TODO: make color selection more user friendly */}
-                <input
-                  name="color"
-                  type="text"
-                  placeholder="Color (Hexadecimal)"
-                  className="modal-button"
-                />
+              <button className="modal-button" type="button" onClick={this.openColorPicker}>
+                {this.state.colorChanged == false ? "Edit Color" : "Color Selected"}
+              </button>
+              <Modal isOpen={this.state.editColor} className="main-modal-class">
+                <center>
+                <PhotoshopPicker color={this.state.heldTileColor} onChangeComplete={this.handleChangeComplete} onAccept={this.handleColorAccept} onCancel={this.closeColorPicker} />
+                </center>
+              </Modal>
                 <label for='file-input-button' className="file-input">
                 {this.state.selectedFile == false ? 'Upload Image' : 'Image Selected'} 
                 </label>

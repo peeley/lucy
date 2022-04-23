@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidException;
-use App\Rules\hex_color;
 
 class BoardController extends Controller
 {
@@ -92,11 +91,6 @@ class BoardController extends Controller
     public function addTileToBoard(Request $request, int $board_id)
     {
         $board = Board::find($board_id);
-        
-        if ($request->color != null)
-        {
-            $request->validate(['color' => new hex_color]);
-        }
       
         $url = NULL; 
 
@@ -148,7 +142,6 @@ class BoardController extends Controller
         }
 
         if ($request->color != null) {
-            $request->validate(['color' => new hex_color]);
             $tile->color = $request->color;
         }
 
