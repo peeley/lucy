@@ -26,7 +26,7 @@
 
     @foreach ($boards as $board)
     <li class="home-board board-separator">
-      <div>
+      <div style="display: flex; flex-grow: 1;">
         <a class="home-board-link" href="/boards/{{ $board->id }}"> {{ $board->name }} </a>
       </div>
       <div>

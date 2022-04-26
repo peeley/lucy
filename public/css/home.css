@@ -89,7 +89,7 @@
     border-radius: 10px;
     background-color: #EFEFEF;
     display: flex;
-    height:100%;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
     transition: ease-out 0.15s;
