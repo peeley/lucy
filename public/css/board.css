@@ -88,6 +88,7 @@
 
     text-align: var(--default-text-align);
     font-size: var(--default-font-size);
+    color: black;
 }
 .sentence-bar {
     height: var(--height-relative);
