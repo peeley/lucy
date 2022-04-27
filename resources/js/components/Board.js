@@ -541,22 +541,28 @@ export class Board extends React.Component {
         <button className="settings-button" onClick={this.settingsButtonFunc}>Settings</button>
        
         <div style={{textAlign: "center"}}>
-        <table className="folder-path">
-        {paths}
-        </table>
-        <button disabled={ this.userIsOnBaseBoard() }
-                className="back-folder-button"
-                onClick={this.handleLastFolderButton}>
-          Last Folder
-        </button>
-        <button className="sentence-bar"
-                onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
-        <h2>{this.buildSentence()}</h2>
-        </button>
-        <button className="sentence-speak"
-                onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
-          Speak!
-        </button>
+          <div style={{"display": "flex", "justifyContent": "center"}}>
+            <table className="folder-path">
+              {paths}
+            </table>
+          </div>
+          
+          <div>
+            <button disabled={ this.userIsOnBaseBoard() }
+                    className="back-folder-button"
+                    onClick={this.handleLastFolderButton}>
+              Last Folder
+            </button>
+            <button className="sentence-bar"
+                    onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
+            <h2>{this.buildSentence()}</h2>
+            </button>
+            <button className="sentence-speak"
+                    onClick={() => this.handleSpeakButtonClick(Event, audio_level)}>
+              Speak!
+            </button>
+          </div>
+        
         </div>
         <br/>
         <WordSuggestions sentence={this.buildSentence() + ' '}

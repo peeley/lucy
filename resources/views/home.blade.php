@@ -26,7 +26,7 @@
 
     @foreach ($boards as $board)
     <li class="home-board board-separator">
-      <div>
+      <div style="display: flex; flex-grow: 1;">
         <a class="home-board-link" href="/boards/{{ $board->id }}"> {{ $board->name }} </a>
       </div>
       <div>
@@ -37,7 +37,7 @@
         </form>
         <button onclick="document.getElementById('modal-{{ $board->id }}').style.display='block'"> Edit </button>
         <button style="margin-top: 20px;">
-          <a class="export-link" href="/boards/{{ $board->id }}/export" download>Export</a>
+          <a class="export-link" style="border: none;"href="/boards/{{ $board->id }}/export" download>Export</a>
         </button>
       </div>
 

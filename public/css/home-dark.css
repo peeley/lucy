@@ -71,7 +71,14 @@
     gap: 20px;
     grid-template-columns: 2fr 1fr;
 }
-.home-board a
+.export-link {
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
+    transition: ease-out 0.15s;
+}
+
+.home-board-link
 {
     text-decoration: none;
     font-size: xxx-large;
@@ -81,12 +88,11 @@
     border-radius: 10px;
     background-color: #EFEFEF;
     display: flex;
-    height:100%;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
     transition: ease-out 0.15s;
 }
-
 .home-board > div > button , .home-board > div > form > button
 {
     width: 100%;
