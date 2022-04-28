@@ -108,6 +108,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: black;
 }
 .sentence-backspace {
     height: var(--height-relative);
@@ -118,6 +119,7 @@
     vertical-align: var(--vertical-align);
 
     background-color: #6c6fff;
+    color: black;
 
     border: var(--default-border);
     border-radius: var(--default-border-radius);
@@ -134,7 +136,8 @@
     vertical-align: var(--vertical-align);
 
     background-color:#d0f0ff;
-    
+    color: black;
+
     border: var(--default-border);
     border-radius: var(--default-border-radius);
 
@@ -150,6 +153,7 @@
     vertical-align: var(--vertical-align);
 
     background-color: #90eeac;
+    color: black;
 
     border: var(--default-border);
     border-radius: var(--default-border-radius);
@@ -192,6 +196,7 @@
 }
 .swap-button {
     background-color: aliceblue;
+    color: black;
 
     position: fixed;
     width: 10%;

@@ -6,7 +6,6 @@
 }
 html {
     font-family: Helvetica, Arial, sans-serif;
-    color: black;
 }
 body {
     background-color: #b4b2c2; /* Default body background color */
@@ -18,6 +17,7 @@ button { /* NOT the same as board tiles */
     text-align: center;
     box-shadow: inset 0 0 0 0 green;
     transition: ease-out 0.15s;
+    color: black;
 }
 button:hover { /* Default hover effect */
     box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
@@ -33,6 +33,7 @@ button:active:hover { /* Default click/touch hold effect*/
     font-size: x-large;
     margin-right: 15px;
     margin-top: 15px;
+    color: black;
 }
 .general-heading {
     text-align: center;

@@ -103,6 +103,7 @@
     font-size: xx-large;
     align-self: center;
     background-color: #EFEFEF ;
+    color: black;
     transition: ease-out 0.15s;
 }
 
@@ -123,7 +124,7 @@
     margin:auto;
     font-size: xx-large;
     align-self: center;
-
+    color: black;
     transition: ease-out 0.15s;
 }
 .home-create-board-button:hover
