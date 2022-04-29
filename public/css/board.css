@@ -164,6 +164,70 @@
     box-shadow: var(--default-box-shadow);
     transition: var(--default-transition);
 }
+/* makes the functionality buttons wider and reduces padding for ipad screens*/
+@media only screen and (max-width: 1536px) 
+{
+    .settings-button{
+        height: var(--height-relative);
+        width: 150px;
+    
+        margin: 5px;
+        margin-top: var(--vertical-margin);
+        vertical-align: var(--vertical-align);
+    
+        background-color:#56a495;
+        
+        border: var(--default-border);
+        border-radius: var(--default-border-radius);
+    
+        text-align: var(--default-text-align);
+        font-size: var(--default-font-size);
+        color: black;
+    }
+    .sentence-backspace {
+        height: var(--height-relative);
+        width: 150px;
+    
+        margin: 5px;
+        margin-top: var(--top-vertical-margin);
+        vertical-align: var(--vertical-align);
+    
+        background-color: #6c6fff;
+        color: black;
+    
+        border: var(--default-border);
+        border-radius: var(--default-border-radius);
+    
+        text-align: var(--default-text-align);
+        font-size: var(--default-font-size);
+    }
+    .sentence-clear {
+        height: var(--height-relative);
+        width: 150px;
+    
+        margin: 5px;
+        margin-top: var(--top-vertical-margin);
+        vertical-align: var(--vertical-align);
+    
+        background-color:#d0f0ff;
+        color: black;
+    
+        border: var(--default-border);
+        border-radius: var(--default-border-radius);
+    
+        text-align: var(--default-text-align);
+        font-size: var(--default-font-size);
+    }
+
+    .back-button {
+        width: 150px;
+        height: 12%;
+        font-size: x-large;
+        margin: 5px;
+        margin-top: var(--top-vertical-margin);
+        color: black;
+    }
+}
 .guest-default-board {
     height: var(--height-relative);
     width: 30%;

@@ -8,6 +8,8 @@
     width: 150px;
     text-align: center;
     font-size: x-large;
+    color: black;
+    vertical-align: top;
 }
 .form-popup {
     display: none;
@@ -38,4 +40,32 @@
     height: 50px;
     width: 70%;
     font-size: x-large;
+    background-color: lightgoldenrodyellow;
+}
+
+@media only screen and (max-width: 1536px)
+{
+    .update-settings-button { /*not actually a button element so need to keep some button css*/
+        background-color: lightgoldenrodyellow; /*Had to make it explicit for the dark mode to work properly*/
+        color: black;
+        border-radius: 5px;
+        border: 2px solid black;
+        height: 50px;
+        width: 70%;
+        font-size: medium;
+        transition: ease-out 0.15s;
+    }
+    .update-settings-button:hover { /* Default hover effect */
+        box-shadow: inset 0 0 100px 0 rgb(32, 42, 178);
+        color: white;
+        font-size: small;
+    }
+    .close-settings-button {
+        height: 50px;
+        width: 70%;
+        font-size: large;
+        background-color: lightgoldenrodyellow;
+        border-radius: 5px;
+        border: 2px solid black;
+    }
 }
