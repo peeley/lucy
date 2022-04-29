@@ -141,7 +141,7 @@ class BoardSeeder extends Seeder
                     $user->words()->createMany([
                         ['id' => $adjectives+7, 'text' => 'Bold', 'color' => $default_color],
                         ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color, 'icon' => $light1_url],
-                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_colo, 'icon' => $dark_url],
+                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_color, 'icon' => $dark_url],
                         ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color, 'icon' => $flower_url],
                         ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color, 'icon' => $rainbow_url]
                     ]);
