@@ -397,7 +397,7 @@ class BoardSeeder extends Seeder
                         ['id' => $adjectives+55, 'text' => 'Soft', 'color' => $default_color, 'icon' => $soft_url],
                         ['id' => $adjectives+56, 'text' => 'Rough', 'color' => $default_color, 'icon' => $rough_url],
                         ['id' => $adjectives+57, 'text' => 'Sticky', 'color' => $default_color]
-                        ['id' => $adjectives+58, 'text' => 'Stretchy', 'color' => $default_color, 'icon' => $stretchy_url],
+                        ['id' => $adjectives+58, 'text' => 'Stretchy', 'color' => $default_color] //, 'icon' => $stretchy_url],
                         ['id' => $adjectives+59, 'text' => 'Synthetic', 'color' => $default_color]
                     ]);
                     $user->folders()->find($adjectivesF+11)->words()->attach([
