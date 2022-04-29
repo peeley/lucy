@@ -32,7 +32,7 @@
     cursor:default;
 }
 
-.default-tile {
+.default-tile, .folder-tile {
     height: var(--tile-height);
     width: var(--tile-width);
     
@@ -48,31 +48,32 @@
     box-shadow: var(--default-box-shadow);
     transition: var(--default-transition);
 }
-.folder-tile {
-    display: inline-flex;
-    justify-content: center;
-    margin: var(--margin);
-    margin-top: var(--vertical-margin);
-    vertical-align: var(--vertical-align);
-
-    border: 5px double black;
-    border-radius: var(--default-border-radius);
-
-    padding: var(--padding);
-    text-align: var(--default-text-align);
-    font-size: var(--default-font-size);
-
-    box-shadow: var(--default-box-shadow);
-    transition: var(--default-transition);
+.folder-tile { /* Base folder css retrieved from: http://jsfiddle.net/hK4pt/ */
+    margin: 0 auto;
+    margin-top: 50px;
+    position: relative;
 }
-.default-tile:hover {
+.folder-tile:before {
+    content: '';
+    width: 50%;
+    height: 8px;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-radius: 0 20px 0 0;
+    background-color: gold;
+    position: absolute;
+    top: -7px;
+    left: 0px;
+}
+.default-tile:hover, .folder-tile:hover {
     box-shadow: inset 0 0 10px 0 black;
     color: black;
 }
-.default-tile:active:hover {
+.default-tile:active:hover, .folder-tile:active:hover {
     box-shadow: inset 0 0 100px 0 black;
     color: white;
 }
+
 .back-folder-button, .settings-button{
     height: var(--height-relative);
     width: var(--control-button-width);

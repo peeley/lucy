@@ -125,7 +125,7 @@ export class Board extends React.Component {
         const tileType = tile == 'blank' ? 'blank' : (tile.contents ? 'folder' : 'word');
         const tileText = tile.contents ? tile.name : tile.text;
         return <td style={{ "backgroundColor": `${tile.color}`}}
-            className="default-tile"
+            className={tileType === 'folder' ? 'folder-tile' : 'default-tile'}
                    onClick={tileType == 'blank'
                             ? () => {}
                             : (tile.contents
