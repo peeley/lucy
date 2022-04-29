@@ -52,9 +52,6 @@
     margin: 0 auto;
     margin-top: 50px;
     position: relative;
-    border-right: 3px solid black;
-    border-radius: 0 6px 6px 6px;
-    box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.59);
 }
 .folder-tile:before {
     content: '';
@@ -65,7 +62,7 @@
     border-radius: 0 20px 0 0;
     background-color: gold;
     position: absolute;
-    top: -4px;
+    top: -7px;
     left: 0px;
 }
 .default-tile:hover, .folder-tile:hover {
