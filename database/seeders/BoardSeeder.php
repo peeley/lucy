@@ -36,6 +36,9 @@ class BoardSeeder extends Seeder
         //this is the syntax I was using for the folder and word index updates. I couldn't make it work. But I am leaving them here in case we wanna try later
             // $adjectives = DB::table('words')->max('id');
             // $adjectivesF = DB::table('folders')->max('id');
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $heavy_url
         
         //main board words
             //icons urls
@@ -46,41 +49,59 @@ class BoardSeeder extends Seeder
                 $no_url = Storage::disk('public')->url('Icons/no.png');
                 $talk_url = Storage::disk('public')->url('Icons/talk.png');
                 $okay_url = Storage::disk('public')->url('Icons/okay.png');
-
+                $i_want_url = Storage::disk('public')->url('Icons/i-want.png');
 
             $user->words()->createMany([
                 ['id' => $empty, 'text' => '+', 'color' => '#b4b2c2'],
-                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],//2
+                ['id' => $board_index + 1, 'text' => 'Hello', 'color' => '#e6ffe6', 'icon' => $hello_url],
                 ['id' => $board_index + 2, 'text' => 'Goodbye', 'color' => '#ffe6cc', 'icon' => $bye_url],
                 ['id' => $board_index + 3, 'text' => 'Yay!', 'color' => '#ffff99', 'icon' => $yay_url],
                 ['id' => $board_index + 4, 'text' => 'Yes', 'color' => '#ccffcc', 'icon' => $yes_url],
                 ['id' => $board_index + 5, 'text' => 'No', 'color' => '#ffcccc', 'icon' => $no_url],
                 ['id' => $board_index + 6, 'text' => 'Talk', 'color' => '#ffecb3', 'icon' => $talk_url],
                 ['id' => $board_index + 7, 'text' => 'Okay', 'color' => '#eeffe6', 'icon' => $okay_url],
-                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color]
+                ['id' => $board_index + 8, 'text' => 'I Want', 'color' => $default_color, 'icon' => $i_want_url]
             ]);
 
         //Adjictives
-            $adjectives = $board_index+8;
-            $adjectivesF = 1;
+            $adjectives = DB::table('words')->max('id');
+            $adjectivesF = DB::table('folders')->max('id');
+
+            //icons urls
+                $dirty_url = Storage::disk('public')->url('Icons/dirty.png');
+                $clean_url = Storage::disk('public')->url('Icons/clean.png');
+                $light_url = Storage::disk('public')->url('Icons/light.png');
+                $heavy_url = Storage::disk('public')->url('Icons/heavy.png');
+                $asthetics_url = Storage::disk('public')->url('Icons/asthetics.png');
+                $people_url = Storage::disk('public')->url('Icons/people.png');
+                $sensory_url = Storage::disk('public')->url('Icons/sensory.png');
+                $movement_url = Storage::disk('public')->url('Icons/movement.png');
+                $speed_url = Storage::disk('public')->url('Icons/speed.png');
+                $distance_url = Storage::disk('public')->url('Icons/distance.png');
+                $direction_url = Storage::disk('public')->url('Icons/direction.png');
+                $size_url = Storage::disk('public')->url('Icons/size.png');
+                $texture_url = Storage::disk('public')->url('Icons/texture.png');
+                //adjictives
+                //opinions
+
             $user->words()->createMany([
-                ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color],
-                ['id' => $adjectives+4, 'text' => 'Clean', 'color' => $default_color],
-                ['id' => $adjectives+5, 'text' => 'Light', 'color' => $default_color],
-                ['id' => $adjectives+6, 'text' => 'Heavy', 'color' => $default_color]
+                ['id' => $adjectives+3, 'text' => 'Dirty', 'color' => $default_color, 'icon' => $dirty_url],
+                ['id' => $adjectives+4, 'text' => 'Clean', 'color' => $default_color, 'icon' => $clean_url],
+                ['id' => $adjectives+5, 'text' => 'Light', 'color' => $default_color, 'icon' => $light_url],
+                ['id' => $adjectives+6, 'text' => 'Heavy', 'color' => $default_color, 'icon' => $heavy_url]
             ]);
             $user->folders()->createMany([
                 ['id' => $adjectivesF+1, 'name' => 'Adjectives', 'color' => $default_color],
-                ['id' => $adjectivesF+2, 'name' => 'Asthetics', 'color' => $default_color],
-                ['id' => $adjectivesF+3, 'name' => 'People', 'color' => $default_color],
+                ['id' => $adjectivesF+2, 'name' => 'Asthetics', 'color' => $default_color, 'icon' => $asthetics_url],
+                ['id' => $adjectivesF+3, 'name' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $adjectivesF+4, 'name' => 'Opinions', 'color' => $default_color],
-                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color],
-                ['id' => $adjectivesF+6, 'name' => 'Movement', 'color' => $default_color],
-                ['id' => $adjectivesF+7, 'name' => 'Speed', 'color' => $default_color],
-                ['id' => $adjectivesF+8, 'name' => 'Distance', 'color' => $default_color],
-                ['id' => $adjectivesF+9, 'name' => 'Direction', 'color' => $default_color],
-                ['id' => $adjectivesF+10, 'name' => 'Size', 'color' => $default_color],
-                ['id' => $adjectivesF+11, 'name' => 'Texture', 'color' => $default_color]
+                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color, 'icon' => $sensory_url],
+                ['id' => $adjectivesF+6, 'name' => 'Movement', 'color' => $default_color, 'icon' => $movement_url],
+                ['id' => $adjectivesF+7, 'name' => 'Speed', 'color' => $default_color, 'icon' => $speed_url],
+                ['id' => $adjectivesF+8, 'name' => 'Distance', 'color' => $default_color, 'icon' => $distance_url],
+                ['id' => $adjectivesF+9, 'name' => 'Direction', 'color' => $default_color, 'icon' => $direction_url],
+                ['id' => $adjectivesF+10, 'name' => 'Size', 'color' => $default_color, 'icon' => $size_url],
+                ['id' => $adjectivesF+11, 'name' => 'Texture', 'color' => $default_color, 'icon' => $texture_url]
             ]);
             $user->folders()->find($adjectivesF+1)->words()->attach([
                 $adjectives+3 => ['board_x' => 1, 'board_y' => 1],
@@ -111,12 +132,18 @@ class BoardSeeder extends Seeder
             //it would probably be nice to breakup the adj index into catigory types, it's currently too messy to manage that
 
                 //Asthetics
+                    //icons
+                        $light1_url = Storage::disk('public')->url('Icons/light1.png');
+                        $dark_url = Storage::disk('public')->url('Icons/dark.png');
+                        $flower_url = Storage::disk('public')->url('Icons/flower.png');
+                        $rainbow_url = Storage::disk('public')->url('Icons/rainbow.png');
+                        //bold
                     $user->words()->createMany([
                         ['id' => $adjectives+7, 'text' => 'Bold', 'color' => $default_color],
-                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color],
-                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_color],
-                        ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color],
-                        ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color]
+                        ['id' => $adjectives+8, 'text' => 'Light', 'color' => $default_color, 'icon' => $light1_url],
+                        ['id' => $adjectives+9, 'text' => 'Dark', 'color' => $default_color, 'icon' => $dark_url],
+                        ['id' => $adjectives+10, 'text' => 'Pretty', 'color' => $default_color, 'icon' => $flower_url],
+                        ['id' => $adjectives+11, 'text' => 'Colorful', 'color' => $default_color, 'icon' => $rainbow_url]
                     ]);
                     $user->folders()->find($adjectivesF+2)->words()->attach([
                         $adjectives+9 => ['board_x' => 1, 'board_y' => 1],
@@ -134,15 +161,22 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //People
+                    //icons
+                        $attractive_url = Storage::disk('public')->url('Icons/attractive.png');
+                        //kind
+                        //mean
+                        //beautiful
+                        //handsome
+                        //goregous
                     $user->words()->createMany([
                         ['id' => $adjectives+12, 'text' => 'Kind', 'color' => $default_color],
                         ['id' => $adjectives+13, 'text' => 'Mean', 'color' => $default_color],
-                        ['id' => $adjectives+14, 'text' => 'Gay', 'color' => $default_color],
-                        ['id' => $adjectives+15, 'text' => 'Queer', 'color' => $default_color],
-                        ['id' => $adjectives+16, 'text' => 'Attractive', 'color' => $default_color],
+                        ['id' => $adjectives+14, 'text' => 'Gay', 'color' => $default_color, 'icon' => $rainbow_url],
+                        ['id' => $adjectives+15, 'text' => 'Queer', 'color' => $default_color, 'icon' => $rainbow_url],
+                        ['id' => $adjectives+16, 'text' => 'Attractive', 'color' => $default_color, 'icon' => $attractive_url],
                         ['id' => $adjectives+17, 'text' => 'Beautiful', 'color' => $default_color],
                         ['id' => $adjectives+18, 'text' => 'Handsome', 'color' => $default_color],
-                        ['id' => $adjectives+19, 'text' => 'Goregous', 'color' => $default_color]
+                        ['id' => $adjectives+19, 'text' => 'Gorgeous', 'color' => $default_color]
                     ]);
                     $user->folders()->find($adjectivesF+3)->words()->attach([
                         $adjectives+12 => ['board_x' => 1, 'board_y' => 1],
@@ -161,6 +195,13 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Opinions
+                    //icons
+                        //great
+                        //good
+                        //bad
+                        //favorite
+                        //worst
+                        //best
                     $user->words()->createMany([
                         ['id' => $adjectives+20, 'text' => 'Great', 'color' => $default_color],
                         ['id' => $adjectives+21, 'text' => 'Good', 'color' => $default_color],
@@ -186,14 +227,22 @@ class BoardSeeder extends Seeder
                     ]);
 
                 //Sensory
+                    //icons
+                        $fire_url = Storage::disk('public')->url('Icons/fire.png');
+                        $snowflake_url = Storage::disk('public')->url('Icons/snowflake.png');
+                        $wet_url = Storage::disk('public')->url('Icons/wet.png');
+                        $dry_url = Storage::disk('public')->url('Icons/dry.png');
+                        $hard_url = Storage::disk('public')->url('Icons/hard.png');
+                        $loud_url = Storage::disk('public')->url('Icons/loud.png');
+                        $quiet_url = Storage::disk('public')->url('Icons/quiet.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+1, 'text' => 'Hot', 'color' => $default_color],
-                        ['id' => $adjectives+2, 'text' => 'Cold', 'color' => $default_color],
-                        ['id' => $adjectives+26, 'text' => 'Wet', 'color' => $default_color],
-                        ['id' => $adjectives+27, 'text' => 'Dry', 'color' => $default_color],
-                        ['id' => $adjectives+28, 'text' => 'Hard', 'color' => $default_color],
-                        ['id' => $adjectives+29, 'text' => 'Loud', 'color' => $default_color],
-                        ['id' => $adjectives+30, 'text' => 'Quiet', 'color' => $default_color]
+                        ['id' => $adjectives+1, 'text' => 'Hot', 'color' => $default_color, 'icon' => $fire_url],
+                        ['id' => $adjectives+2, 'text' => 'Cold', 'color' => $default_color, 'icon' => $snowflake_url],
+                        ['id' => $adjectives+26, 'text' => 'Wet', 'color' => $default_color, 'icon' => $wet_url],
+                        ['id' => $adjectives+27, 'text' => 'Dry', 'color' => $default_color, 'icon' => $dry_url],
+                        ['id' => $adjectives+28, 'text' => 'Hard', 'color' => $default_color, 'icon' => $hard_url],
+                        ['id' => $adjectives+29, 'text' => 'Loud', 'color' => $default_color, 'icon' => $loud_url],
+                        ['id' => $adjectives+30, 'text' => 'Quiet', 'color' => $default_color, 'icon' => $quiet_url]
                     ]);
                     $user->folders()->find($adjectivesF+5)->words()->attach([
                         $adjectives+26 => ['board_x' => 1, 'board_y' => 1],
@@ -211,9 +260,12 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Speed
+                    //icons
+                        $fast_url = Storage::disk('public')->url('Icons/fast.png');
+                        $slow_url = Storage::disk('public')->url('Icons/slow.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+31, 'text' => 'Fast', 'color' => $default_color],
-                        ['id' => $adjectives+32, 'text' => 'Slow', 'color' => $default_color]
+                        ['id' => $adjectives+31, 'text' => 'Fast', 'color' => $default_color, 'icon' => $fast_url],
+                        ['id' => $adjectives+32, 'text' => 'Slow', 'color' => $default_color, 'icon' => $slow_url]
                     ]);
                     $user->folders()->find($adjectivesF+7)->words()->attach([
                         $adjectives+31 => ['board_x' => 1, 'board_y' => 1],
@@ -231,10 +283,13 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Distance
+                    //icons
+                        $near_url = Storage::disk('public')->url('Icons/near.png');
+                        $far_url = Storage::disk('public')->url('Icons/far.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+33, 'text' => 'Near', 'color' => $default_color],
-                        ['id' => $adjectives+34, 'text' => 'Far', 'color' => $default_color],
-                        ['id' => $adjectives+35, 'text' => 'Close', 'color' => $default_color]
+                        ['id' => $adjectives+33, 'text' => 'Near', 'color' => $default_color, 'icon' => $near_url],
+                        ['id' => $adjectives+34, 'text' => 'Far', 'color' => $default_color, 'icon' => $far_url],
+                        ['id' => $adjectives+35, 'text' => 'Close', 'color' => $default_color, 'icon' => $near_url] //same as near
                     ]);
                     $user->folders()->find($adjectivesF+8)->words()->attach([
                         $adjectives+12 => ['board_x' => 1, 'board_y' => 1],
@@ -252,13 +307,19 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Direction
+                    //icons
+                        $vertical_url = Storage::disk('public')->url('Icons/vertical.png');
+                        $horizontal_url = Storage::disk('public')->url('Icons/horizontal.png');
+                        $left_url = Storage::disk('public')->url('Icons/back.png');
+                        $upper_url = Storage::disk('public')->url('Icons/upper.png');
+                        $lower_url = Storage::disk('public')->url('Icons/lower.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+36, 'text' => 'Vertical', 'color' => $default_color],
-                        ['id' => $adjectives+37, 'text' => 'Horizontal', 'color' => $default_color],
-                        ['id' => $adjectives+38, 'text' => 'Right', 'color' => $default_color],
-                        ['id' => $adjectives+39, 'text' => 'Left', 'color' => $default_color],
-                        ['id' => $adjectives+40, 'text' => 'Upper', 'color' => $default_color],
-                        ['id' => $adjectives+41, 'text' => 'Lower', 'color' => $default_color]
+                        ['id' => $adjectives+36, 'text' => 'Vertical', 'color' => $default_color, 'icon' => $vertical_url], 
+                        ['id' => $adjectives+37, 'text' => 'Horizontal', 'color' => $default_color, 'icon' => $horizontal_url],
+                        ['id' => $adjectives+38, 'text' => 'Right', 'color' => $default_color, 'icon' => $direction_url],
+                        ['id' => $adjectives+39, 'text' => 'Left', 'color' => $default_color, 'icon' => $left_url],
+                        ['id' => $adjectives+40, 'text' => 'Upper', 'color' => $default_color, 'icon' => $upper_url],
+                        ['id' => $adjectives+41, 'text' => 'Lower', 'color' => $default_color, 'icon' => $lower_url]
                     ]);
                     $user->folders()->find($adjectivesF+9)->words()->attach([
                         $adjectives+36 => ['board_x' => 1, 'board_y' => 1],
@@ -283,16 +344,25 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Size
+                    //icons
+                        $long_url = Storage::disk('public')->url('Icons/long.png');
+                        $tall_url = Storage::disk('public')->url('Icons/tall.png');
+                        $short_url = Storage::disk('public')->url('Icons/short.png');
+                        $big_url = Storage::disk('public')->url('Icons/big.png');
+                        $medium_url = Storage::disk('public')->url('Icons/medium.png');
+                        $small_url = Storage::disk('public')->url('Icons/small.png');
+                        $lightq_url = Storage::disk('public')->url('Icons/light-q.png');
+                        $heavyq_url = Storage::disk('public')->url('Icons/heavy.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+42, 'text' => 'Long', 'color' => $default_color],
-                        ['id' => $adjectives+43, 'text' => 'Tall', 'color' => $default_color],
-                        ['id' => $adjectives+44, 'text' => 'Short', 'color' => $default_color],
-                        ['id' => $adjectives+45, 'text' => 'Big', 'color' => $default_color],
-                        ['id' => $adjectives+46, 'text' => 'Large', 'color' => $default_color],
-                        ['id' => $adjectives+47, 'text' => 'Medium', 'color' => $default_color],
-                        ['id' => $adjectives+48, 'text' => 'Small', 'color' => $default_color],
-                        ['id' => $adjectives+49, 'text' => 'Light', 'color' => $default_color],
-                        ['id' => $adjectives+50, 'text' => 'Heavy', 'color' => $default_color]
+                        ['id' => $adjectives+42, 'text' => 'Long', 'color' => $default_color, 'icon' => $long_url],
+                        ['id' => $adjectives+43, 'text' => 'Tall', 'color' => $default_color, 'icon' => $tall_url],
+                        ['id' => $adjectives+44, 'text' => 'Short', 'color' => $default_color, 'icon' => $short_url],
+                        ['id' => $adjectives+45, 'text' => 'Big', 'color' => $default_color, 'icon' => $big_url],
+                        ['id' => $adjectives+46, 'text' => 'Large', 'color' => $default_color, 'icon' => $big_url],
+                        ['id' => $adjectives+47, 'text' => 'Medium', 'color' => $default_color, 'icon' => $medium_url],
+                        ['id' => $adjectives+48, 'text' => 'Small', 'color' => $default_color, 'icon' => $small_url],
+                        ['id' => $adjectives+49, 'text' => 'Light', 'color' => $default_color, 'icon' => $lightq_url],
+                        ['id' => $adjectives+50, 'text' => 'Heavy', 'color' => $default_color, 'icon' => $heavyq_url]
                     ]);
                     $user->folders()->find($adjectivesF+10)->words()->attach([
                         $adjectives+42 => ['board_x' => 1, 'board_y' => 1],
@@ -312,15 +382,22 @@ class BoardSeeder extends Seeder
                     ]);
                 
                 //Texture
+                    //icons
+                        $ribbed_url = Storage::disk('public')->url('Icons/ribbed.png');
+                        $fuzzy_url = Storage::disk('public')->url('Icons/fuzzy.png');
+                        $bumpy_url = Storage::disk('public')->url('Icons/bumpy.png');
+                        $soft_url = Storage::disk('public')->url('Icons/soft.png');
+                        $rough_url = Storage::disk('public')->url('Icons/rough.png');
+                        $stretchy_url = Storage::disk('public')->url('Icons/stretchy.png');
                     $user->words()->createMany([
-                        ['id' => $adjectives+51, 'text' => 'Texture', 'color' => $default_color],
-                        ['id' => $adjectives+52, 'text' => 'Ribbed', 'color' => $default_color],
-                        ['id' => $adjectives+53, 'text' => 'Fuzzy', 'color' => $default_color],
-                        ['id' => $adjectives+54, 'text' => 'Bumpy', 'color' => $default_color],
-                        ['id' => $adjectives+55, 'text' => 'Soft', 'color' => $default_color],
-                        ['id' => $adjectives+56, 'text' => 'Rough', 'color' => $default_color],
+                        ['id' => $adjectives+51, 'text' => 'Texture', 'color' => $default_color, 'icon' => $texture_url],
+                        ['id' => $adjectives+52, 'text' => 'Ribbed', 'color' => $default_color, 'icon' => $ribbed_url],
+                        ['id' => $adjectives+53, 'text' => 'Fuzzy', 'color' => $default_color, 'icon' => $fuzzy_url],
+                        ['id' => $adjectives+54, 'text' => 'Bumpy', 'color' => $default_color, 'icon' => $bumpy_url], 
+                        ['id' => $adjectives+55, 'text' => 'Soft', 'color' => $default_color, 'icon' => $soft_url],
+                        ['id' => $adjectives+56, 'text' => 'Rough', 'color' => $default_color, 'icon' => $rough_url],
                         ['id' => $adjectives+57, 'text' => 'Sticky', 'color' => $default_color],
-                        ['id' => $adjectives+58, 'text' => 'Stretchy', 'color' => $default_color],
+                        ['id' => $adjectives+58, 'text' => 'Stretchy', 'color' => $default_color, 'icon' => $stretchy_url],
                         ['id' => $adjectives+59, 'text' => 'Synthetic', 'color' => $default_color]
                     ]);
                     $user->folders()->find($adjectivesF+11)->words()->attach([
@@ -342,12 +419,12 @@ class BoardSeeder extends Seeder
 
 
         //Verbs
-            $verbs = $adjectives+59;
-            $verbsF = $adjectivesF+11;//12
+            $verbs = DB::table('words')->max('id');
+            $verbsF = DB::table('folders')->max('id');//12
 
         //Pronouns
-            $pronoun_index = $verbs;
-            $pronounF = $verbsF;//12
+            $pronoun_index = DB::table('words')->max('id');
+            $pronounF = DB::table('folders')->max('id');
             //colors
                 $first_plural_color = '#ccffe6';
                 $thing_color = '#cceaae';
@@ -361,19 +438,23 @@ class BoardSeeder extends Seeder
                 $pronoun_type_color = '#b77dff';
             
             //icon urls
-                $masculine_url = Storage::disk('public')->url('images/Masculine_symbol_es.png');
-                $feminine_url = Storage::disk('public')->url('images/Feminine_symbol_es.png');
-                $X_neutral_url = Storage::disk('public')->url('images/X_neutral_symbol_es.png');
-                $Z_neutral_url = Storage::disk('public')->url('images/Z_neutral_symbol_es.png');
+                //redo these with transparent background
+                $masculine_url = Storage::disk('public')->url('Icons/masculine.png');
+                $feminine_url = Storage::disk('public')->url('Icons/feminine.png');
+                $X_neutral_url = Storage::disk('public')->url('Icons/xpronoun.png');
+                $Z_neutral_url = Storage::disk('public')->url('Icons/xpronoun.png');
+                $personal_url = Storage::disk('public')->url('Icons/personal.png');
+                $second_url = Storage::disk('public')->url('Icons/second.png');
+                $first_plural_url = Storage::disk('public')->url('Icons/first-plural.png');
 
             $user->folders()->createMany([
                 ['id' => $pronounF+1, 'name' => 'Pronouns', 'color' => $pronoun_color],
-                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color],
-                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color],
-                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color],
+                ['id' => $pronounF+2, 'name' => '1st plural', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                ['id' => $pronounF+3, 'name' => 'Thing', 'color' => $thing_color, 'icon' => $dry_url],
+                ['id' => $pronounF+4, 'name' => '2nd person', 'color' => $second_person_color, 'icon' => $second_url],
                 ['id' => $pronounF+5, 'name' => 'Masculine', 'color' => $masculine_color, 'icon' => $masculine_url],
                 ['id' => $pronounF+6, 'name' => 'Feminine', 'color' => $feminine_color, 'icon' => $feminine_url],
-                ['id' => $pronounF+7, 'name' => 'Plural/Neutral', 'color' => $they_color],
+                ['id' => $pronounF+7, 'name' => 'Plural/Neutral', 'color' => $they_color, 'icon' => $people_url],
                 ['id' => $pronounF+8, 'name' => 'Neutral - X', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
                 ['id' => $pronounF+9, 'name' => 'Neutral - Z', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
                 ['id' => $pronounF+10, 'name' => 'Subject', 'color' => $pronoun_type_color],
@@ -384,11 +465,11 @@ class BoardSeeder extends Seeder
             ]);
       
             $user->words()->createMany([
-                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff'],//24
-                ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff'],
-                ['id' => $pronoun_index + 5, 'text' => 'Myself', 'color' => '#ccd9ff'],
+                ['id' => $pronoun_index + 1, 'text' => 'I', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 2, 'text' => 'Me', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 3, 'text' => 'My', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 4, 'text' => 'Mine', 'color' => '#ccd9ff', 'icon' => $personal_url],
+                ['id' => $pronoun_index + 5, 'text' => 'Myself', 'color' => '#ccd9ff', 'icon' => $personal_url],
                 ['id' => $pronoun_index + 42, 'text' => 'Pronouns', 'color' => $pronoun_color]//66
             ]);
             $user->folders()->find(5)->words()->attach([
@@ -425,11 +506,11 @@ class BoardSeeder extends Seeder
             //pronouns by persons
                 //1st plural
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+6, 'text' => 'We', 'color' => $first_plural_color],//29
-                        ['id' => $pronoun_index+7, 'text' => 'Us', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+8, 'text' => 'Our', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+9, 'text' => 'Ours', 'color' => $first_plural_color],
-                        ['id' => $pronoun_index+10, 'text' => 'Ourselves', 'color' => $first_plural_color]
+                        ['id' => $pronoun_index+6, 'text' => 'We', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+7, 'text' => 'Us', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+8, 'text' => 'Our', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+9, 'text' => 'Ours', 'color' => $first_plural_color, 'icon' => $first_plural_url],
+                        ['id' => $pronoun_index+10, 'text' => 'Ourselves', 'color' => $first_plural_color, 'icon' => $first_plural_url]
                     ]);
                     $user->folders()->find($pronounF+2)->words()->attach([
                         $pronoun_index+6 => ['board_x' => 1, 'board_y' => 1],
@@ -447,9 +528,9 @@ class BoardSeeder extends Seeder
                     ]);
                 //Thing
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+11, 'text' => 'It', 'color' => $thing_color],//34
-                        ['id' => $pronoun_index+12, 'text' => 'Its', 'color' => $thing_color],
-                        ['id' => $pronoun_index+13, 'text' => 'Itself', 'color' => $thing_color]
+                        ['id' => $pronoun_index+11, 'text' => 'It', 'color' => $thing_color, 'icon' => $dry_url],
+                        ['id' => $pronoun_index+12, 'text' => 'Its', 'color' => $thing_color, 'icon' => $dry_url],
+                        ['id' => $pronoun_index+13, 'text' => 'Itself', 'color' => $thing_color, 'icon' => $dry_url]
                     ]);
                     $user->folders()->find($pronounF+3)->words()->attach([
                         $pronoun_index+11 => ['board_x' => 1, 'board_y' => 1],
@@ -467,11 +548,11 @@ class BoardSeeder extends Seeder
                     ]);
                 //2nd person
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+14, 'text' => 'You', 'color' => $second_person_color],//37
-                        ['id' => $pronoun_index+15, 'text' => 'Your', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+16, 'text' => 'Yours', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+17, 'text' => 'Yourself', 'color' => $second_person_color],
-                        ['id' => $pronoun_index+18, 'text' => 'Yourselves', 'color' => $second_person_color]
+                        ['id' => $pronoun_index+14, 'text' => 'You', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+15, 'text' => 'Your', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+16, 'text' => 'Yours', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+17, 'text' => 'Yourself', 'color' => $second_person_color, 'icon' => $second_url],
+                        ['id' => $pronoun_index+18, 'text' => 'Yourselves', 'color' => $second_person_color, 'icon' => $second_url]
                     ]);
                     $user->folders()->find($pronounF+4)->words()->attach([
                         $pronoun_index+14 => ['board_x' => 1, 'board_y' => 1],
@@ -489,10 +570,10 @@ class BoardSeeder extends Seeder
                     ]);
                 //Masculine
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+19, 'text' => 'He', 'color' => $masculine_color],//42
-                        ['id' => $pronoun_index+20, 'text' => 'Him', 'color' => $masculine_color],
-                        ['id' => $pronoun_index+21, 'text' => 'His', 'color' => $masculine_color],
-                        ['id' => $pronoun_index+22, 'text' => 'Himself', 'color' => $masculine_color]
+                        ['id' => $pronoun_index+19, 'text' => 'He', 'color' => $masculine_color, 'icon' => $masculine_url],
+                        ['id' => $pronoun_index+20, 'text' => 'Him', 'color' => $masculine_color, 'icon' => $masculine_url],
+                        ['id' => $pronoun_index+21, 'text' => 'His', 'color' => $masculine_color, 'icon' => $masculine_url],
+                        ['id' => $pronoun_index+22, 'text' => 'Himself', 'color' => $masculine_color, 'icon' => $masculine_url]
                     ]);
                     $user->folders()->find($pronounF+5)->words()->attach([
                         $pronoun_index+19 => ['board_x' => 1, 'board_y' => 1],
@@ -510,10 +591,10 @@ class BoardSeeder extends Seeder
                     ]);
                 //Feminine
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+23, 'text' => 'She', 'color' => $feminine_color],//46
-                        ['id' => $pronoun_index+24, 'text' => 'Her', 'color' => $feminine_color],
-                        ['id' => $pronoun_index+25, 'text' => 'Hers', 'color' => $feminine_color],
-                        ['id' => $pronoun_index+26, 'text' => 'Herself', 'color' => $feminine_color]
+                        ['id' => $pronoun_index+23, 'text' => 'She', 'color' => $feminine_color, 'icon' => $feminine_url],
+                        ['id' => $pronoun_index+24, 'text' => 'Her', 'color' => $feminine_color, 'icon' => $feminine_url],
+                        ['id' => $pronoun_index+25, 'text' => 'Hers', 'color' => $feminine_color, 'icon' => $feminine_url],
+                        ['id' => $pronoun_index+26, 'text' => 'Herself', 'color' => $feminine_color, 'icon' => $feminine_url]
                     ]);
                     $user->folders()->find($pronounF+6)->words()->attach([
                         $pronoun_index+23 => ['board_x' => 1, 'board_y' => 1],
@@ -531,12 +612,12 @@ class BoardSeeder extends Seeder
                     ]);
                 //Plural/Neutral
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+27, 'text' => 'They', 'color' => $they_color],//50
-                        ['id' => $pronoun_index+28, 'text' => 'Them', 'color' => $they_color],
-                        ['id' => $pronoun_index+29, 'text' => 'Their', 'color' => $they_color],
-                        ['id' => $pronoun_index+30, 'text' => 'Theirs', 'color' => $they_color],
-                        ['id' => $pronoun_index+31, 'text' => 'Themselves', 'color' => $they_color],
-                        ['id' => $pronoun_index+32, 'text' => 'Themself', 'color' => $they_color]
+                        ['id' => $pronoun_index+27, 'text' => 'They', 'color' => $they_color, 'icon' => $people_url],
+                        ['id' => $pronoun_index+28, 'text' => 'Them', 'color' => $they_color, 'icon' => $people_url],
+                        ['id' => $pronoun_index+29, 'text' => 'Their', 'color' => $they_color, 'icon' => $people_url],
+                        ['id' => $pronoun_index+30, 'text' => 'Theirs', 'color' => $they_color, 'icon' => $people_url],
+                        ['id' => $pronoun_index+31, 'text' => 'Themselves', 'color' => $they_color, 'icon' => $people_url],
+                        ['id' => $pronoun_index+32, 'text' => 'Themself', 'color' => $they_color, 'icon' => $people_url]
                     ]);
                     $user->folders()->find($pronounF+7)->words()->attach([
                         $pronoun_index+27 => ['board_x' => 1, 'board_y' => 1],
@@ -554,11 +635,11 @@ class BoardSeeder extends Seeder
                     ]);
                 //Neutral - X
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+33, 'text' => 'Xe', 'color' => $x_pronoun_color],//57
-                        ['id' => $pronoun_index+34, 'text' => 'Xem', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+35, 'text' => 'Xyr', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+36, 'text' => 'Xyrs', 'color' => $x_pronoun_color],
-                        ['id' => $pronoun_index+37, 'text' => 'Xemself', 'color' => $x_pronoun_color]
+                        ['id' => $pronoun_index+33, 'text' => 'Xe', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+34, 'text' => 'Xem', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+35, 'text' => 'Xyr', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+36, 'text' => 'Xyrs', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url],
+                        ['id' => $pronoun_index+37, 'text' => 'Xemself', 'color' => $x_pronoun_color, 'icon' => $X_neutral_url]
                     ]);
                     $user->folders()->find($pronounF+8)->words()->attach([
                         $pronoun_index+33 => ['board_x' => 1, 'board_y' => 1],
@@ -576,10 +657,10 @@ class BoardSeeder extends Seeder
                     ]);
                 //Neutral - Z
                     $user->words()->createMany([
-                        ['id' => $pronoun_index+38, 'text' => 'Ze', 'color' => $z_pronoun_color],//62
-                        ['id' => $pronoun_index+39, 'text' => 'Zir', 'color' => $z_pronoun_color],
-                        ['id' => $pronoun_index+40, 'text' => 'Zirs', 'color' => $z_pronoun_color],
-                        ['id' => $pronoun_index+41, 'text' => 'Zirself', 'color' => $z_pronoun_color]
+                        ['id' => $pronoun_index+38, 'text' => 'Ze', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+39, 'text' => 'Zir', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+40, 'text' => 'Zirs', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url],
+                        ['id' => $pronoun_index+41, 'text' => 'Zirself', 'color' => $z_pronoun_color, 'icon' => $Z_neutral_url]
                     ]);
                     $user->folders()->find($pronounF+9)->words()->attach([
                         $pronoun_index+38 => ['board_x' => 1, 'board_y' => 1],
@@ -679,11 +760,11 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Conjunctions
-            $conjunction_index = $pronoun_index+42;
-            $conjunctionF = $pronounF+14;//26
+            $conjunction_index = DB::table('words')->max('id');
+            $conjunctionF = DB::table('folders')->max('id');
             $conjunction_color = '#cbb3e6';
             $user->words()->createMany([
-                ['id' => $conjunction_index+1, 'text' => 'And', 'color' => $conjunction_color],//67
+                ['id' => $conjunction_index+1, 'text' => 'And', 'color' => $conjunction_color],
                 ['id' => $conjunction_index+2, 'text' => 'Also', 'color' => $conjunction_color],
                 ['id' => $conjunction_index+3, 'text' => 'Except', 'color' => $conjunction_color],
                 ['id' => $conjunction_index+4, 'text' => 'But', 'color' => $conjunction_color],
@@ -718,8 +799,8 @@ class BoardSeeder extends Seeder
             ]);
         
         //Articles
-            $article = $conjunction_index+12;
-            $articleF = $conjunctionF+1;//27
+            $article = DB::table('words')->max('id');
+            $articleF = DB::table('folders')->max('id');
             $article_color = '#9fff80';
             $user->words()->createMany([
                 ['id' => $article+1, 'text' => 'A', 'color' => $article_color],//134
@@ -746,12 +827,12 @@ class BoardSeeder extends Seeder
         
 
         //Demonstrative
-            $demonst = $article+3;
-            $demonstF = $articleF+1;//28
+            $demonst = DB::table('words')->max('id');
+            $demonstF = DB::table('folders')->max('id');
 
         //Nouns
-            $noun = $demonst;
-            $nounF = $demonstF;//28
+            $noun = DB::table('words')->max('id');
+            $nounF = DB::table('folders')->max('id');
             $user->words()->createMany([
                 ['id' => $noun+1, 'text' => 'Noun', 'color' => $default_color],
                 ['id' => $noun+2, 'text' => 'Descriptive Noun', 'color' => $default_color]
@@ -780,18 +861,35 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Emotions
-            $emotion_index = $noun+2;//30
-            $emotionF = $nounF+2;
+            $emotion_index = DB::table('words')->max('id');
+            $emotionF = DB::table('folders')->max('id');
+            //icons urls
+                $happy_url = Storage::disk('public')->url('Icons/happy.png');
+                $heart_url = Storage::disk('public')->url('Icons/heart.png');
+                $upset_url = Storage::disk('public')->url('Icons/upset.png');
+                $sad_url = Storage::disk('public')->url('Icons/sad.png');
+                // $panic_url = Storage::disk('public')->url('Icons/panic.PNG');
+                // $hurt_url = Storage::disk('public')->url('Icons/hurt.PNG');
+                // $scared_url = Storage::disk('public')->url('Icons/scared.PNG');
+                // $care_url = Storage::disk('public')->url('Icons/care.PNG');
+                // $safe_url = Storage::disk('public')->url('Icons/safe.PNG');
+                // $like_url = Storage::disk('public')->url('Icons/like.PNG');
+                // $frustrated_url = Storage::disk('public')->url('Icons/frustrated.PNG');
+                // $hate_url = Storage::disk('public')->url('Icons/hate.PNG');
+                // $miss_url = Storage::disk('public')->url('Icons/miss.PNG');
+                // $excited_url = Storage::disk('public')->url('Icons/excited.PNG');
+                // $proud_url = Storage::disk('public')->url ('Icons/proud.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
-                ['id' => $emotion_index+1, 'text' => 'Panic', 'color' => '#ffad33'],//9
+                ['id' => $emotion_index+1, 'text' => 'Panic', 'color' => '#ffad33'],
                 ['id' => $emotion_index+2, 'text' => 'Hurt', 'color' => '#ffd1b3'],
                 ['id' => $emotion_index+3, 'text' => 'Scared', 'color' => '#fff3e6'],
-                ['id' => $emotion_index+4, 'text' => 'Happy', 'color' => '#ffff99'],
-                ['id' => $emotion_index+5, 'text' => 'Sad', 'color' => '#ccf2ff'],
+                ['id' => $emotion_index+4, 'text' => 'Happy', 'color' => '#ffff99', 'icon' => $happy_url],
+                ['id' => $emotion_index+5, 'text' => 'Sad', 'color' => '#ccf2ff', 'icon' => $sad_url],
                 ['id' => $emotion_index+6, 'text' => 'Care', 'color' => '#ccccff'],
-                ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80'],
+                ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80', 'icon' => $upset_url],
                 ['id' => $emotion_index+8, 'text' => 'Safe', 'color' => '#e6ffec'],
-                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6'],
+                ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6', 'icon' => $heart_url],
                 ['id' => $emotion_index+10, 'text' => 'Like', 'color' => '#edc7d1'],
                 ['id' => $emotion_index+11, 'text' => 'Frustrated', 'color' => '#e8b692'],
                 ['id' => $emotion_index+12, 'text' => 'Hate', 'color' => '#ababab'],
@@ -825,12 +923,13 @@ class BoardSeeder extends Seeder
             ]);
 
 
-        //Food
-            $food_extra = $emotion_index+15;
-            $foodF = $emotionF+1;//31
+        //-Food
+            $food_extra = DB::table('words')->max('id');
+            $foodF = DB::table('folders')->max('id');//31
+            //images: just draw what it is unless otherwise specified
             $user->words()->createMany([
-                ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//79
-                ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'],
+                ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//a collection of other foods I drew
+                ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'], 
                 ['id' => $food_extra+3, 'text' => 'Hamburger', 'color' => '#fde49e'],
                 ['id' => $food_extra+4, 'text' => 'Chicken nuggets', 'color' => '#fcb321']
             ]);
@@ -864,7 +963,7 @@ class BoardSeeder extends Seeder
                 $foodF+5 => ['board_x' => 5, 'board_y' => 1]
             ]);
             //Pasta
-                $food_pasta = $food_extra+4;
+                $food_pasta = DB::table('words')->max('id');
                 $user->words()->createMany([
                     ['id' => $food_pasta+1, 'text' => 'Pasta', 'color' => '#ffedb3'],//83
                     ['id' => $food_pasta+2, 'text' => 'Spaghetti', 'color' => '#ffedb3'],
@@ -891,7 +990,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Fruit
-                $food_fruit = $food_pasta+7;
+                $food_fruit = DB::table('words')->max('id');
                 $user->words()->createMany([
                     ['id' => $food_fruit+1, 'text' => 'Orange', 'color' => '#ffa024'],//95
                     ['id' => $food_fruit+2, 'text' => 'Fruit', 'color' => '#ff8080'],
@@ -949,7 +1048,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Snack
-                $food_snacks = $food_fruit+24;
+                $food_snacks = DB::table('words')->max('id');
                 $user->words()->createMany([
                     ['id' => $food_snacks+1, 'text' => 'Snack', 'color' => ' #edb25a'],//91
                     ['id' => $food_snacks+2, 'text' => 'Potato Chips', 'color' => '#fff0c2'],
@@ -978,7 +1077,7 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Drinks
-                $food_drinks = $food_snacks+4;
+                $food_drinks = DB::table('words')->max('id');
                 $user->words()->createMany([
                     ['id' => $food_drinks+1, 'text' => 'Drink', 'color' => '#d9b6bd'],//119
                     ['id' => $food_drinks+2, 'text' => 'Soda', 'color' => '#c2937a'],
@@ -1002,16 +1101,22 @@ class BoardSeeder extends Seeder
                 ]);
 
         //Comfort
-            $comfort = $food_drinks+5;
-            $comfortF = $foodF+5;//36
+            $comfort = DB::table('words')->max('id');
+            $comfortF = DB::table('folders')->max('id');
+            //icons urls
+                // $blanket_url = Storage::disk('public')->url('Icons/blanket.png');
+                // $stuffed_animal_url = Storage::disk('public')->url('Icons/stuffed-animal.PNG');
+                // $hug_url = Storage::disk('public')->url('Icons/hug.PNG');
+                // $pressure_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $pressure_url
             $user->words()->createMany([
-                ['id' => $comfort+1, 'text' => 'Comfort', 'color' => '#cceeff'],//124
+                ['id' => $comfort+1, 'text' => 'Comfort', 'color' => '#cceeff'],
                 ['id' => $comfort+2, 'text' => 'Blanket', 'color' => $default_color],
                 ['id' => $comfort+3, 'text' => 'Stuffed animal', 'color' => '#cccccc'],
                 ['id' => $comfort+4, 'text' => 'Hug', 'color' => '#eee6ff'],
                 ['id' => $comfort+5, 'text' => 'Gentle touch', 'color' => $default_color],
                 ['id' => $comfort+6, 'text' => 'Pressure', 'color' => $default_color],
-                ['id' => $comfort+7, 'text' => 'Distance', 'color' => $default_color]//130
+                ['id' => $comfort+7, 'text' => 'Distance', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
                 ['id' => $comfortF+1, 'name' => 'Comfort', 'color' => '#cceeff']
@@ -1034,10 +1139,10 @@ class BoardSeeder extends Seeder
 
         //Quantity
             $quantity = $comfort+7;
-            $quantityF = $comfortF+1;//37
+            $quantityF = $comfortF+1;
             $quantity_color = '#8cedb9';
             $user->words()->createMany([
-                ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],//125
+                ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],
                 ['id' => $quantity+2, 'text' => 'Less', 'color' => $quantity_color],
                 ['id' => $quantity+3, 'text' => 'Lot', 'color' => $quantity_color],
                 ['id' => $quantity+4, 'text' => 'Little', 'color' => $quantity_color],
@@ -1045,8 +1150,8 @@ class BoardSeeder extends Seeder
                 ['id' => $quantity+6, 'text' => 'All', 'color' => $quantity_color],
                 ['id' => $quantity+7, 'text' => 'Many', 'color' => $quantity_color],
                 ['id' => $quantity+8, 'text' => 'Few', 'color' => $quantity_color],
-                ['id' => $quantity+9, 'text' => 'Light', 'color' => $quantity_color],
-                ['id' => $quantity+10, 'text' => 'Heavy', 'color' => $quantity_color]//133
+                ['id' => $quantity+9, 'text' => 'Light', 'color' => $quantity_color, 'icon' => $lightq_url],
+                ['id' => $quantity+10, 'text' => 'Heavy', 'color' => $quantity_color, 'icon' => $heavyq_url]
             ]);
             $user->folders()->createMany([
                 ['id' => $quantityF+1, 'name' => 'Quantity', 'color' => $quantity_color]
@@ -1072,14 +1177,14 @@ class BoardSeeder extends Seeder
 
         //Help
             $help = $quantity+10;
-            $helpF = $quantityF+1;//38
+            $helpF = $quantityF+1;
             //icon urls
                 $help_url = Storage::disk('public')->url('Icons/help.png');
                 $cant_talk_url = Storage::disk('public')->url('Icons/cant-talk.png');              
                 $talker_url = Storage::disk('public')->url('Icons/using-talker.png');
 
             $user->words()->createMany([
-                ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff', 'icon' => $help_url],//137
+                ['id' => $help+1, 'text' => 'Help', 'color' => '#e6e6ff', 'icon' => $help_url],
                 ['id' => $help+2, 'text' => 'Help me', 'color' => '#e6e6ff'],
                 ['id' => $help+3, 'text' => 'Call for help', 'color' => '#ff99c2'],
                 ['id' => $help+4, 'text' => 'Medical emergency', 'color' => '#ff8080'],
@@ -1088,7 +1193,7 @@ class BoardSeeder extends Seeder
                 ['id' => $help+7, 'text' => 'I cannot speak', 'color' => '#ffdf80', 'icon' => $cant_talk_url],
                 ['id' => $help+8, 'text' => 'I am using a talker', 'color' => '#ffecb3', 'icon' => $talker_url],
                 ['id' => $help+9, 'text' => 'I Need', 'color' => $default_color],
-                ['id' => $help+10, 'text' => 'Stop', 'color' => '#c42b2b']//146
+                ['id' => $help+10, 'text' => 'Stop', 'color' => '#c42b2b']
             ]);
             $user->folders()->createMany([
                 ['id' => $helpF+1, 'name' => 'Help', 'color' => '#ffff66', 'icon' => $help_url]
@@ -1119,15 +1224,18 @@ class BoardSeeder extends Seeder
 
         //Toys
             $toys = $help+10;
-            $toysF = $helpF+1;//39
+            $toysF = $helpF+1;
+            //icons
+                $ball_url = Storage::disk('public')->url('Icons/ball.PNG');
+                $doll_url = Storage::disk('public')->url('Icons/doll.PNG');
             $user->words()->createMany([
-                ['id' => $toys+1, 'text' => 'Toy', 'color' => '#60d164'],//147
-                ['id' => $toys+2, 'text' => 'Ball', 'color' => '#596df0'],
-                ['id' => $toys+3, 'text' => 'Block', 'color' => '#f23a3a'],
-                ['id' => $toys+4, 'text' => 'Doll', 'color' => '#ffefad']//150
+                ['id' => $toys+1, 'text' => 'Toy', 'color' => '#60d164', 'icon' => $doll_url],
+                ['id' => $toys+2, 'text' => 'Ball', 'color' => '#596df0', 'icon' => $ball_url],
+                ['id' => $toys+3, 'text' => 'Block', 'color' => '#f23a3a', 'icon' => $dry_url],
+                ['id' => $toys+4, 'text' => 'Doll', 'color' => '#ffefad', 'icon' => $doll_url]
             ]);
             $user->folders()->createMany([
-                ['id' => $toysF+1, 'name' => 'Toys', 'color' => '#60d164']
+                ['id' => $toysF+1, 'name' => 'Toys', 'color' => '#60d164', 'icon' => $doll_url]
             ]);
             $user->folders()->find($toysF+1)->words()->attach([
                 $toys+1 => ['board_x' => 1, 'board_y' => 1],
@@ -1151,9 +1259,12 @@ class BoardSeeder extends Seeder
 
         //People
             $people = $toys+4;
-            $peopleF = $toysF+1;//40
+            $peopleF = $toysF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
-                ['id' => $people+1, 'text' => 'People', 'color' => $default_color],//151
+                ['id' => $people+1, 'text' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $people+2, 'text' => 'Teacher', 'color' => $default_color],
                 ['id' => $people+3, 'text' => 'Classmate', 'color' => $default_color],
                 ['id' => $people+4, 'text' => 'Friend', 'color' => $default_color],
@@ -1162,10 +1273,10 @@ class BoardSeeder extends Seeder
                 ['id' => $people+7, 'text' => 'Cashier', 'color' => $default_color],
                 ['id' => $people+8, 'text' => 'Wait Staff', 'color' => $default_color],
                 ['id' => $people+9, 'text' => 'Pilot', 'color' => $default_color],
-                ['id' => $people+10, 'text' => 'Staff', 'color' => $default_color]//160
+                ['id' => $people+10, 'text' => 'Staff', 'color' => $default_color]
             ]);
             $user->folders()->createMany([
-                ['id' => $peopleF+1, 'name' => 'People', 'color' => $default_color],
+                ['id' => $peopleF+1, 'name' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $peopleF+2, 'name' => 'Family', 'color' => $default_color] 
             ]);
             $user->folders()->find($peopleF+1)->words()->attach([
@@ -1237,7 +1348,7 @@ class BoardSeeder extends Seeder
         
         //Colors
             $colors = $people+29;
-            $colorsF = $peopleF+2;//42
+            $colorsF = $peopleF+2;
             $user->words()->createMany([
                 ['id' => $colors+1, 'text' => 'Red', 'color' => $default_color],
                 ['id' => $colors+2, 'text' => 'Orange', 'color' => $default_color],
@@ -1245,7 +1356,7 @@ class BoardSeeder extends Seeder
                 ['id' => $colors+4, 'text' => 'Green', 'color' => $default_color],
                 ['id' => $colors+5, 'text' => 'Blue', 'color' => $default_color],
                 ['id' => $colors+6, 'text' => 'Purple', 'color' => $default_color],
-                ['id' => $colors+7, 'text' => 'Rainbow', 'color' => $default_color],
+                ['id' => $colors+7, 'text' => 'Rainbow', 'color' => $default_color, 'icon' => $rainbow_url],
                 ['id' => $colors+8, 'text' => 'Brown', 'color' => $default_color],
                 ['id' => $colors+9, 'text' => 'Black', 'color' => $default_color],
                 ['id' => $colors+10, 'text' => 'White', 'color' => $default_color],
@@ -1253,7 +1364,7 @@ class BoardSeeder extends Seeder
                 ['id' => $colors+12, 'text' => 'Neon', 'color' => $default_color],
             ]);
             $user->folders()->createMany([
-                ['id' => $colorsF+1, 'name' => 'Colors', 'color' => $default_color]
+                ['id' => $colorsF+1, 'name' => 'Colors', 'color' => $default_color, 'icon' => $rainbow_url]
             ]);
             $user->folders()->find($colorsF+1)->words()->attach([
                 $colors+1 => ['board_x' => 1, 'board_y' => 1],
@@ -1281,7 +1392,16 @@ class BoardSeeder extends Seeder
 
         //Patterns
             $patterns = $colors+12;
-            $patternsF = $colorsF+1;//43
+            $patternsF = $colorsF+1;
+            //icons urls
+                // $pattern_url = Storage::disk('public')->url('Icons/pattern.PNG');
+                // $spots_url = Storage::disk('public')->url('Icons/spots.PNG');
+                // $stripes_url = Storage::disk('public')->url('Icons/stripes.PNG');
+                // $checkered_url = Storage::disk('public')->url('Icons/checkered.PNG');
+                // $houndstooth_url = Storage::disk('public')->url('Icons/houndstooth.PNG');
+                // $floral_url = Storage::disk('public')->url('Icons/floral.PNG');
+                // $paisley_url = Storage::disk('public')->url('Icons/paisley.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $patterns+1, 'text' => 'Pattern', 'color' => $default_color],
                 ['id' => $patterns+2, 'text' => 'Spots', 'color' => $default_color],
@@ -1314,7 +1434,10 @@ class BoardSeeder extends Seeder
 
         //Vehicles
             $vehicles = $patterns+7;
-            $vehiclesF = $patternsF+1;//44
+            $vehiclesF = $patternsF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $vehicles+1, 'text' => 'Vehicle', 'color' => $default_color],
                 ['id' => $vehicles+2, 'text' => 'Car', 'color' => $default_color],
@@ -1351,7 +1474,10 @@ class BoardSeeder extends Seeder
         
         //Clothes
             $clothes = $vehicles+7;
-            $clothesF = $vehiclesF+1;//45
+            $clothesF = $vehiclesF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $clothes+1, 'text' => 'Clothes', 'color' => $default_color],
                 ['id' => $clothes+2, 'text' => 'Compression', 'color' => $default_color]
@@ -1401,6 +1527,9 @@ class BoardSeeder extends Seeder
             ]);
             
             //Material
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+3, 'text' => 'Jean', 'color' => $default_color],
                     ['id' => $clothes+4, 'text' => 'Corderoy', 'color' => $default_color],
@@ -1428,6 +1557,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Shirts
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+9, 'text' => 'Shirt', 'color' => $default_color],
                     ['id' => $clothes+10, 'text' => 'T-shirt', 'color' => $default_color],
@@ -1455,6 +1587,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Pants
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+17, 'text' => 'Pants', 'color' => $default_color],
                     ['id' => $clothes+18, 'text' => 'Dress Pants', 'color' => $default_color],
@@ -1481,6 +1616,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Dresses
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+24, 'text' => 'Dress', 'color' => $default_color],
                     ['id' => $clothes+25, 'text' => 'Maxi Dress', 'color' => $default_color],
@@ -1506,6 +1644,9 @@ class BoardSeeder extends Seeder
                 ]);
            
             //Jackets
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+31, 'text' => 'Jacket', 'color' => $default_color],
                     ['id' => $clothes+32, 'text' => 'Windbreaker', 'color' => $default_color],
@@ -1530,6 +1671,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Skirts
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+37, 'text' => 'Skirt', 'color' => $default_color],
                     ['id' => $clothes+38, 'text' => 'Short Skirt', 'color' => $default_color],
@@ -1553,6 +1697,9 @@ class BoardSeeder extends Seeder
                 ]);
            
             //Socks
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+42, 'text' => 'Socks', 'color' => $default_color],
                     ['id' => $clothes+43, 'text' => 'No Show Socks', 'color' => $default_color],
@@ -1577,6 +1724,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Shoes
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+48, 'text' => 'Shoes', 'color' => $default_color],
                     ['id' => $clothes+49, 'text' => 'Tennis Shoes', 'color' => $default_color],
@@ -1612,6 +1762,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Underwear
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+60, 'text' => 'Underwear', 'color' => $default_color],
                     ['id' => $clothes+61, 'text' => 'Bra', 'color' => $default_color],
@@ -1636,6 +1789,9 @@ class BoardSeeder extends Seeder
                 ]);
             
             //Laundry
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clothes+66, 'text' => 'Hamper', 'color' => $default_color],
                     ['id' => $clothes+67, 'text' => 'Hanger', 'color' => $default_color],
@@ -1755,6 +1911,9 @@ class BoardSeeder extends Seeder
         //Tempurature
             $tempurature = $numbers+32;
             $tempuratureF = $numbersF+2;//59
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $tempurature+1, 'text' => 'Temputrature', 'color' => $default_color],
                 ['id' => $tempurature+2, 'text' => 'Farenheight', 'color' => $default_color],
@@ -1788,6 +1947,9 @@ class BoardSeeder extends Seeder
         //Weather
             $weather = $tempurature+4;
             $weatherF = $tempuratureF+1;//60
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $weather+1, 'text' => 'Cloudy', 'color' => $default_color],
                 ['id' => $weather+2, 'text' => 'Sunny', 'color' => $default_color],
@@ -1800,7 +1962,7 @@ class BoardSeeder extends Seeder
                 ['id' => $weather+9, 'text' => 'Flood', 'color' => $default_color],
                 ['id' => $weather+10, 'text' => 'Frost', 'color' => $default_color],
                 ['id' => $weather+11, 'text' => 'Blizzard', 'color' => $default_color],
-                ['id' => $weather+12, 'text' => 'Snow', 'color' => $default_color],
+                ['id' => $weather+12, 'text' => 'Snow', 'color' => $default_color, 'icon' => $snowflake_url],
                 ['id' => $weather+13, 'text' => 'Sleet', 'color' => $default_color],
                 ['id' => $weather+14, 'text' => 'Hail', 'color' => $default_color],
                 ['id' => $weather+15, 'text' => 'Thunder', 'color' => $default_color],
@@ -1938,7 +2100,10 @@ class BoardSeeder extends Seeder
         
         //Personal care
             $person_care = $letters+28;
-            $person_careF = $lettersF+2;//63
+            $person_careF = $lettersF+2;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $person_care+1, 'text' => 'Brush Teeth', 'color' => $default_color],
                 ['id' => $person_care+2, 'text' => 'Brush Teeth', 'color' => $default_color],
@@ -1967,7 +2132,10 @@ class BoardSeeder extends Seeder
         
         //Entertainment
             $entertainment = $person_care+6;
-            $entertainmentF = $person_careF+1;//64
+            $entertainmentF = $person_careF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $entertainment+1, 'text' => 'TV', 'color' => $default_color],
                 ['id' => $entertainment+2, 'text' => 'Movie', 'color' => $default_color],
@@ -2000,7 +2168,7 @@ class BoardSeeder extends Seeder
 
         //Talker
             $talker = $entertainment+7;
-            $talkerF = $entertainmentF+1;//65
+            $talkerF = $entertainmentF+1;
             $user->words()->createMany([
                 ['id' => $talker+1, 'text' => 'Word', 'color' => $default_color],
                 ['id' => $talker+2, 'text' => 'Words', 'color' => $default_color],
@@ -2057,7 +2225,10 @@ class BoardSeeder extends Seeder
 
         //Medical
             $medical = $talker+11;
-            $medicalF = $talkerF+2;//66
+            $medicalF = $talkerF+2;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $medical+1, 'text' => 'Sick', 'color' => $default_color],
                 ['id' => $medical+2, 'text' => 'Pain', 'color' => $default_color],
@@ -2090,17 +2261,23 @@ class BoardSeeder extends Seeder
 
         //Plants
             $plants = $medical+6;
-            $plantsF = $medicalF+1;//67
+            $plantsF = $medicalF+1;
+            //icons
+                $plant_url = Storage::disk('public')->url('Icons/plant.PNG');
+                $tree_url = Storage::disk('public')->url('Icons/tree.PNG');
+                $bush_url = Storage::disk('public')->url('Icons/bush.PNG');
+                $grass_url = Storage::disk('public')->url('Icons/grass.PNG');
+                $leaf_url = Storage::disk('public')->url('Icons/leaf.PNG');
             $user->words()->createMany([
-                ['id' => $plants+1, 'text' => 'Plant', 'color' => $default_color],
-                ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color],
-                ['id' => $plants+3, 'text' => 'Tree', 'color' => $default_color],
-                ['id' => $plants+4, 'text' => 'Bush', 'color' => $default_color],
-                ['id' => $plants+5, 'text' => 'Grass', 'color' => $default_color],
-                ['id' => $plants+6, 'text' => 'Leaf', 'color' => $default_color]
+                ['id' => $plants+1, 'text' => 'Plant', 'color' => $default_color, 'icon' => $plant_url],
+                ['id' => $plants+2, 'text' => 'Flower', 'color' => $default_color, 'icon' => $flower_url],
+                ['id' => $plants+3, 'text' => 'Tree', 'color' => $default_color, 'icon' => $tree_url],
+                ['id' => $plants+4, 'text' => 'Bush', 'color' => $default_color, 'icon' => $bush_url],
+                ['id' => $plants+5, 'text' => 'Grass', 'color' => $default_color, 'icon' => $grass_url],
+                ['id' => $plants+6, 'text' => 'Leaf', 'color' => $default_color, 'icon' => $leaf_url]
             ]);
             $user->folders()->createMany([
-                ['id' => $plantsF+1, 'name' => 'Plants', 'color' => $default_color]
+                ['id' => $plantsF+1, 'name' => 'Plants', 'color' => $default_color, 'icon' => $plant_url]
             ]);
             $user->folders()->find($plantsF+1)->words()->attach([
                 $plants+1 => ['board_x' => 1, 'board_y' => 1],
@@ -2122,30 +2299,41 @@ class BoardSeeder extends Seeder
         
         //Animals
             $animals = $plants+6;
-            $animalsF = $plantsF+1;//68
+            $animalsF = $plantsF+1;
+            //icons
+                $cat_url = Storage::disk('public')->url('Icons/cat.PNG');
+                $bird_url = Storage::disk('public')->url('Icons/bird.PNG');
+                $turtle_url = Storage::disk('public')->url('Icons/turtle.PNG');
+                $frog_url = Storage::disk('public')->url('Icons/frog.PNG');
+                $snake_url = Storage::disk('public')->url('Icons/snake.PNG');
+                $salamander_url = Storage::disk('public')->url('Icons/salamander.PNG');
+                $fly_url = Storage::disk('public')->url('Icons/fly.PNG');
+                $butterfly_url = Storage::disk('public')->url('Icons/butterfly.PNG');
+                $bat_url = Storage::disk('public')->url('Icons/bat.PNG');
+                //$leaf_url = Storage::disk('public')->url('Icons/leaf.PNG');
             $user->words()->createMany([
                 ['id' => $animals+1, 'text' => 'Animal', 'color' => $default_color],
                 ['id' => $animals+2, 'text' => 'Pet', 'color' => $default_color],
                 ['id' => $animals+3, 'text' => 'Dog', 'color' => $default_color],
-                ['id' => $animals+4, 'text' => 'Cat', 'color' => $default_color],
+                ['id' => $animals+4, 'text' => 'Cat', 'color' => $default_color, 'icon' => $cat_url],
                 ['id' => $animals+5, 'text' => 'Mammal', 'color' => $default_color],
-                ['id' => $animals+6, 'text' => 'Bird', 'color' => $default_color],
-                ['id' => $animals+7, 'text' => 'Reptile', 'color' => $default_color],
-                ['id' => $animals+8, 'text' => 'Amphibian', 'color' => $default_color],
+                ['id' => $animals+6, 'text' => 'Bird', 'color' => $default_color, 'icon' => $bird_url],
+                ['id' => $animals+7, 'text' => 'Reptile', 'color' => $default_color, 'icon' => $turtle_url],
+                ['id' => $animals+8, 'text' => 'Amphibian', 'color' => $default_color, 'icon' => $frog_url],
                 ['id' => $animals+9, 'text' => 'Bug', 'color' => $default_color],
                 ['id' => $animals+10, 'text' => 'Rabbit', 'color' => $default_color],
                 ['id' => $animals+11, 'text' => 'Wolf', 'color' => $default_color],
                 ['id' => $animals+12, 'text' => 'Mouse', 'color' => $default_color],
                 ['id' => $animals+13, 'text' => 'Lizard', 'color' => $default_color],
-                ['id' => $animals+14, 'text' => 'Snake', 'color' => $default_color],
-                ['id' => $animals+ 15, 'text' => 'Frog', 'color' => $default_color],
-                ['id' => $animals+ 16, 'text' => 'Salamander', 'color' => $default_color],
+                ['id' => $animals+14, 'text' => 'Snake', 'color' => $default_color, 'icon' => $snake_url],
+                ['id' => $animals+ 15, 'text' => 'Frog', 'color' => $default_color, 'icon' => $frog_url],
+                ['id' => $animals+ 16, 'text' => 'Salamander', 'color' => $default_color, 'icon' => $salamander_url],
                 ['id' => $animals+17, 'text' => 'Spider', 'color' => $default_color],
-                ['id' => $animals+18, 'text' => 'Fly', 'color' => $default_color],
+                ['id' => $animals+18, 'text' => 'Fly', 'color' => $default_color, 'icon' => $fly_url],
                 ['id' => $animals+19, 'text' => 'Crow', 'color' => $default_color],
-                ['id' => $animals+20, 'text' => 'Robin', 'color' => $default_color],
+                ['id' => $animals+20, 'text' => 'Butterfly', 'color' => $default_color, 'icon' => $butterfly_url],
                 ['id' => $animals+21, 'text' => 'Finch', 'color' => $default_color],
-                ['id' => $animals+22, 'text' => 'Blackbird', 'color' => $default_color],
+                ['id' => $animals+22, 'text' => 'Bat', 'color' => $default_color, 'icon' => $bat_url],
                 ['id' => $animals+23, 'text' => 'Hawk', 'color' => $default_color],
                 ['id' => $animals+24, 'text' => 'Eagle', 'color' => $default_color]
             ]);
@@ -2270,6 +2458,9 @@ class BoardSeeder extends Seeder
 
             //Furnature
                 $furnature = $house+8;
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $furnature+1, 'text' => 'Bed', 'color' => $default_color],
                     ['id' => $furnature+2, 'text' => 'Couch', 'color' => $default_color],
@@ -2302,6 +2493,9 @@ class BoardSeeder extends Seeder
 
             //Furnishings
                 $furnishings = $furnature+10;
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $furnishings+1, 'text' => 'Rug', 'color' => $default_color],
                     ['id' => $furnishings+2, 'text' => 'Pillow', 'color' => $default_color],
@@ -2326,6 +2520,9 @@ class BoardSeeder extends Seeder
 
             //Linen
                 $linin = $furnishings+5;
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $linin+1, 'text' => 'Towel', 'color' => $default_color],
                     ['id' => $linin+2, 'text' => 'Hand Towel', 'color' => $default_color],
@@ -2362,6 +2559,9 @@ class BoardSeeder extends Seeder
 
             //Cleaning Supplies
                 $clean_supply = $linin+12;
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $clean_supply+1, 'text' => 'Soap', 'color' => $default_color],
                     ['id' => $clean_supply+2, 'text' => 'Detergent', 'color' => $default_color],
@@ -2386,6 +2586,9 @@ class BoardSeeder extends Seeder
         
             //Rooms
                 $rooms = $clean_supply+5;
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $rooms+1, 'text' => 'Room', 'color' => $default_color],
                     ['id' => $rooms+2, 'text' => 'Hallway', 'color' => $default_color],
@@ -2447,6 +2650,9 @@ class BoardSeeder extends Seeder
 
                 //Bathroom
                     $bathroom = $bedroom+1;
+                    //icons urls
+                        // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                    //, 'icon' => $THING_url
                     $user->words()->createMany([
                         ['id' => $bathroom+1, 'text' => 'Bathroom', 'color' => $default_color],
                         ['id' => $bathroom+2, 'text' => 'Bathtub', 'color' => $default_color],
@@ -2556,6 +2762,9 @@ class BoardSeeder extends Seeder
 
                 //Laundry Room
                     $laundry_room = $play_room+1;
+                    //icons urls
+                        // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                    //, 'icon' => $THING_url
                     $user->words()->createMany([
                         ['id' => $laundry_room+1, 'text' => 'Laundry Room', 'color' => $default_color],
                         ['id' => $laundry_room+2, 'text' => 'Washer', 'color' => $default_color],
@@ -2581,6 +2790,9 @@ class BoardSeeder extends Seeder
 
                 //Kitchen
                     $kitchen = $laundry_room+3;
+                    //icons urls
+                        // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                    //, 'icon' => $THING_url
                     $user->words()->createMany([
                         ['id' => $kitchen+1, 'text' => 'Kitchen', 'color' => $default_color],
                         ['id' => $kitchen+2, 'text' => 'Counter', 'color' => $default_color],
@@ -2637,6 +2849,9 @@ class BoardSeeder extends Seeder
 
                     //Cooking Tools
                         $cook_tool = $meals+7;
+                        //icons urls
+                            // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                        //, 'icon' => $THING_url
                         $user->words()->createMany([
                             ['id' => $cook_tool+1, 'text' => 'Pot', 'color' => $default_color],
                             ['id' => $cook_tool+2, 'text' => 'Pan', 'color' => $default_color],
@@ -2674,6 +2889,9 @@ class BoardSeeder extends Seeder
 
                     //Dishes
                         $dishes = $cook_tool+13;
+                        //icons urls
+                            // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                        //, 'icon' => $THING_url
                         $user->words()->createMany([
                             ['id' => $dishes+1, 'text' => 'Dish', 'color' => $default_color],
                             ['id' => $dishes+2, 'text' => 'Dishes', 'color' => $default_color],
@@ -2699,6 +2917,9 @@ class BoardSeeder extends Seeder
 
                     //Cutlery
                         $cutlery = $dishes+6;
+                        //icons urls
+                            // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                        //, 'icon' => $THING_url
                         $user->words()->createMany([
                             ['id' => $cutlery+1, 'text' => 'Fork', 'color' => $default_color],
                             ['id' => $cutlery+2, 'text' => 'Knife', 'color' => $default_color],
@@ -2765,6 +2986,9 @@ class BoardSeeder extends Seeder
         //Aids
             $aids = $places+9;
             $aidsF = $placesF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $aids+1, 'text' => 'Glasses', 'color' => $default_color],
                 ['id' => $aids+2, 'text' => 'Wheelchair', 'color' => $default_color],
@@ -2798,6 +3022,9 @@ class BoardSeeder extends Seeder
         //School
             $school = $aids+7;
             $schoolF = $aidsF+1;
+            //icons urls
+                // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+            //, 'icon' => $THING_url
             $user->words()->createMany([
                 ['id' => $school+1, 'text' => 'Recess', 'color' => $default_color],//151
                 ['id' => $school+2, 'text' => 'Book', 'color' => $default_color],
@@ -2831,6 +3058,9 @@ class BoardSeeder extends Seeder
             ]);
             
             //Subjects
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $school+3, 'text' => 'Math', 'color' => $default_color],
                     ['id' => $school+4, 'text' => 'English', 'color' => $default_color],
@@ -2858,6 +3088,9 @@ class BoardSeeder extends Seeder
                 ]);
 
             //Supplies
+                //icons urls
+                    // $THING_url = Storage::disk('public')->url('Icons/THING.PNG');
+                //, 'icon' => $THING_url
                 $user->words()->createMany([
                     ['id' => $school+11, 'text' => 'Pencil', 'color' => $default_color],
                     ['id' => $school+12, 'text' => 'Pen', 'color' => $default_color],
