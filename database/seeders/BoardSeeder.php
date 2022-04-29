@@ -887,7 +887,7 @@ class BoardSeeder extends Seeder
                 ['id' => $emotion_index+4, 'text' => 'Happy', 'color' => '#ffff99', 'icon' => $happy_url],
                 ['id' => $emotion_index+5, 'text' => 'Sad', 'color' => '#ccf2ff', 'icon' => $sad_url],
                 ['id' => $emotion_index+6, 'text' => 'Care', 'color' => '#ccccff'],
-                ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80', 'icon' => $upset_url]],
+                ['id' => $emotion_index+7, 'text' => 'Upset', 'color' => '#ff9f80', 'icon' => $upset_url],
                 ['id' => $emotion_index+8, 'text' => 'Safe', 'color' => '#e6ffec'],
                 ['id' => $emotion_index+9, 'text' => 'Love', 'color' => '#e3a8d6', 'icon' => $heart_url],
                 ['id' => $emotion_index+10, 'text' => 'Like', 'color' => '#edc7d1'],
