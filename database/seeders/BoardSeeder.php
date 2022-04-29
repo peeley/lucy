@@ -95,7 +95,7 @@ class BoardSeeder extends Seeder
                 ['id' => $adjectivesF+2, 'name' => 'Asthetics', 'color' => $default_color, 'icon' => $asthetics_url],
                 ['id' => $adjectivesF+3, 'name' => 'People', 'color' => $default_color, 'icon' => $people_url],
                 ['id' => $adjectivesF+4, 'name' => 'Opinions', 'color' => $default_color],
-                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color], 'icon' => $sensory_url],
+                ['id' => $adjectivesF+5, 'name' => 'Sensory', 'color' => $default_color, 'icon' => $sensory_url],
                 ['id' => $adjectivesF+6, 'name' => 'Movement', 'color' => $default_color, 'icon' => $movement_url],
                 ['id' => $adjectivesF+7, 'name' => 'Speed', 'color' => $default_color, 'icon' => $speed_url],
                 ['id' => $adjectivesF+8, 'name' => 'Distance', 'color' => $default_color, 'icon' => $distance_url],
