@@ -48,6 +48,10 @@
         </form>
     </div>
     <div class="about-resources">
+        <h3>GitHub Repo</h3>
+        <p><a href="https://github.com/peeley/lucy">https://github.com/peeley/lucy</a></p>
+    </div>
+    <div class="about-resources">
         <h3>Project Related Resources</h3>
         <ul>
             <li><a href="https://praacticalaac.org/praactical/open-source-aac/">Praaticalaac Open Source AAC</a></li>
