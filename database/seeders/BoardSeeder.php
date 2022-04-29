@@ -176,7 +176,7 @@ class BoardSeeder extends Seeder
                         ['id' => $adjectives+16, 'text' => 'Attractive', 'color' => $default_color, 'icon' => $attractive_url],
                         ['id' => $adjectives+17, 'text' => 'Beautiful', 'color' => $default_color],
                         ['id' => $adjectives+18, 'text' => 'Handsome', 'color' => $default_color],
-                        ['id' => $adjectives+19, 'text' => 'Goregous', 'color' => $default_color]
+                        ['id' => $adjectives+19, 'text' => 'Gorgeous', 'color' => $default_color]
                     ]);
                     $user->folders()->find($adjectivesF+3)->words()->attach([
                         $adjectives+12 => ['board_x' => 1, 'board_y' => 1],
@@ -229,7 +229,7 @@ class BoardSeeder extends Seeder
                 //Sensory
                     //icons
                         $fire_url = Storage::disk('public')->url('Icons/fire.png');
-                        $snowflake_url = Storage::disk('public')->url('Icons/snow-flake.png');
+                        $snowflake_url = Storage::disk('public')->url('Icons/snowflake.png');
                         $wet_url = Storage::disk('public')->url('Icons/wet.png');
                         $dry_url = Storage::disk('public')->url('Icons/dry.png');
                         $hard_url = Storage::disk('public')->url('Icons/hard.png');
@@ -351,7 +351,7 @@ class BoardSeeder extends Seeder
                         $big_url = Storage::disk('public')->url('Icons/big.png');
                         $medium_url = Storage::disk('public')->url('Icons/medium.png');
                         $small_url = Storage::disk('public')->url('Icons/small.png');
-                        $lightq_url = Storage::disk('public')->url('Icons/lightq.png');
+                        $lightq_url = Storage::disk('public')->url('Icons/light-q.png');
                         $heavyq_url = Storage::disk('public')->url('Icons/heavy.png');
                     $user->words()->createMany([
                         ['id' => $adjectives+42, 'text' => 'Long', 'color' => $default_color, 'icon' => $long_url],
