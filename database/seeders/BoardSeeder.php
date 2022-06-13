@@ -763,6 +763,18 @@ class BoardSeeder extends Seeder
             $conjunction_index = DB::table('words')->max('id');
             $conjunctionF = DB::table('folders')->max('id');
             $conjunction_color = '#cbb3e6';
+            //icons
+                //and
+                //also
+                //except
+                //but
+                //either
+                //or
+                //both
+                //for
+                //nor
+                //so
+                //yet
             $user->words()->createMany([
                 ['id' => $conjunction_index+1, 'text' => 'And', 'color' => $conjunction_color],
                 ['id' => $conjunction_index+2, 'text' => 'Also', 'color' => $conjunction_color],
@@ -923,10 +935,19 @@ class BoardSeeder extends Seeder
             ]);
 
 
-        //-Food
+        //Food
             $food_extra = DB::table('words')->max('id');
             $foodF = DB::table('folders')->max('id');//31
             //images: just draw what it is unless otherwise specified
+            //icons
+                //food
+                //pizza
+                //hamburger
+                //chicken
+                //pasta
+                //snacks
+                //drinks
+                //fruit
             $user->words()->createMany([
                 ['id' => $food_extra+1, 'text' => 'Food', 'color' => '#e6ffcc'],//a collection of other foods I drew
                 ['id' => $food_extra+2, 'text' => 'Pizza', 'color' => '#c73838'], 
@@ -964,6 +985,13 @@ class BoardSeeder extends Seeder
             ]);
             //Pasta
                 $food_pasta = DB::table('words')->max('id');
+                //icons
+                    //spagetti
+                    //macaroni
+                    //penne
+                    //mac&cheese
+                    //alfredo
+                    //tomato sauce
                 $user->words()->createMany([
                     ['id' => $food_pasta+1, 'text' => 'Pasta', 'color' => '#ffedb3'],//83
                     ['id' => $food_pasta+2, 'text' => 'Spaghetti', 'color' => '#ffedb3'],
@@ -991,6 +1019,28 @@ class BoardSeeder extends Seeder
             
             //Fruit
                 $food_fruit = DB::table('words')->max('id');
+                //icons
+                    //orange
+                    //apple
+                    //pear
+                    //bannnana
+                    //grapes
+                    //peach
+                    //plumb
+                    //strawberry
+                    //blueberry
+                    //cranberry
+                    //kiwi
+                    //pinapple
+                    //coconut
+                    //mango
+                    //lime
+                    //watermellon
+                    //cantalope
+                    //honeydew
+                    //apricot
+                    //cherry
+                    //lemon
                 $user->words()->createMany([
                     ['id' => $food_fruit+1, 'text' => 'Orange', 'color' => '#ffa024'],//95
                     ['id' => $food_fruit+2, 'text' => 'Fruit', 'color' => '#ff8080'],
@@ -1049,6 +1099,10 @@ class BoardSeeder extends Seeder
             
             //Snack
                 $food_snacks = DB::table('words')->max('id');
+                //icons
+                    //potato chips
+                    //goldfish
+                    //fruit snacks
                 $user->words()->createMany([
                     ['id' => $food_snacks+1, 'text' => 'Snack', 'color' => ' #edb25a'],//91
                     ['id' => $food_snacks+2, 'text' => 'Potato Chips', 'color' => '#fff0c2'],
@@ -1078,6 +1132,11 @@ class BoardSeeder extends Seeder
             
             //Drinks
                 $food_drinks = DB::table('words')->max('id');
+                //icons
+                    //soda
+                    //juice
+                    //water
+                    //flavored water
                 $user->words()->createMany([
                     ['id' => $food_drinks+1, 'text' => 'Drink', 'color' => '#d9b6bd'],//119
                     ['id' => $food_drinks+2, 'text' => 'Soda', 'color' => '#c2937a'],
@@ -1141,6 +1200,17 @@ class BoardSeeder extends Seeder
             $quantity = $comfort+7;
             $quantityF = $comfortF+1;
             $quantity_color = '#8cedb9';
+            //icons
+                //more
+                //less
+                //lot
+                //little
+                //none
+                //all
+                //many
+                //few
+                //light
+                //heavy
             $user->words()->createMany([
                 ['id' => $quantity+1, 'text' => 'More', 'color' => $quantity_color],
                 ['id' => $quantity+2, 'text' => 'Less', 'color' => $quantity_color],
